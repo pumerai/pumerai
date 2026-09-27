@@ -5032,16 +5032,17 @@ a:focus-visible {
 }
 
 /* ==========================================================================
-   10. FOOTER & CONTACT DETAILS (REFINED 3-COLUMN SYSTEM)
+   10. FOOTER & CONTACT DETAILS (JIANA SUITES ARCHITECTURAL SYSTEM - WHITE BACKGROUND)
    ========================================================================== */
 
 .site-footer {
-  background-color: #302B24;
-  color: var(--surface-card);
-  padding-block: clamp(28px, 3.5vw, 42px) clamp(18px, 2.5vw, 24px);
-  border-top: 1px solid var(--accent-champagne);
+  background-color: #FFFFFF !important; /* Pure White Continuation of Main Page */
+  color: var(--text-teak);
+  border-top: 1px solid rgba(37, 35, 31, 0.08); /* Subtle Light Neutral Line */
+  padding-block: clamp(38px, 4.8vw, 56px) clamp(28px, 3.5vw, 42px);
   position: relative;
   z-index: 50;
+  overflow: hidden;
 }
 
 .footer-container {
@@ -5054,67 +5055,66 @@ a:focus-visible {
   gap: 0;
 }
 
-/* --- Brand / Primary CTA Area --- */
+/* --- Retained Brand Lockup Classes (from old footer) --- */
 .footer-top-brand {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   justify-content: space-between;
 }
 
 @media (min-width: 860px) {
   .footer-top-brand {
     flex-direction: row;
-    align-items: center;
-    gap: 24px;
+    align-items: flex-end;
+    gap: 32px;
   }
 }
 
 .footer-brand-lockup {
-  max-width: 580px;
+  max-width: 600px;
 }
 
 .footer-brand-link {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  color: var(--surface-card);
+  gap: 12px;
+  color: var(--text-teak);
   text-decoration: none;
-  margin-bottom: 4px;
+  margin-bottom: 8px;
   transition: opacity 200ms ease;
 }
 
 .footer-brand-link:hover,
 .footer-brand-link:focus-visible {
-  opacity: 0.9;
+  opacity: 0.85;
 }
 
 .footer-brand-link .logo-mark {
-  /* Visual height ~34px on mobile, ~40-42px on desktop, compensating for 16.5% transparent padding in the 1080x1080 asset */
-  height: clamp(50px, 4.5vw, 60px);
+  height: clamp(46px, 4.2vw, 54px);
   width: auto;
   aspect-ratio: 1 / 1;
   object-fit: contain;
-  margin-block: -9px;
-  margin-inline: -9px 0;
+  margin-block: -6px;
+  margin-inline: -6px 0;
   flex-shrink: 0;
   vertical-align: middle;
 }
 
 .footer-brand-title {
   font-family: var(--font-serif);
-  font-size: 1.25rem;
-  letter-spacing: 0.14em;
+  font-size: 1.3rem;
+  letter-spacing: 0.16em;
   font-weight: 500;
   text-transform: uppercase;
-  color: var(--surface-card);
+  color: var(--text-teak);
   line-height: 1;
 }
 
 .footer-tagline {
-  font-size: 0.85rem;
-  color: rgba(255, 253, 248, 0.7);
-  line-height: 1.45;
+  font-size: 0.86rem;
+  color: var(--text-umber);
+  line-height: 1.5;
   margin: 0;
 }
 
@@ -5123,31 +5123,141 @@ a:focus-visible {
   align-items: center;
 }
 
-.footer-book-btn {
+.footer-book-btn,
+.footer-whatsapp-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #B85C2E; /* Pumerai Rust */
+  color: #FFFFFF;
+  font-family: var(--font-sans);
   font-size: var(--fs-12);
-  padding: 10px 22px;
-  min-height: 40px;
+  font-weight: 600;
   letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 11px 24px;
+  min-height: 42px;
+  border: 1px solid #B85C2E;
+  border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 220ms ease, border-color 220ms ease, transform 200ms ease;
 }
 
+.footer-book-btn:hover,
+.footer-whatsapp-btn:hover {
+  background-color: #9A4A22;
+  border-color: #9A4A22;
+  color: #FFFFFF;
+}
+
+/* --- Top Giant Watermark --- */
+.footer-watermark-wrap {
+  width: 100%;
+  border-top: none; /* Removed horizontal rule directly above watermark */
+  border-bottom: none;
+  margin-block: clamp(20px, 3.2vw, 44px) clamp(24px, 3.8vw, 52px);
+  padding-block: clamp(8px, 1.5vw, 20px);
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-watermark {
+  font-family: var(--font-serif);
+  font-weight: 700; /* Bold weight */
+  text-transform: uppercase;
+  color: #000000; /* Strong, legible bold black statement */
+  line-height: 1.02;
+  user-select: none;
+  pointer-events: none;
+  text-align: center;
+  /* Mobile: 2-line massive statement spanning close to edge-to-edge */
+  font-size: clamp(2.8rem, 11vw, 4.4rem);
+  letter-spacing: clamp(0.06em, 1.2vw, 0.12em);
+  word-break: normal;
+  overflow-wrap: break-word;
+  white-space: normal;
+  max-width: 100%;
+}
+
+@media (min-width: 800px) {
+  .footer-watermark {
+    /* Desktop: single-line spanning nearly full width of footer container */
+    font-size: clamp(3.8rem, 8.5vw, 7.4rem);
+    letter-spacing: clamp(0.1em, 1.5vw, 0.18em);
+    white-space: nowrap;
+    line-height: 1.0;
+  }
+}
+
+/* --- Brass Dividers --- */
 .footer-brass-divider {
   width: 100%;
   height: 1px;
-  background-color: rgba(185, 162, 122, 0.35);
-  margin-block: clamp(14px, 1.8vw, 20px);
+  background-color: rgba(37, 35, 31, 0.08);
+  margin-block: clamp(24px, 3.2vw, 36px);
 }
 
-/* --- Main 3-Column Footer Grid --- */
+.footer-brass-divider.footer-wave-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background-color: transparent;
+  height: auto;
+  margin-block: clamp(26px, 3.5vw, 40px);
+}
+
+.footer-wave-divider::before,
+.footer-wave-divider::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: rgba(37, 35, 31, 0.08);
+}
+
+.footer-wave-divider svg {
+  color: rgba(37, 35, 31, 0.32);
+  flex-shrink: 0;
+}
+
+/* --- Main 3-Column Grid (offer / contact+social / concierge) --- */
 .footer-main-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: clamp(18px, 3vw, 28px);
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
 }
 
-@media (min-width: 768px) {
+@media (min-width: 860px) {
   .footer-main-grid {
-    grid-template-columns: 1fr 1.25fr 1.15fr;
-    gap: clamp(24px, 4vw, 48px);
+    display: grid;
+    grid-template-columns: 1fr 1.35fr 1fr;
+    gap: 0;
+    align-items: flex-start;
+  }
+
+  .footer-col {
+    padding-inline: clamp(20px, 3vw, 44px);
+  }
+
+  .footer-col:first-child {
+    padding-left: 0;
+  }
+
+  .footer-col:last-child {
+    padding-right: 0;
+  }
+
+  .footer-col:not(:first-child) {
+    border-left: 1px solid rgba(37, 35, 31, 0.08); /* Vertical hairline divider */
+  }
+}
+
+@media (max-width: 859px) {
+  .footer-col:not(:last-child) {
+    padding-bottom: 24px;
+    border-bottom: 1px solid rgba(37, 35, 31, 0.07);
   }
 }
 
@@ -5156,70 +5266,104 @@ a:focus-visible {
   flex-direction: column;
 }
 
-.footer-col-title {
+/* .footer-col-center — center-aligns text and children within a footer column */
+.footer-col-center {
+  text-align: center;
+  align-items: center;
+}
+
+/* .footer-col-heading — heading style for columns 1 and 3 (same serif font family as watermark, bold) */
+.footer-col-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(1.24rem, 1.8vw, 1.55rem);
+  font-weight: 700; /* Bold weight */
+  letter-spacing: 0.01em;
+  color: var(--text-teak);
+  line-height: 1.25;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* .footer-col-copy — small paragraph style for supporting line under each column heading */
+.footer-col-copy {
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text-umber);
+  max-width: 320px;
+  margin-inline: auto;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* .footer-inline-btn — matching header's Book Now button token (--accent-gold) */
+.footer-inline-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: var(--accent-gold); /* Exact token as header Book Now button */
+  color: var(--surface-card, #FFFFFF) !important;
   font-family: var(--font-sans);
   font-size: var(--fs-12);
   font-weight: 600;
-  letter-spacing: 0.12em;
-  color: rgba(255, 253, 248, 0.75); /* Muted white/grey, NOT gold */
-  margin-bottom: 10px;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-}
-
-/* Column 1: Explore Navigation */
-.footer-nav-links {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-}
-
-.footer-nav-link {
-  font-size: 0.84rem;
-  color: rgba(255, 253, 248, 0.85);
+  padding: 11px 26px;
+  min-height: 42px;
+  border: 1px solid var(--accent-gold);
+  border-radius: 9999px;
+  cursor: pointer;
+  white-space: nowrap;
   text-decoration: none;
-  transition: color 200ms ease, transform 200ms ease;
-  min-height: 24px;
-  display: inline-flex;
+  transition: background-color 220ms ease, border-color 220ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.footer-inline-btn:hover,
+.footer-inline-btn:focus-visible {
+  background-color: var(--gold-hover);
+  border-color: var(--gold-hover);
+  color: var(--surface-card, #FFFFFF) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(154, 128, 82, 0.25);
+}
+
+.footer-inline-btn:active {
+  transform: scale(0.98);
+}
+
+.footer-inline-btn svg {
+  flex-shrink: 0;
+}
+
+/* Column 2 Title */
+.footer-col-title {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: var(--text-muted);
+  margin-bottom: clamp(12px, 1.8vw, 16px);
+  text-transform: uppercase;
+  text-align: center;
+}
+
+/* .footer-contact-centered — center-aligned variant of the existing address block */
+.footer-contact-centered {
+  text-align: center;
   align-items: center;
-  padding: 1px 0;
-}
-
-.footer-nav-link:hover,
-.footer-nav-link:focus-visible {
-  color: var(--accent-gold);
-  transform: translateX(3px);
-}
-
-/* Column 2: Contact Information */
-.footer-contact-block {
-  font-style: normal;
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-
-.footer-contact-item {
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.contact-label {
-  font-size: 0.62rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
-  color: rgba(255, 253, 248, 0.55);
-  text-transform: uppercase;
-  line-height: 1.2;
+  font-style: normal;
 }
 
 .contact-link {
-  font-size: 0.85rem;
-  color: rgba(255, 253, 248, 0.85);
+  font-size: 0.86rem;
+  font-weight: 400;
+  color: var(--text-teak);
   text-decoration: none;
   transition: color 200ms ease;
-  display: inline-block;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 .contact-link:hover,
@@ -5228,114 +5372,155 @@ a:focus-visible {
 }
 
 .contact-address-link {
+  line-height: 1.45;
+  color: var(--text-teak);
+}
+
+/* .footer-contact-item-inline — inline-block spacing for phone/front-desk lines */
+.footer-contact-item-inline {
+  display: inline-block;
+  font-size: 0.86rem;
+  color: var(--text-umber);
+  margin-inline: 4px;
   line-height: 1.4;
 }
 
-/* Column 3: Location Context & Transit */
-.footer-location-block {
-  display: flex;
-  flex-direction: column;
+.footer-contact-item-inline a {
+  color: var(--text-teak);
+  text-decoration: none;
+  transition: color 200ms ease;
 }
 
-.footer-location-context {
-  font-size: 0.84rem;
-  color: rgba(255, 253, 248, 0.7);
-  line-height: 1.45;
-  margin: 0 0 4px 0;
-}
-
-.footer-directions-link {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 0.84rem;
-  font-weight: 500;
-  color: rgba(255, 253, 248, 0.9);
-  text-decoration: underline;
-  text-underline-offset: 4px;
-  text-decoration-color: rgba(255, 253, 248, 0.4);
-  transition: color 200ms ease, text-decoration-color 200ms ease;
-  margin-top: 2px;
-  margin-bottom: 8px;
-}
-
-.footer-directions-link:hover,
-.footer-directions-link:focus-visible {
+.footer-contact-item-inline a:hover,
+.footer-contact-item-inline a:focus-visible {
   color: var(--accent-gold);
-  text-decoration-color: var(--accent-gold);
 }
 
-.footer-distances-list {
+/* .footer-distances-centered — center-aligned variant of the existing distances list */
+.footer-distances-centered {
+  text-align: center;
+  align-items: center;
   list-style: none;
   padding: 0;
-  margin: 0;
-  font-size: 0.78rem;
-  color: rgba(255, 253, 248, 0.65);
+  margin-top: 10px;
+  margin-bottom: 4px;
   display: flex;
   flex-direction: column;
-  gap: 3px;
-  line-height: 1.4;
+  gap: 4px;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  line-height: 1.45;
 }
 
-/* --- Bottom Bar --- */
-.footer-bottom-bar {
+/* .footer-follow-label — small top margin above the "Follow Us" label */
+.footer-follow-label {
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-top: 18px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+/* .footer-social-icons — flex row, centered, gap between icons */
+.footer-social-icons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 2px;
+}
+
+/* .footer-social-icon — 44x44px circular button, white background, subtle border */
+.footer-social-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(37, 35, 31, 0.14);
+  color: var(--text-teak);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  transition: background-color 200ms ease, border-color 200ms ease, color 200ms ease, transform 200ms ease, box-shadow 200ms ease;
+}
+
+.footer-social-icon:hover,
+.footer-social-icon:focus-visible {
+  background-color: var(--surface-clay, #EEEAE2);
+  border-color: var(--accent-gold);
+  color: var(--accent-gold);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* .footer-bottom-bar-3col — flex row on desktop with three sections (copyright / nav / legal) spaced apart */
+.footer-bottom-bar-3col {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+  width: 100%;
+  padding-top: 4px;
   font-size: var(--fs-12);
-  color: rgba(255, 253, 248, 0.6);
+  color: var(--text-muted);
 }
 
-@media (min-width: 768px) {
-  .footer-bottom-bar {
+@media (min-width: 860px) {
+  .footer-bottom-bar-3col {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    text-align: left;
   }
-}
-
-.footer-bottom-info {
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
 }
 
 .footer-copy {
   margin: 0;
-  color: rgba(255, 253, 248, 0.6);
-  line-height: 1.4;
+  color: var(--text-muted);
+  line-height: 1.45;
 }
 
-.footer-credit {
-  font-size: var(--fs-12);
-  color: rgba(255, 253, 248, 0.65);
-  margin: 0;
-  line-height: 1.4;
+/* .footer-bottom-nav — flex row of nav links with reasonable gap */
+.footer-bottom-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: clamp(14px, 2.2vw, 24px);
 }
 
-.footer-credit-link {
-  color: rgba(255, 253, 248, 0.85);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-color: rgba(255, 253, 248, 0.4);
-  font-weight: 500;
-  transition: color 200ms ease, text-decoration-color 200ms ease;
+.footer-bottom-nav .footer-nav-link {
+  font-size: 0.88rem;
+  font-weight: 400;
+  text-transform: none;
+  color: var(--text-teak);
+  text-decoration: none;
+  transition: color 200ms ease;
+  min-height: auto;
+  padding: 2px 0;
 }
 
-.footer-credit-link:hover,
-.footer-credit-link:focus-visible {
+.footer-bottom-nav .footer-nav-link:hover,
+.footer-bottom-nav .footer-nav-link:focus-visible {
   color: var(--accent-gold);
-  text-decoration-color: var(--accent-gold);
+  transform: none;
 }
 
 .footer-legal-links {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 12px;
+  flex-wrap: wrap;
 }
 
 .footer-legal-links a {
-  color: rgba(255, 253, 248, 0.6);
+  color: var(--text-umber);
   text-decoration: none;
   transition: color 200ms ease;
 }
@@ -5347,6 +5532,56 @@ a:focus-visible {
 
 .legal-dot {
   opacity: 0.4;
+}
+
+/* .footer-bottom-logo-block — restrained closing signature mark & readable credit line */
+.footer-bottom-logo-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: clamp(28px, 3.8vw, 44px);
+  gap: clamp(10px, 1.4vw, 15px);
+}
+
+.footer-bottom-full-logo {
+  width: clamp(92px, 9vw, 130px);
+  max-width: 136px;
+  height: auto;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+  margin-inline: auto;
+  display: block;
+}
+
+.footer-bottom-wordmark,
+.footer-bottom-subtitle,
+.footer-bottom-crest,
+.footer-bottom-logo-block .logo-mark {
+  display: none;
+}
+
+.footer-credit {
+  font-size: clamp(0.92rem, 1.25vw, 1rem); /* 14.7px - 16px clearly readable body size */
+  color: #555048; /* Clearly readable neutral tone */
+  margin: 0;
+  line-height: 1.5;
+  letter-spacing: 0.01em;
+}
+
+.footer-credit-link {
+  color: var(--text-teak);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: rgba(37, 35, 31, 0.35);
+  font-weight: 600;
+  transition: color 200ms ease, text-decoration-color 200ms ease;
+}
+
+.footer-credit-link:hover,
+.footer-credit-link:focus-visible {
+  color: var(--accent-gold);
+  text-decoration-color: var(--accent-gold);
 }
 
 /* ==========================================================================

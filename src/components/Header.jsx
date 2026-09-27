@@ -62,7 +62,7 @@ export default function Header({ currentPath, onNavigate }) {
           onClick={(event) => handleNavigate(event, { route: "/" })}
           aria-label="Hotel Pumerai Home"
         >
-          <LogoMark src="/Untitled%20design%20(22)_result.webp" />
+          <LogoMark src="/pumerai-logo-full.webp" />
           <div className="brand-text-wrap">
             <span className="brand-text">HOTEL PUMERAI</span>
             <span className="brand-sub">Honnavar &bull; NH-66</span>
