@@ -7,9 +7,12 @@
  * Predictable photo files: cover.jpg, 1.jpg, 2.jpg, 3.jpg
  * Built-in fallbackImage ensures flawless display before photos are manually dropped in.
  */
+export const STAYFLEXI_BOOKING_URL = "https://bookingengine.stayflexi.com/?hotel_id=41986";
+
 export const rooms = [
   {
     slug: "club-room-with-balcony",
+    bookingType: "stayflexi",
     name: "Club Room with Balcony",
     folder: "/rooms/club-room-with-balcony/",
     coverImage: "/rooms/club-room-with-balcony/ChatGPT Image Sep 24, 2026, 09_22_33 PM_result.webp",
@@ -47,6 +50,7 @@ export const rooms = [
   },
   {
     slug: "club-room",
+    bookingType: "stayflexi",
     name: "Club Room",
     folder: "/rooms/club-room/",
     coverImage: "/rooms/club-room/ChatGPT Image Sep 24, 2026, 08_05_39 PM_result.webp",
@@ -84,6 +88,7 @@ export const rooms = [
   },
   {
     slug: "deluxe-room",
+    bookingType: "stayflexi",
     name: "Deluxe Room",
     folder: "/rooms/deluxe-room/",
     coverImage: "/rooms/deluxe-room/ChatGPT Image Sep 24, 2026, 09_22_33 PM_result.webp",
@@ -121,6 +126,7 @@ export const rooms = [
   },
   {
     slug: "family-suite-room",
+    bookingType: "whatsapp",
     name: "Family Suite Room",
     folder: "/rooms/family-suite-room/",
     coverImage: "/rooms/family-suite-room/ChatGPT Image Sep 25, 2026, 01_47_34 AM_result.webp",
@@ -158,6 +164,7 @@ export const rooms = [
   },
   {
     slug: "premium-room",
+    bookingType: "stayflexi",
     name: "Premium Room",
     folder: "/rooms/premium-room/",
     coverImage: "/rooms/premium-room/ChatGPT Image Sep 25, 2026, 02_03_35 AM_result.webp",
@@ -195,6 +202,7 @@ export const rooms = [
   },
   {
     slug: "premium-twin-room",
+    bookingType: "stayflexi",
     name: "Premium Twin Room",
     folder: "/rooms/premium-twin-room/",
     coverImage: "/rooms/premium-twin-room/ChatGPT Image Sep 25, 2026, 02_47_30 AM_result.webp",
@@ -232,6 +240,7 @@ export const rooms = [
   },
   {
     slug: "suite-room",
+    bookingType: "stayflexi",
     name: "Suite Room",
     folder: "/rooms/suite-room/",
     coverImage: "/rooms/suite-room/ChatGPT Image Sep 25, 2026, 02_56_20 AM_result.webp",

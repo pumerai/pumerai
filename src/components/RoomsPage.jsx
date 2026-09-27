@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { rooms } from "../data/rooms.js";
+import { rooms, STAYFLEXI_BOOKING_URL } from "../data/rooms.js";
 import RoomImage from "./RoomImage.jsx";
 import PageHeader from "./PageHeader.jsx";
 
@@ -230,18 +230,30 @@ export default function RoomsPage() {
                         {isExpanded ? "Show Less Details ↑" : "View Full Details ↓"}
                       </button>
 
-                      {/* Booking CTA Button: Opens Date & Guest Selection First */}
-                      <button
-                        type="button"
-                        onClick={() => handleStartBooking(room)}
-                        className="button-whatsapp-instant room-whatsapp-btn"
-                        aria-label={`Book ${room.name} on WhatsApp`}
-                      >
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                        </svg>
-                        <span>BOOK ON WHATSAPP</span>
-                      </button>
+                      {/* Booking CTA Button */}
+                      {room.bookingType === "whatsapp" ? (
+                        <button
+                          type="button"
+                          onClick={() => handleStartBooking(room)}
+                          className="button-whatsapp-instant room-whatsapp-btn"
+                          aria-label={`Book ${room.name} on WhatsApp`}
+                        >
+                          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                            <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                          </svg>
+                          <span>BOOK ON WHATSAPP</span>
+                        </button>
+                      ) : (
+                        <a
+                          href={STAYFLEXI_BOOKING_URL}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="button-primary room-book-btn"
+                          aria-label={`Book ${room.name} on Stayflexi`}
+                        >
+                          <span>BOOK NOW</span>
+                        </a>
+                      )}
                     </div>
                   </div>
                 </article>

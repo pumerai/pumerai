@@ -1,5 +1,5 @@
 import { useEffect, useState, useId } from "react";
-import { rooms } from "../data/rooms.js";
+import { rooms, STAYFLEXI_BOOKING_URL } from "../data/rooms.js";
 
 const ROOM_OPTIONS = [
   { id: "all", name: "All Room Types" },
@@ -151,6 +151,14 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
     setIsSubmitted(true);
   };
 
+  const handleCheckAvailability = () => {
+    if (selectedRoom === "family-suite-room") {
+      window.open(buildWhatsAppLink(), "_blank", "noopener,noreferrer");
+    } else {
+      window.open(STAYFLEXI_BOOKING_URL, "_blank", "noopener,noreferrer");
+    }
+  };
+
   const handleResetModal = () => {
     setIsSubmitted(false);
     setIsModalOpen(false);
@@ -288,11 +296,8 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
               <button
                 type="button"
                 className="button-primary booking-submit-btn"
-                onClick={() => {
-                  setModalStep("request");
-                  setIsModalOpen(true);
-                }}
-                aria-label="Check Room Availability and Rates"
+                onClick={handleCheckAvailability}
+                aria-label="Check Room Availability and Rates on Stayflexi"
               >
                 <span>CHECK AVAILABILITY</span>
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -365,11 +370,8 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
             <button
               type="button"
               className="button-primary mobile-check-dates-btn"
-              onClick={() => {
-                setModalStep("select");
-                setIsModalOpen(true);
-              }}
-              aria-label="Check Room Availability for Selected Dates"
+              onClick={handleCheckAvailability}
+              aria-label="Check Room Availability for Selected Dates on Stayflexi"
             >
               CHECK DATES
             </button>
@@ -578,17 +580,44 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
                   {/* Instant WhatsApp & Phone Actions */}
                   <div className="instant-contact-actions">
                     <span className="instant-label">FASTEST BOOKING CHANNELS:</span>
-                    <a
-                      href={buildWhatsAppLink()}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="button-whatsapp-instant"
-                    >
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-                      </svg>
-                      <span>Book Instantly on WhatsApp</span>
-                    </a>
+                    {selectedRoom === "family-suite-room" ? (
+                      <a
+                        href={buildWhatsAppLink()}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button-whatsapp-instant"
+                      >
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                        </svg>
+                        <span>Book Instantly on WhatsApp</span>
+                      </a>
+                    ) : (
+                      <a
+                        href={STAYFLEXI_BOOKING_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button-primary"
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          justifyContent: "center",
+                          gap: "10px",
+                          textDecoration: "none",
+                          width: "100%",
+                          padding: "14px 20px",
+                          fontSize: "0.88rem",
+                          fontWeight: "600",
+                          letterSpacing: "0.08em",
+                        }}
+                      >
+                        <span>Book on Stayflexi Engine</span>
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <line x1="5" y1="12" x2="19" y2="12" />
+                          <polyline points="12 5 19 12 12 19" />
+                        </svg>
+                      </a>
+                    )}
 
                     <a href="tel:+919845423223" className="button-call-instant">
                       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

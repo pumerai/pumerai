@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import LogoMark from "./LogoMark.jsx";
+import { STAYFLEXI_BOOKING_URL } from "../data/rooms.js";
 
 const navItems = [
   { label: "Home", route: "/" },
@@ -47,10 +48,7 @@ export default function Header({ currentPath, onNavigate }) {
     onNavigate(item);
   };
 
-  const handleOpenBooking = () => {
-    setIsOpen(false);
-    window.dispatchEvent(new CustomEvent("pumerai:open-booking"));
-  };
+
 
   return (
     <header className={`site-header ${isScrolled ? "is-scrolled" : ""}`}>
@@ -88,14 +86,15 @@ export default function Header({ currentPath, onNavigate }) {
 
         {/* Header Right Group: Book Now CTA & Mobile Hamburger */}
         <div className="header-right-group">
-          <button
-            type="button"
+          <a
+            href={STAYFLEXI_BOOKING_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             className="button-primary header-book-btn"
-            onClick={handleOpenBooking}
             aria-label="Book Now at Hotel Pumerai"
           >
             BOOK NOW
-          </button>
+          </a>
 
           {/* Minimal Mobile Hamburger Button (44x44px tap target) */}
           <button
@@ -148,13 +147,16 @@ export default function Header({ currentPath, onNavigate }) {
           </nav>
 
           <div className="mobile-drawer-actions">
-            <button
-              type="button"
+            <a
+              href={STAYFLEXI_BOOKING_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="button-primary mobile-drawer-book-btn"
-              onClick={handleOpenBooking}
+              onClick={() => setIsOpen(false)}
+              aria-label="Book Now at Hotel Pumerai"
             >
               BOOK NOW
-            </button>
+            </a>
 
             <div className="mobile-drawer-contact">
               <a href="tel:+919845423223" className="drawer-contact-item">

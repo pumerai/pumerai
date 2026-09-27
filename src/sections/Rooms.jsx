@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { rooms } from "../data/rooms.js";
+import { rooms, STAYFLEXI_BOOKING_URL } from "../data/rooms.js";
 import RoomImage from "../components/RoomImage.jsx";
 
 const includedEssentials = [
@@ -19,9 +19,7 @@ export default function Rooms() {
     setActivePhotoMap((prev) => ({ ...prev, [roomSlug]: photoIndex }));
   };
 
-  const handleBookRoom = (roomSlug) => {
-    window.dispatchEvent(new CustomEvent("pumerai:open-booking", { detail: { room: roomSlug } }));
-  };
+
 
   return (
     <section className="section rooms-section" id="rooms" aria-labelledby="rooms-heading">
@@ -136,18 +134,34 @@ export default function Rooms() {
 
                   {/* Booking CTA Row */}
                   <div className="room-pricing-cta-row" style={{ justifyContent: "flex-end" }}>
-                    <a
-                      href={`https://wa.me/919845423223?text=${encodeURIComponent(
-                        `Hello Hotel Pumerai, I would like to inquire about booking the ${room.name}.`
-                      )}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="button-whatsapp-instant"
-                      style={{ textDecoration: "none", width: "100%", justifyContent: "center" }}
-                      aria-label={`Book ${room.name} on WhatsApp`}
-                    >
-                      BOOK ON WHATSAPP
-                    </a>
+                    {room.bookingType === "whatsapp" ? (
+                      <a
+                        href={`https://wa.me/919845423223?text=${encodeURIComponent(
+                          `Hello Hotel Pumerai, I would like to inquire about booking the ${room.name}.`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button-whatsapp-instant"
+                        style={{ textDecoration: "none", width: "100%", justifyContent: "center" }}
+                        aria-label={`Book ${room.name} on WhatsApp`}
+                      >
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+                        </svg>
+                        <span>BOOK ON WHATSAPP</span>
+                      </a>
+                    ) : (
+                      <a
+                        href={STAYFLEXI_BOOKING_URL}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="button-primary room-book-btn"
+                        style={{ textDecoration: "none", width: "100%", justifyContent: "center" }}
+                        aria-label={`Book ${room.name} on Stayflexi`}
+                      >
+                        BOOK NOW
+                      </a>
+                    )}
                   </div>
                 </div>
               </article>

@@ -1,7 +1,6 @@
+import { STAYFLEXI_BOOKING_URL } from "../data/rooms.js";
+
 export default function OffersBanner() {
-  const handleOpenBooking = () => {
-    window.dispatchEvent(new CustomEvent("pumerai:open-booking"));
-  };
 
   return (
     <section className="offers-banner-section" aria-label="Direct Booking Privileges & Guarantee">
@@ -53,14 +52,16 @@ export default function OffersBanner() {
                 <span className="cta-box-price">SAVE 10% TODAY</span>
                 <p className="cta-box-note">Applied automatically on website &amp; WhatsApp</p>
 
-                <button
-                  type="button"
+                <a
+                  href={STAYFLEXI_BOOKING_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="button-primary offers-claim-btn"
-                  onClick={handleOpenBooking}
-                  aria-label="Claim Direct Booking Offer and Check Availability"
+                  style={{ textDecoration: "none", display: "inline-flex", alignItems: "center", justifyContent: "center" }}
+                  aria-label="Claim Direct Booking Offer and Check Availability on Stayflexi"
                 >
                   CHECK AVAILABILITY &amp; SAVE
-                </button>
+                </a>
 
                 <a
                   href="https://wa.me/919845423223?text=Hi%20Hotel%20Pumerai%2C%20I%20would%20like%20to%20book%20direct%20and%20claim%20the%2010%25%20direct%20booking%20discount."
