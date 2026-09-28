@@ -90,12 +90,12 @@ export default function RoomsPreview({ onNavigate }) {
             </div>
             <h2 id="rooms-preview-heading" className="section-title rooms-preview-main-title">
               <span className="rooms-title-primary">Our rooms</span>
-              <span className="title-italic rooms-title-secondary">&amp; private retreats.</span>
+              <span className="title-italic rooms-title-secondary">&amp; comfortable stays.</span>
             </h2>
           </div>
           <div className="header-summary-block">
             <p className="header-summary">
-              40 quiet, sound-insulated guestrooms along NH-66 Honnavar.
+              40 thoughtfully designed guestrooms along NH-66 in Honnavar.
               From garden-view rooms and pool balconies to spacious family suites, every space is planned for rest and renewal.
             </p>
             <div className="preview-all-action">

@@ -3,21 +3,21 @@ const transitDistances = [
     name: "Kasarkod Eco Beach & Boardwalk",
     distance: "~5 km",
     time: "8 min drive",
-    desc: "Pristine Blue Flag certified beach with golden sand, casuarina groves & coastal promenade.",
+    desc: "Blue Flag-certified beach with golden sands, casuarina groves and a coastal promenade.",
     type: "Beach",
   },
   {
-    name: "Sharavati River Backwaters & Boating",
+    name: "Sharavathi River Backwaters & Boating",
     distance: "~2.8 km",
     time: "5 min drive",
-    desc: "Scenic river cruises, mangrove trails, and tranquil sunset boat safaris.",
+    desc: "Scenic river cruises, mangrove trails, and tranquil sunset boat rides.",
     type: "Nature",
   },
   {
     name: "Honnavar Railway Station (HNA)",
     distance: "~3.5 km",
     time: "9 min drive",
-    desc: "Convenient Konkan Railway junction connecting Mumbai, Goa, Mangalore & Bangalore.",
+    desc: "Honnavar Railway Station (HNA) connects Mumbai, Goa, Mangalore & Bangalore via the Konkan Railway network.",
     type: "Transit",
   },
   {
@@ -38,11 +38,11 @@ const transitDistances = [
     name: "Murudeshwar Temple & Beach",
     distance: "~26 km",
     time: "35 min drive",
-    desc: "Home to the world's second-tallest Shiva statue, Raja Gopura, and Arabian Sea viewpoints.",
+    desc: "Home to the iconic Shiva statue, Raja Gopura, and Arabian Sea viewpoints.",
     type: "Temple",
   },
   {
-    name: "Bhatkal Heritage Coast",
+    name: "Bhatkal & Heritage Coast",
     distance: "~38 km",
     time: "45 min drive",
     desc: "Historic coastal port along NH-66 with heritage architecture and tranquil shores.",
@@ -52,7 +52,7 @@ const transitDistances = [
     name: "Idagunji Mahaganapati Temple",
     distance: "~16 km",
     time: "20 min drive",
-    desc: "Famed 1500-year-old pilgrimage shrine dedicated to Lord Ganesha.",
+    desc: "Historic pilgrimage shrine dedicated to Lord Ganesha.",
     type: "Temple",
   },
   {
@@ -66,7 +66,7 @@ const transitDistances = [
     name: "Sirsi & Western Ghats",
     distance: "~68 km",
     time: "1 hr 30 min drive",
-    desc: "Gateway to Sahyadri rainforests, spice plantations, and waterfalls accessible via NH-69.",
+    desc: "Gateway to the Western Ghats, with rainforests, spice plantations and waterfalls.",
     type: "Eco Tourism",
   },
   {
@@ -88,12 +88,12 @@ const transitDistances = [
 const hotelPolicies = [
   { label: "Check-in Time", value: "From 1:00 PM (24-hr front desk welcomes late arrivals)" },
   { label: "Check-out Time", value: "Until 11:00 AM (Late checkout subject to availability)" },
-  { label: "Pool Hours", value: "6:30 AM – 7:00 PM daily (Indoor & children's pool)" },
-  { label: "Smoking Policy", value: "100% Smoke-free rooms; designated outdoor smoking areas only" },
-  { label: "Pet Policy", value: "Pets are not accommodated to ensure allergy-free environments" },
-  { label: "Parking & EV", value: "Complimentary secured private self-parking + EV charging stations" },
+  { label: "Pool Hours", value: "6:30 AM – 7:00 PM daily (Rooftop & children's pool)" },
+  { label: "Smoking Policy", value: "All rooms are smoke-free; smoking is permitted only in designated outdoor areas" },
+  { label: "Pet Policy", value: "Pets are not accommodated" },
+  { label: "Parking & EV", value: "Spacious private parking with EV charging" },
   { label: "Front Desk", value: "24-hour manned reception, security & luggage assistance" },
-  { label: "Cancellation", value: "Free cancellation up to 24 hours prior to check-in for direct bookings" },
+  { label: "Cancellation", value: "Free cancellation up to 24 hours before check-in on eligible direct bookings" },
 ];
 
 function getCategoryIcon(type) {
@@ -160,15 +160,15 @@ export default function Location({ isStandalonePage = false }) {
               </div>
               <h2 id="location-heading" className="section-title">
                 On the coastal <br />
-                <span className="title-italic">road of Honnavar.</span>
+                <span className="title-italic">road through Honnavar.</span>
               </h2>
             </div>
             <div className="header-summary-block">
               <p className="header-summary">
                 Hotel Pumerai is situated directly on National Highway 66 near Ramateertha Cross in Honnavar,
-                Uttara Kannada, Karnataka. Perfectly positioned for effortless vehicular transit between Goa,
-                Gokarna, Murudeshwar, Bhatkal, and Mangalore, our hotel serves as a comfortable, premium accommodation
-                base for exploring coastal Karnataka, Kasarkod Eco Beach, and the Sharavati River backwaters.
+                Uttara Kannada, Karnataka. Conveniently located on NH-66 between Goa,
+                Gokarna, Murudeshwar, Bhatkal, and Mangalore, our hotel serves as a comfortable
+                base for exploring coastal Karnataka, Kasarkod Eco Beach, and the Sharavathi River backwaters.
               </p>
             </div>
           </header>
@@ -260,7 +260,7 @@ export default function Location({ isStandalonePage = false }) {
             <div className="highway-note-box">
               <span className="highway-badge">NH-66 Direct Access</span>
               <p className="highway-text">
-                Situated right off the main highway with wide ingress/egress. No narrow village roads or steep inclines.
+                Situated right off the main highway with wide ingress/egress.
               </p>
               <div style={{ marginTop: "10px" }}>
                 <a

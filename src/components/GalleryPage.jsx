@@ -5,7 +5,7 @@ export default function GalleryPage() {
   return (
     <main className="page-shell gallery-page-shell">
       <PageHeader
-        eyebrow="PHOTOGRAPHY • HONNĀVAR"
+        eyebrow="PHOTOGRAPHY • HONNAVAR"
         title="Visual Archive &"
         italicTitle="Property Gallery"
         description="Explore Hotel Pumerai, from our rooms and pool to dining and coastal surroundings."

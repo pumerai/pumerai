@@ -1,8 +1,8 @@
 export const amenitiesList = [
   {
-    id: "indoor-pool",
-    title: "Indoor Swimming Pool",
-    desc: "Temperature-balanced glass-edge pool, open daily 6:30 AM – 7:00 PM",
+    id: "rooftop-pool",
+    title: "Rooftop Swimming Pool",
+    desc: "Glass-edge rooftop swimming pool, open daily from 6:30 AM to 7:00 PM",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0" />
@@ -29,7 +29,7 @@ export const amenitiesList = [
   {
     id: "free-wifi",
     title: "Free High-Speed WiFi",
-    desc: "100+ Mbps seamless coverage across all rooms & public lounges",
+    desc: "Free Wi-Fi · 100+ Mbps seamless coverage across all rooms & public lounges",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M5 12.55a11 11 0 0 1 14.08 0" />
@@ -42,7 +42,7 @@ export const amenitiesList = [
   {
     id: "front-desk",
     title: "24-Hour Front Desk",
-    desc: "Continuous check-in, wake-up calls, and round-the-clock guest support",
+    desc: "24-hour check-in assistance, wake-up calls, and round-the-clock guest support",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <circle cx="12" cy="12" r="10" />
@@ -52,8 +52,8 @@ export const amenitiesList = [
   },
   {
     id: "concierge",
-    title: "Dedicated Concierge",
-    desc: "Assistance with Sharavati boat safaris, temple trips & coastal transit",
+    title: "Concierge Assistance",
+    desc: "Assistance with Sharavathi boat rides, temple visits & local travel",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
@@ -65,7 +65,7 @@ export const amenitiesList = [
   {
     id: "self-parking",
     title: "Free Self-Parking",
-    desc: "Spacious, secure private parking lot with 24/7 CCTV surveillance",
+    desc: "Spacious private parking with EV charging",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -75,7 +75,7 @@ export const amenitiesList = [
   },
   {
     id: "manager-reception",
-    title: "Manager's Reception",
+    title: "Evening Reception",
     desc: "Complimentary evening gathering with refreshments and local snacks",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -124,7 +124,7 @@ export const amenitiesList = [
   {
     id: "backup-elevator",
     title: "Power Backup & Elevator",
-    desc: "Full 24/7 generator backup and smooth passenger lift access",
+    desc: "Full 24/7 generator backup and elevator access",
     icon: (
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="3" width="18" height="18" rx="2" />
@@ -151,8 +151,7 @@ export default function AmenitiesGrid() {
             </h2>
           </div>
           <p className="header-summary">
-            A comprehensive suite of modern hotel amenities planned specifically for coastal travellers,
-            family vacations, and NH-66 highway road trips.
+            Modern amenities designed for coastal travellers, family stays, and NH-66 road trips.
           </p>
         </header>
 

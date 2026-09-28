@@ -173,7 +173,7 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
           {/* Desktop Layout (min-width: 900px) */}
           <div className="booking-desktop-view">
             {/* Trust Badge */}
-            <div className="booking-trust-badge" title="Verified rating on Google Stays">
+            <div className="booking-trust-badge" title="Verified guest rating on Google">
               <div className="rating-pill">
                 <span className="rating-score">4.7 / 5</span>
                 <span className="rating-label">Google</span>
@@ -545,19 +545,19 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
                       </li>
                       <li>
                         <span className="check-icon">&#x2713;</span>
-                        <span>Free high-speed WiFi (100+ Mbps) throughout the property</span>
+                        <span>Free Wi-Fi · 100+ Mbps throughout the property</span>
                       </li>
                       <li>
                         <span className="check-icon">&#x2713;</span>
-                        <span>Access to indoor swimming pool &amp; children&apos;s pool (6:30 AM–7:00 PM)</span>
+                        <span>Access to rooftop swimming pool &amp; children&apos;s pool (6:30 AM–7:00 PM)</span>
                       </li>
                       <li>
                         <span className="check-icon">&#x2713;</span>
-                        <span>Free secured on-site self parking with 24-hr surveillance</span>
+                        <span>Spacious private parking with EV charging</span>
                       </li>
                       <li>
                         <span className="check-icon">&#x2713;</span>
-                        <span>Flexible free cancellation up to 24 hours prior to check-in</span>
+                        <span>Free cancellation up to 24 hours before check-in on eligible direct bookings</span>
                       </li>
                     </ul>
                   </div>

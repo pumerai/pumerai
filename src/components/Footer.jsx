@@ -109,27 +109,23 @@ export default function Footer({ onNavigate }) {
               </a>
 
               <span className="footer-contact-item-inline">
-                T. <a href="tel:+919845423223" className="contact-link">+91 98454 23223</a>
+                Reservations: <a href="tel:+919845423223" className="contact-link">+91 98454 23223</a>
               </span>
               <span className="footer-contact-item-inline">
-                Desk: <a href="tel:+918387221221" className="contact-link">08387-221221</a>
+                Front Desk: <a href="tel:+918387221221" className="contact-link">08387-221221</a>
               </span>
-              <a href="mailto:reservation@hotelpumerai.com" className="contact-link">
-                reservation@hotelpumerai.com
-              </a>
+              <span className="footer-contact-item-inline">
+                Email: <a href="mailto:reservation@hotelpumerai.com" className="contact-link">reservation@hotelpumerai.com</a>
+              </span>
             </address>
 
             <ul className="footer-distances-list footer-distances-centered">
               <li>&bull; ~5 km from Kasarkod Eco Beach</li>
-              <li>&bull; ~2.8 km from Sharavati River (~3.5 km from Station)</li>
+              <li>&bull; ~2.8 km from Sharavathi River (~3.5 km from Station)</li>
             </ul>
 
             <p className="footer-col-title footer-follow-label">Follow Us</p>
             <div className="footer-social-icons">
-              {/* TODO: replace # with Hotel Pumerai's real social URLs when available */}
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Hotel Pumerai on Facebook" className="footer-social-icon">
-                <FacebookIcon />
-              </a>
               <a
                 href="https://www.instagram.com/hotelpumerai?utm_source=ig_web_button_share_sheet&stkn=ZDNlZDc0MzIxNw=="
                 target="_blank"
@@ -138,9 +134,6 @@ export default function Footer({ onNavigate }) {
                 className="footer-social-icon"
               >
                 <InstagramIcon />
-              </a>
-              <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Hotel Pumerai on YouTube" className="footer-social-icon">
-                <YoutubeIcon />
               </a>
             </div>
           </section>

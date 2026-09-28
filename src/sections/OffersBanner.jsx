@@ -15,11 +15,11 @@ export default function OffersBanner() {
             <div className="offers-text-col">
               <h3 className="offers-heading">
                 Book direct with Hotel Pumerai <br />
-                <span className="title-italic">and save 10% on every stay.</span>
+                <span className="title-italic">and enjoy 10% off eligible stays.</span>
               </h3>
               <p className="offers-subcopy">
                 Avoid third-party booking commissions. When reserving directly through our website,
-                WhatsApp, or phone desk, enjoy guaranteed lowest rates plus exclusive perks not available on OTAs.
+                WhatsApp, or phone desk, enjoy direct-booking benefits and exclusive perks.
               </p>
 
               <div className="offers-perks-row">
@@ -33,15 +33,15 @@ export default function OffersBanner() {
                 </div>
                 <div className="offer-perk-item">
                   <span className="perk-bullet">&#x2713;</span>
-                  <span>Free 24-Hour Cancellation</span>
+                  <span>Free Cancellation Up to 24 Hours Before Check-in</span>
                 </div>
                 <div className="offer-perk-item">
                   <span className="perk-bullet">&#x2713;</span>
-                  <span>Priority Room View Assignment</span>
+                  <span>Priority Room-View Requests</span>
                 </div>
                 <div className="offer-perk-item">
                   <span className="perk-bullet">&#x2713;</span>
-                  <span>Free Manager&apos;s Evening Reception</span>
+                  <span>Complimentary Evening Reception</span>
                 </div>
               </div>
             </div>

@@ -109,13 +109,13 @@ export const rooms = [
     shortDescription:
       "Comfortable and restful accommodation with modern finishes, ideal for coastal stopovers and road trippers on NH-66.",
     fullDescription:
-      "The Deluxe Room offers a serene haven after a day of driving or exploring Honnavar's beaches. Built with sound-insulated glass and acoustic separation from the highway, it guarantees an uninterrupted night's rest. Complete with a comfortable king bed, crisp linens, daily housekeeping, and hot rain shower.",
+      "The Deluxe Room offers a restful stay after a day of driving or exploring Honnavar's beaches. Designed for quiet relaxation and acoustic comfort, it ensures an uninterrupted night's rest. Complete with a comfortable king bed, crisp linens, daily housekeeping, and hot rain shower.",
     size: "300 sq ft",
     occupancy: "Sleeps 2",
     bedType: "1 King Bed",
     startingPrice: 2799,
     highlights: [
-      "Sound-insulated panoramic windows",
+      "Large panoramic windows",
       "King size mattress with plush duvet",
       "43\" Smart TV",
       "High-speed WiFi (100+ Mbps)",

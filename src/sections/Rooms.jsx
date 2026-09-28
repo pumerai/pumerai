@@ -5,10 +5,10 @@ import RoomImage from "../components/RoomImage.jsx";
 const includedEssentials = [
   "Daily Hot Breakfast Buffet Included",
   "High-Speed Wi-Fi (100+ Mbps)",
-  "Access to Indoor & Kids Swimming Pool",
+  "Access to Rooftop & Kids Swimming Pool",
   "Free Secure Self-Parking with EV Charging",
   "24-Hour Front Desk & Daily Housekeeping",
-  "Complimentary Manager's Evening Reception",
+  "Complimentary Evening Reception",
 ];
 
 export default function Rooms() {
@@ -38,8 +38,8 @@ export default function Rooms() {
           </div>
           <div className="header-summary-block">
             <p className="header-summary">
-              40 meticulously appointed guestrooms positioned along NH-66 in Honnavar across seven distinct categories.
-              Designed with quiet acoustic insulation, refined coastal materials, and modern conveniences.
+              40 thoughtfully designed guestrooms positioned along NH-66 in Honnavar across seven distinct categories.
+              Designed with quiet comfort, refined coastal materials, and modern conveniences.
             </p>
             <div className="direct-booking-pill">
               <span className="pill-check">&#x2713;</span>

@@ -119,10 +119,10 @@ export default function RoomsPage() {
     <main className="page-shell rooms-page-shell">
       {/* Standardized Compact Internal Page Header */}
       <PageHeader
-        eyebrow="ACCOMMODATION • HONNĀVAR"
+        eyebrow="ACCOMMODATION • HONNAVAR"
         title="Rooms & Suites at"
         italicTitle="Hotel Pumerai Honnavar"
-        description="Explore our collection of contemporary rooms and suites in Honnāvar."
+        description="Explore our collection of contemporary rooms and suites in Honnavar."
         id="rooms-page-heading"
       />
 

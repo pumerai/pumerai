@@ -74,7 +74,7 @@ export const galleryItems = [
     categoryLabel: "Pool",
     title: "Architectural Facade & Glass-Edge Pool Deck",
     src: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_42%20AM_result.webp",
-    alt: "Hotel Pumerai curved boutique facade and glass-edge outdoor swimming pool on NH-66",
+    alt: "Hotel Pumerai curved boutique facade and glass-edge rooftop swimming pool on NH-66",
     caption: "Striking curved facade and shimmering blue pool set against the coastal Honnavar sky.",
   },
   {

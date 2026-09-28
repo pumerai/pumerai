@@ -5,7 +5,7 @@ export default function DiningPage({ onNavigate }) {
   return (
     <main className="page-shell dining-page-shell">
       <PageHeader
-        eyebrow="DINING • HONNĀVAR"
+        eyebrow="DINING • HONNAVAR"
         title="Coastal Dining &"
         italicTitle="Culinary Journeys"
         description="Coastal flavours, fresh local ingredients and relaxed dining at Hotel Pumerai."

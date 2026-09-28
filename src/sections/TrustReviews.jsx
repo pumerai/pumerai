@@ -220,8 +220,8 @@ export default function TrustReviews() {
             </h2>
           </div>
           <p className="header-summary reviews-summary">
-            From highway stopovers along NH-66 to family beach vacations in Honnāvar,
-            here is what genuine guests share on Google Reviews about their stay at Hotel Pumerai.
+            From highway stopovers along NH-66 to family beach vacations in Honnavar,
+            here is what guests share on Google Reviews about their stay at Hotel Pumerai.
           </p>
         </header>
 

@@ -1,12 +1,12 @@
 
 const keyFacts = [
-  { label: "Property Rating", value: "3-Star Boutique Hotel" },
+  { label: "Property Rating", value: "Premium 3-Star Hotel" },
   { label: "Guest Rooms", value: "40 Contemporary Rooms" },
   { label: "Dining On-Site", value: "2 On-Site Restaurants" },
-  { label: "Swimming Pool", value: "Indoor + Kids Splash Pool" },
-  { label: "Connectivity", value: "Free 100+ Mbps WiFi" },
+  { label: "Swimming Pool", value: "Rooftop + Kids Pool" },
+  { label: "Connectivity", value: "Free Wi-Fi · 100+ Mbps" },
   { label: "Beach Proximity", value: "~5 km to Kasarkod Eco Beach" },
-  { label: "River Proximity", value: "~2.8 km to Sharavati River" },
+  { label: "River Proximity", value: "~2.8 km to Sharavathi River" },
   { label: "Guest Rating", value: "4.7 / 5 on Google" },
 ];
 
@@ -29,17 +29,17 @@ export default function About() {
 
             {/* Geo-targeted Intro Paragraph (for humans & AI retrieval) */}
             <p className="lead-paragraph">
-              Hotel Pumerai is a 3-star boutique hotel on NH-66 near Ramateertha Cross in Honnavar,
-              Uttara Kannada, Karnataka. Perfectly located just ~5 km from the golden sands of Kasarkod Eco Beach
-              and ~2.8 km from the serene waters of the Sharavati River, Pumerai serves as a premium accommodation
-              option for travellers exploring Honnāvar, Murudeshwar, Bhatkal, and the coastal Karnataka region.
+              Hotel Pumerai is a premium 3-star hotel on NH-66 near Ramateertha Cross in Honnavar,
+              Uttara Kannada, Karnataka. Located just ~5 km from Kasarkod Eco Beach and ~2.8 km
+              from the Sharavathi River, Pumerai offers a comfortable base for travellers exploring
+              Honnavar, Murudeshwar, Bhatkal, and coastal Karnataka.
             </p>
 
             <p className="body-paragraph">
-              Featuring 40 thoughtfully designed guestrooms, an indoor glass-edge swimming pool with a children&apos;s
+              Featuring 40 thoughtfully designed guestrooms, a glass-edge rooftop swimming pool with a children&apos;s
               splash area (open 6:30 AM–7:00 PM), two on-site restaurants—Matsya (coastal seafood) and Madhura (pure vegetarian)—free
-              100+ Mbps WiFi, and secure self-parking with EV charging, our property provides the ideal stopover and vacation
-              haven along Karnataka&apos;s western coast.
+              Wi-Fi · 100+ Mbps, and spacious private parking with EV charging, Pumerai is well suited for both short
+              stopovers and longer coastal getaways.
             </p>
 
             {/* Factual Highlights Grid */}

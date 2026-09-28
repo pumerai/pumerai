@@ -21,7 +21,7 @@ export default function ContactPage() {
   return (
     <main className="page-shell contact-page-shell">
       <PageHeader
-        eyebrow="CONTACT • HONNĀVAR"
+        eyebrow="CONTACT • HONNAVAR"
         title="Contact Hotel Pumerai"
         description="Reach Hotel Pumerai for reservations, enquiries and local travel assistance."
         id="contact-page-heading"
@@ -106,7 +106,7 @@ export default function ContactPage() {
                 <h4 className="transit-summary-title">Distances from Hotel Pumerai:</h4>
                 <ul className="transit-mini-list">
                   <li><strong>Kasarkod Eco Beach:</strong> ~5 km (~8 mins drive)</li>
-                  <li><strong>Sharavati River Backwaters:</strong> ~2.8 km (~5 mins drive)</li>
+                  <li><strong>Sharavathi River Backwaters:</strong> ~2.8 km (~5 mins drive)</li>
                   <li><strong>Honnavar Railway Station:</strong> ~3.5 km (~9 mins drive)</li>
                   <li><strong>Mirjan Fort:</strong> ~18 km (~22 mins drive)</li>
                   <li><strong>Murudeshwar Temple:</strong> ~26 km (~35 mins drive)</li>

@@ -8,9 +8,9 @@ gsap.registerPlugin(ScrollTrigger);
 
 const storyMoments = [
   {
-    eyebrow: "HOTEL PUMERAI · NH-66 HONNAVAR",
-    title: "A quiet boutique stay on the coast",
-    copy: "Hotel Pumerai is a 3-star boutique hotel on NH-66 in Honnavar, Karnataka, ~5 km from Kasarkod Beach and ~2.8 km from the Sharavati River, with 40 rooms, an indoor pool, and two on-site restaurants.",
+    eyebrow: "PREMIUM 3-STAR HOTEL • HONNAVAR, KARNATAKA",
+    title: "A quiet boutique stay near the coast",
+    copy: "Hotel Pumerai is a premium 3-star hotel on NH-66 in Honnavar, Karnataka, ~5 km from Kasarkod Beach and ~2.8 km from the Sharavathi River, with 40 rooms, a rooftop pool, and two on-site restaurants.",
   },
   {
     eyebrow: "ARRIVE · COASTAL HIGHWAY",
@@ -19,13 +19,13 @@ const storyMoments = [
   },
   {
     eyebrow: "SWIMMING POOL & LEISURE",
-    title: "Indoor glass-edge pool & retreat",
-    copy: "Featuring an indoor temperature-balanced swimming pool and children's splash area open daily from 6:30 AM to 7:00 PM.",
+    title: "Glass-edge rooftop pool & retreat",
+    copy: "Featuring a glass-edge rooftop swimming pool and children's splash area open daily from 6:30 AM to 7:00 PM.",
   },
   {
     eyebrow: "KARAVALI & HONNAVAR",
     title: "Your gateway to beaches & backwaters",
-    copy: "Explore Kasarkod Eco Beach, Sharavati River boat cruises, Mirjan Fort, and Murudeshwar from a serene, central base.",
+    copy: "Explore Kasarkod Eco Beach, Sharavathi River boat rides, Mirjan Fort, and Murudeshwar from a serene, central base.",
   },
 ];
 
@@ -230,20 +230,15 @@ export default function HeroSequence({ onNavigate }) {
       <section className="hero hero-static" id="home" aria-label="Hotel Pumerai Honnavar">
         <img
           src={heroFramePath(1)}
-          alt="Hotel Pumerai boutique 3-star property on NH-66 Honnavar Karnataka"
+          alt="Hotel Pumerai premium 3-star property on NH-66 Honnavar Karnataka"
           className="hero-static-img"
         />
         <div className="hero-copy">
-          <div className="hero-trust-badge">
-            <span className="trust-star">&#9733; 4.7/5 Google Rating</span>
-            <span className="trust-sep">&bull;</span>
-            <span>Google Stays &bull; 40 Rooms</span>
-          </div>
-          <p className="hero-eyebrow">HOTEL PUMERAI &bull; NH-66 HONNAVAR</p>
-          <h1 className="hero-heading">A quiet boutique hotel on Karnataka&apos;s coast</h1>
+          <p className="hero-eyebrow">PREMIUM 3-STAR HOTEL &bull; HONNAVAR, KARNATAKA</p>
+          <h1 className="hero-heading">A quiet boutique hotel near Karnataka&apos;s coast</h1>
           <p className="hero-subtitle">
-            Hotel Pumerai is a 3-star hotel on NH-66 near Ramateertha Cross in Honnavar, Karnataka,
-            5 km from Kasarkod Beach and 2.8 km from Sharavati River, with 40 rooms, an indoor pool, and two on-site restaurants.
+            Hotel Pumerai is a premium 3-star hotel on NH-66 near Ramateertha Cross in Honnavar, Karnataka,
+            ~5 km from Kasarkod Beach and ~2.8 km from the Sharavathi River, with 40 rooms, a rooftop pool, and two on-site restaurants.
           </p>
         </div>
       </section>
@@ -276,13 +271,6 @@ export default function HeroSequence({ onNavigate }) {
         )}
 
         <div className={`hero-copy ${isReady ? "is-visible" : ""}`} key={storyIndex}>
-          {/* Trust Signal Badge directly in hero */}
-          <div className="hero-trust-badge">
-            <span className="trust-star">&#9733; 4.7/5 Google Rating</span>
-            <span className="trust-sep">&bull;</span>
-            <span>Google Stays &bull; 40 Rooms &bull; 3-Star Property</span>
-          </div>
-
           <p className="hero-eyebrow">{activeStory.eyebrow}</p>
           <h1 className="hero-heading">{activeStory.title}</h1>
           <p className="hero-subtitle">{activeStory.copy}</p>

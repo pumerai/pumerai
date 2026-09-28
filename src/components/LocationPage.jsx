@@ -5,10 +5,10 @@ export default function LocationPage() {
   return (
     <main className="page-shell location-page-shell">
       <PageHeader
-        eyebrow="LOCATION • HONNĀVAR"
+        eyebrow="LOCATION • HONNAVAR"
         title="Location & Discover"
-        italicTitle="Honnāvar, Karnataka"
-        description="On NH-66, near Kasarkod Beach, Sharavathi backwaters and Honnāvar."
+        italicTitle="Honnavar, Karnataka"
+        description="On NH-66, near Kasarkod Beach, Sharavathi backwaters and Honnavar."
         id="location-page-heading"
       />
       <Location isStandalonePage={true} />

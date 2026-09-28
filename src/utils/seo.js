@@ -3,7 +3,7 @@ import { rooms } from "../data/rooms.js";
 
 export const siteConfig = {
   name: "Hotel Pumerai",
-  alternateNames: ["Hotel Pumerai Honnavar", "Hotel Pumerai Honnāvar"],
+  alternateNames: ["Hotel Pumerai Honnavar"],
   siteUrl: "https://hotelpumerai.com",
   phone: "+919845423223",
   formattedPhone: "+91 98454 23223",
@@ -30,16 +30,16 @@ export const siteConfig = {
 
 export const routesMeta = {
   "/": {
-    title: "Hotel Pumerai | Boutique Hotel in Honnāvar, Karnataka",
+    title: "Hotel Pumerai | Premium 3-Star Hotel in Honnavar, Karnataka",
     description:
-      "Hotel Pumerai is a 3-star boutique hotel on NH-66 in Honnāvar, Uttara Kannada. Contemporary rooms, indoor pool, coastal dining, and easy access to Kasarkod Beach, Murudeshwar & Bhatkal.",
+      "Hotel Pumerai is a premium 3-star hotel in Honnavar, Karnataka, offering comfortable rooms, a rooftop pool, multi-cuisine dining and convenient access to coastal Karnataka.",
     canonical: "https://hotelpumerai.com/",
     breadcrumbs: [{ name: "Home", url: "https://hotelpumerai.com/" }],
   },
   "/rooms": {
-    title: "Rooms & Suites in Honnāvar | Hotel Pumerai",
+    title: "Rooms & Suites in Honnavar | Hotel Pumerai",
     description:
-      "Explore contemporary rooms and suites at Hotel Pumerai in Honnāvar, Karnataka. 7 room categories with king beds, high-speed Wi-Fi, air conditioning, and complimentary breakfast along NH-66.",
+      "Explore contemporary rooms and suites at Hotel Pumerai in Honnavar, Karnataka. 7 room categories with king beds, high-speed Wi-Fi, air conditioning, and complimentary breakfast along NH-66.",
     canonical: "https://hotelpumerai.com/rooms",
     breadcrumbs: [
       { name: "Home", url: "https://hotelpumerai.com/" },
@@ -47,9 +47,9 @@ export const routesMeta = {
     ],
   },
   "/dining": {
-    title: "Dining & Restaurants in Honnāvar | Hotel Pumerai",
+    title: "Dining & Restaurants in Honnavar | Hotel Pumerai",
     description:
-      "Discover coastal dining at Hotel Pumerai in Honnāvar. Featuring Matsya Multi-Cuisine Restaurant for fresh Karavali seafood and Madhura Pure Veg Restaurant for authentic South Indian dishes.",
+      "Discover coastal dining at Hotel Pumerai in Honnavar. Featuring Matsya Multi-Cuisine Restaurant for fresh Karavali seafood and Madhura Pure Veg Restaurant for authentic South Indian dishes.",
     canonical: "https://hotelpumerai.com/dining",
     breadcrumbs: [
       { name: "Home", url: "https://hotelpumerai.com/" },
@@ -59,7 +59,7 @@ export const routesMeta = {
   "/faq": {
     title: "Hotel Pumerai FAQ | Frequently Asked Questions",
     description:
-      "Find answers to frequently asked questions about Hotel Pumerai, rooms, dining, location, booking and your stay in Honnāvar.",
+      "Find answers to frequently asked questions about Hotel Pumerai, rooms, dining, location, booking and your stay in Honnavar.",
     canonical: "https://hotelpumerai.com/faq",
     breadcrumbs: [
       { name: "Home", url: "https://hotelpumerai.com/" },
@@ -67,9 +67,9 @@ export const routesMeta = {
     ],
   },
   "/gallery": {
-    title: "Hotel Pumerai Gallery | Rooms, Dining & Honnāvar",
+    title: "Hotel Pumerai Gallery | Rooms, Dining & Honnavar",
     description:
-      "Browse photos of Hotel Pumerai in Honnāvar, Karnataka. Explore our guestrooms, glass-edge swimming pool, restaurants, and scenic surroundings across coastal Uttara Kannada.",
+      "Browse photos of Hotel Pumerai in Honnavar, Karnataka. Explore our guestrooms, glass-edge rooftop swimming pool, restaurants, and scenic surroundings across coastal Uttara Kannada.",
     canonical: "https://hotelpumerai.com/gallery",
     breadcrumbs: [
       { name: "Home", url: "https://hotelpumerai.com/" },
@@ -77,9 +77,9 @@ export const routesMeta = {
     ],
   },
   "/location": {
-    title: "Hotel Pumerai Location | NH-66, Honnāvar, Karnataka",
+    title: "Hotel Pumerai Location | NH-66, Honnavar, Karnataka",
     description:
-      "Hotel Pumerai is located on NH-66 near Ramateertha Cross in Honnāvar, Uttara Kannada. Close to Kasarkod Eco Beach, Sharavati backwaters, Murudeshwar, Bhatkal & Gokarna.",
+      "Hotel Pumerai is located on NH-66 near Ramateertha Cross in Honnavar, Uttara Kannada. Close to Kasarkod Eco Beach, Sharavathi backwaters, Murudeshwar, Bhatkal & Gokarna.",
     canonical: "https://hotelpumerai.com/location",
     breadcrumbs: [
       { name: "Home", url: "https://hotelpumerai.com/" },
@@ -87,9 +87,9 @@ export const routesMeta = {
     ],
   },
   "/contact": {
-    title: "Contact Hotel Pumerai | Honnāvar, Karnataka",
+    title: "Contact Hotel Pumerai | Honnavar, Karnataka",
     description:
-      "Contact Hotel Pumerai in Honnāvar, Karnataka for room reservations and travel enquiries. Call +91 98454 23223, message on WhatsApp, or visit our 24/7 front desk on NH-66.",
+      "Contact Hotel Pumerai in Honnavar, Karnataka for room reservations and travel enquiries. Call +91 98454 23223, message on WhatsApp, or visit our 24/7 front desk on NH-66.",
     canonical: "https://hotelpumerai.com/contact",
     breadcrumbs: [
       { name: "Home", url: "https://hotelpumerai.com/" },
@@ -140,7 +140,7 @@ export function generateStructuredData(pathname = "/") {
     name: siteConfig.name,
     alternateName: siteConfig.alternateNames,
     description:
-      "A 3-star contemporary boutique hotel situated on NH-66 near Ramateertha Cross in Honnavar, Uttara Kannada, Karnataka. Offering 40 air-conditioned rooms, glass-edge swimming pool, coastal multicuisine and pure vegetarian dining.",
+      "A premium 3-star hotel situated on NH-66 near Ramateertha Cross in Honnavar, Uttara Kannada, Karnataka. Offering 40 air-conditioned rooms, a rooftop swimming pool, coastal multi-cuisine and pure vegetarian dining.",
     url: siteConfig.siteUrl,
     telephone: siteConfig.phone,
     email: siteConfig.email,
@@ -173,17 +173,17 @@ export function generateStructuredData(pathname = "/") {
       ratingValue: siteConfig.starRating,
     },
     amenityFeature: [
-      { "@type": "LocationFeatureSpecification", name: "Free High-Speed Wi-Fi (100+ Mbps)", value: true },
-      { "@type": "LocationFeatureSpecification", name: "Indoor & Children Swimming Pool", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Free High-Speed Wi-Fi · 100+ Mbps", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Rooftop & Children's Swimming Pool", value: true },
       { "@type": "LocationFeatureSpecification", name: "Complimentary Daily Hot Breakfast", value: true },
       { "@type": "LocationFeatureSpecification", name: "24-Hour Front Desk", value: true },
       { "@type": "LocationFeatureSpecification", name: "Free Secure Private Parking", value: true },
       { "@type": "LocationFeatureSpecification", name: "Electric Vehicle (EV) Charging Station", value: true },
       { "@type": "LocationFeatureSpecification", name: "On-Site Matsya Multi-Cuisine Restaurant", value: true },
       { "@type": "LocationFeatureSpecification", name: "On-Site Madhura Pure Veg Restaurant", value: true },
-      { "@type": "LocationFeatureSpecification", name: "100% Smoke-Free Indoor Rooms", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Smoke-Free Guestrooms", value: true },
       { "@type": "LocationFeatureSpecification", name: "Air Conditioning", value: true },
-      { "@type": "LocationFeatureSpecification", name: "Acoustic Soundproofing", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Quiet Acoustic Planning", value: true },
     ],
   };
 

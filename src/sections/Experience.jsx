@@ -1,9 +1,9 @@
 
 const amenities = [
   {
-    title: "GLASS-EDGE SWIMMING POOL",
+    title: "GLASS-EDGE ROOFTOP POOL",
     description:
-      "An outdoor glass-edge swimming pool designed as one of the property's signature leisure spaces.",
+      "A glass-edge rooftop swimming pool designed as one of the property's signature leisure spaces.",
     tag: "Signature Leisure",
     isTeal: true,
   },
@@ -21,7 +21,7 @@ const amenities = [
   {
     title: "BUSINESS & EVENTS",
     description:
-      "Business facilities and indoor meeting / banquet spaces for gatherings and events.",
+      "Business facilities and meeting / banquet spaces for gatherings and events.",
     tag: "Gatherings",
   },
   {
@@ -31,7 +31,7 @@ const amenities = [
   },
   {
     title: "PRIVATE PARKING",
-    description: "Secure private parking for guests arriving by road.",
+    description: "Spacious private parking for guests arriving by road.",
     tag: "Highway Access",
   },
   {
@@ -46,7 +46,7 @@ const amenities = [
   },
   {
     title: "ELEVATOR",
-    description: "Lift access for convenient movement throughout the property.",
+    description: "Elevator access for convenient movement throughout the property.",
     tag: "Accessibility",
   },
 ];
@@ -83,9 +83,9 @@ function Experience() {
           </figure>
           <div className="featured-amenity-content">
             <span className="teal-badge">SIGNATURE AMENITY &bull; DUSTY TEAL RETREAT</span>
-            <h3 className="featured-amenity-title">Glass-Edge Swimming Pool</h3>
+            <h3 className="featured-amenity-title">Glass-Edge Rooftop Pool</h3>
             <p className="featured-amenity-desc">
-              An outdoor glass-edge swimming pool designed as one of the property&apos;s
+              A glass-edge rooftop swimming pool designed as one of the property&apos;s
               signature leisure spaces, framed by coastal greenery and sky.
             </p>
           </div>
