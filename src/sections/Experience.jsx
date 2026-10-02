@@ -82,7 +82,7 @@ function Experience() {
             />
           </figure>
           <div className="featured-amenity-content">
-            <span className="teal-badge">SIGNATURE AMENITY &bull; DUSTY TEAL RETREAT</span>
+            <span className="teal-badge">SIGNATURE AMENITY</span>
             <h3 className="featured-amenity-title">Glass-Edge Rooftop Pool</h3>
             <p className="featured-amenity-desc">
               A glass-edge rooftop swimming pool designed as one of the property&apos;s

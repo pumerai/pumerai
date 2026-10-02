@@ -1,25 +1,15 @@
 import { useState } from "react";
 import { rooms, STAYFLEXI_BOOKING_URL } from "../data/rooms.js";
-
-function getTomorrowDateString(dateStr) {
-  const base = dateStr ? new Date(dateStr) : new Date();
-  base.setDate(base.getDate() + 1);
-  return base.toISOString().split("T")[0];
-}
+import { useSharedBookingDates, getOffsetDateString } from "../hooks/useSharedBookingDates.js";
 
 export default function OffersBanner() {
-  const todayStr = new Date().toISOString().split("T")[0];
-  const [checkIn, setCheckIn] = useState(todayStr);
-  const [checkOut, setCheckOut] = useState(() => getTomorrowDateString(todayStr));
+  const { checkIn, checkOut, today, setCheckIn, setCheckOut } = useSharedBookingDates();
   const [selectedRoom, setSelectedRoom] = useState("all");
   const [guests, setGuests] = useState("2");
 
   const handleCheckInChange = (e) => {
     const val = e.target.value;
     setCheckIn(val);
-    if (val >= checkOut) {
-      setCheckOut(getTomorrowDateString(val));
-    }
   };
 
   const handleCheckOutChange = (e) => {
@@ -46,7 +36,7 @@ export default function OffersBanner() {
           <div className="direct-booking-editorial">
             <div className="editorial-tag">
               <span className="accent-pip" />
-              <span>Direct Reservations • Best Rate Guarantee</span>
+              <span>Direct Reservations</span>
             </div>
 
             <h2 id="direct-booking-title" className="direct-booking-heading">
@@ -56,27 +46,18 @@ export default function OffersBanner() {
             </h2>
 
             <p className="direct-booking-subtext">
-              Reserve your stay directly with Hotel Pumerai to enjoy exclusive direct-booking
-              privileges, guaranteed best room rates, daily complimentary breakfast, and personalized
-              coastal hospitality along NH-66.
+              Book directly with Hotel Pumerai for our best room rates and daily complimentary breakfast.
             </p>
 
             <ul className="direct-booking-perks-list" aria-label="Direct booking benefits">
               <li className="direct-perk-item">
-                <span className="direct-perk-icon" aria-hidden="true">&#x2713;</span>
-                <span><strong>10% Direct Discount:</strong> Applied automatically vs OTA rates</span>
+                <span><strong>Direct rates:</strong> Lower than third-party booking sites</span>
               </li>
               <li className="direct-perk-item">
-                <span className="direct-perk-icon" aria-hidden="true">&#x2713;</span>
-                <span><strong>Complimentary Breakfast:</strong> Included with every direct room booking</span>
+                <span><strong>Complimentary breakfast:</strong> Included with every direct stay</span>
               </li>
               <li className="direct-perk-item">
-                <span className="direct-perk-icon" aria-hidden="true">&#x2713;</span>
-                <span><strong>Flexible Cancellation:</strong> Free changes up to 24 hours prior</span>
-              </li>
-              <li className="direct-perk-item">
-                <span className="direct-perk-icon" aria-hidden="true">&#x2713;</span>
-                <span><strong>Priority Allocation:</strong> Preferred room views and check-in assistance</span>
+                <span><strong>Cancellation:</strong> Free cancellation up to 24 hours before check-in.</span>
               </li>
             </ul>
           </div>
@@ -96,7 +77,7 @@ export default function OffersBanner() {
                     <input
                       id="direct-check-in"
                       type="date"
-                      min={todayStr}
+                      min={today}
                       value={checkIn}
                       onChange={handleCheckInChange}
                       className="card-field-input"
@@ -108,7 +89,7 @@ export default function OffersBanner() {
                     <input
                       id="direct-check-out"
                       type="date"
-                      min={checkIn ? getTomorrowDateString(checkIn) : todayStr}
+                      min={checkIn ? getOffsetDateString(checkIn, 1) : today}
                       value={checkOut}
                       onChange={handleCheckOutChange}
                       className="card-field-input"
@@ -179,11 +160,8 @@ export default function OffersBanner() {
                     >
                       <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
                     </svg>
-                    <span>Or WhatsApp Concierge: +91 98454 23223</span>
+                    <span>WhatsApp: +91 98454 23223</span>
                   </a>
-                  <p className="booking-card-guarantee-note">
-                    🔒 Best Rate Guaranteed &bull; No Booking Fees &bull; Instant Confirmation
-                  </p>
                 </div>
               </form>
             </div>

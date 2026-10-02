@@ -22,16 +22,14 @@ export default function Dining({ sectionId = "dining", headingId = "dining-headi
             <div className="header-meta">
               <div className="editorial-tag">
                 <span className="accent-pip" />
-                <span>ON-SITE RESTAURANTS &bull; HOTEL PUMERAI</span>
+                <span>DINING</span>
               </div>
               <h2 id={headingId} className="section-title">
-                Coastal culinary <br />
-                <span className="title-italic">journeys on NH-66.</span>
+                Dining
               </h2>
             </div>
             <p className="header-summary">
-              Hotel Pumerai houses two distinctive on-site restaurants: Matsya for coastal Karavali seafood
-              and North Indian cuisine, and Madhura for authentic pure vegetarian specialties.
+              Two restaurants, open daily.
             </p>
           </header>
         )}
@@ -55,7 +53,6 @@ export default function Dining({ sectionId = "dining", headingId = "dining-headi
 
               <div className="venue-details-body">
                 <div className="venue-header-row">
-                  <span className="venue-cuisine-tag">{venue.subtitle}</span>
                   <h3 className="venue-title">{venue.name}</h3>
                 </div>
 
@@ -72,15 +69,13 @@ export default function Dining({ sectionId = "dining", headingId = "dining-headi
                 <p className="venue-desc">{venue.description}</p>
 
                 <div className="signature-dishes-block">
-                  <span className="dishes-heading">SIGNATURE DISHES &amp; HIGHLIGHTS:</span>
+                  <span className="dishes-heading">SIGNATURE DISHES</span>
                   <div className="dishes-list">
                     {venue.signatureDishes.map((dish) => (
                       <div className="dish-item" key={dish.name}>
                         <div className="dish-name-row">
-                          <span className="dish-bullet">&mdash;</span>
-                          <strong className="dish-title">{dish.name}:</strong>
+                          <strong className="dish-title">{dish.name}</strong>
                         </div>
-                        <p className="dish-summary">{dish.desc}</p>
                       </div>
                     ))}
                   </div>
@@ -91,9 +86,9 @@ export default function Dining({ sectionId = "dining", headingId = "dining-headi
                     type="button"
                     className="button-primary menu-view-btn"
                     onClick={() => handleOpenMenu(venue)}
-                    aria-label={`View Curated Menu for ${venue.name}`}
+                    aria-label={`View Menu for ${venue.name}`}
                   >
-                    <span>VIEW CURATED MENU</span>
+                    <span>VIEW MENU</span>
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                       <line x1="5" y1="12" x2="19" y2="12" />
                       <polyline points="12 5 19 12 12 19" />
@@ -134,7 +129,7 @@ export default function Dining({ sectionId = "dining", headingId = "dining-headi
                 {activeMenuVenue.name}
               </h3>
               <p className="menu-hours-text">
-                Operating Hours: {activeMenuVenue.hours} &bull; {activeMenuVenue.mealTimes}
+                Operating Hours: {activeMenuVenue.hours}
               </p>
               <div className="brass-rule-small" />
             </div>

@@ -3,43 +3,43 @@ export const verifiedServices = [
     id: "reception",
     num: "01",
     title: "24-Hour Reception & Concierge",
-    desc: "Round-the-clock front desk welcoming late highway arrivals, arranging Sharavathi river boat trips, and tailoring coastal itineraries.",
-    highlight: "24/7 Manned Desk • Express Check-in",
+    desc: "Round-the-clock front desk welcoming late arrivals and arranging local boat trips.",
+    highlight: "24/7 Front Desk, Express Check-in",
   },
   {
     id: "room-service",
     num: "02",
     title: "Daily Housekeeping & Room Service",
-    desc: "Thoughtful daily room care, spotless linens, and prompt in-room dining from Matsya Seafood and Madhura Vegetarian kitchens.",
-    highlight: "In-Room Dining • Daily Linens",
+    desc: "Daily housekeeping and in-room dining from both Matsya and Madhura restaurants.",
+    highlight: "In-Room Dining, Daily Linens",
   },
   {
     id: "rooftop-pool",
     num: "03",
     title: "Rooftop Pool & Children's Splash Zone",
-    desc: "Elevated glass-edge leisure pool open daily from 6:30 AM to 7:00 PM with safe adjoining shallow splash area for young family swimmers.",
-    highlight: "Open 6:30 AM – 7:00 PM • Horizon Deck",
+    desc: "Glass-edge pool open 6:30 AM to 7:00 PM with shallow children's splash area.",
+    highlight: "Open 6:30 AM – 7:00 PM, Horizon Deck",
   },
   {
     id: "wifi",
     num: "04",
-    title: "Free High-Speed 100+ Mbps Wi-Fi",
-    desc: "Dependable, seamless wireless coverage across all guest rooms, dining spaces, and public lounges for effortless connectivity.",
+    title: "Free High-Speed Wi-Fi",
+    desc: "Fast 100+ Mbps wireless coverage across all rooms, dining spaces and lounges.",
     highlight: "100+ Mbps Coverage Throughout",
   },
   {
     id: "parking-ev",
     num: "05",
     title: "Covered Parking & EV Charging",
-    desc: "Spacious private parking with dedicated EV charging stations, wide highway ingress/egress, and 24-hour security monitoring.",
-    highlight: "EV Charging Bays • Secured Ingress",
+    desc: "Private covered parking with EV charging stations and 24-hour security monitoring.",
+    highlight: "EV Charging Bays, Secure Parking",
   },
   {
     id: "backup-elevator",
     num: "06",
-    title: "Dual Elevators & 100% Generator Backup",
-    desc: "Barrier-free elevator access across all four floors with seamless 24/7 automated generator power backup.",
-    highlight: "Full Power Backup • Dual Elevators",
+    title: "Dual Elevators & Power Backup",
+    desc: "Elevator access across all four floors with 24/7 automated generator power backup.",
+    highlight: "Full Power Backup, Dual Elevators",
   },
 ];
 
@@ -52,16 +52,16 @@ export default function AmenitiesGrid() {
           <div className="header-meta">
             <div className="editorial-tag">
               <span className="accent-pip" />
-              <span>WE ARE HERE FOR YOU</span>
+              <span>SERVICES</span>
             </div>
             <h2 id="hospitality-heading" className="section-title">
-              Hospitality that Goes <br />
-              <span className="title-italic">the Extra Mile.</span>
+              Hospitality and <br />
+              <span className="title-italic">Guest Services.</span>
             </h2>
           </div>
           <div className="header-summary-block">
             <p className="header-summary">
-              Thoughtful service and everyday comforts designed to make your stay at Hotel Pumerai relaxed and effortless.
+              Everyday comforts and services for your stay at Hotel Pumerai.
             </p>
           </div>
         </header>
@@ -79,7 +79,7 @@ export default function AmenitiesGrid() {
                 className="hospitality-img-zoom"
               />
               <div className="hospitality-frame-overlay">
-                <span className="hospitality-badge">24-Hour Attentive Front Desk &amp; Concierge</span>
+                <span className="hospitality-badge">24-Hour Front Desk &amp; Concierge</span>
               </div>
             </div>
 
@@ -114,7 +114,6 @@ export default function AmenitiesGrid() {
                 <div className="hospitality-story-card" key={service.id}>
                   <div className="story-card-top">
                     <span className="story-card-num">{service.num}</span>
-                    <span className="story-card-pill">{service.highlight}</span>
                   </div>
                   <h3 className="story-card-title">{service.title}</h3>
                   <p className="story-card-desc">{service.desc}</p>
@@ -125,7 +124,7 @@ export default function AmenitiesGrid() {
             {/* Bottom Hospitality Note */}
             <div className="hospitality-footer-note">
               <div className="hfn-inner">
-                <span className="hfn-accent">&bull;</span>
+                <span className="hfn-accent" />
                 <p className="hfn-text">
                   Direct bookings receive complimentary Wi-Fi, priority early check-in assistance, and free secured parking with EV bays.
                 </p>

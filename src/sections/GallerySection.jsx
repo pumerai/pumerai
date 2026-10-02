@@ -192,7 +192,7 @@ export default function GallerySection({ isStandalonePage = false, onNavigate })
             <div className="header-meta">
               <div className="editorial-tag">
                 <span className="accent-pip" />
-                <span>Visual Archive &bull; Hotel Pumerai</span>
+                <span>GALLERY</span>
               </div>
               <h2 id="gallery-heading" className="section-title">
                 Moments of calm <br />

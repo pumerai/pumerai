@@ -65,13 +65,6 @@ export default function Footer({ onNavigate }) {
     <footer className="site-footer" id="footer" aria-label="Site Footer">
       <div className="footer-container">
 
-        {/* Giant Watermark across top of footer (as seen in Jiana reference screenshot) */}
-        <div className="footer-watermark-wrap" aria-hidden="true">
-          <div className="footer-watermark">
-            HOTEL PUMERAI
-          </div>
-        </div>
-
         <div className="footer-brass-divider" />
 
         {/* Main 3-Column Grid — offer/signup | centered contact+social | concierge/WhatsApp */}
@@ -79,9 +72,9 @@ export default function Footer({ onNavigate }) {
 
           {/* Col 1: Offers / Stay Updated */}
           <section className="footer-col footer-col-center">
-            <h4 className="footer-col-heading">Stay in Touch &amp; Receive Offers</h4>
+            <h4 className="footer-col-heading">Stay Updated</h4>
             <p className="footer-col-copy">
-              Join the Hotel Pumerai guest list to receive exclusive seasonal rates and updates.
+              Get seasonal offers on WhatsApp.
             </p>
             <a
               href={whatsappHref("Hi Hotel Pumerai, please add me to your updates and seasonal offers list.")}
@@ -89,14 +82,13 @@ export default function Footer({ onNavigate }) {
               rel="noopener noreferrer"
               className="button-primary footer-inline-btn"
             >
-              Sign Up on WhatsApp
+              Join on WhatsApp
             </a>
           </section>
 
           {/* Col 2: Contact, Address & Social */}
           <section className="footer-col footer-col-center">
-            <p className="footer-col-title">HOTEL PUMERAI &mdash; HONNAVAR</p>
-
+            <p className="footer-col-title">HOTEL PUMERAI HONNAVAR</p>
 
             <address className="footer-contact-block footer-contact-centered">
               <a
@@ -107,7 +99,7 @@ export default function Footer({ onNavigate }) {
               >
                 Hotel Pumerai, NH-66, near Ramateertha Cross,
                 <br />
-                Honnavar &ndash; 581334, Uttara Kannada, Karnataka
+                Honnavar 581334, Uttara Kannada, Karnataka
               </a>
 
               <span className="footer-contact-item-inline">
@@ -121,10 +113,6 @@ export default function Footer({ onNavigate }) {
               </span>
             </address>
 
-            <ul className="footer-distances-list footer-distances-centered">
-              <li>&bull; ~5 km from Kasarkod Eco Beach</li>
-              <li>&bull; ~2.8 km from Sharavathi River (~3.5 km from Station)</li>
-            </ul>
 
             <p className="footer-col-title footer-follow-label">Follow Us</p>
             <div className="footer-social-icons">
@@ -142,9 +130,9 @@ export default function Footer({ onNavigate }) {
 
           {/* Col 3: Direct Concierge Assistance */}
           <section className="footer-col footer-col-center">
-            <h4 className="footer-col-heading">Direct Concierge Assistance</h4>
+            <h4 className="footer-col-heading">Need help?</h4>
             <p className="footer-col-copy">
-              Ask our team about room reservations, dining, special discounts, or recommendations around Honnavar.
+              Ask us about rooms, dining or things to do in Honnavar.
             </p>
             <a
               href={whatsappHref("Hi Hotel Pumerai, I would like to inquire about room availability and concierge assistance.")}
@@ -158,12 +146,6 @@ export default function Footer({ onNavigate }) {
           </section>
         </div>
 
-        {/* Coastal Wave Flourish Divider */}
-        <div className="footer-brass-divider footer-wave-divider" aria-hidden="true">
-          <svg width="46" height="8" viewBox="0 0 46 8" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M1 4C4.5 1 8 1 11.5 4C15 7 18.5 7 22 4C25.5 1 29 1 32.5 4C36 7 39.5 7 43 4" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" />
-          </svg>
-        </div>
 
         {/* Bottom Bar: Copyright | Nav Links | Legal */}
         <div className="footer-bottom-bar footer-bottom-bar-3col">
@@ -186,9 +168,7 @@ export default function Footer({ onNavigate }) {
 
           <div className="footer-legal-links">
             <a href="/location" onClick={(e) => handleNavClick(e, { route: "/location" })}>Privacy Policy</a>
-            <span className="legal-dot">&bull;</span>
             <a href="/faq" onClick={(e) => handleNavClick(e, { route: "/faq" })}>Cancellation &amp; FAQ</a>
-            <span className="legal-dot">&bull;</span>
             <a href="/contact" onClick={(e) => handleNavClick(e, { route: "/contact" })}>Contact</a>
           </div>
         </div>

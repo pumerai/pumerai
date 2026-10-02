@@ -15,16 +15,15 @@ export default function DiningPreview({ onNavigate }) {
           <div className="header-meta">
             <div className="editorial-tag">
               <span className="accent-pip" />
-              <span>Dining &bull; Honnavar</span>
+              <span>DINING</span>
             </div>
             <h2 id="dining-preview-heading" className="section-title">
-              Coastal Dining at <br />
-              <span className="title-italic">Hotel Pumerai</span>
+              Dining
             </h2>
           </div>
           <div className="header-summary-block">
             <p className="header-summary">
-              Enjoy coastal flavours, fresh local ingredients and relaxed dining at Matsya Multi-Cuisine Restaurant and Madhura Veg Restaurant.
+              Two restaurants, open daily.
             </p>
             <div className="preview-all-action">
               <a

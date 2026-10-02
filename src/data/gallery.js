@@ -120,6 +120,6 @@ export const galleryItems = [
     title: "Lobby Library & Reception Desk",
     src: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_28%20AM_result.webp",
     alt: "Handcrafted wooden library shelving with brass Ganesha idol and lobby desk at Hotel Pumerai",
-    caption: "Artisanal display library with brass artifacts and curated regional literature.",
+    caption: "Artisanal display library with brass artifacts and regional literature.",
   },
 ];

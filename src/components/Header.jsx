@@ -120,7 +120,7 @@ export default function Header({ currentPath, onNavigate }) {
         <div className="mobile-drawer-backdrop" onClick={() => setIsOpen(false)} />
         <div className="mobile-drawer-body">
           <div className="mobile-drawer-header">
-            <span className="drawer-title">Hotel Pumerai &bull; Menu</span>
+            <span className="drawer-title">Hotel Pumerai Menu</span>
             <button
               type="button"
               className="drawer-close-btn"
@@ -171,7 +171,7 @@ export default function Header({ currentPath, onNavigate }) {
                 className="drawer-contact-item"
               >
                 <span className="label">WhatsApp:</span>
-                <span className="val">Instant Chat</span>
+                <span className="val">Chat on WhatsApp</span>
               </a>
             </div>
           </div>

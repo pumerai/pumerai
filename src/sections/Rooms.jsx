@@ -29,21 +29,20 @@ export default function Rooms() {
           <div className="header-meta">
             <div className="editorial-tag">
               <span className="accent-pip" />
-              <span>Accommodation &bull; Honnavar</span>
+              <span>Accommodation</span>
             </div>
             <h2 id="rooms-heading" className="section-title">
-              Thoughtful spaces for <br />
-              <span className="title-italic">rest &amp; renewal.</span>
+              Rooms &amp; Suites <br />
+              <span className="title-italic">in Honnavar.</span>
             </h2>
           </div>
           <div className="header-summary-block">
             <p className="header-summary">
-              40 thoughtfully designed guestrooms positioned along NH-66 in Honnavar across seven distinct categories.
-              Designed with quiet comfort, refined coastal materials, and modern conveniences.
+              40 contemporary guestrooms on NH-66 in Honnavar across seven distinct categories.
             </p>
             <div className="direct-booking-pill">
-              <span className="pill-check">&#x2713;</span>
-              <span>Best Rate Guarantee: Book direct &amp; save 10% + free breakfast</span>
+              <span className="pill-check" />
+              <span>Best rates when you book directly with complimentary daily breakfast.</span>
             </div>
           </div>
         </header>
@@ -121,11 +120,10 @@ export default function Rooms() {
 
                   {/* Feature Highlights */}
                   <div className="room-features-box">
-                    <span className="features-title">Room Inclusions:</span>
+                    <span className="features-title">FACILITIES</span>
                     <ul className="room-features-list">
-                      {room.highlights.slice(0, 5).map((feat) => (
+                      {room.highlights.slice(0, 3).map((feat) => (
                         <li key={feat} className="feature-item">
-                          <span className="feature-bullet">&bull;</span>
                           <span>{feat}</span>
                         </li>
                       ))}
@@ -137,7 +135,7 @@ export default function Rooms() {
                     {room.bookingType === "whatsapp" ? (
                       <a
                         href={`https://wa.me/919845423223?text=${encodeURIComponent(
-                          `Hello Hotel Pumerai, I would like to inquire about booking the ${room.name}.`
+                          `Hello Hotel Pumerai, I would like to enquire about booking the ${room.name}.`
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
@@ -172,13 +170,12 @@ export default function Rooms() {
         {/* Property Room Standard Guarantee */}
         <div className="room-standards-banner" data-reveal>
           <div className="standards-header">
-            <span className="standards-tag">Property Standard &bull; Hotel Pumerai</span>
-            <h3 className="standards-title">Every room booking always includes:</h3>
+            <span className="standards-tag">Property Standards</span>
+            <h3 className="standards-title">Every booking includes:</h3>
           </div>
           <div className="standards-grid">
-            {includedEssentials.map((item) => (
+            {includedEssentials.slice(0, 3).map((item) => (
               <div className="standard-pill" key={item}>
-                <span className="standard-check">&#x2713;</span>
                 <span className="standard-text">{item}</span>
               </div>
             ))}

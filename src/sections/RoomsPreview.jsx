@@ -86,11 +86,11 @@ export default function RoomsPreview({ onNavigate }) {
           <div className="header-meta">
             <div className="editorial-tag">
               <span className="accent-pip" />
-              <span>Accommodation • 7 Room Types</span>
+              <span>Accommodation</span>
             </div>
             <h2 id="rooms-preview-heading" className="section-title rooms-preview-main-title">
-              <span className="rooms-title-primary">Our rooms</span>
-              <span className="title-italic rooms-title-secondary">&amp; comfortable stays.</span>
+              <span className="rooms-title-primary">Rooms</span>
+              <span className="title-italic rooms-title-secondary">&amp; Suites.</span>
             </h2>
           </div>
           <div className="header-summary-block">
@@ -125,7 +125,7 @@ export default function RoomsPreview({ onNavigate }) {
                 onClick={handleViewAllRooms}
                 aria-label="View all seven rooms on dedicated rooms page"
               >
-                <span>VIEW ALL 7 ROOM TYPES <span className="arrow-icon">&rarr;</span></span>
+                <span>VIEW ALL ROOMS <span className="arrow-icon">&rarr;</span></span>
               </a>
             </div>
           </div>
@@ -166,7 +166,7 @@ export default function RoomsPreview({ onNavigate }) {
                   />
                   <div className="room-preview-badge">
                     <span>{room.size}</span>
-                    <span className="badge-dot">&bull;</span>
+                    <span className="badge-dot">, </span>
                     <span>{room.occupancy}</span>
                   </div>
                 </figure>

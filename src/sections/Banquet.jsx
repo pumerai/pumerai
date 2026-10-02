@@ -4,11 +4,10 @@ const banquetHalls = [
   {
     id: "sidhvin",
     name: "SIDHVIN BANQUET HALL",
-    capacity: "200 Guests",
-    seatingType: "Auditorium & Theater Seating",
-    tagline: "Grand Celebrations, Weddings & Corporate Gatherings",
+    capacity: "200 GUESTS",
+    tagline: "Weddings and large events.",
     description:
-      "Sidhvin Banquet Hall is Hotel Pumerai's flagship grand event space. Featuring generous proportions, high acoustic ceilings, fluted teak wall cladding, and a raised stage with ceremonial backdrop, it is perfectly suited for wedding receptions, cultural milestones, award banquets, and large corporate seminars along NH-66.",
+      "A grand hall with a raised stage for receptions and conferences.",
     mainImage: "/banquet/sidhvin-hall-main.webp",
     gallery: [
       { src: "/banquet/sidhvin-hall-main.webp", alt: "Sidhvin Banquet Hall theater seating setup with stage at Hotel Pumerai" },
@@ -16,23 +15,18 @@ const banquetHalls = [
       { src: "/banquet/sidhvin-hall-auditorium.webp", alt: "Full auditorium view of Sidhvin Banquet Hall Honnavar" },
     ],
     features: [
-      "Capacity: 200 Guests",
-      "Expansive Theater & Banquet Seating Layouts",
-      "Elevated Ceremonial Stage & Podium",
-      "Centralized Air Conditioning",
-      "High-Speed Wi-Fi & Generator Power Backup",
-      "Passenger Elevator Access & Covered Parking",
-      "Customized Multi-Cuisine Catering (Matsya & Madhura)",
+      "Stage and podium",
+      "Wi-Fi and power backup",
+      "Covered parking",
     ],
   },
   {
     id: "milan",
     name: "MILAN HALL",
-    capacity: "50 Guests",
-    seatingType: "Round Table Banquet & Executive Meets",
-    tagline: "Intimate Celebrations, Seminars & Private Dining",
+    capacity: "50 GUESTS",
+    tagline: "Private dinners and small events.",
     description:
-      "Milan Hall offers a warm, refined atmosphere for smaller gatherings of up to 50 guests. Designed with clothed round banquet tables, a dedicated speaker dais, ambient cove illumination, and contemporary timber finishes, it provides an exclusive, comfortable setting for family milestones, pre-wedding festivities, executive board meetings, and private dinners.",
+      "A warm hall for family functions, meetings and private dinners.",
     mainImage: "/banquet/milan-hall-main.webp",
     gallery: [
       { src: "/banquet/milan-hall-main.webp", alt: "Milan Hall round table banquet setup with stage at Hotel Pumerai" },
@@ -40,13 +34,9 @@ const banquetHalls = [
       { src: "/banquet/milan-hall-tables.webp", alt: "Elegantly arranged banquet dining tables at Milan Hall Honnavar" },
     ],
     features: [
-      "Capacity: 50 Guests",
-      "Round Banquet Tables with Drapes",
-      "Elevated Presentation Dais & Lectern",
-      "Centralized Air Conditioning",
-      "Adjoining Elevator Foyer & Lounge",
-      "Dedicated High-Speed Wi-Fi",
-      "Specialized Pure Veg & Multi-Cuisine Menus",
+      "Round banquet tables",
+      "Presentation dais",
+      "Wi-Fi",
     ],
   },
 ];
@@ -67,21 +57,8 @@ export default function Banquet() {
       <section className="section banquet-intro-section" aria-label="Banquet Overview">
         <div className="section-container">
           <div className="banquet-intro-card" data-reveal>
-            <div className="editorial-tag">
-              <span className="accent-pip" />
-              <span>Event Hosting • Hotel Pumerai</span>
-            </div>
-            <h2 className="section-title">
-              Exceptional venues for <br />
-              <span className="title-italic">unforgettable occasions.</span>
-            </h2>
-            <div className="brass-rule-small" />
             <p className="banquet-intro-text">
-              Conveniently situated on NH-66 near Ramateertha Cross in Honnavar, Hotel Pumerai provides
-              two distinct, air-conditioned banquet venues equipped for weddings, family milestones,
-              corporate conferences, and private banquets. With generous guest parking, elevator access,
-              on-site accommodation, and curated catering from our restaurants, every event is executed
-              with effortless hospitality.
+              Parking, lift access and in-house catering, including pure veg.
             </p>
           </div>
         </div>
@@ -101,7 +78,7 @@ export default function Banquet() {
                   loading="lazy"
                 />
                 <div className="banquet-capacity-badge">
-                  <span>CAPACITY: 200 GUESTS</span>
+                  <span>200 GUESTS</span>
                 </div>
               </div>
 
@@ -125,7 +102,7 @@ export default function Banquet() {
             <div className="banquet-info-col">
               <div className="editorial-tag">
                 <span className="accent-pip" />
-                <span>Premier Grand Venue &bull; Capacity 200</span>
+                <span>Premier Grand Venue</span>
               </div>
               <h3 id="sidhvin-title" className="banquet-hall-name">
                 {banquetHalls[0].name}
@@ -135,11 +112,10 @@ export default function Banquet() {
               <p className="banquet-hall-desc">{banquetHalls[0].description}</p>
 
               <div className="banquet-features-block">
-                <h4 className="features-title">HALL HIGHLIGHTS &amp; FACILITIES:</h4>
+                <h4 className="features-title">FACILITIES</h4>
                 <ul className="banquet-features-list">
                   {banquetHalls[0].features.map((feat, i) => (
                     <li key={i} className="banquet-feature-item">
-                      <span className="feature-check">&#x2713;</span>
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -183,7 +159,7 @@ export default function Banquet() {
                   loading="lazy"
                 />
                 <div className="banquet-capacity-badge">
-                  <span>CAPACITY: 50 GUESTS</span>
+                  <span>50 GUESTS</span>
                 </div>
               </div>
 
@@ -207,7 +183,7 @@ export default function Banquet() {
             <div className="banquet-info-col">
               <div className="editorial-tag">
                 <span className="accent-pip" />
-                <span>Intimate Event Space &bull; Capacity 50</span>
+                <span>Intimate Event Space</span>
               </div>
               <h3 id="milan-title" className="banquet-hall-name">
                 {banquetHalls[1].name}
@@ -217,11 +193,10 @@ export default function Banquet() {
               <p className="banquet-hall-desc">{banquetHalls[1].description}</p>
 
               <div className="banquet-features-block">
-                <h4 className="features-title">HALL HIGHLIGHTS &amp; FACILITIES:</h4>
+                <h4 className="features-title">FACILITIES</h4>
                 <ul className="banquet-features-list">
                   {banquetHalls[1].features.map((feat, i) => (
                     <li key={i} className="banquet-feature-item">
-                      <span className="feature-check">&#x2713;</span>
                       <span>{feat}</span>
                     </li>
                   ))}
@@ -256,11 +231,10 @@ export default function Banquet() {
         <div className="section-container">
           <div className="banquet-enquiry-box" data-reveal>
             <div className="enquiry-box-content">
-              <span className="editorial-tag-light">PERSONALIZED EVENT PLANNING</span>
-              <h3 className="enquiry-box-heading">Plan your occasion with our dedicated banquet team.</h3>
+              <span className="editorial-tag-light">EVENT PLANNING</span>
+              <h3 className="enquiry-box-heading">Planning an event?</h3>
               <p className="enquiry-box-subtext">
-                From seating arrangements and audiovisual coordination to specialized pure vegetarian or
-                coastal seafood banquet dining, we ensure seamless hospitality for your guests.
+                Our banquet team will help with seating and audio-visual setup.
               </p>
             </div>
             <div className="enquiry-box-actions">
@@ -270,9 +244,9 @@ export default function Banquet() {
                 rel="noopener noreferrer"
                 className="button-primary enquiry-primary-btn"
               >
-                CHAT WITH EVENT CONCIERGE
+                CHAT ON WHATSAPP
               </a>
-              <span className="enquiry-phone-note">Or call directly: +91 98454 23223</span>
+              <span className="enquiry-phone-note">Or call +91 98454 23223</span>
             </div>
           </div>
         </div>

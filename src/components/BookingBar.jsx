@@ -1,5 +1,10 @@
 import { useEffect, useState, useId } from "react";
 import { rooms, STAYFLEXI_BOOKING_URL } from "../data/rooms.js";
+import {
+  useSharedBookingDates,
+  getOffsetDateString,
+  formatDisplayDate,
+} from "../hooks/useSharedBookingDates.js";
 
 const ROOM_OPTIONS = [
   { id: "all", name: "All Room Types" },
@@ -11,42 +16,6 @@ const ROOM_OPTIONS = [
   })),
 ];
 
-function formatLocalDate(date) {
-  const year = date.getFullYear();
-  const month = String(date.getMonth() + 1).padStart(2, "0");
-  const day = String(date.getDate()).padStart(2, "0");
-  return `${year}-${month}-${day}`;
-}
-
-function getTodayDateString() {
-  return formatLocalDate(new Date());
-}
-
-function getOffsetDateString(baseDateStr, offsetDays = 1) {
-  let d;
-  if (baseDateStr && typeof baseDateStr === "string") {
-    const parts = baseDateStr.split("-").map(Number);
-    if (parts.length === 3 && !isNaN(parts[0]) && !isNaN(parts[1]) && !isNaN(parts[2])) {
-      d = new Date(parts[0], parts[1] - 1, parts[2]);
-    } else {
-      d = new Date();
-    }
-  } else {
-    d = new Date();
-  }
-  d.setDate(d.getDate() + offsetDays);
-  return formatLocalDate(d);
-}
-
-function formatDisplayDate(dateStr) {
-  if (!dateStr) return "";
-  const parts = dateStr.split("-").map(Number);
-  if (parts.length !== 3 || isNaN(parts[0])) return dateStr;
-  const d = new Date(parts[0], parts[1] - 1, parts[2]);
-  const day = d.getDate();
-  const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sept", "Oct", "Nov", "Dec"];
-  return `${day} ${months[d.getMonth()]}`;
-}
 
 export default function BookingBar({ initialRoom = null, isHomeSection = false }) {
   const checkInId = useId();
@@ -54,9 +23,9 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
   const guestsId = useId();
   const roomId = useId();
 
-  const todayStr = getTodayDateString();
-  const [checkIn, setCheckIn] = useState(() => getTodayDateString());
-  const [checkOut, setCheckOut] = useState(() => getOffsetDateString(getTodayDateString(), 1));
+  const { checkIn, checkOut, today, setCheckIn, setCheckOut, setSharedDates } =
+    useSharedBookingDates();
+  const todayStr = today;
   const [guests, setGuests] = useState("2 Adults");
   const [selectedRoom, setSelectedRoom] = useState(initialRoom || "all");
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -75,11 +44,11 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
       } else if (!event.detail?.checkIn) {
         setSelectedRoom("all");
       }
-      if (event.detail?.checkIn) {
-        setCheckIn(event.detail.checkIn);
-      }
-      if (event.detail?.checkOut) {
-        setCheckOut(event.detail.checkOut);
+      if (event.detail?.checkIn || event.detail?.checkOut) {
+        setSharedDates({
+          checkIn: event.detail?.checkIn,
+          checkOut: event.detail?.checkOut,
+        });
       }
       if (event.detail?.guests) {
         setGuests(event.detail.guests);
@@ -90,30 +59,20 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
 
     window.addEventListener("pumerai:open-booking", handleOpenBooking);
     return () => window.removeEventListener("pumerai:open-booking", handleOpenBooking);
-  }, []);
+  }, [setSharedDates]);
 
   // Handle Check-In selection: cannot be before today, and if checkOut <= newCheckIn, auto-advance checkOut
   const handleCheckInChange = (e) => {
     const newCheckIn = e.target.value;
     if (!newCheckIn) return;
-    const effectiveCheckIn = newCheckIn < todayStr ? todayStr : newCheckIn;
-    setCheckIn(effectiveCheckIn);
-
-    if (checkOut <= effectiveCheckIn) {
-      setCheckOut(getOffsetDateString(effectiveCheckIn, 1));
-    }
+    setCheckIn(newCheckIn);
   };
 
   // Handle Check-Out selection: cannot be before or equal to checkIn
   const handleCheckOutChange = (e) => {
     const newCheckOut = e.target.value;
     if (!newCheckOut) return;
-    const minCheckOut = getOffsetDateString(checkIn, 1);
-    if (newCheckOut < minCheckOut) {
-      setCheckOut(minCheckOut);
-    } else {
-      setCheckOut(newCheckOut);
-    }
+    setCheckOut(newCheckOut);
   };
 
   // Calculate nights
@@ -336,7 +295,6 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
               </div>
 
               <div className="mobile-meta-row">
-                <span className="mobile-rating-pill">4.7 / 5</span>
                 <span className="mobile-nights-text">{nights} {nights > 1 ? "Nights" : "Night"}</span>
               </div>
             </div>
@@ -373,7 +331,7 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
                 <div className="modal-select-step">
                   <div className="editorial-tag">
                     <span className="accent-pip" />
-                    <span>HOTEL PUMERAI &bull; RESERVATION DETAILS</span>
+                    <span>HOTEL PUMERAI RESERVATION DETAILS</span>
                   </div>
                   <h3 id="modal-title" className="modal-title">
                     Select Your Stay Details
@@ -469,7 +427,7 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
                   <div className="modal-summary-col">
                     <div className="editorial-tag">
                       <span className="accent-pip" />
-                      <span>HOTEL PUMERAI &bull; DIRECT BENEFIT</span>
+                      <span>HOTEL PUMERAI DIRECT BENEFIT</span>
                     </div>
                     <h3 id="modal-title" className="modal-title">
                       Check Availability &amp; Reserve Direct
@@ -506,7 +464,7 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
                       </div>
                       <div className="calc-divider" />
                       <div className="reservation-badge-note">
-                        <span>✓ Direct Front Desk Reservation Request</span>
+                        <span>Direct Front Desk Reservation Request</span>
                       </div>
                     </div>
 
@@ -514,24 +472,13 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
                     <span className="inclusions-heading">All direct bookings include:</span>
                     <ul>
                       <li>
-                        <span className="check-icon">&#x2713;</span>
-                        <span>Complimentary daily breakfast buffet at Matsya / Madhura</span>
+                        <span>Complimentary daily breakfast buffet at Matsya and Madhura</span>
                       </li>
                       <li>
-                        <span className="check-icon">&#x2713;</span>
-                        <span>Free Wi-Fi · 100+ Mbps throughout the property</span>
+                        <span>Free Wi-Fi (100+ Mbps) throughout the property</span>
                       </li>
                       <li>
-                        <span className="check-icon">&#x2713;</span>
-                        <span>Access to rooftop swimming pool &amp; children&apos;s pool (6:30 AM–7:00 PM)</span>
-                      </li>
-                      <li>
-                        <span className="check-icon">&#x2713;</span>
-                        <span>Spacious private parking with EV charging</span>
-                      </li>
-                      <li>
-                        <span className="check-icon">&#x2713;</span>
-                        <span>Free cancellation up to 24 hours before check-in on eligible direct bookings</span>
+                        <span>Access to rooftop swimming pool and children pool</span>
                       </li>
                     </ul>
                   </div>
@@ -544,7 +491,7 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
                       className="button-secondary"
                       style={{ fontSize: "0.72rem", padding: "8px 14px", width: "100%", textAlign: "center" }}
                     >
-                      📍 Get Driving Directions on Google Maps
+                      Get Directions
                     </a>
                   </div>
                 </div>
@@ -564,7 +511,7 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
                           <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
                         </svg>
-                        <span>Book Instantly on WhatsApp</span>
+                        <span>Book on WhatsApp</span>
                       </a>
                     ) : (
                       <a
@@ -602,7 +549,7 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
                   </div>
 
                   <div className="or-divider">
-                    <span>OR SEND RESERVATION REQUEST</span>
+                    <span>OR SEND ENQUIRY</span>
                   </div>
 
                   {/* Direct Inquiry Form */}
@@ -659,10 +606,10 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
                     </div>
 
                     <button type="submit" className="button-primary modal-submit-btn">
-                      REQUEST CONFIRMATION
+                      SEND ENQUIRY
                     </button>
                     <p className="form-secure-note">
-                      🔒 No immediate payment required. Our front desk will confirm within 15 minutes.
+                      No immediate payment required.
                     </p>
                   </form>
                 </div>
@@ -671,10 +618,9 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
           ) : (
               /* Success / Submission Confirmation State */
               <div className="modal-success-screen">
-                <div className="success-icon">&#x2713;</div>
                 <h3 className="success-title">Reservation Request Received</h3>
                 <p className="success-copy">
-                  Thank you, <strong>{guestName || "Guest"}</strong>! We have received your inquiry for the{" "}
+                  Thank you, <strong>{guestName || "Guest"}</strong>! We have received your enquiry for the{" "}
                   <strong>{matchedRoom.name}</strong> from <strong>{checkIn}</strong> to <strong>{checkOut}</strong>.
                 </p>
                 <div className="success-summary-box">
@@ -687,7 +633,7 @@ export default function BookingBar({ initialRoom = null, isHomeSection = false }
                     rel="noopener noreferrer"
                     className="button-whatsapp-instant"
                   >
-                    Send Instant WhatsApp Copy
+                    Send WhatsApp Copy
                   </a>
                   <button type="button" className="button-secondary" onClick={handleResetModal}>
                     Close

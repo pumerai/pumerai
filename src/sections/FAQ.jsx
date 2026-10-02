@@ -17,16 +17,15 @@ export default function FAQ({ isStandalonePage = false }) {
             <div className="header-meta">
               <div className="editorial-tag">
                 <span className="accent-pip" />
-                <span>Frequently Asked Questions</span>
+                <span>FAQS</span>
               </div>
               <h2 id="faq-heading" className="section-title">
-                Clear answers for <br />
-                <span className="title-italic">a seamless stay.</span>
+                Frequently Asked <br />
+                <span className="title-italic">Questions.</span>
               </h2>
             </div>
             <p className="header-summary">
-              Everything you need to know about check-in, pool timings, Kasarkod Beach proximity,
-              dining, and amenities at Hotel Pumerai in Honnavar.
+              Everything you need to know about check-in, dining and amenities at Hotel Pumerai.
             </p>
           </header>
         )}
@@ -75,7 +74,7 @@ export default function FAQ({ isStandalonePage = false }) {
         {/* Further Assistance Banner */}
         <div className="faq-help-box" data-reveal>
           <div className="help-text">
-            <span className="help-title">Have an unanswered question?</span>
+            <span className="help-title">Have a question?</span>
             <span className="help-sub">Our 24-hour Honnavar front desk is here to assist you anytime.</span>
           </div>
           <div className="help-actions">

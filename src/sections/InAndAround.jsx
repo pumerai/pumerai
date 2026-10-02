@@ -1,125 +1,122 @@
-import { useState } from "react";
-import { destinations } from "../data/destinations.js";
+import { useState, useEffect, useRef, useCallback } from "react";
 
+const slides = [
+  {
+    src: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_46%20AM_result.webp",
+    alt: "Rooftop swimming pool overlooking coastal palm groves at Hotel Pumerai Honnavar",
+  },
+  {
+    src: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_21%20AM_result.webp",
+    alt: "Exterior facade and arrival portico of Hotel Pumerai along NH-66 Honnavar",
+  },
+  {
+    src: "/dining/_DSC0222_result.webp",
+    alt: "Matsya Multicuisine Restaurant dining room at Hotel Pumerai Honnavar",
+  },
+  {
+    src: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_24%20AM_result.webp",
+    alt: "Sunlit grand lobby and double-height arrival lounge at Hotel Pumerai",
+  },
+  {
+    src: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_42%20AM_result.webp",
+    alt: "Architectural facade and glass-edge pool deck at Hotel Pumerai",
+  },
+];
 
-export default function InAndAround({ onNavigate }) {
-  const [activeDestIndex, setActiveDestIndex] = useState(0);
-  const activeDest = destinations[activeDestIndex];
+const SLIDE_DURATION = 4000;      // Each image remains on screen for ~4 seconds
+const TEXT_FADE_LEAD = 550;       // Text fades out smoothly before next image transition
+
+export default function InAndAround() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [prevIndex, setPrevIndex] = useState(null);
+  const [isTextExiting, setIsTextExiting] = useState(false);
+  const touchStartX = useRef(null);
+
+  const goToSlide = useCallback((nextIdx) => {
+    setIsTextExiting(false);
+    setPrevIndex(currentIndex);
+    setCurrentIndex(nextIdx);
+  }, [currentIndex]);
+
+  useEffect(() => {
+    // Reset exiting state on slide change
+    setIsTextExiting(false);
+
+    // 1. Text fades out smoothly prior to slide transition
+    const exitTimer = setTimeout(() => {
+      setIsTextExiting(true);
+    }, Math.max(0, SLIDE_DURATION - TEXT_FADE_LEAD));
+
+    // 2. Transition to next slide
+    const slideTimer = setTimeout(() => {
+      setPrevIndex(currentIndex);
+      setCurrentIndex((prev) => (prev + 1) % slides.length);
+    }, SLIDE_DURATION);
+
+    return () => {
+      clearTimeout(exitTimer);
+      clearTimeout(slideTimer);
+    };
+  }, [currentIndex]);
+
+  const handleTouchStart = (e) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e) => {
+    if (touchStartX.current !== null) {
+      const diff = touchStartX.current - e.changedTouches[0].clientX;
+      if (diff > 45) {
+        goToSlide((currentIndex + 1) % slides.length);
+      } else if (diff < -45) {
+        goToSlide(currentIndex > 0 ? currentIndex - 1 : slides.length - 1);
+      }
+      touchStartX.current = null;
+    }
+  };
 
   return (
-    <section className="section in-and-around-section" id="in-and-around" aria-labelledby="in-around-heading">
+    <section
+      className="section full-frame-slider-section"
+      id="property-slider"
+      aria-label="Hotel Pumerai Photography"
+      data-reveal
+    >
       <div className="section-container">
-        {/* Editorial Section Header */}
-        <header className="section-header-split" data-reveal>
-          <div className="header-meta">
-            <div className="editorial-tag">
-              <span className="accent-pip" />
-              <span>IN &amp; AROUND</span>
-            </div>
-            <h2 id="in-around-heading" className="section-title">
-              Explore Honnavar, <br />
-              <span className="title-italic">From Pumerai.</span>
-            </h2>
-          </div>
-          <div className="header-summary-block">
-            <p className="header-summary">
-              Discover beaches, rivers, temples and coastal destinations around Honnavar, with Hotel Pumerai as your comfortable base.
-            </p>
-          </div>
-        </header>
-
-        {/* Editorial Composition: Large Visual Area + Magazine List */}
-        <div className="in-around-showcase" data-reveal>
-          {/* Dominant Featured Visual Frame */}
-          <div className="in-around-spotlight-frame">
-            <div className="spotlight-media-container">
-              <img
-                key={activeDest.id}
-                src={activeDest.image}
-                alt={activeDest.alt}
-                loading="lazy"
-                className="spotlight-image"
-              />
-              <div className="spotlight-overlay" />
-
-              {/* Floating Badges */}
-              <div className="spotlight-top-badge">
-                <span className="spotlight-badge-pip" />
-                <span className="spotlight-badge-type">{activeDest.type}</span>
-              </div>
-
-              <div className="spotlight-bottom-info">
-                <div className="spotlight-distance-pill">
-                  <strong>{activeDest.distance}</strong>
-                  <span className="pill-dot">&bull;</span>
-                  <span>{activeDest.time} from Hotel Pumerai</span>
-                </div>
-                <h3 className="spotlight-title">{activeDest.name}</h3>
-                <p className="spotlight-desc">{activeDest.description}</p>
-                <div className="spotlight-actions">
-                  <a
-                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(activeDest.mapsQuery)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="button-primary spotlight-btn"
-                    aria-label={`Get directions to ${activeDest.name} on Google Maps`}
-                  >
-                    <span>GET DIRECTIONS ON MAP <span className="arrow-icon">&rarr;</span></span>
-                  </a>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Asymmetrical Editorial Destination List */}
-          <div className="in-around-list-column" role="tablist" aria-label="Destinations around Honnavar">
-            {destinations.map((dest, idx) => {
-              const isSelected = idx === activeDestIndex;
+        <div
+          className="full-frame-slider-stage"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+        >
+          {/* 5 Stacked Crossfade Slides with cinematic slow movement */}
+          <div className="full-frame-slider-track">
+            {slides.map((slide, idx) => {
+              const isActive = idx === currentIndex;
+              const isExiting = idx === prevIndex;
               return (
-                <button
-                  key={dest.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={isSelected}
-                  className={`in-around-item-btn ${isSelected ? "is-active" : ""}`}
-                  onClick={() => setActiveDestIndex(idx)}
-                  onMouseEnter={() => setActiveDestIndex(idx)}
+                <div
+                  key={slide.src}
+                  className={`full-frame-slide ${isActive ? "is-active" : ""} ${isExiting ? "is-exiting" : ""}`}
+                  aria-hidden={!isActive}
                 >
-                  <div className="item-btn-num">{dest.num}</div>
-                  <div className="item-btn-content">
-                    <div className="item-btn-header">
-                      <h4 className="item-btn-title">{dest.name}</h4>
-                      <span className="item-btn-distance">{dest.distance}</span>
-                    </div>
-                    <div className="item-btn-meta">
-                      <span className="item-btn-type">{dest.type}</span>
-                      <span className="item-btn-sep">&bull;</span>
-                      <span className="item-btn-time">{dest.time}</span>
-                    </div>
-                  </div>
-                  <span className="item-btn-arrow" aria-hidden="true">&rarr;</span>
-                </button>
+                  <img
+                    src={slide.src}
+                    alt={slide.alt}
+                    loading={idx === 0 ? "eager" : "lazy"}
+                    className={`full-frame-slide-img full-frame-slide-img-${idx}`}
+                  />
+                </div>
               );
             })}
           </div>
-        </div>
 
-        {/* Global Explorer Map Action */}
-        <div className="in-around-footer-bar" data-reveal>
-          <div className="ia-footer-content">
-            <span className="ia-footer-icon">📍</span>
-            <p className="ia-footer-text">
-              Hotel Pumerai sits directly on NH-66 near Ramateertha Cross, offering swift ingress and egress to all destinations in Uttara Kannada.
-            </p>
-          </div>
-          <a
-            href="https://maps.app.goo.gl/rCfTnw9t8Dp58mga7"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button-secondary ia-footer-btn"
+          {/* Minimal editorial text overlay with subtle upward float & fade */}
+          <p
+            key={currentIndex}
+            className={`full-frame-slider-overlay-text ${isTextExiting ? "is-exiting" : ""}`}
           >
-            <span>VIEW HOTEL ON GOOGLE MAPS</span>
-          </a>
+            Your Coastal Escape
+          </p>
         </div>
       </div>
     </section>

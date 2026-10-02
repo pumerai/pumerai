@@ -3,14 +3,14 @@ import { destinations } from "../data/destinations.js";
 import UttaraKannadaMap from "../components/UttaraKannadaMap.jsx";
 
 const hotelPolicies = [
-  { label: "Check-in Time", value: "From 1:00 PM (24-hr front desk welcomes late highway arrivals)" },
-  { label: "Check-out Time", value: "Until 11:00 AM (Late checkout subject to room availability)" },
-  { label: "Pool Hours", value: "6:30 AM – 7:00 PM daily (Rooftop leisure & children's splash pool)" },
-  { label: "Smoking Policy", value: "All rooms are smoke-free; permitted only in designated outdoor zones" },
-  { label: "Pet Policy", value: "Pets are not accommodated" },
-  { label: "Parking & EV", value: "Spacious private parking with dedicated EV charging stations" },
-  { label: "Front Desk", value: "24-hour manned reception, security & luggage assistance" },
-  { label: "Direct Bookings", value: "Free cancellation up to 24 hours prior to check-in on eligible rates" },
+  { label: "Check-in Time", value: "From 1:00 PM with 24-hour reception for late arrivals." },
+  { label: "Check-out Time", value: "Until 11:00 AM." },
+  { label: "Pool Hours", value: "6:30 AM to 7:00 PM daily for rooftop and children's pools." },
+  { label: "Smoking Policy", value: "Smoke-free rooms with designated outdoor smoking areas." },
+  { label: "Pet Policy", value: "Pets are not accommodated." },
+  { label: "Parking & EV", value: "Covered parking with dedicated EV charging stations." },
+  { label: "Front Desk", value: "24-hour front desk, security and luggage assistance." },
+  { label: "Direct Bookings", value: "Free cancellation up to 24 hours before check-in." },
 ];
 
 export default function Location({ isStandalonePage = false }) {
@@ -110,11 +110,11 @@ export default function Location({ isStandalonePage = false }) {
                 <div className="destination-title-row">
                   <h3 className="destination-name">{activeDest.name}</h3>
                   <div className="destination-distance-badge">
-                    <span className="distance-icon" aria-hidden="true">📍</span>
+                    <span className="distance-icon" aria-hidden="true" />
                     <span>{activeDest.distance}</span>
                     {activeDest.driveTime && (
                       <>
-                        <span className="distance-sep">&bull;</span>
+                        <span className="distance-sep">, </span>
                         <span className="distance-time">{activeDest.driveTime}</span>
                       </>
                     )}
@@ -143,8 +143,8 @@ export default function Location({ isStandalonePage = false }) {
         {/* Essential Stay Information & Policies */}
         <div className="policies-summary-card" data-reveal>
           <div className="policies-header">
-            <span className="policies-tag">Essential Stay Information</span>
-            <h3 className="policies-title">Hotel Policies &amp; Guest Comfort</h3>
+            <span className="policies-tag">POLICIES</span>
+            <h3 className="policies-title">Hotel Policies</h3>
           </div>
           <div className="policies-two-col-grid">
             {hotelPolicies.map((p) => (

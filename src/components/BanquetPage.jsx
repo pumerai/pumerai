@@ -5,9 +5,9 @@ export default function BanquetPage({ onNavigate }) {
   return (
     <main className="page-shell banquet-page-shell">
       <PageHeader
-        eyebrow="EVENTS & GATHERINGS • HOTEL PUMERAI"
-        title="BANQUET HALLS"
-        description="Elegant spaces for celebrations, gatherings and events at Hotel Pumerai."
+        eyebrow="EVENTS"
+        title="Banquet Halls"
+        description="Two air-conditioned halls for weddings, meetings and family functions."
         id="banquet-page-heading"
       />
       <Banquet />

@@ -14,15 +14,10 @@ import SEOHead from "./components/SEOHead.jsx";
 import HeroSequence from "./sections/HeroSequence.jsx";
 import About from "./sections/About.jsx";
 import RoomsPreview from "./sections/RoomsPreview.jsx";
-import OffersBanner from "./sections/OffersBanner.jsx";
 import PickASide from "./sections/PickASide.jsx";
-import AmenitiesGrid from "./sections/AmenitiesGrid.jsx";
 import HotelAreas from "./sections/HotelAreas.jsx";
-import DiningPreview from "./sections/DiningPreview.jsx";
 import TrustReviews from "./sections/TrustReviews.jsx";
-import GallerySection from "./sections/GallerySection.jsx";
 import InAndAround from "./sections/InAndAround.jsx";
-import Location from "./sections/Location.jsx";
 import WebsiteLoader from "./components/WebsiteLoader.jsx";
 import { useSectionReveals } from "./hooks/useSectionReveals.js";
 
@@ -39,24 +34,10 @@ function HomePage({ onNavigate }) {
       <BookingBar isHomeSection={true} />
       <About />
       <RoomsPreview onNavigate={onNavigate} />
-      <OffersBanner />
-
-      {/* SECTION 5: Beachside, Poolside, Riverside, Pick a Side */}
       <PickASide onNavigate={onNavigate} />
-
-      {/* SECTION 4: Hospitality that Goes the Extra Mile */}
-      <AmenitiesGrid />
-
       <HotelAreas />
-      <DiningPreview onNavigate={onNavigate} />
       <TrustReviews />
-      <GallerySection onNavigate={onNavigate} />
-
-      {/* SECTION 1: IN & AROUND — Explore Honnavar, From Pumerai */}
       <InAndAround onNavigate={onNavigate} />
-
-      {/* SECTION 3: Coastal. Yet Connected. (Location & Access) */}
-      <Location />
     </main>
   );
 }

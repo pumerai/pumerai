@@ -18,8 +18,8 @@ export default function RooftopRelaxation({ onNavigate }) {
           </div>
 
           <h2 id="relaxation-title" className="rooftop-title">
-            Take it all in <br />
-            <span className="title-italic">from the Rooftop.</span>
+            Rooftop Pool <br />
+            <span className="title-italic">&amp; Views.</span>
           </h2>
 
           <p className="rooftop-lead">
@@ -41,11 +41,11 @@ export default function RooftopRelaxation({ onNavigate }) {
             {/* Architectural Badges on Image */}
             <div className="rooftop-badge-pill">
               <span className="rooftop-badge-dot" />
-              <span>GLASS-EDGE HORIZON POOL &bull; 6:30 AM &ndash; 7:00 PM</span>
+              <span>GLASS-EDGE POOL, 6:30 AM &ndash; 7:00 PM</span>
             </div>
 
             <div className="rooftop-location-pill">
-              <span>ELEVATED RETREAT &bull; NH-66 HONNAVAR</span>
+              <span>HOTEL PUMERAI, NH-66 HONNAVAR</span>
             </div>
           </div>
 

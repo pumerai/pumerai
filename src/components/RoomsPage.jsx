@@ -119,10 +119,9 @@ export default function RoomsPage() {
     <main className="page-shell rooms-page-shell">
       {/* Standardized Compact Internal Page Header */}
       <PageHeader
-        eyebrow="ACCOMMODATION • HONNAVAR"
-        title="Rooms & Suites at"
-        italicTitle="Hotel Pumerai Honnavar"
-        description="Explore our collection of contemporary rooms and suites in Honnavar."
+        eyebrow="ACCOMMODATION"
+        title="Rooms"
+        description="Contemporary rooms and suites in Honnavar."
         id="rooms-page-heading"
       />
 
@@ -182,7 +181,6 @@ export default function RoomsPage() {
                   {/* Room Details & Actions */}
                   <div className="room-card-content">
                     <div className="room-header-meta">
-                      <span className="room-tagline">{room.tagline || "ACCOMMODATION • HONNAVAR"}</span>
                       <h2 className="room-name">
                         {room.name}
                       </h2>
@@ -191,9 +189,7 @@ export default function RoomsPage() {
                     {/* Specifications Row: Bed | Size | Occupancy */}
                     <div className="room-specs-row">
                       <span className="spec-pill">{room.bedType}</span>
-                      <span className="spec-divider" aria-hidden="true">&bull;</span>
                       <span className="spec-pill">{room.size}</span>
-                      <span className="spec-divider" aria-hidden="true">&bull;</span>
                       <span className="spec-pill">{room.occupancy}</span>
                     </div>
 
@@ -209,11 +205,10 @@ export default function RoomsPage() {
 
                     {/* Inclusions Highlights */}
                     <div className="room-features-box">
-                      <span className="features-title">Highlights &amp; Amenities:</span>
+                      <span className="features-title">FACILITIES</span>
                       <ul className="room-features-list">
                         {(isExpanded ? room.highlights : room.highlights.slice(0, 3)).map((item) => (
                           <li key={item} className="feature-item">
-                            <span className="feature-bullet">&bull;</span>
                             <span>{item}</span>
                           </li>
                         ))}
@@ -227,7 +222,7 @@ export default function RoomsPage() {
                         onClick={() => toggleDetails(room.slug)}
                         aria-expanded={isExpanded}
                       >
-                        {isExpanded ? "Show Less Details ↑" : "View Full Details ↓"}
+                        {isExpanded ? "Show Less" : "View Details"}
                       </button>
 
                       {/* Booking CTA Button */}

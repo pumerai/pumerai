@@ -2,20 +2,19 @@
 export const venuesData = [
   {
     id: "matsya",
-    name: "MATSYA MULTICUISINE RESTAURANT",
-    subtitle: "Coastal Karavali Seafood, North Indian & Continental",
-    cuisines: ["Coastal", "Indian", "Tandoor", "Chinese", "Italian", "Mexican", "Continental"],
-    hours: "7:00 AM – 10:30 PM Daily",
-    mealTimes: "Breakfast: 7:00–10:30 AM · Lunch: 12:30–3:30 PM · Dinner: 7:00–10:30 PM",
+    name: "Matsya Multicuisine Restaurant",
+    subtitle: "Coastal seafood, tandoor and continental.",
+    cuisines: ["Coastal", "Indian", "Tandoor", "Continental"],
+    hours: "7:00 AM – 10:30 PM",
+    mealTimes: "Breakfast, Lunch and Dinner",
     image: "/dining/_DSC0222_result.webp",
     alt: "Matsya Multicuisine Restaurant dining room at Hotel Pumerai Honnavar",
-    description:
-      "Matsya brings the rich coastal bounty of Uttara Kannada to your plate. From morning breakfast spreads to fresh daily catch prepared in authentic Karavali spices, tandoori grills, and pan-Asian favorites.",
+    description: "Coastal seafood, tandoor and continental.",
     signatureDishes: [
-      { name: "Honnavar Karavali Fish Curry", desc: "Fresh local catch slow-simmered in freshly grated coconut, Byadagi chilli, and tangy wild kokum." },
-      { name: "Prawns Ghee Roast", desc: "Plump Arabian Sea prawns tossed in deeply aromatic Karavali red masala and pure country ghee." },
-      { name: "Butter Garlic Mud Crab", desc: "Sweet, succulent local crab meat tossed in crushed garlic, herbs, and lemon butter." },
-      { name: "Murgh Malai Kebab", desc: "Tender chicken morsels marinated in cardamom cream, roasted in the clay tandoor." },
+      { name: "Honnavar Karavali Fish Curry" },
+      { name: "Prawns Ghee Roast" },
+      { name: "Butter Garlic Mud Crab" },
+      { name: "Murgh Malai Kebab" },
     ],
     menuCategories: [
       {
@@ -47,20 +46,19 @@ export const venuesData = [
   },
   {
     id: "madhura",
-    name: "MADHURA VEG RESTAURANT",
-    subtitle: "100% Pure Vegetarian South Indian & Coastal Satvik",
-    cuisines: ["100% Pure Veg", "Indian", "Tandoor", "Chinese", "Italian", "Mexican", "Continental", "Indian Desserts"],
-    hours: "6:30 AM – 10:00 PM Daily",
-    mealTimes: "All-Day Dining · Breakfast: 6:30–11:00 AM · Pure Veg Kitchen",
+    name: "Madhura Veg Restaurant",
+    subtitle: "Pure vegetarian South Indian.",
+    cuisines: ["100% Pure Veg", "Indian", "Tandoor", "Indian Desserts"],
+    hours: "6:30 AM – 10:00 PM",
+    mealTimes: "All-Day Dining and Breakfast",
     image: "/dining/_DSC0247_result.webp",
     alt: "Madhura Pure Vegetarian Restaurant at Hotel Pumerai Honnavar",
-    description:
-      "A dedicated pure vegetarian sanctuary honoring Karnataka's rich vegetarian culinary heritage. Experience crisp golden dosas, delicate neer dosas, elaborate noon thalis, and freshly ground filter coffee.",
+    description: "Pure vegetarian South Indian.",
     signatureDishes: [
-      { name: "Crispy Benne Masala Dosa", desc: "Traditional butter-roasted fermented crepe folded with spiced potato mash, served with trio of chutneys." },
-      { name: "Mangalorean Neer Dosa", desc: "Feather-light steamed rice crepes paired with mildly spiced coconut vegetable kurma." },
-      { name: "Special Karavali Veg Thali", desc: "Wholesome midday banquet featuring seasonal local curries, rasam, kootu, papad, and payasam." },
-      { name: "Degree Filter Kaapi", desc: "Freshly brewed South Indian chicory blend with frothy whole milk in brass davarah." },
+      { name: "Crispy Benne Masala Dosa" },
+      { name: "Mangalorean Neer Dosa" },
+      { name: "Special Karavali Veg Thali" },
+      { name: "Degree Filter Kaapi" },
     ],
     menuCategories: [
       {

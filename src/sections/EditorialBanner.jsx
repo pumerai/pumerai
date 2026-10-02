@@ -70,7 +70,7 @@ export default function EditorialBanner({
               <ul className="editorial-banner-perks" aria-label="Highlights">
                 {perks.map((perk, i) => (
                   <li key={i} className="editorial-perk-item">
-                    <span className="perk-bullet">&#x2713;</span>
+                    <span className="perk-bullet" />
                     <span>{perk}</span>
                   </li>
                 ))}

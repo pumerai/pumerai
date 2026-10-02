@@ -5,7 +5,7 @@ const reviewsData = [
     author: "Srikanya Devadiga",
     time: "a month ago",
     rating: 5,
-    ratingsBreakdown: "Rooms: 5 · Service: 5 · Location: 5",
+    ratingsBreakdown: "Rooms: 5, Service: 5, Location: 5",
     highlights: "Luxury, Great view, Quiet and Great value",
     quote:
       "Absolutely loved my stay at Hotel Pumerai ... The rooms were really good, and the view was absolutely top-notch. The hospitality was excellent, and everyone from the front office staff to the housekeeping team was courteous and welcoming.The breakfast was another highlight , a great variety of options and everything tasted really good! The security guard was also very helpful and made us feel well taken care of. We also ordered food from Matsya Restaurant, and the food, service, and overall experience were excellent . Overall, a wonderful stay with amazing hospitality. Definitely worth it and highly recommended! I’ll surely be coming back again.",
@@ -15,7 +15,7 @@ const reviewsData = [
     author: "MALLIKARJUN R BIRADAR",
     time: "2 months ago",
     rating: 5,
-    ratingsBreakdown: "Rooms: 5 · Service: 5 · Location: 5",
+    ratingsBreakdown: "Rooms: 5, Service: 5, Location: 5",
     highlights: null,
     quote:
       "I had a very pleasant stay at the hotel. The rooms were clean, comfortable, and well maintained. The staff members were courteous, friendly, and always willing to help. Their prompt service and warm hospitality made my stay enjoyable. I appreciate the excellent support provided by Ms. ANURUPA & team. I would definitely recommend this hotel to others and look forward to staying here again.",
@@ -25,7 +25,7 @@ const reviewsData = [
     author: "Mystic Valley",
     time: "a month ago",
     rating: 5,
-    ratingsBreakdown: "Rooms: 5 · Service: 5 · Location: 5",
+    ratingsBreakdown: "Rooms: 5, Service: 5, Location: 5",
     highlights: "Luxury, Great view, Romantic and Quiet",
     quote:
       "1. Rooms - Neat, clean & offered a wonderful garden view.\n\n2. Food - Really good taste & very affordable.\n\n3. Service & Reception - The reception staff were friendly and helpful.\n\n4. Drawbacks - The Pure veg Restaurant staff need better training. They struggle with English and had trouble taking our food orders correctly.\n\nOverall it is a great stay for the price & rooms though the restaurant service could definitely use improvement.",
@@ -212,7 +212,7 @@ export default function TrustReviews() {
           <div className="header-meta">
             <div className="editorial-tag">
               <span className="accent-pip" />
-              <span>Guest Experiences &bull; Google Reviews</span>
+              <span>REVIEWS</span>
             </div>
             <h2 id="reviews-heading" className="section-title reviews-title">
               Loved by travellers <br />
@@ -220,8 +220,7 @@ export default function TrustReviews() {
             </h2>
           </div>
           <p className="header-summary reviews-summary">
-            From highway stopovers along NH-66 to family beach vacations in Honnavar,
-            here is what guests share on Google Reviews about their stay at Hotel Pumerai.
+            Guest reviews and ratings from travellers staying at Hotel Pumerai in Honnavar.
           </p>
         </header>
 
@@ -303,7 +302,7 @@ export default function TrustReviews() {
                         onClick={() => toggleExpand(idx)}
                         aria-label={isExpanded ? "Show less review text" : "Read full review"}
                       >
-                        {isExpanded ? "Read less ↑" : "Read more ↓"}
+                        {isExpanded ? "Read less" : "Read more"}
                       </button>
                     )}
                   </div>
@@ -314,7 +313,7 @@ export default function TrustReviews() {
                     </div>
                     <div className="author-info">
                       <span className="author-name">{rev.author}</span>
-                      <span className="author-loc">{rev.time} &bull; {rev.source}</span>
+                      <span className="author-loc">{rev.time}, {rev.source}</span>
                     </div>
                   </div>
                 </article>

@@ -6,9 +6,9 @@ const sideMoments = [
     number: "01",
     label: "BEACHSIDE",
     name: "Kasarkod Eco Beach",
-    badge: "~5 km • Blue Flag Certified",
+    badge: "5 km, Blue Flag Certified",
     description:
-      "Stroll along golden sands and casuarina promenades. Certified with the prestigious international Blue Flag for clean waters, eco-amenities, and pristine coastal calm.",
+      "Clean Blue Flag beach with golden sand and calm waters 5 km away.",
     image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_42%20AM_result.webp",
     alt: "Kasarkod Eco Beach and coastal walkway near Hotel Pumerai Honnavar",
     cta: "Explore Beach Route",
@@ -19,9 +19,9 @@ const sideMoments = [
     number: "02",
     label: "POOLSIDE",
     name: "Rooftop Swimming Pool",
-    badge: "Rooftop Deck • 6:30 AM – 7:00 PM",
+    badge: "Rooftop Deck, 6:30 AM – 7:00 PM",
     description:
-      "Perched high above the coastal highway, our glass-edge swimming pool and adjoining children's splash pool offer refreshing dips with panoramic Western Ghats horizons.",
+      "Glass-edge rooftop pool and shallow children's splash area overlooking coastal canopies.",
     image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_46%20AM_result.webp",
     alt: "Glass-edge rooftop pool overlooking coconut groves at Hotel Pumerai Honnavar",
     cta: "Rooftop Amenities",
@@ -32,9 +32,9 @@ const sideMoments = [
     number: "03",
     label: "RIVERSIDE",
     name: "Sharavathi River Boating",
-    badge: "~2.8 km • Mangrove Backwaters",
+    badge: "2.8 km, Mangrove Backwaters",
     description:
-      "Glide through serene mangrove trails, witness historic railway bridges across the estuary, and experience unhurried sunset boat cruises arranged directly by our front desk.",
+      "Mangrove trails and sunset estuary cruises arranged directly through our front desk.",
     image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_15%20AM_result.webp",
     alt: "Sharavathi River backwaters and mangrove boat rides in Honnavar",
     cta: "Boat Cruise Assistance",
@@ -44,10 +44,10 @@ const sideMoments = [
     id: "hotel",
     number: "04",
     label: "HOTELSIDE",
-    name: "Hotel Pumerai Retreat",
-    badge: "NH-66 Honnavar • 40 Rooms",
+    name: "Hotel Pumerai",
+    badge: "NH-66 Honnavar, 40 Rooms",
     description:
-      "Return from your coastal explorations to calm, air-conditioned rooms, regional seafood at Matsya, vegetarian dining at Madhura, and secured parking with EV charging.",
+      "Air-conditioned rooms, two on-site restaurants, and secure parking with EV charging.",
     image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_21%20AM_result.webp",
     alt: "Contemporary exterior facade of Hotel Pumerai on NH-66 Honnavar",
     cta: "View Guest Rooms",
@@ -80,19 +80,15 @@ export default function PickASide({ onNavigate }) {
         <header className="pick-a-side-header" data-reveal>
           <div className="editorial-tag">
             <span className="accent-pip" />
-            <span>THE COASTAL RHYTHM &bull; EXPERIENCES</span>
+            <span>EXPERIENCES</span>
           </div>
 
           <h2 id="pick-a-side-title" className="pick-a-side-display-title">
-            <span className="pas-line">Beachside, Poolside, Riverside,</span>
-            <span className="pas-line pas-accent">
-              <span className="title-italic">Pick a Side.</span>
-            </span>
+            Beach, River and Pool
           </h2>
 
           <p className="pick-a-side-lead">
-            Whether you crave the sound of ocean surf, the tranquility of a rooftop swim, or the winding currents
-            of the Sharavathi River, Hotel Pumerai brings Karnataka&apos;s coastal magic together in one serene stay.
+            Explore Honnavar beaches, backwaters and rooftop pool relaxation from Hotel Pumerai.
           </p>
         </header>
 
@@ -120,13 +116,6 @@ export default function PickASide({ onNavigate }) {
                   />
                   <div className="pas-image-gradient" />
                   
-                  {/* Floating Number Tag */}
-                  <div className="pas-floating-tag">
-                    <span className="pas-tag-num">{item.number}</span>
-                    <span className="pas-tag-sep">/</span>
-                    <span className="pas-tag-label">{item.label}</span>
-                  </div>
-
                   {/* Badge */}
                   <div className="pas-badge">
                     <span>{item.badge}</span>

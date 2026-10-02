@@ -21,9 +21,9 @@ export default function ContactPage() {
   return (
     <main className="page-shell contact-page-shell">
       <PageHeader
-        eyebrow="CONTACT • HONNAVAR"
-        title="Contact Hotel Pumerai"
-        description="Reach Hotel Pumerai for reservations, enquiries and local travel assistance."
+        eyebrow="CONTACT"
+        title="Contact"
+        description="Reservations and enquiries."
         id="contact-page-heading"
       />
 
@@ -33,49 +33,45 @@ export default function ContactPage() {
             {/* Left Column: Contact Channels & NAP */}
             <div className="contact-info-col">
               <div className="contact-card-box">
-                <span className="card-mini-tag">Direct Communications</span>
                 <h3 className="card-box-title">Get in Touch</h3>
                 <div className="brass-rule-small" />
 
                 <div className="contact-methods-stack">
                   <div className="method-item">
-                    <span className="method-label">Direct Reservations Line</span>
+                    <span className="method-label">Reservations</span>
                     <a href="tel:+919845423223" className="method-val primary-link">
-                      +91 98454 23223
+                      +91 98454 23223 (24 hours)
                     </a>
-                    <span className="method-note">Available 24 hours daily</span>
                   </div>
 
                   <div className="method-item">
-                    <span className="method-label">Hotel Front Desk / Landline</span>
+                    <span className="method-label">Front Desk</span>
                     <a href="tel:+918387221221" className="method-val">
                       08387-221221
                     </a>
-                    <span className="method-note">Front desk &amp; room service</span>
                   </div>
 
                   <div className="method-item">
-                    <span className="method-label">WhatsApp Chat Concierge</span>
+                    <span className="method-label">WhatsApp</span>
                     <a
                       href={whatsappDirectUrl}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="method-val whatsapp-link"
                     >
-                      +91 98454 23223 (Click to Chat)
+                      Chat on WhatsApp
                     </a>
-                    <span className="method-note">Instant assistance &amp; rate confirmation</span>
                   </div>
 
                   <div className="method-item">
-                    <span className="method-label">Email Reservations</span>
+                    <span className="method-label">Email</span>
                     <a href="mailto:reservation@hotelpumerai.com" className="method-val">
                       reservation@hotelpumerai.com
                     </a>
                   </div>
 
                   <div className="method-item">
-                    <span className="method-label">Postal Address</span>
+                    <span className="method-label">Address</span>
                     <address className="method-address">
                       Hotel Pumerai
                       <br />
@@ -90,10 +86,10 @@ export default function ContactPage() {
 
                 <div className="contact-instant-actions">
                   <a href={officialGoogleMapsLink} target="_blank" rel="noopener noreferrer" className="button-primary">
-                    📍 Get Directions on Google Maps
+                    Get Directions
                   </a>
                   <a href={whatsappDirectUrl} target="_blank" rel="noopener noreferrer" className="button-whatsapp-instant">
-                    Message on WhatsApp
+                    WhatsApp
                   </a>
                   <a href="tel:+919845423223" className="button-call-instant">
                     Call +91 98454 23223
@@ -103,13 +99,13 @@ export default function ContactPage() {
 
               {/* Transit Distances Summary */}
               <div className="transit-mini-summary">
-                <h4 className="transit-summary-title">Distances from Hotel Pumerai:</h4>
+                <h4 className="transit-summary-title">Distances</h4>
                 <ul className="transit-mini-list">
-                  <li><strong>Kasarkod Eco Beach:</strong> ~5 km (~8 mins drive)</li>
-                  <li><strong>Sharavathi River Backwaters:</strong> ~2.8 km (~5 mins drive)</li>
-                  <li><strong>Honnavar Railway Station:</strong> ~3.5 km (~9 mins drive)</li>
-                  <li><strong>Mirjan Fort:</strong> ~18 km (~22 mins drive)</li>
-                  <li><strong>Murudeshwar Temple:</strong> ~26 km (~35 mins drive)</li>
+                  <li>Kasarkod Eco Beach, 5 km</li>
+                  <li>Sharavathi River Backwaters, 2.8 km</li>
+                  <li>Honnavar Railway Station, 3.5 km</li>
+                  <li>Mirjan Fort, 18 km</li>
+                  <li>Murudeshwar Temple, 26 km</li>
                 </ul>
               </div>
             </div>
@@ -117,11 +113,9 @@ export default function ContactPage() {
             {/* Right Column: Contact & Booking Inquiry Form */}
             <div className="contact-form-col">
               <div className="form-wrapper-box">
-                <span className="card-mini-tag">Send an Inquiry</span>
-                <h3 className="form-box-title">Direct Reservation Request</h3>
+                <h3 className="form-box-title">Send an Enquiry</h3>
                 <p className="form-box-desc">
-                  Fill in your details below for personalized room inquiries, group bookings, or special requests.
-                  Our team confirms within 15 minutes.
+                  Share your dates and we will reply shortly.
                 </p>
 
                 {!formSubmitted ? (
@@ -167,12 +161,12 @@ export default function ContactPage() {
                     </div>
 
                     <div className="form-group">
-                      <label htmlFor="contact-message">Inquiry Details / Travel Dates *</label>
+                      <label htmlFor="contact-message">Dates and Details *</label>
                       <textarea
                         id="contact-message"
                         rows="4"
                         required
-                        placeholder="Please specify your intended check-in/out dates, room type preference, or any special questions..."
+                        placeholder="Dates, number of guests and questions"
                         value={message}
                         onChange={(e) => setMessage(e.target.value)}
                         className="modal-form-input modal-form-textarea"
@@ -180,26 +174,24 @@ export default function ContactPage() {
                     </div>
 
                     <button type="submit" className="button-primary submit-contact-btn">
-                      SEND INQUIRY NOW
+                      SEND ENQUIRY
                     </button>
                     <p className="form-secure-note">
-                      🔒 Your contact information is never shared. Direct booking discount is automatically applied.
+                      Your details are never shared.
                     </p>
                   </form>
                 ) : (
                   <div className="contact-success-state">
-                    <div className="success-icon">&#x2713;</div>
-                    <h4 className="success-heading">Message Sent Successfully!</h4>
+                    <h4 className="success-heading">Message Sent</h4>
                     <p className="success-copy">
-                      Thank you, <strong>{name}</strong>. Our front desk at NH-66 Honnavar will contact you shortly
-                      at <strong>{phone}</strong> with room availability and the 10% direct booking benefit.
+                      Thank you, <strong>{name}</strong>. Our front desk will contact you shortly.
                     </p>
                     <div className="success-actions">
                       <a href={whatsappDirectUrl} target="_blank" rel="noopener noreferrer" className="button-whatsapp-instant">
-                        Send Instant WhatsApp Note
+                        Chat on WhatsApp
                       </a>
                       <button type="button" className="button-secondary" onClick={() => setFormSubmitted(false)}>
-                        Send Another Inquiry
+                        Send Another Enquiry
                       </button>
                     </div>
                   </div>
@@ -226,7 +218,7 @@ export default function ContactPage() {
                     rel="noopener noreferrer"
                     className="button-primary contact-map-btn"
                   >
-                    📍 Get Driving Directions (Open Google Maps)
+                    Get Directions
                   </a>
                 </div>
               </div>

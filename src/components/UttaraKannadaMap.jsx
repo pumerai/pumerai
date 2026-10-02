@@ -438,7 +438,7 @@ export default function UttaraKannadaMap({
                 HOTEL PUMERAI
               </text>
               <text x="8" y="22" fill="#B49A6A" fontSize="7" fontWeight="600" letterSpacing="0.1em">
-                BASE LOCATION &bull; NH-66
+                BASE LOCATION, NH-66
               </text>
             </g>
           </g>
@@ -448,7 +448,7 @@ export default function UttaraKannadaMap({
         <div className="map-footer-ingress">
           <span className="ingress-dot" />
           <span className="ingress-caption">
-            NH-66 Coastal Gateway &bull; Direct access to beaches, backwaters &amp; heritage sites
+            NH-66 Coastal Gateway, direct access to beaches, backwaters &amp; heritage sites
           </span>
         </div>
       </div>

@@ -5,10 +5,10 @@ export default function FAQPage() {
   return (
     <main className="page-shell faq-page-shell">
       <PageHeader
-        eyebrow="FREQUENTLY ASKED QUESTIONS"
+        eyebrow="FAQS"
         title="Frequently Asked"
         italicTitle="Questions"
-        description="Find answers to frequently asked questions about Hotel Pumerai, rooms, dining, location, booking and your stay in Honnavar."
+        description="Answers to common questions about rooms, dining, booking and policies at Hotel Pumerai."
         id="faq-page-heading"
       />
       <FAQ isStandalonePage={true} />

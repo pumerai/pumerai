@@ -242,7 +242,7 @@ export default function HeroSequence({ onNavigate }) {
           <div className="loading-screen" aria-live="polite">
             <p className="loading-logo">HOTEL PUMERAI</p>
             <span className="loading-caption">
-              Honnavar, Karnataka &bull; NH-66 Near Ramateertha Cross
+              Honnavar, Karnataka, NH-66 Near Ramateertha Cross
             </span>
             <div className="loading-track">
               <i style={{ width: `${progress}%` }} />
