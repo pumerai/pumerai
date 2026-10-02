@@ -6,29 +6,6 @@ import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const storyMoments = [
-  {
-    eyebrow: "PREMIUM 3-STAR HOTEL • HONNAVAR, KARNATAKA",
-    title: "A quiet boutique stay near the coast",
-    copy: "Hotel Pumerai is a premium 3-star hotel on NH-66 in Honnavar, Karnataka, ~5 km from Kasarkod Beach and ~2.8 km from the Sharavathi River, with 40 rooms, a rooftop pool, and two on-site restaurants.",
-  },
-  {
-    eyebrow: "ARRIVE · COASTAL HIGHWAY",
-    title: "Effortless highway access & calm",
-    copy: "Conveniently situated near Ramateertha Cross on NH-66 with wide access, free secured parking, EV charging, and 24-hour reception.",
-  },
-  {
-    eyebrow: "SWIMMING POOL & LEISURE",
-    title: "Glass-edge rooftop pool & retreat",
-    copy: "Featuring a glass-edge rooftop swimming pool and children's splash area open daily from 6:30 AM to 7:00 PM.",
-  },
-  {
-    eyebrow: "KARAVALI & HONNAVAR",
-    title: "Your gateway to beaches & backwaters",
-    copy: "Explore Kasarkod Eco Beach, Sharavathi River boat rides, Mirjan Fort, and Murudeshwar from a serene, central base.",
-  },
-];
-
 const mobileInteriorScenes = [
   {
     id: "scene-rooms",
@@ -221,7 +198,6 @@ export default function HeroSequence({ onNavigate }) {
   const [loadedCount, setLoadedCount] = useState(0);
   const [failedCount, setFailedCount] = useState(0);
   const [isReady, setIsReady] = useState(false);
-  const [storyIndex, setStoryIndex] = useState(0);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const progress = useMemo(() => {
@@ -381,17 +357,11 @@ export default function HeroSequence({ onNavigate }) {
             HERO_FRAME_COUNT - 1,
             Math.max(0, Math.round(self.progress * (HERO_FRAME_COUNT - 1))),
           );
-          const nextStoryIndex = Math.min(
-            storyMoments.length - 1,
-            Math.floor(self.progress * storyMoments.length),
-          );
 
           if (nextFrame !== activeFrameRef.current) {
             activeFrameRef.current = nextFrame;
             renderFrame(nextFrame);
           }
-
-          setStoryIndex((current) => (current === nextStoryIndex ? current : nextStoryIndex));
         },
       });
     }, heroRef);
@@ -399,8 +369,6 @@ export default function HeroSequence({ onNavigate }) {
     ScrollTrigger.refresh();
     return () => context.revert();
   }, [isReady, loadedCount, prefersReducedMotion]);
-
-  const activeStory = storyMoments[storyIndex];
 
   const handleOpenBookingModal = (e) => {
     e.preventDefault();
@@ -424,14 +392,6 @@ export default function HeroSequence({ onNavigate }) {
           className="hero-static-img"
         />
         <MobileHeroPresentation isReady={true} />
-        <div className="hero-copy">
-          <p className="hero-eyebrow">PREMIUM 3-STAR HOTEL &bull; HONNAVAR, KARNATAKA</p>
-          <h1 className="hero-heading">A quiet boutique hotel near Karnataka&apos;s coast</h1>
-          <p className="hero-subtitle">
-            Hotel Pumerai is a premium 3-star hotel on NH-66 near Ramateertha Cross in Honnavar, Karnataka,
-            ~5 km from Kasarkod Beach and ~2.8 km from the Sharavathi River, with 40 rooms, a rooftop pool, and two on-site restaurants.
-          </p>
-        </div>
         <div className="hero-right-headline is-visible" aria-label="Explore Honnavar, Experience HOTEL PUMERAI">
           <span className="hero-right-line-lead">Explore Honnavar,</span>
           <span className="hero-right-line-brand">Experience HOTEL PUMERAI</span>
@@ -467,12 +427,6 @@ export default function HeroSequence({ onNavigate }) {
             <span>Welcome to Hotel Pumerai, Honnavar. Explore rooms and dining below.</span>
           </div>
         )}
-
-        <div className={`hero-copy ${isReady ? "is-visible" : ""}`} key={storyIndex}>
-          <p className="hero-eyebrow">{activeStory.eyebrow}</p>
-          <h1 className="hero-heading">{activeStory.title}</h1>
-          <p className="hero-subtitle">{activeStory.copy}</p>
-        </div>
 
         {/* Right-side Hero Headline as specified in HP.pdf */}
         <div className={`hero-right-headline ${isReady ? "is-visible" : ""}`} aria-label="Explore Honnavar, Experience HOTEL PUMERAI">

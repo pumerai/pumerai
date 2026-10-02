@@ -6723,16 +6723,16 @@ input[type="date"].booking-input {
   display: block;
 }
 
-/* Mobile Hero Right-Side Headline positioning (prevents overlap with left copy) */
+/* Mobile Hero Right-Side Headline positioning (stays on the right, prevents clipping) */
 @media (max-width: 768px) {
   .hero-right-headline {
-    inset-inline-start: 18px;
-    inset-inline-end: 18px;
+    inset-inline-start: auto;
+    inset-inline-end: clamp(16px, 4.5vw, 24px);
     inset-block-start: calc(var(--header-height-mobile) + 16px);
     inset-block-end: auto;
     align-items: flex-end;
     text-align: right;
-    max-width: 100%;
+    max-width: calc(100% - 32px);
   }
 
   .hero-right-line-lead {
@@ -6741,6 +6741,21 @@ input[type="date"].booking-input {
 
   .hero-right-line-brand {
     font-size: clamp(1.45rem, 5.5vw, 2.1rem);
+  }
+}
+
+@media (max-width: 359px) {
+  .hero-right-headline {
+    inset-inline-end: 12px;
+    max-width: calc(100% - 24px);
+  }
+
+  .hero-right-line-lead {
+    font-size: 1.22rem;
+  }
+
+  .hero-right-line-brand {
+    font-size: 1.32rem;
   }
 }
 
