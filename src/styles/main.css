@@ -940,10 +940,12 @@ p {
   padding-bottom: 22%;
 }
 
-/* Mobile: remove the bottom padding trick; images stack naturally */
+/* Mobile: remove the bottom padding trick; images stack naturally.
+   Also hide the entire image composition on mobile — the exterior photo
+   is already shown as the mobile hero image above. */
 @media (max-width: 767px) {
   .about-image-composition {
-    padding-bottom: 0;
+    display: none;
   }
 }
 
@@ -7001,7 +7003,7 @@ input[type="date"].booking-input {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    object-position: 40% center;
+    object-position: center center;
     z-index: 1;
   }
 
