@@ -1,35 +1,5 @@
-const transitHighlights = [
-  {
-    label: "NH-66 Coastal Highway",
-    value: "Direct Ingress / Egress",
-    desc: "Direct access along the Karavali highway corridor connecting Goa, Gokarna, Murudeshwar, and Mangalore.",
-  },
-  {
-    label: "Honnavar Railway Station (HNA)",
-    value: "~3.5 km • 9 min drive",
-    desc: "Key Konkan Railway junction with direct trains to Mumbai, Goa, Mangalore, and Bangalore.",
-  },
-  {
-    label: "Kasarkod Eco Beach",
-    value: "~5 km • 8 min drive",
-    desc: "Blue Flag-certified beach featuring golden sands, casuarina groves, and clean swimming waters.",
-  },
-  {
-    label: "Sharavathi River Boating",
-    value: "~2.8 km • 5 min drive",
-    desc: "Scenic river cruises, mangrove trails, and tranquil backwater sunset boat rides.",
-  },
-  {
-    label: "Honnavar KSRTC Bus Stand",
-    value: "~2.5 km • 6 min drive",
-    desc: "Frequent intercity and interstate coastal express transit.",
-  },
-  {
-    label: "Airport Transit Corridors",
-    value: "Goa & Mangalore",
-    desc: "Accessible via NH-66: Goa MOPA / Dabolim (~150 km) and Mangalore International (~175 km).",
-  },
-];
+import { useState } from "react";
+import { destinations } from "../data/destinations.js";
 
 const hotelPolicies = [
   { label: "Check-in Time", value: "From 1:00 PM (24-hr front desk welcomes late highway arrivals)" },
@@ -43,16 +13,41 @@ const hotelPolicies = [
 ];
 
 export default function Location({ isStandalonePage = false }) {
+  const [activeDestIndex, setActiveDestIndex] = useState(0);
+  const activeDest = destinations[activeDestIndex] || destinations[0];
   const officialGoogleMapsLink = "https://maps.app.goo.gl/rCfTnw9t8Dp58mga7";
 
   return (
-    <section className="section location-section coastal-connected-section" id="location" aria-labelledby="coastal-connected-title">
+    <section
+      className="section location-section coastal-connected-section"
+      id="location"
+      aria-labelledby="location-editorial-heading"
+    >
       <div className="section-container">
-        {/* Editorial Split Composition */}
-        <div className="coastal-connected-split" data-reveal>
-          {/* LEFT: Large location / map / landscape visual */}
-          <div className="cc-map-column">
-            <div className="cc-map-frame">
+        {/* TOP AREA: Two-column editorial introduction */}
+        <header className="location-editorial-header" data-reveal>
+          <div className="location-header-col-left">
+            <div className="editorial-tag">
+              <span className="accent-pip" />
+              <span>IN &amp; AROUND</span>
+            </div>
+            <h2 id="location-editorial-heading" className="section-title location-editorial-title">
+              Explore Honnavar, <br />
+              <span className="title-italic">From Pumerai</span>
+            </h2>
+          </div>
+          <div className="location-header-col-right">
+            <p className="location-header-copy">
+              Discover beaches, rivers, temples and coastal destinations around Honnavar, with Hotel Pumerai as your comfortable base.
+            </p>
+          </div>
+        </header>
+
+        {/* MAIN INTERACTIVE AREA: Two-part destination experience */}
+        <div className="location-editorial-grid" data-reveal>
+          {/* LEFT SIDE: Large Pumerai location / map visual */}
+          <div className="location-map-column">
+            <div className="location-map-wrapper">
               <iframe
                 title="Hotel Pumerai Honnavar Official Location on Google Maps"
                 src="https://maps.google.com/maps?q=Hotel+Pumerai,+NH-66,+Ramateertha+Cross,+Honnavar,+Karnataka+581334&amp;hl=en&amp;z=15&amp;output=embed"
@@ -62,7 +57,7 @@ export default function Location({ isStandalonePage = false }) {
                 allowFullScreen=""
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="cc-map-iframe"
+                className="location-map-iframe"
               />
 
               {/* Map Floating Actions */}
@@ -103,73 +98,76 @@ export default function Location({ isStandalonePage = false }) {
             </div>
           </div>
 
-          {/* RIGHT: Heading, Short paragraph, Location information, Distances / connectivity, Map CTA */}
-          <div className="cc-content-column">
-            <div className="editorial-tag">
-              <span className="accent-pip" />
-              <span>LOCATION &amp; ACCESS &bull; HONNAVAR</span>
+          {/* RIGHT SIDE: Interactive destination selector panel */}
+          <div className="location-destination-column">
+            {/* Horizontal Destination Tabs */}
+            <div className="destination-tabs-nav" role="tablist" aria-label="Destinations around Honnavar">
+              <div className="destination-tabs-scroll">
+                {destinations.map((dest, idx) => {
+                  const isActive = idx === activeDestIndex;
+                  return (
+                    <button
+                      key={dest.id}
+                      type="button"
+                      role="tab"
+                      aria-selected={isActive}
+                      className={`destination-tab-btn ${isActive ? "is-active" : ""}`}
+                      onClick={() => setActiveDestIndex(idx)}
+                    >
+                      <span className="destination-tab-text">{dest.tabLabel || dest.name}</span>
+                      {isActive && <span className="destination-tab-indicator" />}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
 
-            <h2 id="coastal-connected-title" className="section-title cc-heading">
-              Coastal. <br />
-              <span className="title-italic">Yet Connected.</span>
-            </h2>
-
-            <div className="brass-rule-small" />
-
-            <p className="cc-lead-copy">
-              Set along NH-66 in Honnavar, Hotel Pumerai offers a comfortable coastal base with convenient access
-              to beaches, rivers and nearby destinations across Uttara Kannada.
-            </p>
-
-            {/* Distances & Connectivity Highlights */}
-            <div className="cc-connectivity-grid">
-              {transitHighlights.map((item) => (
-                <div className="cc-conn-card" key={item.label}>
-                  <div className="cc-conn-header">
-                    <h3 className="cc-conn-label">{item.label}</h3>
-                    <span className="cc-conn-val">{item.value}</span>
-                  </div>
-                  <p className="cc-conn-desc">{item.desc}</p>
+            {/* Destination Content Panel (Keyed by activeDest.id for smooth switch animation) */}
+            <div className="destination-detail-panel" key={activeDest.id}>
+              {/* Large Destination Image */}
+              <div className="destination-image-container gold-edge-frame">
+                <img
+                  src={activeDest.image}
+                  alt={activeDest.alt}
+                  loading="lazy"
+                  className="destination-featured-image"
+                />
+                <div className="destination-image-tag">
+                  <span className="tag-dot" />
+                  <span>{activeDest.type}</span>
                 </div>
-              ))}
-            </div>
-
-            {/* Official Address & Concierge Card */}
-            <div className="cc-address-block">
-              <div className="cc-addr-info">
-                <span className="cc-addr-tag">Official Property Address</span>
-                <h4 className="cc-addr-name">Hotel Pumerai</h4>
-                <address className="cc-addr-text">
-                  NH-66, near Ramateertha Cross, Honnavar, Uttara Kannada, Karnataka 581334
-                </address>
               </div>
 
-              <div className="cc-addr-contacts">
-                <a href="tel:+919845423223" className="cc-contact-chip">
-                  <span className="chip-label">Reservations:</span>
-                  <span className="chip-val">+91 98454 23223</span>
-                </a>
-                <a
-                  href="https://wa.me/919845423223?text=Hi%20Hotel%20Pumerai%2C%20I%20would%20like%20directions%20and%20assistance."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cc-contact-chip chip-whatsapp"
-                >
-                  <span className="chip-label">WhatsApp:</span>
-                  <span className="chip-val">Chat with Concierge</span>
-                </a>
-              </div>
+              {/* Destination Metadata */}
+              <div className="destination-meta-group">
+                <div className="destination-title-row">
+                  <h3 className="destination-name">{activeDest.name}</h3>
+                  <div className="destination-distance-badge">
+                    <span className="distance-icon" aria-hidden="true">📍</span>
+                    <span>{activeDest.distance}</span>
+                    {activeDest.driveTime && (
+                      <>
+                        <span className="distance-sep">&bull;</span>
+                        <span className="distance-time">{activeDest.driveTime}</span>
+                      </>
+                    )}
+                  </div>
+                </div>
 
-              <div className="cc-cta-row">
-                <a
-                  href={officialGoogleMapsLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button-primary cc-directions-btn"
-                >
-                  <span>OPEN HOTEL PUMERAI ON GOOGLE MAPS <span className="arrow-icon">&rarr;</span></span>
-                </a>
+                <p className="destination-desc">{activeDest.description}</p>
+
+                {/* Map CTA Button */}
+                <div className="destination-cta-row">
+                  <a
+                    href={activeDest.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="button-primary destination-map-btn"
+                    aria-label={`View ${activeDest.name} location on Google Maps`}
+                  >
+                    <span>VIEW LOCATION ON MAP <span className="arrow-icon" aria-hidden="true">&rarr;</span></span>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
