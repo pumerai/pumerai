@@ -19,8 +19,7 @@ export default function InAndAround() {
               <span>IN &amp; AROUND</span>
             </div>
             <h2 id="around-honnavar-heading" className="section-title">
-              Around <br />
-              <span className="title-italic">Honnavar.</span>
+              Around <span className="title-italic">Honnavar</span>
             </h2>
           </div>
           <div className="header-summary-block">

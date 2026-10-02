@@ -13,15 +13,15 @@ const hotelAreas = [
     highlight: "Double-Height Ceiling, Artisanal Teak Lounge",
   },
   {
-    id: "pool",
+    id: "terrace",
     number: "02",
-    name: "Pool Area",
-    tagline: "Glass-Edge Rooftop Deck",
+    name: "Arrival Portico",
+    tagline: "Landscaped Entrance & Covered Drive",
     description:
-      "Rooftop pool and children's splash area open daily from 6:30 AM to 7:00 PM.",
-    image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_46%20AM_result.webp",
-    alt: "Rooftop glass-edge swimming pool overlooking coconut groves at Hotel Pumerai",
-    highlight: "Glass-Edge Pool, Kids Splash Zone, 6:30 AM – 7:00 PM",
+      "Covered drop-off with landscaped approach and dedicated parking along NH-66.",
+    image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_27%20AM_result.webp",
+    alt: "Landscaped arrival portico and covered driveway at Hotel Pumerai Honnavar",
+    highlight: "Covered Portico, Landscaped Forecourt, NH-66 Frontage",
   },
   {
     id: "reception",
@@ -62,7 +62,7 @@ export default function HotelAreas() {
             </div>
             <h2 id="hotel-areas-title" className="section-title">
               Spaces at <br />
-              <span className="title-italic">Hotel Pumerai.</span>
+              <span className="title-italic">Hotel Pumerai</span>
             </h2>
           </div>
           <p className="header-summary">

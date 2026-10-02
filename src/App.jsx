@@ -14,10 +14,12 @@ import SEOHead from "./components/SEOHead.jsx";
 import HeroSequence from "./sections/HeroSequence.jsx";
 import About from "./sections/About.jsx";
 import RoomsPreview from "./sections/RoomsPreview.jsx";
+import PoolBand from "./sections/PoolBand.jsx";
 import PickASide from "./sections/PickASide.jsx";
+import InsideHotelSlider from "./sections/InsideHotelSlider.jsx";
 import HotelAreas from "./sections/HotelAreas.jsx";
-import TrustReviews from "./sections/TrustReviews.jsx";
 import InAndAround from "./sections/InAndAround.jsx";
+import TrustReviews from "./sections/TrustReviews.jsx";
 import WebsiteLoader from "./components/WebsiteLoader.jsx";
 import { useSectionReveals } from "./hooks/useSectionReveals.js";
 
@@ -34,10 +36,12 @@ function HomePage({ onNavigate }) {
       <BookingBar isHomeSection={true} />
       <About />
       <RoomsPreview onNavigate={onNavigate} />
+      <PoolBand />
       <PickASide onNavigate={onNavigate} />
+      <InsideHotelSlider onNavigate={onNavigate} />
       <HotelAreas />
+      <InAndAround />
       <TrustReviews />
-      <InAndAround onNavigate={onNavigate} />
     </main>
   );
 }
