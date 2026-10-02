@@ -102,15 +102,19 @@ export default function AroundHonnavar() {
           aria-labelledby={`ah-tab-${activeDest.id}`}
           className={`ah-detail-panel${isAnimating && !prefersReducedMotion ? " is-fading" : ""}`}
         >
-          {/* Destination photo — 3:2, ~180×120 */}
+          {/* Destination photo — 3:2. Hidden when image is null (e.g. Goa) */}
           {activeDest.image && (
             <div className="ah-dest-photo-frame">
               <img
                 key={activeDest.id}
                 src={activeDest.image}
                 alt={activeDest.alt}
+                width={activeDest.imageW || 800}
+                height={activeDest.imageH || 533}
                 loading="lazy"
+                decoding="async"
                 className="ah-dest-photo"
+                style={{ objectPosition: activeDest.objectPosition || "center center" }}
               />
             </div>
           )}

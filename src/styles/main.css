@@ -10851,4 +10851,91 @@ input[type="date"].booking-input {
   }
 }
 
+/* ==========================================================================
+   AROUND HONNAVAR — MAP LAYOUT GEOMETRY OVERRIDES
+   Aspect ratio 4:5, max-height 420px, no overflow, stack < 900px
+   ========================================================================== */
+
+/* Desktop two-column: use explicit columns so the map gets ~38% and has 4:5 shape */
+.around-honnavar-layout {
+  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
+  gap: clamp(24px, 3vw, 48px);
+  align-items: stretch;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.ah-map-column {
+  max-height: 420px;
+  overflow: hidden;
+}
+
+/* Make the map SVG respect the 4:5 aspect ratio of its container */
+.ah-map-column .regional-map-container,
+.ah-map-column .regional-map-frame {
+  width: 100%;
+  height: 100%;
+  max-height: 420px;
+}
+
+.ah-map-column .uttara-kannada-map-svg {
+  width: 100%;
+  height: 100%;
+  max-height: 420px;
+  /* The viewBox is 520:640 = ~4:5; fit inside the column */
+  display: block;
+}
+
+/* Panel column: no overflow, no horizontal scroll */
+.ah-panel-column {
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* Tabs: no horizontal page scroll */
+.ah-tabs-strip {
+  width: 100%;
+  overflow-x: auto;
+}
+
+/* Stack map above panel at < 900px (between tablet and desktop) */
+@media (max-width: 900px) {
+  .around-honnavar-layout {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+
+  .ah-map-column {
+    width: 100%;
+    max-height: 300px;
+  }
+
+  .ah-map-column .regional-map-container,
+  .ah-map-column .regional-map-frame,
+  .ah-map-column .uttara-kannada-map-svg {
+    max-height: 300px;
+  }
+
+  .ah-panel-column {
+    overflow: visible;
+  }
+}
+
+/* Credits line — shown only on Location page */
+.photo-credits-line {
+  font-size: 12px;
+  color: var(--color-text-muted);
+  margin-top: clamp(16px, 2vw, 24px);
+  line-height: 1.5;
+}
+
+.photo-credits-line a {
+  color: var(--color-text-muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.photo-credits-line a:hover {
+  color: var(--color-accent);
+}
 

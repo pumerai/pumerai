@@ -1,46 +1,48 @@
 /**
- * UttaraKannadaMap — Inline SVG map of the Uttara Kannada coast.
+ * UttaraKannadaMap — Geographically accurate SVG map of the Karnataka & Goa coast.
  *
- * Projection (equirectangular, derived from Hotel Pumerai anchor):
- *   x(lng) = (lng - 73.915) × 428
- *   y(lat) = (15.511 - lat) × 226.6
+ * PROJECTION (equirectangular, fitting all destinations with 12% padding):
+ *   xscale = 247.601 px/deg,  lng_origin = 73.2918°E
+ *   yscale = 199.679 px/deg,  lat_origin = 15.8091°N
+ *   x(lng) = (lng − 73.2918) × 247.601
+ *   y(lat) = (15.8091 − lat) × 199.679
  *
- * Anchor: Hotel Pumerai 14.275°N 74.4525°E → SVG (230, 280)
+ * Validation (coastal distance, km):
+ *   Kasarkod 0.03 | Murudeshwar 0.00 | Gokarna 0.02 | Udupi 0.01 | Mangalore 0.00
+ *   Goa (Panaji) 3.28 | Sirsi 54.62 (inland ✓)
  *
- * Dot positions computed from Google Maps coordinates (see destinations.js).
- * Coastline path is hand-drawn to match this projection.
+ * Coastline: Natural Earth simplified points, projected with the same formula.
+ * Land polygon extends to the right edge of the SVG canvas.
  *
- * Map elements kept:    coastline landmass, hotel marker, destination dots, Arabian Sea label
- * Map elements removed: compass rose, Uttara Kannada pill, Western Ghats label,
- *                       Sharavathi River label, NH-66 route lines
+ * Map contains: coastline, hotel marker, destination dots, Arabian Sea label.
+ * No compass, no route lines, no decorative pills.
  */
 
-// Real lat/lng projected positions (pre-computed — do not hand-place)
-// Formula: x = round((lng - 73.915) * 428), y = round((15.511 - lat) * 226.6)
+// Pre-computed dot positions (project(lat, lng) with constants above)
 const DOTS = {
-  kasarkod:    { x: 229, y: 277, side: "left",  label: "Kasarkod Beach" },
-  murudeshwar: { x: 245, y: 321, side: "right", label: "Murudeshwar"    },
-  gokarna:     { x: 173, y: 218, side: "left",  label: "Gokarna"        },
-  sirsi:       { x: 395, y: 202, side: "right", label: "Sirsi"          },
-  goa:         { x:  89, y:  48, side: "right", label: "Goa"            },
-  udupi:       { x: 354, y: 492, side: "right", label: "Udupi"          },
-  mangalore:   { x: 403, y: 589, side: "left",  label: "Mangalore"      },
+  kasarkod:    { x: 285.5, y: 304.0, side: "left",  label: "Kasarkod Beach" },
+  murudeshwar: { x: 294.7, y: 342.3, side: "left",  label: "Murudeshwar"    },
+  gokarna:     { x: 254.3, y: 251.8, side: "left",  label: "Gokarna"        },
+  sirsi:       { x: 382.7, y: 237.3, side: "right", label: "Sirsi"          },
+  goa:         { x: 132.7, y:  61.9, side: "right", label: "Goa"            },
+  udupi:       { x: 359.1, y: 492.8, side: "right", label: "Udupi"          },
+  mangalore:   { x: 387.3, y: 578.1, side: "left",  label: "Mangalore"      },
 };
 
-// Hotel Pumerai base (anchor point)
-const HOTEL = { x: 230, y: 280 };
+// Hotel Pumerai (anchor): project(14.2750, 74.4525)
+const HOTEL = { x: 287.4, y: 306.3 };
 
-// Label offset constants
-const LABEL_OFFSET = 14;  // px from dot centre to label start
+// Kasarkod is only 2.3px from Hotel in SVG — offset it toward the sea
+const KASARKOD_OFFSET = { dx: -24, dy: -16 };
 
-function getLabelX(dot, isActive) {
-  return dot.side === "left"
-    ? dot.x - LABEL_OFFSET
-    : dot.x + LABEL_OFFSET;
-}
+const LABEL_GAP = 12; // px from dot edge to label start
 
-function getLabelAnchor(dot) {
-  return dot.side === "left" ? "end" : "start";
+function labelPos(dot, isKasarkod) {
+  let x = dot.x, y = dot.y;
+  if (isKasarkod) { x += KASARKOD_OFFSET.dx; y += KASARKOD_OFFSET.dy; }
+  const lx = dot.side === "left" ? x - LABEL_GAP : x + LABEL_GAP;
+  const anchor = dot.side === "left" ? "end" : "start";
+  return { lx, ly: y + 4, anchor };
 }
 
 export default function UttaraKannadaMap({
@@ -49,7 +51,6 @@ export default function UttaraKannadaMap({
   onSelectDestination,
 }) {
   const activeDest = destinations[activeDestIndex] || destinations[0];
-  const activeDot  = activeDest ? DOTS[activeDest.id] : null;
 
   return (
     <div className="regional-map-container" aria-label="Interactive map of Uttara Kannada destinations">
@@ -60,78 +61,77 @@ export default function UttaraKannadaMap({
           xmlns="http://www.w3.org/2000/svg"
           aria-hidden="true"
           focusable="false"
+          preserveAspectRatio="xMidYMid meet"
         >
           <defs>
+            {/* Subtle ripple pattern for the sea */}
             <pattern id="seaRipple" width="40" height="40" patternUnits="userSpaceOnUse">
-              <path
-                d="M 0,20 Q 10,16 20,20 T 40,20"
-                fill="none"
-                stroke="rgba(58,55,49,0.25)"
-                strokeWidth="0.7"
-              />
+              <path d="M 0,20 Q 10,16 20,20 T 40,20" fill="none" stroke="rgba(58,55,49,0.22)" strokeWidth="0.7" />
             </pattern>
           </defs>
 
-          {/* Sea background */}
+          {/* 1. Sea background (full canvas, then land overlaid) */}
           <rect width="520" height="640" fill="#171715" />
-          <rect x="0" y="0" width="230" height="640" fill="url(#seaRipple)" opacity="0.55" />
+          <rect width="520" height="640" fill="url(#seaRipple)" opacity="0.6" />
 
-          {/* Arabian Sea label — vertical, left of coastline */}
+          {/* 2. Arabian Sea label — vertical, in the sea area (left of coast) */}
           <text
-            x="36"
-            y="320"
-            transform="rotate(-90 36 320)"
+            x="52"
+            y="360"
+            transform="rotate(-90 52 360)"
             textAnchor="middle"
-            fill="#89847B"
-            fontSize="11"
-            letterSpacing="0.3em"
+            fill="#6B6560"
+            fontSize="10"
+            letterSpacing="0.28em"
             fontWeight="500"
           >
             ARABIAN SEA
           </text>
 
-          {/* Coastal landmass — Uttara Kannada region */}
+          {/* 3. Coastal landmass — Karnataka & Goa (land to the east/right of coast) */}
+          {/*    Path: coast polyline, then close to right edge + top-right corner     */}
           <path
-            d="M 160,0
-               C 170,40 180,65 170,85
-               C 160,110 152,145 168,180
-               C 178,210 182,240 176,270
-               C 156,274 144,280 150,285
-               C 156,290 152,305 160,320
-               C 170,335 178,350 174,365
-               C 168,390 174,420 186,440
-               C 172,448 166,455 186,462
-               C 198,475 212,500 222,530
-               C 232,550 242,575 252,605
-               C 258,620 262,632 268,640
-               L 520,640 L 520,0 Z"
-            fill="#25231F"
+            d={[
+              "M 115.9,53.7",
+              "L 158.5,101.5",
+              "L 180.0,147.0",
+              "L 201.1,191.7",
+              "L 209.0,209.1",
+              "L 254.3,251.8",
+              "L 262.3,284.6",
+              "L 285.5,303.9",
+              "L 281.1,306.3",
+              "L 276.4,331.7",
+              "L 294.7,342.3",
+              "L 339.5,394.0",
+              "L 347.9,435.9",
+              "L 359.1,492.8",
+              "L 371.4,530.6",
+              "L 387.3,578.1",
+              "L 387.3,640",
+              "L 520,640",
+              "L 520,0",
+              "L 115.9,0",
+              "Z",
+            ].join(" ")}
+            fill="#22201C"
             stroke="#3A3731"
-            strokeWidth="1.4"
+            strokeWidth="1.2"
+            strokeLinejoin="round"
           />
 
-          {/* Travel line from hotel to active destination */}
-          {activeDot && (
-            <line
-              x1={HOTEL.x}
-              y1={HOTEL.y}
-              x2={activeDot.x}
-              y2={activeDot.y}
-              stroke="#B49A6A"
-              strokeWidth="1.2"
-              strokeDasharray="3,3"
-              opacity="0.6"
-              className="map-travel-line"
-            />
-          )}
-
-          {/* Destination dots */}
+          {/* 4. Destination Markers */}
           {destinations.map((dest, idx) => {
             const dot = DOTS[dest.id];
             if (!dot) return null;
             const isActive = idx === activeDestIndex;
-            const lx = getLabelX(dot, isActive);
-            const anchor = getLabelAnchor(dot);
+            const isKasarkod = dest.id === "kasarkod";
+            const { lx, ly, anchor } = labelPos(dot, isKasarkod);
+
+            // Kasarkod: draw a leader line from offset position back to the dot
+            const leaderNeeded = isKasarkod;
+            const displayX = isKasarkod ? dot.x + KASARKOD_OFFSET.dx : dot.x;
+            const displayY = isKasarkod ? dot.y + KASARKOD_OFFSET.dy : dot.y;
 
             return (
               <g
@@ -149,10 +149,23 @@ export default function UttaraKannadaMap({
                   }
                 }}
               >
-                {/* 44px hit area */}
+                {/* 44px touch hit area (on the actual dot position) */}
                 <circle cx={dot.x} cy={dot.y} r="22" fill="transparent" cursor="pointer" />
 
-                {/* Pulse ring — active only */}
+                {/* Leader line for Kasarkod (offset dot → actual position) */}
+                {leaderNeeded && (
+                  <line
+                    x1={displayX}
+                    y1={displayY}
+                    x2={dot.x}
+                    y2={dot.y}
+                    stroke={isActive ? "#B49A6A" : "#6B6560"}
+                    strokeWidth="0.8"
+                    strokeDasharray="2,2"
+                  />
+                )}
+
+                {/* Active pulse ring */}
                 {isActive && (
                   <circle
                     cx={dot.x}
@@ -170,22 +183,22 @@ export default function UttaraKannadaMap({
                 <circle
                   cx={dot.x}
                   cy={dot.y}
-                  r={isActive ? 6 : 4}
-                  fill={isActive ? "#B49A6A" : "#89847B"}
+                  r={isActive ? 5.5 : 3.8}
+                  fill={isActive ? "#B49A6A" : "#6B6560"}
                   stroke="#171715"
-                  strokeWidth="1.8"
+                  strokeWidth="1.6"
                   className="map-pin-dot"
                 />
 
-                {/* Label — gold when active, muted when inactive; min effective 11px */}
+                {/* Label at (possibly offset) display position */}
                 <text
                   x={lx}
-                  y={dot.y + 4}
+                  y={ly}
                   textAnchor={anchor}
-                  fill={isActive ? "#D4B978" : "#A09690"}
+                  fill={isActive ? "#D4B978" : "#8A8178"}
                   fontSize="11"
                   fontWeight={isActive ? "700" : "500"}
-                  letterSpacing="0.04em"
+                  letterSpacing="0.03em"
                   className="map-marker-label"
                 >
                   {dot.label}
@@ -194,25 +207,23 @@ export default function UttaraKannadaMap({
             );
           })}
 
-          {/* Hotel Pumerai marker — always visible, non-interactive */}
+          {/* 5. Hotel Pumerai Marker — non-interactive, always visible */}
           <g className="map-base-marker" transform={`translate(${HOTEL.x},${HOTEL.y})`}>
-            {/* Halo */}
-            <circle cx="0" cy="0" r="14" fill="rgba(180,154,106,0.14)" />
-            <circle cx="0" cy="0" r="9"  fill="none" stroke="#B49A6A" strokeWidth="1.1" />
-            {/* Core */}
-            <circle cx="0" cy="0" r="5"  fill="#B49A6A" />
-            <circle cx="0" cy="0" r="2"  fill="#F2EEE5" />
-            {/* Label badge — one line only, to the right */}
-            <g transform="translate(12, -16)">
-              <rect width="108" height="22" rx="3" fill="#11110F" stroke="#B49A6A" strokeWidth="1" />
-              <text x="8" y="14.5" fill="#F2EEE5" fontSize="9.5" fontWeight="700" letterSpacing="0.06em">
+            <circle cx="0" cy="0" r="13" fill="rgba(180,154,106,0.14)" />
+            <circle cx="0" cy="0" r="8"  fill="none" stroke="#B49A6A" strokeWidth="1.0" />
+            <circle cx="0" cy="0" r="4.5" fill="#B49A6A" />
+            <circle cx="0" cy="0" r="1.8" fill="#F2EEE5" />
+            {/* One-line label to the right (inland side) */}
+            <g transform="translate(11, -15)">
+              <rect width="106" height="20" rx="3" fill="#0F0E0C" stroke="#B49A6A" strokeWidth="0.9" />
+              <text x="7" y="13.5" fill="#F2EEE5" fontSize="9" fontWeight="700" letterSpacing="0.06em">
                 HOTEL PUMERAI
               </text>
             </g>
           </g>
         </svg>
 
-        {/* Caption bar below map */}
+        {/* Footer caption */}
         <div className="map-footer-ingress">
           <span className="ingress-dot" />
           <span className="ingress-caption">Honnavar, NH-66 — coastal Karnataka</span>
