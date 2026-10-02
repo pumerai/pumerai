@@ -6,28 +6,6 @@ import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const storyMoments = [
-  {
-    eyebrow: "HOTEL PUMERAI · NH-66 HONNAVAR",
-    title: "A quiet boutique stay on the coast",
-    copy: "Hotel Pumerai is a 3-star boutique hotel on NH-66 in Honnavar, Karnataka, ~5 km from Kasarkod Beach and ~2.8 km from the Sharavati River, with 40 rooms, an indoor pool, and two on-site restaurants.",
-  },
-  {
-    eyebrow: "ARRIVE · COASTAL HIGHWAY",
-    title: "Effortless highway access & calm",
-    copy: "Conveniently situated near Ramateertha Cross on NH-66 with wide access, free secured parking, EV charging, and 24-hour reception.",
-  },
-  {
-    eyebrow: "SWIMMING POOL & LEISURE",
-    title: "Indoor glass-edge pool & retreat",
-    copy: "Featuring an indoor temperature-balanced swimming pool and children's splash area open daily from 6:30 AM to 7:00 PM.",
-  },
-  {
-    eyebrow: "KARAVALI & HONNAVAR",
-    title: "Your gateway to beaches & backwaters",
-    copy: "Explore Kasarkod Eco Beach, Sharavati River boat cruises, Mirjan Fort, and Murudeshwar from a serene, central base.",
-  },
-];
 
 function drawContainedImage(ctx, image, canvas, fit = "cover") {
   const pixelWidth = canvas.width;
@@ -55,7 +33,6 @@ export default function HeroSequence({ onNavigate }) {
   const [loadedCount, setLoadedCount] = useState(0);
   const [failedCount, setFailedCount] = useState(0);
   const [isReady, setIsReady] = useState(false);
-  const [storyIndex, setStoryIndex] = useState(0);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const progress = useMemo(() => {
@@ -105,12 +82,17 @@ export default function HeroSequence({ onNavigate }) {
       return undefined;
     }
 
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    if (isMobile) {
+      setIsReady(true);
+      return undefined;
+    }
+
     let isCancelled = false;
     let nextIndex = 0;
     let loaded = 0;
     let failed = 0;
-    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
-    const concurrentLoads = isMobile ? 4 : 8;
+    const concurrentLoads = 8;
 
     const loadFrame = (index) =>
       new Promise((resolve) => {
@@ -175,7 +157,11 @@ export default function HeroSequence({ onNavigate }) {
     }
 
     const isMobile = window.innerWidth <= 768;
-    const scrollDistance = isMobile ? "+=220%" : "+=340%";
+    if (isMobile) {
+      return undefined;
+    }
+
+    const scrollDistance = "+=340%";
 
     const context = gsap.context(() => {
       ScrollTrigger.create({
@@ -183,7 +169,7 @@ export default function HeroSequence({ onNavigate }) {
         pin: pinRef.current,
         start: "top top",
         end: scrollDistance,
-        scrub: isMobile ? 0.3 : 0.45,
+        scrub: 0.45,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
@@ -191,17 +177,11 @@ export default function HeroSequence({ onNavigate }) {
             HERO_FRAME_COUNT - 1,
             Math.max(0, Math.round(self.progress * (HERO_FRAME_COUNT - 1))),
           );
-          const nextStoryIndex = Math.min(
-            storyMoments.length - 1,
-            Math.floor(self.progress * storyMoments.length),
-          );
 
           if (nextFrame !== activeFrameRef.current) {
             activeFrameRef.current = nextFrame;
             renderFrame(nextFrame);
           }
-
-          setStoryIndex((current) => (current === nextStoryIndex ? current : nextStoryIndex));
         },
       });
     }, heroRef);
@@ -209,8 +189,6 @@ export default function HeroSequence({ onNavigate }) {
     ScrollTrigger.refresh();
     return () => context.revert();
   }, [isReady, loadedCount, prefersReducedMotion]);
-
-  const activeStory = storyMoments[storyIndex];
 
   const handleOpenBookingModal = (e) => {
     e.preventDefault();
@@ -233,29 +211,34 @@ export default function HeroSequence({ onNavigate }) {
           alt="Hotel Pumerai boutique 3-star property on NH-66 Honnavar Karnataka"
           className="hero-static-img"
         />
-        <div className="hero-copy">
-          <div className="hero-trust-badge">
-            <span className="trust-star">&#9733; 4.7/5 Google Rating</span>
-            <span className="trust-sep">&bull;</span>
-            <span>Google Stays &bull; 40 Rooms</span>
-          </div>
-          <p className="hero-eyebrow">HOTEL PUMERAI &bull; NH-66 HONNAVAR</p>
-          <h1 className="hero-heading">A quiet boutique hotel on Karnataka&apos;s coast</h1>
-          <p className="hero-subtitle">
-            Hotel Pumerai is a 3-star hotel on NH-66 near Ramateertha Cross in Honnavar, Karnataka,
-            5 km from Kasarkod Beach and 2.8 km from Sharavati River, with 40 rooms, an indoor pool, and two on-site restaurants.
-          </p>
+        <div className="hero-overlay" aria-hidden="true" />
+        <div className="hero-copy is-visible">
+          <h1 className="hero-heading">
+            <span className="hero-lead">Explore Honnavar,</span>
+            <span className="hero-brand">
+              Experience HOTEL<br />PUMERAI
+            </span>
+          </h1>
         </div>
       </section>
     );
   }
 
+  const isMobileClient = typeof window !== "undefined" && window.innerWidth < 768;
+
   return (
     <section className="hero" id="home" ref={heroRef} aria-label="Hotel Pumerai Honnavar">
       <div className="hero-pin" ref={pinRef}>
+        <img
+          src={heroFramePath(1)}
+          alt="Hotel Pumerai boutique hotel on NH-66 Honnavar Karnataka"
+          className="hero-mobile-img"
+          loading="eager"
+        />
         <canvas ref={canvasRef} aria-label="Interactive 240-frame sequence through Hotel Pumerai on NH-66" />
+        <div className="hero-overlay" aria-hidden="true" />
 
-        {!isReady && (
+        {!isReady && !isMobileClient && (
           <div className="loading-screen" aria-live="polite">
             <p className="loading-logo">HOTEL PUMERAI</p>
             <span className="loading-caption">
@@ -268,24 +251,20 @@ export default function HeroSequence({ onNavigate }) {
           </div>
         )}
 
-        {isReady && loadedCount === 0 && (
+        {isReady && loadedCount === 0 && !isMobileClient && (
           <div className="fallback-message">
             <p className="loading-logo">HOTEL PUMERAI</p>
             <span>Welcome to Hotel Pumerai, Honnavar. Explore rooms and dining below.</span>
           </div>
         )}
 
-        <div className={`hero-copy ${isReady ? "is-visible" : ""}`} key={storyIndex}>
-          {/* Trust Signal Badge directly in hero */}
-          <div className="hero-trust-badge">
-            <span className="trust-star">&#9733; 4.7/5 Google Rating</span>
-            <span className="trust-sep">&bull;</span>
-            <span>Google Stays &bull; 40 Rooms &bull; 3-Star Property</span>
-          </div>
-
-          <p className="hero-eyebrow">{activeStory.eyebrow}</p>
-          <h1 className="hero-heading">{activeStory.title}</h1>
-          <p className="hero-subtitle">{activeStory.copy}</p>
+        <div className={`hero-copy ${isReady ? "is-visible" : ""}`}>
+          <h1 className="hero-heading">
+            <span className="hero-lead">Explore Honnavar,</span>
+            <span className="hero-brand">
+              Experience HOTEL<br />PUMERAI
+            </span>
+          </h1>
         </div>
 
         <div className="scroll-cue" aria-hidden="true">
