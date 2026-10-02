@@ -910,6 +910,122 @@ p {
 }
 
 /* ==========================================================================
+   ABOUT — EDITORIAL LAYERED IMAGE COMPOSITION
+   Text left | Primary image right | Secondary image overlaps bottom-right
+   ========================================================================== */
+
+/* Two-column wrapper: text left, image composition right */
+.about-editorial-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: clamp(40px, 6vw, 80px);
+}
+
+/* On mobile: stack vertically, text first */
+@media (max-width: 767px) {
+  .about-editorial-wrapper {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* The image composition container — needs relative so the secondary
+   image can be absolutely anchored within it, with overflow visible
+   so the secondary frame can extend slightly beyond the primary */
+.about-image-composition {
+  position: relative;
+  /* Extra bottom padding gives room for the secondary image to overlap
+     below the primary without clipping */
+  padding-bottom: 22%;
+}
+
+/* Mobile: remove the bottom padding trick; images stack naturally */
+@media (max-width: 767px) {
+  .about-image-composition {
+    padding-bottom: 0;
+  }
+}
+
+/* PRIMARY IMAGE FRAME — full width of its column, ~4:3 aspect */
+.about-primary-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 1px;
+  background-color: var(--surface-clay);
+}
+
+.about-primary-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 600ms cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* SECONDARY IMAGE FRAME — absolute, overlaps bottom-right corner
+   of the primary image, 36% wide, roughly portrait aspect */
+.about-secondary-frame {
+  position: absolute;
+  bottom: 0;
+  right: -4%;          /* Hangs 4% outside the column edge for drama */
+  width: 40%;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border-radius: 1px;
+  background-color: var(--surface-clay);
+  /* Thin accent border so it reads as a deliberate editorial element */
+  outline: 3px solid var(--color-background);
+  z-index: 2;
+}
+
+.about-secondary-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 600ms cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+/* Mobile: secondary frame switches to relative, slight right offset */
+@media (max-width: 767px) {
+  .about-secondary-frame {
+    position: relative;
+    bottom: auto;
+    right: auto;
+    width: 55%;
+    margin-top: -18%;   /* Pulls it up to partially overlap the primary */
+    margin-left: auto;  /* Pushes it to the right */
+    aspect-ratio: 4 / 3;
+    outline: 3px solid var(--color-background);
+    z-index: 2;
+  }
+}
+
+/* Tablet (768px–1023px): keep layout but tighten the overhang */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .about-secondary-frame {
+    right: -2%;
+    width: 38%;
+  }
+}
+
+/* Hover — subtle zoom on each image independently */
+@media (hover: hover) and (pointer: fine) {
+  .about-primary-frame:hover .about-primary-img {
+    transform: scale(1.04);
+  }
+
+  .about-secondary-frame:hover .about-secondary-img {
+    transform: scale(1.04);
+  }
+}
+
+/* ==========================================================================
    ROOMS SECTION
    ========================================================================== */
 
