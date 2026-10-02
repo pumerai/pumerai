@@ -105,12 +105,11 @@ export const destinations = [
     driveTime: "2 hr 30 min drive",
     description:
       "South Goa beaches, heritage architecture and coastal dining connected north along NH-66.",
-    /* Goa — no suitable licensed image found; text-only panel */
-    image: null,
-    imageW: null,
-    imageH: null,
-    objectPosition: null,
-    alt: null,
+    image: "/images/around/goa-beach.webp",
+    imageW: 800,
+    imageH: 533,
+    objectPosition: "center center",
+    alt: "Mandrem Beach wide sandy shoreline and sea, Goa",
     mapsUrl: "https://maps.app.goo.gl/JAYDhUV7hQkR3csL8",
     lat: 15.4989,
     lng: 73.8278,

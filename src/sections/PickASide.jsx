@@ -9,8 +9,9 @@ const sideMoments = [
     badge: "5 km, Blue Flag Certified",
     description:
       "Clean Blue Flag beach with golden sand and calm waters 5 km away.",
-    image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_42%20AM_result.webp",
-    alt: "Kasarkod Eco Beach and coastal walkway near Hotel Pumerai Honnavar",
+    image: "/images/features/kasarkod-eco-beach.webp",
+    alt: "Kasarkod Eco Beach golden sandy shoreline and coastal casuarina landscape near Honnavar",
+    objectPosition: "center center",
     cta: "Explore Beach Route",
     ctaLink: "https://maps.app.goo.gl/rCfTnw9t8Dp58mga7",
   },
@@ -35,8 +36,9 @@ const sideMoments = [
     badge: "2.8 km, Mangrove Backwaters",
     description:
       "Mangrove trails and sunset estuary cruises arranged directly through our front desk.",
-    image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_15%20AM_result.webp",
-    alt: "Sharavathi River backwaters and mangrove boat rides in Honnavar",
+    image: "/images/features/sharavathi-backwater.webp",
+    alt: "Honnavar Sharavathi backwaters with mangrove forest and boat on Badagani River",
+    objectPosition: "center center",
     cta: "Boat Cruise Assistance",
     ctaLink: "tel:+919845423223",
   },
@@ -113,6 +115,7 @@ export default function PickASide({ onNavigate }) {
                     alt={item.alt}
                     loading="lazy"
                     className="pas-image"
+                    style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined}
                   />
                   <div className="pas-image-gradient" />
                   

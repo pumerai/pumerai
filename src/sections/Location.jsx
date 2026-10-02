@@ -20,6 +20,7 @@ const CREDITS = [
   { file: "Murudeshwar", author: "Joygopal008", page: "https://commons.wikimedia.org/wiki/File:Murudeshwar_Shiva_Statue.jpg", licence: "CC BY-SA 4.0" },
   { file: "Gokarna", author: "Vedamurthy.j", page: "https://commons.wikimedia.org/wiki/File:Mahabaleshwara_Temple.JPG", licence: "CC BY-SA 3.0" },
   { file: "Sirsi", author: "solarisgirl", page: "https://commons.wikimedia.org/wiki/File:Marikamba_Temple,_Sirsi_(48029209132).jpg", licence: "CC BY-SA 2.0" },
+  { file: "Goa", author: "Vyacheslav Argenberg", page: "https://commons.wikimedia.org/wiki/File:Mandrem_Beach_and_Mandrem_River,_Mandrem,_Goa,_India_(edit).jpg", licence: "CC BY 4.0" },
   { file: "Udupi", author: "Outlander07", page: "https://commons.wikimedia.org/wiki/File:Udupi_Sri_krishna_matha_Temple_pond.jpg", licence: "CC BY-SA 4.0" },
   { file: "Mangalore", author: "Nyk19", page: "https://commons.wikimedia.org/wiki/File:Mangalore_skylines.jpg", licence: "CC BY-SA 4.0" },
 ];
