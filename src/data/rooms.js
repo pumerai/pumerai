@@ -34,7 +34,7 @@ export const rooms = [
       "Refined contemporary room featuring a private glass balcony directly facing the swimming pool and lush coastal greenery.",
     fullDescription:
       "The Club Room with Balcony is designed for guests seeking an elevated sense of outdoor connection. Step onto your private glass balcony to take in gentle coastal breezes and views over the glass-edge swimming pool. Inside, enjoy an expanded seating lounge, a plush king bed with high-thread-count linens, a 50-inch 4K Smart TV, and a stone bathroom with a walk-in rain shower.",
-    size: "380 sq ft",
+    size: "400 sq ft",
     occupancy: "Sleeps 2",
     bedType: "1 King Bed",
     startingPrice: 3799,
@@ -72,7 +72,7 @@ export const rooms = [
       "Spacious room designed for quiet comfort with rich teak details, dedicated work station, and premium bathroom amenities.",
     fullDescription:
       "Our Club Room balances generous space with minimalist tranquility. Finished with warm wood millwork and soft earth tones, this room features a restful king bed, an ergonomic work desk with high-speed connectivity, and an en-suite bathroom with luxury toiletries. Ideal for business and extended holiday stays alike.",
-    size: "340 sq ft",
+    size: "400 sq ft",
     occupancy: "Sleeps 2",
     bedType: "1 King Bed",
     startingPrice: 3299,
@@ -148,7 +148,7 @@ export const rooms = [
       "Expansive multi-room suite featuring an independent master bedroom and separate living salon with sofa bed for 4 guests.",
     fullDescription:
       "Tailored for families vacationing along the Karnataka coast, the Family Suite Room offers the luxury of separate spaces. The private master bedroom features a plush king bed, while the living lounge includes a comfortable queen pull-out sofa bed, dining table, and second TV. Includes a dual-vanity stone bathroom, mini fridge, and ample storage.",
-    size: "520 sq ft",
+    size: "550 sq ft",
     occupancy: "Sleeps 4",
     bedType: "1 King Bed + 1 Queen Sofa Bed",
     startingPrice: 5499,
@@ -186,7 +186,7 @@ export const rooms = [
       "Modern designer room featuring warm teak accents, garden views, and dependable conveniences along NH-66.",
     fullDescription:
       "The Premium Room combines minimalist coastal aesthetics with high practical comfort. Designed with large picture windows overlooking the landscaped courtyard garden, this room features bespoke wooden headboards, custom reading sconces, high-speed WiFi, and an invigorating en-suite walk-in rain shower.",
-    size: "320 sq ft",
+    size: "240 sq ft",
     occupancy: "Sleeps 2",
     bedType: "1 King Bed",
     startingPrice: 2999,
@@ -224,7 +224,7 @@ export const rooms = [
       "Convenient twin-bed configuration tailored for colleagues, friends, or family traveling together along the coast.",
     fullDescription:
       "The Premium Twin Room features two separate twin beds outfitted with supportive orthopaedic mattresses and crisp cotton linens. Perfect for road trip companions or colleagues visiting Uttara Kannada, this room includes dedicated bedside charging stations, an executive work desk, and a modern glass-enclosed bathroom.",
-    size: "320 sq ft",
+    size: "240 sq ft",
     occupancy: "Sleeps 2",
     bedType: "2 Twin Beds",
     startingPrice: 2999,
@@ -262,7 +262,7 @@ export const rooms = [
       "Luxury executive suite with separate seating salon, bespoke Karavali wood millwork, and deep soaking bathtub.",
     fullDescription:
       "Our premier Suite Room celebrates the regional coastal architectural heritage of Karavali with hand-finished teak wood elements and elevated modern luxury. Features an expansive California King bed, a separate powder lounge, a deep soaking bathtub alongside a rain shower, and an artisan espresso machine for leisurely mornings.",
-    size: "460 sq ft",
+    size: "500 sq ft",
     occupancy: "Sleeps 2–3",
     bedType: "1 California King Bed",
     startingPrice: 4899,

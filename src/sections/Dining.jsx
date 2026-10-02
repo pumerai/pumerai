@@ -59,6 +59,16 @@ export default function Dining({ sectionId = "dining", headingId = "dining-headi
                   <h3 className="venue-title">{venue.name}</h3>
                 </div>
 
+                {venue.cuisines && (
+                  <div className="venue-cuisines-row" aria-label="Available cuisines">
+                    {venue.cuisines.map((cuisine) => (
+                      <span className="cuisine-badge" key={cuisine}>
+                        {cuisine}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
                 <p className="venue-desc">{venue.description}</p>
 
                 <div className="signature-dishes-block">

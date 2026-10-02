@@ -56,6 +56,16 @@ export const routesMeta = {
       { name: "Dining & Restaurants", url: "https://hotelpumerai.com/dining" },
     ],
   },
+  "/banquet": {
+    title: "Banquet Halls & Events in Honnavar | Hotel Pumerai",
+    description:
+      "Host weddings, celebrations and corporate conferences at Hotel Pumerai. Featuring Sidhvin Banquet Hall (200 guests) and Milan Hall (50 guests) along NH-66 in Honnavar.",
+    canonical: "https://hotelpumerai.com/banquet",
+    breadcrumbs: [
+      { name: "Home", url: "https://hotelpumerai.com/" },
+      { name: "Banquet Halls", url: "https://hotelpumerai.com/banquet" },
+    ],
+  },
   "/faq": {
     title: "Hotel Pumerai FAQ | Frequently Asked Questions",
     description:

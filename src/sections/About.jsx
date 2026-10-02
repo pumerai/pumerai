@@ -15,44 +15,6 @@ export default function About() {
     <section className="section about-section" id="about" aria-labelledby="about-heading">
       <div className="section-container">
         <div className="about-content-wrapper">
-          <div className="about-text-block" data-reveal>
-            <div className="editorial-tag">
-              <span className="accent-pip" />
-              <span>About Hotel Pumerai &bull; Honnavar</span>
-            </div>
-            <h2 id="about-heading" className="section-title">
-              A place to arrive.
-              <br />
-              <span className="title-italic">A place to explore.</span>
-            </h2>
-            <div className="brass-rule-small" />
-
-            {/* Geo-targeted Intro Paragraph (for humans & AI retrieval) */}
-            <p className="lead-paragraph">
-              Hotel Pumerai is a premium 3-star hotel on NH-66 near Ramateertha Cross in Honnavar,
-              Uttara Kannada, Karnataka. Located just ~5 km from Kasarkod Eco Beach and ~2.8 km
-              from the Sharavathi River, Pumerai offers a comfortable base for travellers exploring
-              Honnavar, Murudeshwar, Bhatkal, and coastal Karnataka.
-            </p>
-
-            <p className="body-paragraph">
-              Featuring 40 thoughtfully designed guestrooms, a glass-edge rooftop swimming pool with a children&apos;s
-              splash area (open 6:30 AM–7:00 PM), two on-site restaurants—Matsya (coastal seafood) and Madhura (pure vegetarian)—free
-              Wi-Fi · 100+ Mbps, and spacious private parking with EV charging, Pumerai is well suited for both short
-              stopovers and longer coastal getaways.
-            </p>
-
-            {/* Factual Highlights Grid */}
-            <div className="about-facts-grid">
-              {keyFacts.map((fact) => (
-                <div className="fact-item" key={fact.label}>
-                  <span className="fact-label">{fact.label}</span>
-                  <strong className="fact-val">{fact.value}</strong>
-                </div>
-              ))}
-            </div>
-          </div>
-
           <figure className="editorial-figure about-figure" data-reveal>
             <div className="figure-inner">
               <img
@@ -66,6 +28,37 @@ export default function About() {
               <span>Near Ramateertha Cross, Honnavar</span>
             </figcaption>
           </figure>
+
+          <div className="about-text-block" data-reveal>
+            <div className="editorial-tag">
+              <span className="accent-pip" />
+              <span>About Hotel Pumerai &bull; Honnavar</span>
+            </div>
+            <h2 id="about-heading" className="section-title">
+              A place to arrive.
+              <br />
+              <span className="title-italic">A place to explore.</span>
+            </h2>
+            <div className="brass-rule-small" />
+
+            {/* Geo-targeted Intro Paragraph */}
+            <p className="lead-paragraph">
+              Hotel Pumerai is a premium 3-star hotel on NH-66 near Ramateertha Cross in Honnavar,
+              Uttara Kannada, Karnataka. Located just ~5 km from Kasarkod Eco Beach and ~2.8 km
+              from the Sharavathi River, Pumerai offers a comfortable base for travellers exploring
+              Honnavar, Murudeshwar, Bhatkal, and coastal Karnataka.
+            </p>
+
+            {/* Factual Highlights Grid */}
+            <div className="about-facts-grid">
+              {keyFacts.map((fact) => (
+                <div className="fact-item" key={fact.label}>
+                  <span className="fact-label">{fact.label}</span>
+                  <strong className="fact-val">{fact.value}</strong>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import { STAYFLEXI_BOOKING_URL } from "../data/rooms.js";
 const navItems = [
   { label: "Home", route: "/" },
   { label: "Rooms", route: "/rooms" },
+  { label: "Banquet", route: "/banquet" },
   { label: "Dining", route: "/dining" },
   { label: "Gallery", route: "/gallery" },
   { label: "Location", route: "/location" },
@@ -63,7 +64,7 @@ export default function Header({ currentPath, onNavigate }) {
           <LogoMark src="/pumerai-logo-full.webp" />
           <div className="brand-text-wrap">
             <span className="brand-text">HOTEL PUMERAI</span>
-            <span className="brand-sub">Honnavar &bull; NH-66</span>
+            <span className="brand-sub">Honnavar &bull; NH-66 &bull; A Unit of VRS Group</span>
           </div>
         </a>
 

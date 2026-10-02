@@ -1,321 +1,185 @@
-const transitDistances = [
+const transitHighlights = [
   {
-    name: "Kasarkod Eco Beach & Boardwalk",
-    distance: "~5 km",
-    time: "8 min drive",
-    desc: "Blue Flag-certified beach with golden sands, casuarina groves and a coastal promenade.",
-    type: "Beach",
+    label: "NH-66 Coastal Highway",
+    value: "Direct Ingress / Egress",
+    desc: "Direct access along the Karavali highway corridor connecting Goa, Gokarna, Murudeshwar, and Mangalore.",
   },
   {
-    name: "Sharavathi River Backwaters & Boating",
-    distance: "~2.8 km",
-    time: "5 min drive",
-    desc: "Scenic river cruises, mangrove trails, and tranquil sunset boat rides.",
-    type: "Nature",
+    label: "Honnavar Railway Station (HNA)",
+    value: "~3.5 km • 9 min drive",
+    desc: "Key Konkan Railway junction with direct trains to Mumbai, Goa, Mangalore, and Bangalore.",
   },
   {
-    name: "Honnavar Railway Station (HNA)",
-    distance: "~3.5 km",
-    time: "9 min drive",
-    desc: "Honnavar Railway Station (HNA) connects Mumbai, Goa, Mangalore & Bangalore via the Konkan Railway network.",
-    type: "Transit",
+    label: "Kasarkod Eco Beach",
+    value: "~5 km • 8 min drive",
+    desc: "Blue Flag-certified beach featuring golden sands, casuarina groves, and clean swimming waters.",
   },
   {
-    name: "Apsarakonda Waterfalls & Hillock",
-    distance: "~8 km",
-    time: "12 min drive",
-    desc: "Coastal freshwater waterfall, serene lagoon, and cliff-top Arabian Sea sunset view.",
-    type: "Nature",
+    label: "Sharavathi River Boating",
+    value: "~2.8 km • 5 min drive",
+    desc: "Scenic river cruises, mangrove trails, and tranquil backwater sunset boat rides.",
   },
   {
-    name: "Historic Mirjan Fort",
-    distance: "~18 km",
-    time: "22 min drive",
-    desc: "16th-century laterite stone citadel known for its moats and tranquil coastal history.",
-    type: "Heritage",
+    label: "Honnavar KSRTC Bus Stand",
+    value: "~2.5 km • 6 min drive",
+    desc: "Frequent intercity and interstate coastal express transit.",
   },
   {
-    name: "Murudeshwar Temple & Beach",
-    distance: "~26 km",
-    time: "35 min drive",
-    desc: "Home to the iconic Shiva statue, Raja Gopura, and Arabian Sea viewpoints.",
-    type: "Temple",
-  },
-  {
-    name: "Bhatkal & Heritage Coast",
-    distance: "~38 km",
-    time: "45 min drive",
-    desc: "Historic coastal port along NH-66 with heritage architecture and tranquil shores.",
-    type: "Coastal Town",
-  },
-  {
-    name: "Idagunji Mahaganapati Temple",
-    distance: "~16 km",
-    time: "20 min drive",
-    desc: "Historic pilgrimage shrine dedicated to Lord Ganesha.",
-    type: "Temple",
-  },
-  {
-    name: "Gokarna (Om Beach & Kudle)",
-    distance: "~48 km",
-    time: "55 min drive",
-    desc: "Renowned coastal temple town and rugged beach trekking landscapes in Uttara Kannada.",
-    type: "Day Trip",
-  },
-  {
-    name: "Sirsi & Western Ghats",
-    distance: "~68 km",
-    time: "1 hr 30 min drive",
-    desc: "Gateway to the Western Ghats, with rainforests, spice plantations and waterfalls.",
-    type: "Eco Tourism",
-  },
-  {
-    name: "Karwar & Kali River Estuary",
-    distance: "~90 km",
-    time: "1 hr 45 min drive",
-    desc: "Uttara Kannada district headquarters, Tagore Beach, and scenic coastal highway transit.",
-    type: "District Base",
-  },
-  {
-    name: "Honnavar KSRTC Central Bus Stand",
-    distance: "~2.5 km",
-    time: "6 min drive",
-    desc: "Frequent intercity coastal and interstate bus transit.",
-    type: "Transit",
+    label: "Airport Transit Corridors",
+    value: "Goa & Mangalore",
+    desc: "Accessible via NH-66: Goa MOPA / Dabolim (~150 km) and Mangalore International (~175 km).",
   },
 ];
 
 const hotelPolicies = [
-  { label: "Check-in Time", value: "From 1:00 PM (24-hr front desk welcomes late arrivals)" },
-  { label: "Check-out Time", value: "Until 11:00 AM (Late checkout subject to availability)" },
-  { label: "Pool Hours", value: "6:30 AM – 7:00 PM daily (Rooftop & children's pool)" },
-  { label: "Smoking Policy", value: "All rooms are smoke-free; smoking is permitted only in designated outdoor areas" },
+  { label: "Check-in Time", value: "From 1:00 PM (24-hr front desk welcomes late highway arrivals)" },
+  { label: "Check-out Time", value: "Until 11:00 AM (Late checkout subject to room availability)" },
+  { label: "Pool Hours", value: "6:30 AM – 7:00 PM daily (Rooftop leisure & children's splash pool)" },
+  { label: "Smoking Policy", value: "All rooms are smoke-free; permitted only in designated outdoor zones" },
   { label: "Pet Policy", value: "Pets are not accommodated" },
-  { label: "Parking & EV", value: "Spacious private parking with EV charging" },
+  { label: "Parking & EV", value: "Spacious private parking with dedicated EV charging stations" },
   { label: "Front Desk", value: "24-hour manned reception, security & luggage assistance" },
-  { label: "Cancellation", value: "Free cancellation up to 24 hours before check-in on eligible direct bookings" },
+  { label: "Direct Bookings", value: "Free cancellation up to 24 hours prior to check-in on eligible rates" },
 ];
-
-function getCategoryIcon(type) {
-  switch (type) {
-    case "Beach":
-      return (
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M2 12c3-1.5 6-1.5 9 0s6 1.5 9 0" />
-          <path d="M2 17c3-1.5 6-1.5 9 0s6 1.5 9 0" />
-        </svg>
-      );
-    case "Nature":
-    case "Eco Tourism":
-      return (
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z" />
-          <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12" />
-        </svg>
-      );
-    case "Transit":
-      return (
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <rect x="4" y="3" width="16" height="13" rx="2" />
-          <path d="m4 11 16 0" />
-          <path d="m8 16-2 3" />
-          <path d="m16 16 2 3" />
-        </svg>
-      );
-    case "Heritage":
-    case "Temple":
-      return (
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <path d="M3 21h18" />
-          <path d="M5 21V10l7-5 7 5v11" />
-          <path d="M9 21v-4a3 3 0 0 1 6 0v4" />
-        </svg>
-      );
-    case "Day Trip":
-    case "Coastal Town":
-    case "District Base":
-    default:
-      return (
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-          <circle cx="12" cy="12" r="10" />
-          <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76" />
-        </svg>
-      );
-  }
-}
 
 export default function Location({ isStandalonePage = false }) {
   const officialGoogleMapsLink = "https://maps.app.goo.gl/rCfTnw9t8Dp58mga7";
 
   return (
-    <section className="section location-section" id="location" aria-labelledby="location-heading">
+    <section className="section location-section coastal-connected-section" id="location" aria-labelledby="coastal-connected-title">
       <div className="section-container">
-        {/* Section Header (homepage only; standalone location page uses its own single hero intro) */}
-        {!isStandalonePage && (
-          <header className="section-header-split" data-reveal>
-            <div className="header-meta">
-              <div className="editorial-tag">
-                <span className="accent-pip" />
-                <span>Location &amp; Directions &bull; NH-66</span>
-              </div>
-              <h2 id="location-heading" className="section-title">
-                On the coastal <br />
-                <span className="title-italic">road through Honnavar.</span>
-              </h2>
-            </div>
-            <div className="header-summary-block">
-              <p className="header-summary">
-                Hotel Pumerai is situated directly on National Highway 66 near Ramateertha Cross in Honnavar,
-                Uttara Kannada, Karnataka. Conveniently located on NH-66 between Goa,
-                Gokarna, Murudeshwar, Bhatkal, and Mangalore, our hotel serves as a comfortable
-                base for exploring coastal Karnataka, Kasarkod Eco Beach, and the Sharavathi River backwaters.
-              </p>
-            </div>
-          </header>
-        )}
+        {/* Editorial Split Composition */}
+        <div className="coastal-connected-split" data-reveal>
+          {/* LEFT: Large location / map / landscape visual */}
+          <div className="cc-map-column">
+            <div className="cc-map-frame">
+              <iframe
+                title="Hotel Pumerai Honnavar Official Location on Google Maps"
+                src="https://maps.google.com/maps?q=Hotel+Pumerai,+NH-66,+Ramateertha+Cross,+Honnavar,+Karnataka+581334&amp;hl=en&amp;z=15&amp;output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0 }}
+                allowFullScreen=""
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="cc-map-iframe"
+              />
 
-        {/* Embedded Map & Address Card Block */}
-        <div className="location-map-row" data-reveal>
-          {/* Map Column */}
-          <div className="map-embed-container">
-            <iframe
-              title="Hotel Pumerai Honnavar Official Location on Google Maps"
-              src="https://maps.google.com/maps?q=Hotel+Pumerai,+NH-66,+Ramateertha+Cross,+Honnavar,+Karnataka+581334&amp;hl=en&amp;z=15&amp;output=embed"
-              width="100%"
-              height="450"
-              style={{ border: 0 }}
-              allowFullScreen=""
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="map-iframe"
-            />
-            {/* Quick Deep Link Overlay for Mobile */}
-            <div className="map-deep-link-bar">
-              <a
-                href={officialGoogleMapsLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button-primary map-directions-btn"
-                aria-label="Get Directions to Hotel Pumerai on Google Maps"
-              >
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                  <polygon points="3 11 22 2 13 21 11 13 3 11" />
-                </svg>
-                <span>GET DIRECTIONS</span>
-              </a>
-              <a
-                href={officialGoogleMapsLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button-secondary map-apple-btn"
-                aria-label="Open in Google Maps App"
-              >
-                Open in Maps
-              </a>
-            </div>
-          </div>
-
-          {/* Address & Highway Transit Box */}
-          <div className="address-details-card">
-            <div className="address-header">
-              <span className="address-tag">Official Property Address</span>
-              <h3 className="address-title">Hotel Pumerai</h3>
-              <address className="address-body">
-                NH-66, near Ramateertha Cross,
-                <br />
-                Honnavar, Uttara Kannada,
-                <br />
-                Karnataka 581334, India
-              </address>
-            </div>
-
-            <div className="brass-rule-small" />
-
-            <div className="contact-quick-list">
-              <div className="quick-item">
-                <span className="quick-label">Reservations Phone</span>
-                <a href="tel:+919845423223" className="quick-val highlight">+91 98454 23223</a>
-              </div>
-              <div className="quick-item">
-                <span className="quick-label">Hotel Front Desk</span>
-                <a href="tel:+918387221221" className="quick-val">08387-221221</a>
-              </div>
-              <div className="quick-item">
-                <span className="quick-label">WhatsApp Concierge</span>
-                <a
-                  href="https://wa.me/919845423223?text=Hi%20Hotel%20Pumerai%2C%20I%20would%20like%20directions%20and%20booking%20assistance."
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="quick-val whatsapp-link"
-                >
-                  Click to Chat on WhatsApp
-                </a>
-              </div>
-              <div className="quick-item">
-                <span className="quick-label">Email Inquiries</span>
-                <a href="mailto:reservation@hotelpumerai.com" className="quick-val">reservation@hotelpumerai.com</a>
-              </div>
-            </div>
-
-            <div className="highway-note-box">
-              <span className="highway-badge">NH-66 Direct Access</span>
-              <p className="highway-text">
-                Situated right off the main highway with wide ingress/egress.
-              </p>
-              <div style={{ marginTop: "10px" }}>
+              {/* Map Floating Actions */}
+              <div className="cc-map-overlay-bar">
                 <a
                   href={officialGoogleMapsLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="button-secondary"
-                  style={{ fontSize: "0.75rem", padding: "8px 14px", width: "100%", textAlign: "center" }}
+                  className="button-primary cc-map-action-btn"
+                  aria-label="Get directions to Hotel Pumerai on Google Maps"
                 >
-                  📍 Open in Google Maps
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                    <polygon points="3 11 22 2 13 21 11 13 3 11" />
+                  </svg>
+                  <span>GET DIRECTIONS</span>
+                </a>
+                <a
+                  href={officialGoogleMapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="button-secondary cc-map-app-btn"
+                  aria-label="Open location in Google Maps app"
+                >
+                  Open in Maps
+                </a>
+              </div>
+            </div>
+
+            {/* Highway Landmark Ingress Tag */}
+            <div className="cc-highway-ingress-card">
+              <div className="ingress-badge">
+                <span className="ingress-pip" />
+                <span>NH-66 DIRECT ACCESS</span>
+              </div>
+              <p className="ingress-text">
+                Wide ingress and egress right off National Highway 66 near Ramateertha Cross. Features private secured parking bays and dedicated EV charging.
+              </p>
+            </div>
+          </div>
+
+          {/* RIGHT: Heading, Short paragraph, Location information, Distances / connectivity, Map CTA */}
+          <div className="cc-content-column">
+            <div className="editorial-tag">
+              <span className="accent-pip" />
+              <span>LOCATION &amp; ACCESS &bull; HONNAVAR</span>
+            </div>
+
+            <h2 id="coastal-connected-title" className="section-title cc-heading">
+              Coastal. <br />
+              <span className="title-italic">Yet Connected.</span>
+            </h2>
+
+            <div className="brass-rule-small" />
+
+            <p className="cc-lead-copy">
+              Set along NH-66 in Honnavar, Hotel Pumerai offers a comfortable coastal base with convenient access
+              to beaches, rivers and nearby destinations across Uttara Kannada.
+            </p>
+
+            {/* Distances & Connectivity Highlights */}
+            <div className="cc-connectivity-grid">
+              {transitHighlights.map((item) => (
+                <div className="cc-conn-card" key={item.label}>
+                  <div className="cc-conn-header">
+                    <h3 className="cc-conn-label">{item.label}</h3>
+                    <span className="cc-conn-val">{item.value}</span>
+                  </div>
+                  <p className="cc-conn-desc">{item.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Official Address & Concierge Card */}
+            <div className="cc-address-block">
+              <div className="cc-addr-info">
+                <span className="cc-addr-tag">Official Property Address</span>
+                <h4 className="cc-addr-name">Hotel Pumerai</h4>
+                <address className="cc-addr-text">
+                  NH-66, near Ramateertha Cross, Honnavar, Uttara Kannada, Karnataka 581334
+                </address>
+              </div>
+
+              <div className="cc-addr-contacts">
+                <a href="tel:+919845423223" className="cc-contact-chip">
+                  <span className="chip-label">Reservations:</span>
+                  <span className="chip-val">+91 98454 23223</span>
+                </a>
+                <a
+                  href="https://wa.me/919845423223?text=Hi%20Hotel%20Pumerai%2C%20I%20would%20like%20directions%20and%20assistance."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="cc-contact-chip chip-whatsapp"
+                >
+                  <span className="chip-label">WhatsApp:</span>
+                  <span className="chip-val">Chat with Concierge</span>
+                </a>
+              </div>
+
+              <div className="cc-cta-row">
+                <a
+                  href={officialGoogleMapsLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="button-primary cc-directions-btn"
+                >
+                  <span>OPEN HOTEL PUMERAI ON GOOGLE MAPS <span className="arrow-icon">&rarr;</span></span>
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Distance Callouts & Nearby Landmarks */}
-        <div className="transit-landmarks-block" data-reveal>
-          <div className="landmarks-header">
-            <div className="editorial-tag">
-              <span className="accent-pip" />
-              <span>Nearby Landmarks &amp; Transit Times</span>
-            </div>
-            <h3 className="landmarks-title">Proximity to Key Coastal Attractions</h3>
-            <p className="landmarks-subtitle">
-              All distances measured directly from Hotel Pumerai on NH-66 Honnavar.
-            </p>
-          </div>
-
-          <div className="landmarks-grid">
-            {transitDistances.map((item) => (
-              <div className="landmark-card" key={item.name}>
-                <div className="landmark-card-top">
-                  <span className="landmark-type-tag">
-                    <span className="landmark-type-icon">{getCategoryIcon(item.type)}</span>
-                    <span>{item.type}</span>
-                  </span>
-                  <div className="landmark-time-badge">
-                    <span className="badge-dist">{item.distance}</span>
-                    <span className="badge-sep">&bull;</span>
-                    <span className="badge-time">{item.time}</span>
-                  </div>
-                </div>
-                <h4 className="landmark-name">{item.name}</h4>
-                <p className="landmark-desc">{item.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Stay Information & Hotel Policies */}
+        {/* Essential Stay Information & Policies */}
         <div className="policies-summary-card" data-reveal>
           <div className="policies-header">
-            <span className="policies-tag">Essential Policies</span>
-            <h3 className="policies-title">Stay Information &amp; Hotel Policies</h3>
+            <span className="policies-tag">Essential Stay Information</span>
+            <h3 className="policies-title">Hotel Policies &amp; Guest Comfort</h3>
           </div>
           <div className="policies-two-col-grid">
             {hotelPolicies.map((p) => (

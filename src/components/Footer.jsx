@@ -1,5 +1,6 @@
 const navLinks = [
   { label: "Rooms", route: "/rooms" },
+  { label: "Banquet Halls", route: "/banquet" },
   { label: "Dining", route: "/dining" },
   { label: "Gallery", route: "/gallery" },
   { label: "Location", route: "/location" },
@@ -61,7 +62,7 @@ export default function Footer({ onNavigate }) {
   };
 
   return (
-    <footer className="site-footer" id="footer" aria-label="Site Footer" style={{ backgroundColor: "#FFFFFF" }}>
+    <footer className="site-footer" id="footer" aria-label="Site Footer">
       <div className="footer-container">
 
         {/* Giant Watermark across top of footer (as seen in Jiana reference screenshot) */}
@@ -95,6 +96,7 @@ export default function Footer({ onNavigate }) {
           {/* Col 2: Contact, Address & Social */}
           <section className="footer-col footer-col-center">
             <p className="footer-col-title">HOTEL PUMERAI &mdash; HONNAVAR</p>
+            <p className="footer-vrs-note">A Unit of VRS Group</p>
 
             <address className="footer-contact-block footer-contact-centered">
               <a
@@ -209,7 +211,7 @@ export default function Footer({ onNavigate }) {
               rel="noopener noreferrer"
               className="footer-credit-link"
             >
-              Dishan Web Wings
+              Dishan Web Wing
             </a>
           </p>
         </div>

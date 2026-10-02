@@ -33,7 +33,7 @@ export default function DiningPreview({ onNavigate }) {
                 onClick={handleExplore}
                 aria-label="Explore coastal dining at Hotel Pumerai"
               >
-                <span>EXPLORE DINING &rarr;</span>
+                <span>EXPLORE DINING <span className="arrow-icon">&rarr;</span></span>
               </a>
             </div>
           </div>

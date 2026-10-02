@@ -94,10 +94,6 @@ export default function RoomsPreview({ onNavigate }) {
             </h2>
           </div>
           <div className="header-summary-block">
-            <p className="header-summary">
-              40 thoughtfully designed guestrooms along NH-66 in Honnavar.
-              From garden-view rooms and pool balconies to spacious family suites, every space is planned for rest and renewal.
-            </p>
             <div className="preview-all-action">
               <div className="rooms-slider-controls" aria-label="Room preview carousel controls">
                 <button
@@ -129,7 +125,7 @@ export default function RoomsPreview({ onNavigate }) {
                 onClick={handleViewAllRooms}
                 aria-label="View all seven rooms on dedicated rooms page"
               >
-                <span>VIEW ALL 7 ROOM TYPES &rarr;</span>
+                <span>VIEW ALL 7 ROOM TYPES <span className="arrow-icon">&rarr;</span></span>
               </a>
             </div>
           </div>

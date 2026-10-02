@@ -233,7 +233,7 @@ export default function GallerySection({ isStandalonePage = false, onNavigate })
                   }}
                   aria-label="Explore full photo gallery"
                 >
-                  <span>VIEW FULL GALLERY &rarr;</span>
+                  <span>VIEW FULL GALLERY <span className="arrow-icon">&rarr;</span></span>
                 </a>
               </div>
             </div>

@@ -1,171 +1,137 @@
-export const amenitiesList = [
+export const verifiedServices = [
+  {
+    id: "reception",
+    num: "01",
+    title: "24-Hour Reception & Concierge",
+    desc: "Round-the-clock front desk welcoming late highway arrivals, arranging Sharavathi river boat trips, and tailoring coastal itineraries.",
+    highlight: "24/7 Manned Desk • Express Check-in",
+  },
+  {
+    id: "room-service",
+    num: "02",
+    title: "Daily Housekeeping & Room Service",
+    desc: "Thoughtful daily room care, spotless linens, and prompt in-room dining from Matsya Seafood and Madhura Vegetarian kitchens.",
+    highlight: "In-Room Dining • Daily Linens",
+  },
   {
     id: "rooftop-pool",
-    title: "Rooftop Swimming Pool",
-    desc: "Glass-edge rooftop swimming pool, open daily from 6:30 AM to 7:00 PM",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M2 20c2-1 4-1 6 0s4 1 6 0 4-1 6 0" />
-        <path d="M2 16c2-1 4-1 6 0s4 1 6 0 4-1 6 0" />
-        <path d="M12 4v4" />
-        <circle cx="12" cy="3" r="1" />
-        <path d="M8 8a4 4 0 0 0 8 0" />
-      </svg>
-    ),
+    num: "03",
+    title: "Rooftop Pool & Children's Splash Zone",
+    desc: "Elevated glass-edge leisure pool open daily from 6:30 AM to 7:00 PM with safe adjoining shallow splash area for young family swimmers.",
+    highlight: "Open 6:30 AM – 7:00 PM • Horizon Deck",
   },
   {
-    id: "children-pool",
-    title: "Children's Pool",
-    desc: "Safe, shallow splash zone adjoining the main leisure pool",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M2 21c2-1 4-1 6 0s4 1 6 0 4-1 6 0" />
-        <circle cx="8" cy="8" r="3" />
-        <circle cx="16" cy="11" r="2" />
-        <path d="M5 14a4 4 0 0 1 6 0" />
-      </svg>
-    ),
+    id: "wifi",
+    num: "04",
+    title: "Free High-Speed 100+ Mbps Wi-Fi",
+    desc: "Dependable, seamless wireless coverage across all guest rooms, dining spaces, and public lounges for effortless connectivity.",
+    highlight: "100+ Mbps Coverage Throughout",
   },
   {
-    id: "free-wifi",
-    title: "Free High-Speed WiFi",
-    desc: "Free Wi-Fi · 100+ Mbps seamless coverage across all rooms & public lounges",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M5 12.55a11 11 0 0 1 14.08 0" />
-        <path d="M1.42 9a16 16 0 0 1 21.16 0" />
-        <path d="M8.53 16.11a6 6 0 0 1 6.95 0" />
-        <line x1="12" y1="20" x2="12.01" y2="20" strokeWidth="2.5" />
-      </svg>
-    ),
-  },
-  {
-    id: "front-desk",
-    title: "24-Hour Front Desk",
-    desc: "24-hour check-in assistance, wake-up calls, and round-the-clock guest support",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <circle cx="12" cy="12" r="10" />
-        <polyline points="12 6 12 12 16 14" />
-      </svg>
-    ),
-  },
-  {
-    id: "concierge",
-    title: "Concierge Assistance",
-    desc: "Assistance with Sharavathi boat rides, temple visits & local travel",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
-        <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
-        <line x1="12" y1="22.08" x2="12" y2="12" />
-      </svg>
-    ),
-  },
-  {
-    id: "self-parking",
-    title: "Free Self-Parking",
-    desc: "Spacious private parking with EV charging",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <path d="M9 17V7h4a3 3 0 0 1 0 6H9" />
-      </svg>
-    ),
-  },
-  {
-    id: "manager-reception",
-    title: "Evening Reception",
-    desc: "Complimentary evening gathering with refreshments and local snacks",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
-        <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
-        <line x1="6" y1="1" x2="6" y2="4" />
-        <line x1="10" y1="1" x2="10" y2="4" />
-        <line x1="14" y1="1" x2="14" y2="4" />
-      </svg>
-    ),
-  },
-  {
-    id: "laundry",
-    title: "Dry Cleaning & Laundry",
-    desc: "Express and same-day laundry and pressing service on request",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M4 2v20l2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1 2-1 2 1V2l-2 1-2-1-2 1-2-1-2 1-2-1-2 1-2-1-2 1Z" />
-        <path d="M14 8H8" />
-        <path d="M16 12H8" />
-        <path d="M13 16H8" />
-      </svg>
-    ),
-  },
-  {
-    id: "luggage-storage",
-    title: "Luggage Storage",
-    desc: "Secure luggage holding area before check-in or after checkout",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
-        <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
-      </svg>
-    ),
-  },
-  {
-    id: "ev-charging",
-    title: "EV Charging Stations",
-    desc: "Convenient charging bays for electric car travellers on NH-66",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
-      </svg>
-    ),
+    id: "parking-ev",
+    num: "05",
+    title: "Covered Parking & EV Charging",
+    desc: "Spacious private parking with dedicated EV charging stations, wide highway ingress/egress, and 24-hour security monitoring.",
+    highlight: "EV Charging Bays • Secured Ingress",
   },
   {
     id: "backup-elevator",
-    title: "Power Backup & Elevator",
-    desc: "Full 24/7 generator backup and elevator access",
-    icon: (
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-        <rect x="3" y="3" width="18" height="18" rx="2" />
-        <polyline points="7 10 10 7 13 10" />
-        <polyline points="17 14 14 17 11 14" />
-      </svg>
-    ),
+    num: "06",
+    title: "Dual Elevators & 100% Generator Backup",
+    desc: "Barrier-free elevator access across all four floors with seamless 24/7 automated generator power backup.",
+    highlight: "Full Power Backup • Dual Elevators",
   },
 ];
 
 export default function AmenitiesGrid() {
   return (
-    <section className="section amenities-section" id="amenities" aria-labelledby="amenities-heading">
+    <section className="section amenities-section hospitality-section" id="amenities" aria-labelledby="hospitality-heading">
       <div className="section-container">
+        {/* Editorial Section Header */}
         <header className="section-header-split" data-reveal>
           <div className="header-meta">
             <div className="editorial-tag">
               <span className="accent-pip" />
-              <span>Facilities &amp; Services</span>
+              <span>WE ARE HERE FOR YOU</span>
             </div>
-            <h2 id="amenities-heading" className="section-title">
-              Crafted for ease, <br />
-              <span className="title-italic">comfort &amp; connection.</span>
+            <h2 id="hospitality-heading" className="section-title">
+              Hospitality that Goes <br />
+              <span className="title-italic">the Extra Mile.</span>
             </h2>
           </div>
-          <p className="header-summary">
-            Modern amenities designed for coastal travellers, family stays, and NH-66 road trips.
-          </p>
+          <div className="header-summary-block">
+            <p className="header-summary">
+              Thoughtful service and everyday comforts designed to make your stay at Hotel Pumerai relaxed and effortless.
+            </p>
+          </div>
         </header>
 
-        {/* Clean Icon + Label Grid */}
-        <div className="amenities-icon-grid" data-reveal>
-          {amenitiesList.map((item) => (
-            <div className="amenity-grid-card" key={item.id}>
-              <div className="amenity-icon-bubble" aria-hidden="true">
-                {item.icon}
+        {/* Editorial Hospitality Presentation (Not a generic icon grid) */}
+        <div className="hospitality-layout" data-reveal>
+          {/* Visual Showcase Column (Large image + 2 supporting frames) */}
+          <div className="hospitality-visual-column">
+            {/* Primary Dominant Image */}
+            <div className="hospitality-primary-frame">
+              <img
+                src="/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_28%20AM_result.webp"
+                alt="24-hour reception desk and handcrafted library foyer at Hotel Pumerai"
+                loading="lazy"
+                className="hospitality-img-zoom"
+              />
+              <div className="hospitality-frame-overlay">
+                <span className="hospitality-badge">24-Hour Attentive Front Desk &amp; Concierge</span>
               </div>
-              <h3 className="amenity-card-title">{item.title}</h3>
-              <p className="amenity-card-desc">{item.desc}</p>
             </div>
-          ))}
+
+            {/* Supporting Secondary Image Frames */}
+            <div className="hospitality-supporting-row">
+              <div className="hospitality-sub-frame">
+                <img
+                  src="/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_24%20AM_result.webp"
+                  alt="Sunlit double-height grand lobby and guest lounge at Hotel Pumerai"
+                  loading="lazy"
+                  className="hospitality-img-zoom"
+                />
+                <span className="hospitality-sub-caption">Sunlit Arrival Lounge</span>
+              </div>
+
+              <div className="hospitality-sub-frame">
+                <img
+                  src="/rooms/premium-room/ChatGPT%20Image%20Sep%2025,%202026,%2002_03_35%20AM_result.webp"
+                  alt="Spotless linens and contemporary room comfort at Hotel Pumerai"
+                  loading="lazy"
+                  className="hospitality-img-zoom"
+                />
+                <span className="hospitality-sub-caption">In-Room Comfort &amp; Dining</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Service Stories Column */}
+          <div className="hospitality-stories-column">
+            <div className="hospitality-stories-grid">
+              {verifiedServices.map((service) => (
+                <div className="hospitality-story-card" key={service.id}>
+                  <div className="story-card-top">
+                    <span className="story-card-num">{service.num}</span>
+                    <span className="story-card-pill">{service.highlight}</span>
+                  </div>
+                  <h3 className="story-card-title">{service.title}</h3>
+                  <p className="story-card-desc">{service.desc}</p>
+                </div>
+              ))}
+            </div>
+
+            {/* Bottom Hospitality Note */}
+            <div className="hospitality-footer-note">
+              <div className="hfn-inner">
+                <span className="hfn-accent">&bull;</span>
+                <p className="hfn-text">
+                  Direct bookings receive complimentary Wi-Fi, priority early check-in assistance, and free secured parking with EV bays.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
