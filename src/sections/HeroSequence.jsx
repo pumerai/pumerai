@@ -6,169 +6,28 @@ import { usePrefersReducedMotion } from "../hooks/usePrefersReducedMotion.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const mobileInteriorScenes = [
+const storyMoments = [
   {
-    id: "scene-rooms",
-    title: "Premium Rooms & Grand Lobby",
-    left: {
-      label: "Premium Room",
-      sub: "Coastal Elegance",
-      image: "/rooms/premium-room/ChatGPT Image Sep 25, 2026, 02_03_35 AM_result.webp",
-      alt: "Hotel Pumerai Premium Room interior",
-    },
-    right: {
-      label: "Grand Lobby",
-      sub: "Warm Hospitality",
-      image: "/gallery/ChatGPT Image Sep 26, 2026, 12_23_24 AM_result.webp",
-      alt: "Hotel Pumerai Grand Lobby reception area",
-    },
+    eyebrow: "HOTEL PUMERAI · NH-66 HONNAVAR",
+    title: "A quiet boutique stay on the coast",
+    copy: "Hotel Pumerai is a 3-star boutique hotel on NH-66 in Honnavar, Karnataka, ~5 km from Kasarkod Beach and ~2.8 km from the Sharavati River, with 40 rooms, an indoor pool, and two on-site restaurants.",
   },
   {
-    id: "scene-dining",
-    title: "Reception & Matsya Seafood",
-    left: {
-      label: "24h Reception",
-      sub: "Always Welcoming",
-      image: "/gallery/ChatGPT Image Sep 26, 2026, 12_23_28 AM_result.webp",
-      alt: "Hotel Pumerai 24-hour reception desk",
-    },
-    right: {
-      label: "Matsya Restaurant",
-      sub: "Seafood & Coastal Bar",
-      image: "/dining/_DSC0222_result.webp",
-      alt: "Matsya Seafood & Bar dining restaurant at Hotel Pumerai",
-    },
+    eyebrow: "ARRIVE · COASTAL HIGHWAY",
+    title: "Effortless highway access & calm",
+    copy: "Conveniently situated near Ramateertha Cross on NH-66 with wide access, free secured parking, EV charging, and 24-hour reception.",
   },
   {
-    id: "scene-suites",
-    title: "Madhura Veg & Suites",
-    left: {
-      label: "Madhura Dining",
-      sub: "Pure Vegetarian",
-      image: "/dining/_DSC0247_result.webp",
-      alt: "Madhura Pure Vegetarian Restaurant dining area",
-    },
-    right: {
-      label: "Executive Suite",
-      sub: "Spacious Living",
-      image: "/rooms/suite-room/ChatGPT Image Sep 25, 2026, 02_56_20 AM_result.webp",
-      alt: "Hotel Pumerai Executive Suite bedroom and living",
-    },
+    eyebrow: "SWIMMING POOL & LEISURE",
+    title: "Indoor glass-edge pool & retreat",
+    copy: "Featuring an indoor temperature-balanced swimming pool and children's splash area open daily from 6:30 AM to 7:00 PM.",
   },
   {
-    id: "scene-leisure",
-    title: "Rooftop Pool & Club Balcony",
-    left: {
-      label: "Rooftop Pool",
-      sub: "Skyline Views",
-      image: "/gallery/ChatGPT Image Sep 26, 2026, 12_22_46 AM_result.webp",
-      alt: "Glass-edge rooftop swimming pool at Hotel Pumerai",
-    },
-    right: {
-      label: "Balcony Room",
-      sub: "Tropical Breezes",
-      image: "/rooms/club-room-with-balcony/ChatGPT Image Sep 24, 2026, 09_22_33 PM_result.webp",
-      alt: "Club room with private balcony at Hotel Pumerai",
-    },
+    eyebrow: "KARAVALI & HONNAVAR",
+    title: "Your gateway to beaches & backwaters",
+    copy: "Explore Kasarkod Eco Beach, Sharavati River boat cruises, Mirjan Fort, and Murudeshwar from a serene, central base.",
   },
 ];
-
-function MobileHeroPresentation({ isReady }) {
-  const [activeSceneIndex, setActiveSceneIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setActiveSceneIndex((current) => (current + 1) % mobileInteriorScenes.length);
-    }, 4600);
-    return () => clearInterval(timer);
-  }, []);
-
-  return (
-    <div
-      className={`hero-mobile-presentation ${isReady ? "is-visible" : ""}`}
-      aria-label="Hotel Pumerai mobile property and interiors showcase"
-    >
-      <div className="hero-mobile-backdrop" />
-      <div className="hero-mobile-stage">
-        {/* Main Anchor: Hotel Pumerai Exterior Property (Always dominant visual focus) */}
-        <div className="hero-mobile-main-card">
-          <div className="hero-mobile-main-media">
-            <img
-              src="/gallery/ChatGPT Image Sep 26, 2026, 12_23_21 AM_result.webp"
-              alt="Hotel Pumerai exterior building and main property on NH-66 Honnavar"
-              className="hero-mobile-exterior-img"
-              loading="eager"
-            />
-            <div className="hero-mobile-main-overlay" />
-            <div className="hero-mobile-main-badge">
-              <span className="hero-mobile-badge-dot" />
-              <span className="hero-mobile-badge-text">HOTEL PUMERAI &bull; EXTERIOR</span>
-            </div>
-            <div className="hero-mobile-main-pill">
-              <span>NH-66 HONNAVAR</span>
-            </div>
-          </div>
-        </div>
-
-        {/* Supporting Secondary Transitions: Hotel Interiors (Flanking/beneath exterior) */}
-        <div className="hero-mobile-supporting-wrap" aria-label="Hotel Pumerai interior highlights">
-          {mobileInteriorScenes.map((scene, idx) => {
-            const isActive = idx === activeSceneIndex;
-            return (
-              <div
-                key={scene.id}
-                className={`hero-mobile-scene-pair ${isActive ? "is-active" : ""}`}
-                aria-hidden={!isActive}
-              >
-                <div className="hero-mobile-sub-card card-left">
-                  <img
-                    src={scene.left.image}
-                    alt={scene.left.alt}
-                    className="hero-mobile-sub-img"
-                    loading="lazy"
-                  />
-                  <div className="hero-mobile-sub-overlay" />
-                  <div className="hero-mobile-sub-meta">
-                    <span className="hero-mobile-sub-title">{scene.left.label}</span>
-                    <span className="hero-mobile-sub-desc">{scene.left.sub}</span>
-                  </div>
-                </div>
-                <div className="hero-mobile-sub-card card-right">
-                  <img
-                    src={scene.right.image}
-                    alt={scene.right.alt}
-                    className="hero-mobile-sub-img"
-                    loading="lazy"
-                  />
-                  <div className="hero-mobile-sub-overlay" />
-                  <div className="hero-mobile-sub-meta">
-                    <span className="hero-mobile-sub-title">{scene.right.label}</span>
-                    <span className="hero-mobile-sub-desc">{scene.right.sub}</span>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        {/* Sub-scene Indicators */}
-        <div className="hero-mobile-pips" role="tablist" aria-label="Hotel interior spaces">
-          {mobileInteriorScenes.map((scene, idx) => (
-            <button
-              key={scene.id}
-              type="button"
-              className={`hero-mobile-pip ${idx === activeSceneIndex ? "is-active" : ""}`}
-              onClick={() => setActiveSceneIndex(idx)}
-              aria-label={`View ${scene.title}`}
-              role="tab"
-              aria-selected={idx === activeSceneIndex}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function drawContainedImage(ctx, image, canvas, fit = "cover") {
   const pixelWidth = canvas.width;
@@ -182,8 +41,6 @@ function drawContainedImage(ctx, image, canvas, fit = "cover") {
   const x = (pixelWidth - width) / 2;
   const y = (pixelHeight - height) / 2;
 
-  ctx.imageSmoothingEnabled = true;
-  ctx.imageSmoothingQuality = "high";
   ctx.clearRect(0, 0, pixelWidth, pixelHeight);
   ctx.drawImage(image, x, y, width, height);
 }
@@ -198,6 +55,7 @@ export default function HeroSequence({ onNavigate }) {
   const [loadedCount, setLoadedCount] = useState(0);
   const [failedCount, setFailedCount] = useState(0);
   const [isReady, setIsReady] = useState(false);
+  const [storyIndex, setStoryIndex] = useState(0);
   const prefersReducedMotion = usePrefersReducedMotion();
 
   const progress = useMemo(() => {
@@ -251,27 +109,8 @@ export default function HeroSequence({ onNavigate }) {
     let nextIndex = 0;
     let loaded = 0;
     let failed = 0;
-    const isMobile = typeof window !== "undefined" && window.innerWidth <= 768;
-
-    if (isMobile) {
-      // Fast-path for mobile: immediately ready, loads first frame as canvas backup
-      setIsReady(true);
-      const image = new Image();
-      image.decoding = "async";
-      image.onload = () => {
-        if (!isCancelled) {
-          imagesRef.current[0] = image;
-          setLoadedCount(1);
-          resizeCanvas();
-        }
-      };
-      image.src = heroFramePath(1);
-      return () => {
-        isCancelled = true;
-      };
-    }
-
-    const concurrentLoads = 8;
+    const isMobile = typeof window !== "undefined" && window.innerWidth < 768;
+    const concurrentLoads = isMobile ? 4 : 8;
 
     const loadFrame = (index) =>
       new Promise((resolve) => {
@@ -328,7 +167,7 @@ export default function HeroSequence({ onNavigate }) {
     resizeCanvas();
     window.addEventListener("resize", resizeCanvas);
     return () => window.removeEventListener("resize", resizeCanvas);
-  }, [prefersReducedMotion]);
+  });
 
   useLayoutEffect(() => {
     if (!isReady || prefersReducedMotion || loadedCount === 0) {
@@ -336,12 +175,7 @@ export default function HeroSequence({ onNavigate }) {
     }
 
     const isMobile = window.innerWidth <= 768;
-    if (isMobile) {
-      // On mobile, the hero uses the smooth auto-cycling presentation and natural scroll
-      return undefined;
-    }
-
-    const scrollDistance = "+=340%";
+    const scrollDistance = isMobile ? "+=220%" : "+=340%";
 
     const context = gsap.context(() => {
       ScrollTrigger.create({
@@ -349,7 +183,7 @@ export default function HeroSequence({ onNavigate }) {
         pin: pinRef.current,
         start: "top top",
         end: scrollDistance,
-        scrub: 0.45,
+        scrub: isMobile ? 0.3 : 0.45,
         anticipatePin: 1,
         invalidateOnRefresh: true,
         onUpdate: (self) => {
@@ -357,11 +191,17 @@ export default function HeroSequence({ onNavigate }) {
             HERO_FRAME_COUNT - 1,
             Math.max(0, Math.round(self.progress * (HERO_FRAME_COUNT - 1))),
           );
+          const nextStoryIndex = Math.min(
+            storyMoments.length - 1,
+            Math.floor(self.progress * storyMoments.length),
+          );
 
           if (nextFrame !== activeFrameRef.current) {
             activeFrameRef.current = nextFrame;
             renderFrame(nextFrame);
           }
+
+          setStoryIndex((current) => (current === nextStoryIndex ? current : nextStoryIndex));
         },
       });
     }, heroRef);
@@ -369,6 +209,8 @@ export default function HeroSequence({ onNavigate }) {
     ScrollTrigger.refresh();
     return () => context.revert();
   }, [isReady, loadedCount, prefersReducedMotion]);
+
+  const activeStory = storyMoments[storyIndex];
 
   const handleOpenBookingModal = (e) => {
     e.preventDefault();
@@ -388,13 +230,21 @@ export default function HeroSequence({ onNavigate }) {
       <section className="hero hero-static" id="home" aria-label="Hotel Pumerai Honnavar">
         <img
           src={heroFramePath(1)}
-          alt="Hotel Pumerai premium 3-star property on NH-66 Honnavar Karnataka"
+          alt="Hotel Pumerai boutique 3-star property on NH-66 Honnavar Karnataka"
           className="hero-static-img"
         />
-        <MobileHeroPresentation isReady={true} />
-        <div className="hero-right-headline is-visible" aria-label="Explore Honnavar, Experience HOTEL PUMERAI">
-          <span className="hero-right-line-lead">Explore Honnavar,</span>
-          <span className="hero-right-line-brand">Experience HOTEL PUMERAI</span>
+        <div className="hero-copy">
+          <div className="hero-trust-badge">
+            <span className="trust-star">&#9733; 4.7/5 Google Rating</span>
+            <span className="trust-sep">&bull;</span>
+            <span>Google Stays &bull; 40 Rooms</span>
+          </div>
+          <p className="hero-eyebrow">HOTEL PUMERAI &bull; NH-66 HONNAVAR</p>
+          <h1 className="hero-heading">A quiet boutique hotel on Karnataka&apos;s coast</h1>
+          <p className="hero-subtitle">
+            Hotel Pumerai is a 3-star hotel on NH-66 near Ramateertha Cross in Honnavar, Karnataka,
+            5 km from Kasarkod Beach and 2.8 km from Sharavati River, with 40 rooms, an indoor pool, and two on-site restaurants.
+          </p>
         </div>
       </section>
     );
@@ -404,9 +254,6 @@ export default function HeroSequence({ onNavigate }) {
     <section className="hero" id="home" ref={heroRef} aria-label="Hotel Pumerai Honnavar">
       <div className="hero-pin" ref={pinRef}>
         <canvas ref={canvasRef} aria-label="Interactive 240-frame sequence through Hotel Pumerai on NH-66" />
-
-        {/* Mobile-Only Dynamic Image Presentation Layer (Desktop locked & untouched) */}
-        <MobileHeroPresentation isReady={isReady} />
 
         {!isReady && (
           <div className="loading-screen" aria-live="polite">
@@ -428,10 +275,17 @@ export default function HeroSequence({ onNavigate }) {
           </div>
         )}
 
-        {/* Right-side Hero Headline as specified in HP.pdf */}
-        <div className={`hero-right-headline ${isReady ? "is-visible" : ""}`} aria-label="Explore Honnavar, Experience HOTEL PUMERAI">
-          <span className="hero-right-line-lead">Explore Honnavar,</span>
-          <span className="hero-right-line-brand">Experience HOTEL PUMERAI</span>
+        <div className={`hero-copy ${isReady ? "is-visible" : ""}`} key={storyIndex}>
+          {/* Trust Signal Badge directly in hero */}
+          <div className="hero-trust-badge">
+            <span className="trust-star">&#9733; 4.7/5 Google Rating</span>
+            <span className="trust-sep">&bull;</span>
+            <span>Google Stays &bull; 40 Rooms &bull; 3-Star Property</span>
+          </div>
+
+          <p className="hero-eyebrow">{activeStory.eyebrow}</p>
+          <h1 className="hero-heading">{activeStory.title}</h1>
+          <p className="hero-subtitle">{activeStory.copy}</p>
         </div>
 
         <div className="scroll-cue" aria-hidden="true">

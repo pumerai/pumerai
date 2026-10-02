@@ -96,7 +96,7 @@ export default function Footer({ onNavigate }) {
           {/* Col 2: Contact, Address & Social */}
           <section className="footer-col footer-col-center">
             <p className="footer-col-title">HOTEL PUMERAI &mdash; HONNAVAR</p>
-            <p className="footer-vrs-note">A Unit of VRS Group</p>
+
 
             <address className="footer-contact-block footer-contact-centered">
               <a

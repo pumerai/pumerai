@@ -64,7 +64,7 @@ export default function Header({ currentPath, onNavigate }) {
           <LogoMark src="/pumerai-logo-full.webp" />
           <div className="brand-text-wrap">
             <span className="brand-text">HOTEL PUMERAI</span>
-            <span className="brand-sub">Honnavar &bull; NH-66 &bull; A Unit of VRS Group</span>
+    
           </div>
         </a>
 

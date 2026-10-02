@@ -19,7 +19,6 @@ import PickASide from "./sections/PickASide.jsx";
 import AmenitiesGrid from "./sections/AmenitiesGrid.jsx";
 import HotelAreas from "./sections/HotelAreas.jsx";
 import DiningPreview from "./sections/DiningPreview.jsx";
-import RooftopRelaxation from "./sections/RooftopRelaxation.jsx";
 import TrustReviews from "./sections/TrustReviews.jsx";
 import GallerySection from "./sections/GallerySection.jsx";
 import InAndAround from "./sections/InAndAround.jsx";
@@ -50,10 +49,6 @@ function HomePage({ onNavigate }) {
 
       <HotelAreas />
       <DiningPreview onNavigate={onNavigate} />
-
-      {/* SECTION 2: Relaxation — Take it all in from the Rooftop */}
-      <RooftopRelaxation onNavigate={onNavigate} />
-
       <TrustReviews />
       <GallerySection onNavigate={onNavigate} />
 

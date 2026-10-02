@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { destinations } from "../data/destinations.js";
+import UttaraKannadaMap from "../components/UttaraKannadaMap.jsx";
 
 const hotelPolicies = [
   { label: "Check-in Time", value: "From 1:00 PM (24-hr front desk welcomes late highway arrivals)" },
@@ -15,7 +16,17 @@ const hotelPolicies = [
 export default function Location({ isStandalonePage = false }) {
   const [activeDestIndex, setActiveDestIndex] = useState(0);
   const activeDest = destinations[activeDestIndex] || destinations[0];
-  const officialGoogleMapsLink = "https://maps.app.goo.gl/rCfTnw9t8Dp58mga7";
+  const tabsScrollRef = useRef(null);
+
+  // Smoothly center the active tab if activated via map
+  useEffect(() => {
+    if (tabsScrollRef.current) {
+      const activeTab = tabsScrollRef.current.children[activeDestIndex];
+      if (activeTab && typeof activeTab.scrollIntoView === "function") {
+        activeTab.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+      }
+    }
+  }, [activeDestIndex]);
 
   return (
     <section
@@ -43,66 +54,22 @@ export default function Location({ isStandalonePage = false }) {
           </div>
         </header>
 
-        {/* MAIN INTERACTIVE AREA: Two-part destination experience */}
+        {/* MAIN INTERACTIVE AREA: Two-column Map + Destination Experience */}
         <div className="location-editorial-grid" data-reveal>
-          {/* LEFT SIDE: Large Pumerai location / map visual */}
+          {/* LEFT SIDE: Interactive Stylized Uttara Kannada Regional Map */}
           <div className="location-map-column">
-            <div className="location-map-wrapper">
-              <iframe
-                title="Hotel Pumerai Honnavar Official Location on Google Maps"
-                src="https://maps.google.com/maps?q=Hotel+Pumerai,+NH-66,+Ramateertha+Cross,+Honnavar,+Karnataka+581334&amp;hl=en&amp;z=15&amp;output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                allowFullScreen=""
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="location-map-iframe"
-              />
-
-              {/* Map Floating Actions */}
-              <div className="cc-map-overlay-bar">
-                <a
-                  href={officialGoogleMapsLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button-primary cc-map-action-btn"
-                  aria-label="Get directions to Hotel Pumerai on Google Maps"
-                >
-                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-                    <polygon points="3 11 22 2 13 21 11 13 3 11" />
-                  </svg>
-                  <span>GET DIRECTIONS</span>
-                </a>
-                <a
-                  href={officialGoogleMapsLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="button-secondary cc-map-app-btn"
-                  aria-label="Open location in Google Maps app"
-                >
-                  Open in Maps
-                </a>
-              </div>
-            </div>
-
-            {/* Highway Landmark Ingress Tag */}
-            <div className="cc-highway-ingress-card">
-              <div className="ingress-badge">
-                <span className="ingress-pip" />
-                <span>NH-66 DIRECT ACCESS</span>
-              </div>
-              <p className="ingress-text">
-                Wide ingress and egress right off National Highway 66 near Ramateertha Cross. Features private secured parking bays and dedicated EV charging.
-              </p>
-            </div>
+            <UttaraKannadaMap
+              destinations={destinations}
+              activeDestIndex={activeDestIndex}
+              onSelectDestination={(idx) => setActiveDestIndex(idx)}
+            />
           </div>
 
-          {/* RIGHT SIDE: Interactive destination selector panel */}
+          {/* RIGHT SIDE: Interactive destination selector & information panel */}
           <div className="location-destination-column">
             {/* Horizontal Destination Tabs */}
             <div className="destination-tabs-nav" role="tablist" aria-label="Destinations around Honnavar">
-              <div className="destination-tabs-scroll">
+              <div className="destination-tabs-scroll" ref={tabsScrollRef}>
                 {destinations.map((dest, idx) => {
                   const isActive = idx === activeDestIndex;
                   return (
@@ -124,7 +91,7 @@ export default function Location({ isStandalonePage = false }) {
 
             {/* Destination Content Panel (Keyed by activeDest.id for smooth switch animation) */}
             <div className="destination-detail-panel" key={activeDest.id}>
-              {/* Large Destination Image */}
+              {/* Large Destination Image with Pumerai Hover System */}
               <div className="destination-image-container gold-edge-frame">
                 <img
                   src={activeDest.image}
