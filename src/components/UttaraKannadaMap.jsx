@@ -1,21 +1,22 @@
 import { useMemo } from "react";
 
 /**
- * Mapped coordinates for destinations along the coastal Karnataka / Uttara Kannada corridor,
- * centered around Hotel Pumerai on NH-66 in Honnavar.
+ * Map coordinate positions for each destination on the 520x640 SVG canvas.
+ * Positions are relative to the stylized coastline path and are calibrated
+ * to represent each destination's geographic position on the Karnataka coast.
  */
 const DESTINATION_MAP_POINTS = {
-  gokarna: {
-    x: 175,
-    y: 135,
-    labelX: 158,
-    labelY: 139,
+  kasarkod: {
+    x: 155,
+    y: 305,
+    labelX: 138,
+    labelY: 309,
     textAnchor: "end",
-    shortName: "Gokarna",
-    calloutName: "GOKARNA",
-    calloutX: 194,
-    calloutY: 124,
-    calloutW: 82,
+    shortName: "Kasarkod Beach",
+    calloutName: "KASARKOD BEACH",
+    calloutX: 22,
+    calloutY: 294,
+    calloutW: 118,
   },
   murudeshwar: {
     x: 195,
@@ -28,6 +29,18 @@ const DESTINATION_MAP_POINTS = {
     calloutX: 214,
     calloutY: 409,
     calloutW: 104,
+  },
+  gokarna: {
+    x: 175,
+    y: 135,
+    labelX: 158,
+    labelY: 139,
+    textAnchor: "end",
+    shortName: "Gokarna",
+    calloutName: "GOKARNA",
+    calloutX: 194,
+    calloutY: 124,
+    calloutW: 82,
   },
   sirsi: {
     x: 395,
@@ -52,18 +65,6 @@ const DESTINATION_MAP_POINTS = {
     calloutX: 202,
     calloutY: 37,
     calloutW: 52,
-  },
-  kasarkod: {
-    x: 155,
-    y: 305,
-    labelX: 138,
-    labelY: 309,
-    textAnchor: "end",
-    shortName: "Kasarkod Eco Beach",
-    calloutName: "KASARKOD BEACH",
-    calloutX: 22,
-    calloutY: 294,
-    calloutW: 118,
   },
   udupi: {
     x: 225,
@@ -208,7 +209,6 @@ export default function UttaraKannadaMap({
           </text>
 
           {/* 3. Sharavathi River Flowing into Estuary at Honnavar */}
-          {/* Main River Channel */}
           <path
             d="M 520,255
                C 440,245 380,265 320,268
@@ -317,7 +317,7 @@ export default function UttaraKannadaMap({
             />
           )}
 
-          {/* 8. Destination Markers (Interactive) */}
+          {/* 8. Destination Markers (Interactive — click, hover, keyboard) */}
           {destinations.map((dest, idx) => {
             const point = DESTINATION_MAP_POINTS[dest.id];
             if (!point) return null;
@@ -328,9 +328,10 @@ export default function UttaraKannadaMap({
                 key={dest.id}
                 className={`map-marker-group ${isActive ? "is-active" : ""}`}
                 onClick={() => onSelectDestination && onSelectDestination(idx)}
+                onMouseEnter={() => onSelectDestination && onSelectDestination(idx)}
                 role="button"
                 tabIndex={0}
-                aria-label={`${dest.name}, ${dest.distance} from Hotel Pumerai`}
+                aria-label={`${dest.name}, ${dest.distanceKm} km from Hotel Pumerai`}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
@@ -338,7 +339,7 @@ export default function UttaraKannadaMap({
                   }
                 }}
               >
-                {/* Hit area for comfortable clicks/taps (48px diameter) */}
+                {/* Hit area — 48px diameter for comfortable clicks/taps */}
                 <circle cx={point.x} cy={point.y} r="24" fill="transparent" cursor="pointer" />
 
                 {/* Pulse Ring for Active Marker */}
@@ -365,7 +366,7 @@ export default function UttaraKannadaMap({
                   className="map-pin-dot"
                 />
 
-                {/* Destination Callout Badge (Active) or Regular Label (Inactive) */}
+                {/* Active: gold callout badge; Inactive: muted label */}
                 {isActive ? (
                   <g className="map-active-label-badge">
                     <rect
@@ -432,7 +433,6 @@ export default function UttaraKannadaMap({
                 fill="#11110F"
                 stroke="#B49A6A"
                 strokeWidth="1.2"
-                boxShadow="0 4px 12px rgba(0,0,0,0.5)"
               />
               <text x="8" y="13" fill="#F2EEE5" fontSize="9.5" fontWeight="700" letterSpacing="0.06em">
                 HOTEL PUMERAI

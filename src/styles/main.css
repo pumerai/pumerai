@@ -10188,8 +10188,324 @@ input[type="date"].booking-input {
   }
 }
 
+/* ==========================================================================
+   AROUND HONNAVAR — Interactive Map + Destination Panel
+   ========================================================================== */
 
+/* Section wrapper — generous vertical breathing room */
+.around-honnavar-section {
+  background-color: var(--color-surface);
+  padding-block: clamp(64px, 8vw, 112px);
+}
 
+/* Two-column layout: map left (40%), panel right (60%) */
+.around-honnavar-layout {
+  display: grid;
+  grid-template-columns: 40% 1fr;
+  gap: clamp(32px, 4vw, 56px);
+  align-items: stretch;
+  min-height: 540px;
+  margin-top: clamp(32px, 4vw, 48px);
+}
+
+/* ---- MAP COLUMN ---- */
+.ah-map-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.ah-map-column .regional-map-container,
+.ah-map-column .regional-map-frame {
+  flex: 1;
+  height: 100%;
+}
+
+.ah-map-column .uttara-kannada-map-svg {
+  width: 100%;
+  height: 100%;
+  max-height: 560px;
+}
+
+/* ---- PANEL COLUMN ---- */
+.ah-panel-column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* TAB STRIP — horizontal scroll, hidden scrollbar, soft fade edges */
+.ah-tabs-strip {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  /* Soft fade at both horizontal edges */
+  -webkit-mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 24px,
+    black calc(100% - 24px),
+    transparent 100%
+  );
+  mask-image: linear-gradient(
+    to right,
+    transparent 0,
+    black 24px,
+    black calc(100% - 24px),
+    transparent 100%
+  );
+  border-bottom: 1px solid var(--color-border);
+  flex-shrink: 0;
+  padding-inline: 8px;
+}
+
+.ah-tabs-strip::-webkit-scrollbar {
+  display: none;
+}
+
+/* Individual tab button */
+.ah-tab-btn {
+  flex-shrink: 0;
+  padding: 10px 14px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-12);
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 160ms ease, border-color 160ms ease;
+  white-space: nowrap;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  outline-offset: 2px;
+  /* Offset border-bottom inside without affecting layout */
+  margin-bottom: -1px;
+}
+
+.ah-tab-btn:hover {
+  color: var(--color-text-secondary);
+}
+
+.ah-tab-btn.is-active {
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
+}
+
+.ah-tab-btn:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: -2px;
+  border-radius: 2px;
+}
+
+/* DETAIL PANEL — flexbox row so photo sits beside metadata */
+.ah-detail-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  gap: clamp(16px, 2.5vw, 28px);
+  align-items: flex-start;
+  padding-block: clamp(20px, 3vw, 32px);
+  min-height: 200px;
+}
+
+/* Crossfade on panel content switch */
+.ah-detail-panel.is-fading {
+  animation: ah-panel-fade 200ms ease;
+}
+
+@keyframes ah-panel-fade {
+  from { opacity: 0.35; transform: translateY(4px); }
+  to   { opacity: 1;    transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ah-detail-panel.is-fading {
+    animation: none;
+  }
+}
+
+/* Destination photo — 3:2, approx 180×120 */
+.ah-dest-photo-frame {
+  flex-shrink: 0;
+  width: clamp(140px, 18vw, 200px);
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 1px;
+  background-color: var(--color-card);
+}
+
+.ah-dest-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 600ms cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .ah-dest-photo-frame:hover .ah-dest-photo {
+    transform: scale(1.04);
+  }
+}
+
+/* Destination metadata block */
+.ah-dest-meta {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ah-dest-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--color-text);
+  letter-spacing: -0.01em;
+  margin: 0;
+}
+
+.ah-dest-distance {
+  font-family: var(--font-sans);
+  font-size: var(--fs-13);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--color-accent);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.ah-dist-sep {
+  color: var(--color-border);
+  padding-inline: 2px;
+}
+
+.ah-dest-desc {
+  font-size: var(--fs-14);
+  line-height: 1.65;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+.ah-map-btn {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* ==========================================================================
+   AROUND HONNAVAR — MOBILE (max-width: 768px)
+   ========================================================================== */
+@media (max-width: 768px) {
+  .around-honnavar-layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+    min-height: auto;
+    margin-top: 24px;
+  }
+
+  .ah-map-column {
+    max-height: 320px;
+    overflow: hidden;
+  }
+
+  .ah-map-column .uttara-kannada-map-svg {
+    max-height: 320px;
+  }
+
+  .ah-tabs-strip {
+    padding-inline: 4px;
+  }
+
+  .ah-tab-btn {
+    padding: 10px 12px;
+    font-size: 0.68rem;
+  }
+
+  .ah-detail-panel {
+    flex-direction: column;
+    min-height: auto;
+    gap: 14px;
+    padding-block: 16px 24px;
+  }
+
+  .ah-dest-photo-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+  }
+
+  .ah-map-btn {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+  }
+}
+
+/* ==========================================================================
+   TABLET (768–1023px)
+   ========================================================================== */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .around-honnavar-layout {
+    grid-template-columns: 38% 1fr;
+    min-height: 480px;
+  }
+
+  .ah-dest-photo-frame {
+    width: clamp(120px, 16vw, 160px);
+  }
+}
+
+/* ==========================================================================
+   LARGE DESKTOP (1440px+)
+   ========================================================================== */
+@media (min-width: 1440px) {
+  .around-honnavar-layout {
+    min-height: 600px;
+  }
+}
+
+/* ==========================================================================
+   MAP INTERACTION ANIMATION
+   ========================================================================== */
+
+/* Active dot pulse animation */
+@keyframes map-pulse-ring {
+  0%   { r: 8;   opacity: 0.9; }
+  100% { r: 14;  opacity: 0; }
+}
+
+.map-active-pulse {
+  animation: map-pulse-ring 1.8s ease-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .map-active-pulse {
+    animation: none;
+  }
+}
+
+/* Smooth travel line draw animation */
+.map-travel-line {
+  stroke-dashoffset: 0;
+  transition: d 300ms ease;
+}
+
+/* Map marker group — cursor pointer, focus ring */
+.map-marker-group {
+  cursor: pointer;
+}
+
+.map-marker-group:focus-visible circle.map-pin-dot {
+  stroke: var(--color-accent);
+  stroke-width: 2.5;
+}
 
 
 
