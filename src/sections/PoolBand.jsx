@@ -35,7 +35,7 @@ export default function PoolBand() {
         alt="Rooftop pool at Hotel Pumerai overlooking coastal palm groves"
         loading="lazy"
         decoding="async"
-        className="pool-band-img"
+        className="pool-band-img reveal-drop reveal-delay-0"
         width="1920"
         height="760"
       />
@@ -46,7 +46,7 @@ export default function PoolBand() {
           The Rooftop <em>Pool</em>
         </h2>
         <p className="pool-band-sub">
-          Glass-edge pool open 6:30 AM to 7:00 PM, with a children's splash area.
+          
         </p>
       </div>
     </section>

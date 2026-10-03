@@ -28,7 +28,7 @@ export default function About() {
                 src="/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_21%20AM_result.webp"
                 alt="Hotel Pumerai architectural entrance on NH-66, Honnavar, Karnataka"
                 loading="lazy"
-                className="about-primary-img"
+                className="about-primary-img reveal-drop reveal-delay-0"
               />
             </div>
 
@@ -38,7 +38,7 @@ export default function About() {
                 src="/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_46%20AM_result.webp"
                 alt="Rooftop glass-edge pool at Hotel Pumerai overlooking coastal canopies"
                 loading="lazy"
-                className="about-secondary-img"
+                className="about-secondary-img reveal-drop reveal-delay-1"
               />
             </div>
           </div>

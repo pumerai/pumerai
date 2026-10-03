@@ -111,7 +111,7 @@ export default function HotelAreas() {
                 src={activeArea.image}
                 alt={activeArea.alt}
                 loading="lazy"
-                className="area-stage-image"
+                className="area-stage-image reveal-drop reveal-delay-0"
               />
             </div>
 

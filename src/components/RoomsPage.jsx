@@ -129,7 +129,7 @@ export default function RoomsPage() {
       <section className="section rooms-full-listing-section">
         <div className="section-container">
           <div className="rooms-grid">
-            {rooms.map((room) => {
+            {rooms.map((room, roomIdx) => {
               const photoIdx = activePhotoIndex[room.slug] || 0;
               const isExpanded = !!expandedDetails[room.slug];
               const currentPhotoSrc = room.galleryPhotos[photoIdx];
@@ -149,7 +149,7 @@ export default function RoomsPage() {
                         src={currentPhotoSrc}
                         fallback={currentFallbackSrc}
                         alt={`${room.name} at Hotel Pumerai Honnavar`}
-                        className="room-main-image"
+                        className={`room-main-image reveal-drop reveal-delay-${roomIdx % 4}`}
                         loading="lazy"
                       />
                     </figure>

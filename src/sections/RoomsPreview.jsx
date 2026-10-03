@@ -145,7 +145,7 @@ export default function RoomsPreview({ onNavigate }) {
               gap: `${gapPx}px`,
             }}
           >
-            {rooms.map((room) => (
+            {rooms.map((room, idx) => (
               <a
                 key={room.slug}
                 href={`/rooms#${room.slug}`}
@@ -161,7 +161,7 @@ export default function RoomsPreview({ onNavigate }) {
                     src={room.coverImage}
                     fallback={room.fallbackImage}
                     alt={`${room.name} preview at Hotel Pumerai Honnavar`}
-                    className="room-preview-img"
+                    className={`room-preview-img reveal-drop reveal-delay-${idx % 4}`}
                     loading="lazy"
                   />
                   <div className="room-preview-badge">

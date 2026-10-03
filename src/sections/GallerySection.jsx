@@ -315,7 +315,7 @@ export default function GallerySection({ isStandalonePage = false, onNavigate })
                       fallback={item.fallback}
                       alt={item.alt}
                       loading="lazy"
-                      className="gallery-image"
+                      className={`gallery-image reveal-drop reveal-delay-${idx % 4}`}
                     />
                   </figure>
                 </article>

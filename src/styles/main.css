@@ -10941,3 +10941,305 @@ input[type="date"].booking-input {
   color: var(--color-accent);
 }
 
+/* ==========================================================================
+   DIRECT BOOKING 10% OFF POPUP
+   ========================================================================== */
+.direct-booking-backdrop {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(2px);
+  z-index: 100000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: popupBackdropFadeIn 200ms ease forwards;
+}
+
+.direct-booking-modal {
+  position: relative;
+  max-width: 420px;
+  width: 100%;
+  background-color: var(--color-card, #25231F);
+  border: 1px solid var(--color-border, #3A3731);
+  border-radius: 4px;
+  padding: 32px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.65), 0 0 0 1px rgba(180, 154, 106, 0.12);
+  display: flex;
+  flex-direction: column;
+  animation: popupModalFadeIn 200ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.direct-booking-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 36px;
+  height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted, #89847B);
+  cursor: pointer;
+  border-radius: 2px;
+  padding: 0;
+  transition: color 180ms ease, background-color 180ms ease;
+}
+
+.direct-booking-close-btn:hover {
+  color: var(--color-text, #F2EEE5);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.direct-booking-close-btn:focus-visible {
+  outline: 2px solid var(--color-accent, #B49A6A);
+  outline-offset: 2px;
+}
+
+.direct-booking-label {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-accent, #B49A6A);
+  margin-bottom: 8px;
+  display: block;
+}
+
+.direct-booking-heading {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 4vw, 30px);
+  font-weight: 400;
+  line-height: 1.15;
+  color: var(--color-text, #F2EEE5);
+  margin: 0 0 12px 0;
+  padding-right: 28px;
+}
+
+.direct-booking-heading em {
+  font-style: italic;
+  color: var(--color-accent, #B49A6A);
+  font-weight: inherit;
+}
+
+.direct-booking-line {
+  font-family: var(--font-sans);
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--color-text-secondary, #B8B2A8);
+  margin: 0 0 24px 0;
+}
+
+.direct-booking-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 12px;
+}
+
+.direct-booking-call-btn {
+  width: 100%;
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background-color: var(--color-card, #25231F);
+  color: var(--color-text, #F2EEE5);
+  border: 1px solid var(--color-accent, #B49A6A);
+  border-radius: 2px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.direct-booking-call-btn:hover {
+  background-color: var(--color-surface, #1F1E1B);
+  border-color: var(--color-accent-hover, #967D50);
+  color: var(--color-text, #F2EEE5);
+}
+
+.direct-booking-call-btn:focus-visible {
+  outline: 2px solid var(--color-accent, #B49A6A);
+  outline-offset: 2px;
+}
+
+.direct-booking-contact-link {
+  display: inline-block;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-accent, #B49A6A);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-align: center;
+  cursor: pointer;
+  padding: 4px 0;
+  transition: color 180ms ease;
+}
+
+.direct-booking-contact-link:hover {
+  color: var(--color-accent-hover, #967D50);
+}
+
+.direct-booking-contact-link:focus-visible {
+  outline: 2px solid var(--color-accent, #B49A6A);
+  outline-offset: 2px;
+}
+
+.direct-booking-note {
+  font-family: var(--font-sans);
+  font-size: 12px;
+  line-height: 1.45;
+  color: var(--color-text-muted, #89847B);
+  margin: 16px 0 0 0;
+  text-align: center;
+}
+
+/* Mobile bottom sheet view at max-width: 768px */
+@media (max-width: 768px) {
+  .direct-booking-backdrop {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .direct-booking-modal {
+    max-width: 100%;
+    width: 100%;
+    border-radius: 20px 20px 0 0;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+    padding: 28px 20px max(24px, env(safe-area-inset-bottom, 24px)) 20px;
+    animation: popupSheetSlideUp 250ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  .direct-booking-call-btn {
+    width: 100%;
+    min-height: 48px;
+  }
+}
+
+@keyframes popupBackdropFadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes popupModalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes popupSheetSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .direct-booking-backdrop,
+  .direct-booking-modal {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ==========================================================================
+   DROP-DOWN SCROLL REVEAL UTILITY FOR CONTENT IMAGES
+   Distance: 24px desktop, 16px mobile
+   Duration: 800ms
+   Ease: cubic-bezier(0.22, 1, 0.36, 1)
+   Play once only via IntersectionObserver
+   ========================================================================== */
+
+:root {
+  --reveal-drop-distance: 24px;
+  --reveal-drop-duration: 800ms;
+  --reveal-drop-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --reveal-drop-delay: 0ms;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --reveal-drop-distance: 16px;
+  }
+}
+
+/* Fallback: images are fully visible by default (No-JS / IO unavailable) */
+.reveal-drop {
+  transform: none;
+  opacity: 1;
+  clip-path: none;
+}
+
+/* Progressive enhancement: when JS is active and IO is supported, apply start state */
+html.js-reveal .reveal-drop {
+  transform: translateY(calc(-1 * var(--reveal-drop-distance, 24px)));
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+  transition:
+    transform var(--reveal-drop-duration, 800ms) var(--reveal-drop-ease, cubic-bezier(0.22, 1, 0.36, 1)) var(--reveal-drop-delay, 0ms),
+    opacity var(--reveal-drop-duration, 800ms) var(--reveal-drop-ease, cubic-bezier(0.22, 1, 0.36, 1)) var(--reveal-drop-delay, 0ms),
+    clip-path var(--reveal-drop-duration, 800ms) var(--reveal-drop-ease, cubic-bezier(0.22, 1, 0.36, 1)) var(--reveal-drop-delay, 0ms);
+}
+
+/* While animating, enable GPU acceleration */
+html.js-reveal .reveal-drop.is-animating {
+  will-change: transform, opacity, clip-path;
+}
+
+/* Revealed end state: image drops down into place and frame opens top to bottom */
+html.js-reveal .reveal-drop.is-revealed {
+  transform: translateY(0);
+  opacity: 1;
+  clip-path: inset(0 0 0 0);
+}
+
+/* Stagger delay classes for grids/rows: 80ms step, max 4 steps */
+.reveal-delay-0 { --reveal-drop-delay: 0ms; }
+.reveal-delay-1 { --reveal-drop-delay: 80ms; }
+.reveal-delay-2 { --reveal-drop-delay: 160ms; }
+.reveal-delay-3 { --reveal-drop-delay: 240ms; }
+
+/* Immediate reveal (for first-screen inner-page images so page never looks blank) */
+html.js-reveal .reveal-drop.reveal-immediate {
+  transition: none !important;
+  transform: translateY(0) !important;
+  opacity: 1 !important;
+  clip-path: inset(0 0 0 0) !important;
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  html.js-reveal .reveal-drop {
+    transform: none !important;
+    clip-path: none !important;
+    transition: opacity 200ms ease 0ms !important;
+  }
+  html.js-reveal .reveal-drop.is-revealed {
+    transform: none !important;
+    clip-path: none !important;
+    opacity: 1 !important;
+  }
+}
+

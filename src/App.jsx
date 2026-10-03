@@ -21,7 +21,9 @@ import HotelAreas from "./sections/HotelAreas.jsx";
 import InAndAround from "./sections/InAndAround.jsx";
 import TrustReviews from "./sections/TrustReviews.jsx";
 import WebsiteLoader from "./components/WebsiteLoader.jsx";
+import DirectBookingPopup from "./components/DirectBookingPopup.jsx";
 import { useSectionReveals } from "./hooks/useSectionReveals.js";
+import { useImageDropReveal } from "./hooks/useImageDropReveal.js";
 
 const routes = new Set(["/", "/rooms", "/dining", "/banquet", "/gallery", "/location", "/contact", "/faq"]);
 
@@ -50,6 +52,7 @@ function App() {
   const [path, setPath] = useState(() => normalizePath(window.location.pathname));
   const [pendingSection, setPendingSection] = useState(null);
   useSectionReveals();
+  useImageDropReveal(path);
 
   useEffect(() => {
     const onPopState = () => {
@@ -131,6 +134,7 @@ function App() {
         {page}
         <Footer onNavigate={navigate} />
         <MobileQuickActions />
+        <DirectBookingPopup currentPath={path} onNavigate={navigate} />
       </div>
     </>
   );

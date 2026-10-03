@@ -36,11 +36,16 @@ export default function Dining({ sectionId = "dining", headingId = "dining-headi
 
         {/* Venues Grid */}
         <div className="dining-venues-grid">
-          {restaurantVenues.map((venue) => (
+          {restaurantVenues.map((venue, idx) => (
             <article className="venue-card" key={venue.id} data-reveal>
               <div className="venue-media-container">
                 <figure className="venue-figure">
-                  <img src={venue.image} alt={venue.alt} loading="lazy" className="venue-image" />
+                  <img
+                    src={venue.image}
+                    alt={venue.alt}
+                    loading="lazy"
+                    className={`venue-image reveal-drop reveal-delay-${idx % 4}`}
+                  />
                 </figure>
                 <div className="venue-hours-badge">
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">

@@ -74,7 +74,7 @@ export default function Banquet() {
                 <img
                   src={activePhoto.sidhvin}
                   alt="Sidhvin Banquet Hall at Hotel Pumerai Honnavar"
-                  className="banquet-main-image"
+                  className="banquet-main-image reveal-drop reveal-delay-0"
                   loading="lazy"
                 />
                 <div className="banquet-capacity-badge">
@@ -155,7 +155,7 @@ export default function Banquet() {
                 <img
                   src={activePhoto.milan}
                   alt="Milan Hall at Hotel Pumerai Honnavar"
-                  className="banquet-main-image"
+                  className="banquet-main-image reveal-drop reveal-delay-1"
                   loading="lazy"
                 />
                 <div className="banquet-capacity-badge">

@@ -114,7 +114,7 @@ export default function PickASide({ onNavigate }) {
                     src={item.image}
                     alt={item.alt}
                     loading="lazy"
-                    className="pas-image"
+                    className={`pas-image reveal-drop reveal-delay-${index % 4}`}
                     style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined}
                   />
                   <div className="pas-image-gradient" />
