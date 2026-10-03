@@ -230,8 +230,8 @@ export default function HeroSequence({ onNavigate }) {
     <section className="hero" id="home" ref={heroRef} aria-label="Hotel Pumerai Honnavar">
       <div className="hero-pin" ref={pinRef}>
         <img
-          src="/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_21%20AM_result.webp"
-          alt="Hotel Pumerai architectural entrance on NH-66, Honnavar, Karnataka"
+          src="/images/hero-mobile.webp"
+          alt="Hotel Pumerai exterior and surrounding landscape on NH-66, Honnavar, Karnataka"
           className="hero-mobile-img"
           loading="eager"
           decoding="async"
