@@ -20,6 +20,7 @@
 
 // Pre-computed dot positions (project(lat, lng) with constants above)
 const DOTS = {
+  sharavathi:  { x: 286.5, y: 304.9, side: "left",  label: "Sharavathi River" },
   kasarkod:    { x: 285.5, y: 304.0, side: "left",  label: "Kasarkod Beach" },
   murudeshwar: { x: 294.7, y: 342.3, side: "left",  label: "Murudeshwar"    },
   gokarna:     { x: 254.3, y: 251.8, side: "left",  label: "Gokarna"        },
@@ -32,14 +33,18 @@ const DOTS = {
 // Hotel Pumerai (anchor): project(14.2750, 74.4525)
 const HOTEL = { x: 287.4, y: 306.3 };
 
-// Kasarkod is only 2.3px from Hotel in SVG — offset it toward the sea
-const KASARKOD_OFFSET = { dx: -24, dy: -16 };
+// Offsets for dots close to Hotel Pumerai to prevent label collisions
+const OFFSETS = {
+  kasarkod:   { dx: -24, dy: -16 },
+  sharavathi: { dx: -24, dy: 14 },
+};
 
 const LABEL_GAP = 12; // px from dot edge to label start
 
-function labelPos(dot, isKasarkod) {
+function labelPos(dot, destId) {
   let x = dot.x, y = dot.y;
-  if (isKasarkod) { x += KASARKOD_OFFSET.dx; y += KASARKOD_OFFSET.dy; }
+  const offset = OFFSETS[destId];
+  if (offset) { x += offset.dx; y += offset.dy; }
   const lx = dot.side === "left" ? x - LABEL_GAP : x + LABEL_GAP;
   const anchor = dot.side === "left" ? "end" : "start";
   return { lx, ly: y + 4, anchor };
@@ -125,13 +130,11 @@ export default function UttaraKannadaMap({
             const dot = DOTS[dest.id];
             if (!dot) return null;
             const isActive = idx === activeDestIndex;
-            const isKasarkod = dest.id === "kasarkod";
-            const { lx, ly, anchor } = labelPos(dot, isKasarkod);
-
-            // Kasarkod: draw a leader line from offset position back to the dot
-            const leaderNeeded = isKasarkod;
-            const displayX = isKasarkod ? dot.x + KASARKOD_OFFSET.dx : dot.x;
-            const displayY = isKasarkod ? dot.y + KASARKOD_OFFSET.dy : dot.y;
+            const offset = OFFSETS[dest.id];
+            const leaderNeeded = !!offset;
+            const displayX = offset ? dot.x + offset.dx : dot.x;
+            const displayY = offset ? dot.y + offset.dy : dot.y;
+            const { lx, ly, anchor } = labelPos(dot, dest.id);
 
             return (
               <g
@@ -152,7 +155,7 @@ export default function UttaraKannadaMap({
                 {/* 44px touch hit area (on the actual dot position) */}
                 <circle cx={dot.x} cy={dot.y} r="22" fill="transparent" cursor="pointer" />
 
-                {/* Leader line for Kasarkod (offset dot → actual position) */}
+                {/* Leader line for offset dots (offset label anchor -> actual dot) */}
                 {leaderNeeded && (
                   <line
                     x1={displayX}

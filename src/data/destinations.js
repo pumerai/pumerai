@@ -10,8 +10,29 @@
 
 export const destinations = [
   {
-    id: "kasarkod",
+    id: "sharavathi",
     num: "01",
+    tabLabel: "Sharavathi River",
+    name: "Sharavathi River",
+    type: "River Backwaters & Boating",
+    distance: "2.8 km from Pumerai",
+    distanceKm: 2.8,
+    time: "5 min drive",
+    driveTime: "5 min drive",
+    description:
+      "Quiet backwaters where the Sharavathi meets the Arabian Sea, close to the hotel.",
+    image: "/images/around/sharavathi-river.webp",
+    imageW: 800,
+    imageH: 533,
+    objectPosition: "center center",
+    alt: "Sharavathi River backwaters",
+    mapsUrl: "https://www.google.com/maps/search/?api=1&query=Sharavathi+River+Backwaters+Honnavar",
+    lat: 14.2820,
+    lng: 74.4490,
+  },
+  {
+    id: "kasarkod",
+    num: "02",
     tabLabel: "Kasarkod Beach",
     name: "Kasarkod Eco Beach",
     type: "Blue Flag Certified Beach",
@@ -32,7 +53,7 @@ export const destinations = [
   },
   {
     id: "murudeshwar",
-    num: "02",
+    num: "03",
     tabLabel: "Murudeshwar",
     name: "Murudeshwar",
     type: "Iconic Pilgrimage & Coast",
@@ -53,7 +74,7 @@ export const destinations = [
   },
   {
     id: "gokarna",
-    num: "03",
+    num: "04",
     tabLabel: "Gokarna",
     name: "Gokarna",
     type: "Sacred Beaches & Temple Town",
@@ -74,7 +95,7 @@ export const destinations = [
   },
   {
     id: "sirsi",
-    num: "04",
+    num: "05",
     tabLabel: "Sirsi",
     name: "Sirsi",
     type: "Western Ghats & Waterfalls",
@@ -95,7 +116,7 @@ export const destinations = [
   },
   {
     id: "goa",
-    num: "05",
+    num: "06",
     tabLabel: "Goa",
     name: "Goa",
     type: "Coastal Escapes & Heritage",
@@ -116,7 +137,7 @@ export const destinations = [
   },
   {
     id: "udupi",
-    num: "06",
+    num: "07",
     tabLabel: "Udupi",
     name: "Udupi",
     type: "Temple Heritage & Beaches",
@@ -137,7 +158,7 @@ export const destinations = [
   },
   {
     id: "mangalore",
-    num: "07",
+    num: "08",
     tabLabel: "Mangalore",
     name: "Mangalore",
     type: "Port City & Coastal Gateway",
@@ -147,11 +168,11 @@ export const destinations = [
     driveTime: "3 hr 15 min drive",
     description:
       "Major coastal city with Panambur Beach, Kadri Manjunath Temple and vibrant regional dining.",
-    image: "/images/around/mangalore-skyline.webp",
-    imageW: 800,
+    image: "/images/around/mangaluru.webp",
+    imageW: 799,
     imageH: 533,
     objectPosition: "center center",
-    alt: "Mangaluru city skyline and coastal urban landscape",
+    alt: "Aerial view of Mangaluru with observation tower and coastline",
     mapsUrl: "https://maps.app.goo.gl/wAFNcBrbdxPsib749",
     lat: 12.9141,
     lng: 74.8560,
