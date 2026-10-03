@@ -49,7 +49,17 @@ const hotelAreas = [
 
 export default function HotelAreas() {
   const [activeAreaIndex, setActiveAreaIndex] = useState(0);
+  const [isCrossfading, setIsCrossfading] = useState(false);
   const activeArea = hotelAreas[activeAreaIndex];
+
+  const handleSelectArea = (index) => {
+    if (index === activeAreaIndex) return;
+    setIsCrossfading(true);
+    setActiveAreaIndex(index);
+    setTimeout(() => {
+      setIsCrossfading(false);
+    }, 300);
+  };
 
   return (
     <section className="section hotel-areas-section" id="areas" aria-labelledby="hotel-areas-title">
@@ -85,8 +95,8 @@ export default function HotelAreas() {
                   aria-selected={isActive}
                   aria-controls={`area-panel-${area.id}`}
                   className={`area-nav-item ${isActive ? "is-active" : ""}`}
-                  onClick={() => setActiveAreaIndex(index)}
-                  onMouseEnter={() => setActiveAreaIndex(index)}
+                  onClick={() => handleSelectArea(index)}
+                  onMouseEnter={() => handleSelectArea(index)}
                 >
                   <div className="area-item-info">
                     <h3 className="area-item-name">{area.name}</h3>
@@ -111,7 +121,7 @@ export default function HotelAreas() {
                 src={activeArea.image}
                 alt={activeArea.alt}
                 loading="lazy"
-                className="area-stage-image reveal-drop reveal-delay-0"
+                className={`area-stage-image reveal-drop reveal-delay-0 ${isCrossfading ? "is-crossfading" : ""}`}
               />
             </div>
 

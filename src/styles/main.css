@@ -11165,11 +11165,12 @@ input[type="date"].booking-input {
 }
 
 /* ==========================================================================
-   DROP-DOWN SCROLL REVEAL UTILITY FOR CONTENT IMAGES
+   COZYSTAY DROP-DOWN SCROLL REVEAL (FAIL-SAFE ARCHITECTURE)
    Distance: 24px desktop, 16px mobile
-   Duration: 800ms
-   Ease: cubic-bezier(0.22, 1, 0.36, 1)
-   Play once only via IntersectionObserver
+   Duration: 800ms, cubic-bezier(0.22, 1, 0.36, 1)
+   Images are ALWAYS visible by default in CSS.
+   The hidden start state applies ONLY when html has .js-reveal AND
+   the element has .reveal-pending. Removing .reveal-pending plays the reveal.
    ========================================================================== */
 
 :root {
@@ -11185,61 +11186,52 @@ input[type="date"].booking-input {
   }
 }
 
-/* Fallback: images are fully visible by default (No-JS / IO unavailable) */
+/* 1. Default: Images and wrappers are 100% visible */
 .reveal-drop {
   transform: none;
   opacity: 1;
   clip-path: none;
-}
-
-/* Progressive enhancement: when JS is active and IO is supported, apply start state */
-html.js-reveal .reveal-drop {
-  transform: translateY(calc(-1 * var(--reveal-drop-distance, 24px)));
-  opacity: 0;
-  clip-path: inset(0 0 100% 0);
   transition:
     transform var(--reveal-drop-duration, 800ms) var(--reveal-drop-ease, cubic-bezier(0.22, 1, 0.36, 1)) var(--reveal-drop-delay, 0ms),
     opacity var(--reveal-drop-duration, 800ms) var(--reveal-drop-ease, cubic-bezier(0.22, 1, 0.36, 1)) var(--reveal-drop-delay, 0ms),
     clip-path var(--reveal-drop-duration, 800ms) var(--reveal-drop-ease, cubic-bezier(0.22, 1, 0.36, 1)) var(--reveal-drop-delay, 0ms);
 }
 
-/* While animating, enable GPU acceleration */
+/* 2. Hidden start state: applied ONLY when JS is active AND .reveal-pending is present */
+html.js-reveal .reveal-drop.reveal-pending {
+  transform: translateY(calc(-1 * var(--reveal-drop-distance, 24px)));
+  opacity: 0;
+  clip-path: inset(0 0 100% 0);
+}
+
+/* 3. GPU will-change added only while animating */
 html.js-reveal .reveal-drop.is-animating {
   will-change: transform, opacity, clip-path;
 }
 
-/* Revealed end state: image drops down into place and frame opens top to bottom */
-html.js-reveal .reveal-drop.is-revealed {
-  transform: translateY(0);
-  opacity: 1;
-  clip-path: inset(0 0 0 0);
-}
-
-/* Stagger delay classes for grids/rows: 80ms step, max 4 steps */
+/* 4. Stagger delay classes: 80ms step, max 4 steps */
 .reveal-delay-0 { --reveal-drop-delay: 0ms; }
 .reveal-delay-1 { --reveal-drop-delay: 80ms; }
 .reveal-delay-2 { --reveal-drop-delay: 160ms; }
 .reveal-delay-3 { --reveal-drop-delay: 240ms; }
 
-/* Immediate reveal (for first-screen inner-page images so page never looks blank) */
-html.js-reveal .reveal-drop.reveal-immediate {
-  transition: none !important;
-  transform: translateY(0) !important;
-  opacity: 1 !important;
-  clip-path: inset(0 0 0 0) !important;
-}
-
-/* Reduced motion preference */
+/* 5. Reduced motion: no movement, no clipping */
 @media (prefers-reduced-motion: reduce) {
-  html.js-reveal .reveal-drop {
-    transform: none !important;
-    clip-path: none !important;
-    transition: opacity 200ms ease 0ms !important;
-  }
-  html.js-reveal .reveal-drop.is-revealed {
+  .reveal-drop,
+  html.js-reveal .reveal-drop.reveal-pending {
     transform: none !important;
     clip-path: none !important;
     opacity: 1 !important;
+    transition: none !important;
   }
+}
+
+/* 6. Spaces stage image 300ms crossfade on active item change */
+.area-stage-image {
+  transition: opacity 300ms ease;
+}
+
+.area-stage-image.is-crossfading {
+  opacity: 0.2;
 }
 
