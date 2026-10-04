@@ -120,7 +120,8 @@ export default function RoomsPage() {
       {/* Standardized Compact Internal Page Header */}
       <PageHeader
         eyebrow="ACCOMMODATION"
-        title="Rooms"
+        title="Rooms &"
+        italicTitle="Suites"
         description="Contemporary rooms and suites in Honnavar."
         id="rooms-page-heading"
       />

@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 let hasInitialLoaderRun = false;
 
 export default function WebsiteLoader() {
+  if (typeof window === "undefined") return null;
+
   const [isFadingOut, setIsFadingOut] = useState(false);
   const [isDone, setIsDone] = useState(hasInitialLoaderRun);
 

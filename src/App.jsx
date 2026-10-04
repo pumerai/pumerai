@@ -10,6 +10,9 @@ import LocationPage from "./components/LocationPage.jsx";
 import ContactPage from "./components/ContactPage.jsx";
 import FAQPage from "./components/FAQPage.jsx";
 import BanquetPage from "./components/BanquetPage.jsx";
+import PrivacyPage from "./components/PrivacyPage.jsx";
+import CancellationPage from "./components/CancellationPage.jsx";
+import NotFoundPage from "./components/NotFoundPage.jsx";
 import SEOHead from "./components/SEOHead.jsx";
 import HeroSequence from "./sections/HeroSequence.jsx";
 import About from "./sections/About.jsx";
@@ -24,11 +27,26 @@ import WebsiteLoader from "./components/WebsiteLoader.jsx";
 import DirectBookingPopup from "./components/DirectBookingPopup.jsx";
 import { useSectionReveals } from "./hooks/useSectionReveals.js";
 import { useImageDropReveal } from "./hooks/useImageDropReveal.js";
+import { initAnalytics } from "./utils/analytics.js";
 
-const routes = new Set(["/", "/rooms", "/dining", "/banquet", "/gallery", "/location", "/contact", "/faq"]);
+const routes = new Set([
+  "/",
+  "/rooms",
+  "/dining",
+  "/banquet",
+  "/gallery",
+  "/location",
+  "/contact",
+  "/faq",
+  "/privacy",
+  "/cancellation",
+  "/404",
+]);
 
 function normalizePath(path) {
-  return routes.has(path) ? path : "/";
+  if (!path) return "/";
+  const trimmed = path.length > 1 && path.endsWith("/") ? path.slice(0, -1) : path;
+  return routes.has(trimmed) ? trimmed : "/404";
 }
 
 function HomePage({ onNavigate }) {
@@ -48,13 +66,18 @@ function HomePage({ onNavigate }) {
   );
 }
 
-function App() {
-  const [path, setPath] = useState(() => normalizePath(window.location.pathname));
+function App({ initialPath = "/" }) {
+  const [path, setPath] = useState(() =>
+    typeof window !== "undefined" ? normalizePath(window.location.pathname) : normalizePath(initialPath)
+  );
   const [pendingSection, setPendingSection] = useState(null);
+
   useSectionReveals();
   useImageDropReveal(path);
 
   useEffect(() => {
+    initAnalytics();
+
     const onPopState = () => {
       setPath(normalizePath(window.location.pathname));
       setPendingSection(null);
@@ -65,6 +88,8 @@ function App() {
   }, []);
 
   useEffect(() => {
+    if (typeof window === "undefined") return;
+
     if (path === "/") {
       const sectionId = pendingSection || "home";
       window.requestAnimationFrame(() => {
@@ -79,7 +104,6 @@ function App() {
       return;
     }
 
-    // For subpages (/rooms, /dining, /gallery, /location, /contact)
     if (pendingSection) {
       window.requestAnimationFrame(() => {
         const target = document.getElementById(pendingSection);
@@ -97,7 +121,7 @@ function App() {
 
   const navigate = ({ route, section }) => {
     const nextPath = normalizePath(route);
-    if (window.location.pathname !== nextPath) {
+    if (typeof window !== "undefined" && window.location.pathname !== nextPath) {
       window.history.pushState({}, "", nextPath);
     }
 
@@ -120,9 +144,17 @@ function App() {
       <ContactPage />
     ) : path === "/faq" ? (
       <FAQPage onNavigate={navigate} />
+    ) : path === "/privacy" ? (
+      <PrivacyPage />
+    ) : path === "/cancellation" ? (
+      <CancellationPage />
+    ) : path === "/404" ? (
+      <NotFoundPage onNavigate={navigate} />
     ) : (
       <HomePage onNavigate={navigate} />
     );
+
+  const isHomeOrFaq = path === "/" || path === "/faq";
 
   return (
     <>
@@ -130,9 +162,9 @@ function App() {
       <SEOHead path={path} />
       <div className="site-wrapper">
         <Header currentPath={path} onNavigate={navigate} />
-        {path !== "/" && <BookingBar />}
+        {!isHomeOrFaq && <BookingBar />}
         {page}
-        <Footer onNavigate={navigate} />
+        <Footer onNavigate={navigate} currentPath={path} />
         <MobileQuickActions />
         <DirectBookingPopup currentPath={path} onNavigate={navigate} />
       </div>

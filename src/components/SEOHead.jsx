@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { getPageMeta, generateStructuredData, siteConfig } from "../utils/seo.js";
 
 function setOrCreateMeta(nameOrProp, attrValue, content) {
+  if (typeof document === "undefined") return;
   let element = document.querySelector(`meta[${nameOrProp}="${attrValue}"]`);
   if (!element) {
     element = document.createElement("meta");
@@ -11,18 +12,28 @@ function setOrCreateMeta(nameOrProp, attrValue, content) {
   element.setAttribute("content", content);
 }
 
-function setOrCreateLink(rel, href) {
-  let element = document.querySelector(`link[rel="${rel}"]`);
+function setOrCreateLink(rel, href, extraAttrs = {}) {
+  if (typeof document === "undefined") return;
+  let selector = `link[rel="${rel}"]`;
+  if (extraAttrs.hreflang) {
+    selector += `[hreflang="${extraAttrs.hreflang}"]`;
+  }
+  let element = document.querySelector(selector);
   if (!element) {
     element = document.createElement("link");
     element.setAttribute("rel", rel);
+    for (const [key, val] of Object.entries(extraAttrs)) {
+      element.setAttribute(key, val);
+    }
     document.head.appendChild(element);
   }
   element.setAttribute("href", href);
 }
 
-export default function SEOHead({ path }) {
+export default function SEOHead({ path = "/" }) {
   useEffect(() => {
+    if (typeof document === "undefined") return;
+
     const meta = getPageMeta(path);
 
     // 1. Title Tag
@@ -34,7 +45,23 @@ export default function SEOHead({ path }) {
     // 3. Canonical URL
     setOrCreateLink("canonical", meta.canonical);
 
-    // 4. Open Graph Tags
+    // 4. Hreflang
+    setOrCreateLink("alternate", meta.canonical, { hreflang: "en-IN" });
+
+    // 5. Robots indexing
+    if (meta.noindex) {
+      setOrCreateMeta("name", "robots", "noindex, follow");
+    } else {
+      setOrCreateMeta("name", "robots", "index, follow");
+    }
+
+    // 6. Geographic Tags
+    setOrCreateMeta("name", "geo.region", "IN-KA");
+    setOrCreateMeta("name", "geo.placename", "Honnavar");
+    setOrCreateMeta("name", "geo.position", `${siteConfig.geo.latitude};${siteConfig.geo.longitude}`);
+    setOrCreateMeta("name", "ICBM", `${siteConfig.geo.latitude}, ${siteConfig.geo.longitude}`);
+
+    // 7. Open Graph Tags
     setOrCreateMeta("property", "og:title", meta.title);
     setOrCreateMeta("property", "og:description", meta.description);
     setOrCreateMeta("property", "og:url", meta.canonical);
@@ -43,13 +70,13 @@ export default function SEOHead({ path }) {
     setOrCreateMeta("property", "og:locale", "en_IN");
     setOrCreateMeta("property", "og:image", siteConfig.ogImage);
 
-    // 5. Twitter Card Tags
+    // 8. Twitter Card Tags
     setOrCreateMeta("name", "twitter:card", "summary_large_image");
     setOrCreateMeta("name", "twitter:title", meta.title);
     setOrCreateMeta("name", "twitter:description", meta.description);
     setOrCreateMeta("name", "twitter:image", siteConfig.ogImage);
 
-    // 6. JSON-LD Structured Data
+    // 9. JSON-LD Structured Data
     const structuredData = generateStructuredData(path);
     let scriptTag = document.getElementById("pumerai-structured-data");
     if (!scriptTag) {

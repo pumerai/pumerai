@@ -1,18 +1,24 @@
 import { faqList } from "../data/faqs.js";
 import { rooms } from "../data/rooms.js";
+import { destinations } from "../data/destinations.js";
 
+/**
+ * Single Editable Configuration File for Hotel Pumerai SEO & Technical Specifications
+ */
 export const siteConfig = {
   name: "Hotel Pumerai",
+  legalName: "Hotel Pumerai",
   alternateNames: ["Hotel Pumerai Honnavar"],
-  siteUrl: "https://hotelpumerai.com",
+  siteUrl: "https://www.hotelpumerai.com",
   phone: "+919845423223",
   formattedPhone: "+91 98454 23223",
   landline: "08387-221221",
   email: "reservation@hotelpumerai.com",
-  logo: "https://hotelpumerai.com/pumerai%20logo.png",
-  ogImage: "https://hotelpumerai.com/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_21%20AM_result.webp",
+  bookingUrl: "https://bookingengine.stayflexi.com/?hotel_id=41986",
+  logo: "https://www.hotelpumerai.com/pumerai-logo-full.webp",
+  ogImage: "https://www.hotelpumerai.com/pumerai-og-home.webp",
   address: {
-    streetAddress: "NH-66, near Ramateertha Cross",
+    streetAddress: "Hotel Pumerai, NH-66, near Ramateertha Cross",
     addressLocality: "Honnavar",
     addressRegion: "Karnataka",
     postalCode: "581334",
@@ -22,118 +28,212 @@ export const siteConfig = {
     latitude: 14.2904652,
     longitude: 74.446001,
   },
-  checkinTime: "13:00",
-  checkoutTime: "11:00",
-  priceRange: "₹₹",
+  hasMap: "https://maps.app.goo.gl/rCfTnw9t8Dp58mga7",
   starRating: "3",
+  numberOfRooms: 40,
+  // Social profile URLs (empty until provided by client)
+  sameAs: [],
+  // Google Analytics 4 Measurement ID (empty until provided by client)
+  ga4Id: "",
+  // TODO: Add check-in and check-out times to Hotel schema once final confirmation is received from client
+  checkinTime: null,
+  checkoutTime: null,
 };
 
 export const routesMeta = {
   "/": {
-    title: "Hotel Pumerai | Premium 3-Star Hotel in Honnavar, Karnataka",
+    title: "Hotel Pumerai | 3-Star Hotel in Honnavar on NH-66",
     description:
-      "Hotel Pumerai is a premium 3-star hotel in Honnavar, Karnataka, offering comfortable rooms, a rooftop pool, multi-cuisine dining and convenient access to coastal Karnataka.",
-    canonical: "https://hotelpumerai.com/",
-    breadcrumbs: [{ name: "Home", url: "https://hotelpumerai.com/" }],
+      "Stay at Hotel Pumerai in Honnavar: 40 rooms, rooftop pool, Matsya and Madhura restaurants, banquet halls and EV charging on NH-66.",
+    canonical: "https://www.hotelpumerai.com/",
+    breadcrumbs: [{ name: "Home", url: "https://www.hotelpumerai.com/" }],
+    noindex: false,
   },
   "/rooms": {
     title: "Rooms & Suites in Honnavar | Hotel Pumerai",
     description:
-      "Explore contemporary rooms and suites at Hotel Pumerai in Honnavar, Karnataka. 7 room categories with king beds, high-speed Wi-Fi, air conditioning, and complimentary breakfast along NH-66.",
-    canonical: "https://hotelpumerai.com/rooms",
+      "Club rooms with balcony, deluxe, premium and family suites in Honnavar. Free Wi-Fi, covered parking and EV charging. Book direct.",
+    canonical: "https://www.hotelpumerai.com/rooms",
     breadcrumbs: [
-      { name: "Home", url: "https://hotelpumerai.com/" },
-      { name: "Rooms & Suites", url: "https://hotelpumerai.com/rooms" },
+      { name: "Home", url: "https://www.hotelpumerai.com/" },
+      { name: "Rooms & Suites", url: "https://www.hotelpumerai.com/rooms" },
     ],
-  },
-  "/dining": {
-    title: "Dining & Restaurants in Honnavar | Hotel Pumerai",
-    description:
-      "Discover coastal dining at Hotel Pumerai in Honnavar. Featuring Matsya Multi-Cuisine Restaurant for fresh Karavali seafood and Madhura Pure Veg Restaurant for authentic South Indian dishes.",
-    canonical: "https://hotelpumerai.com/dining",
-    breadcrumbs: [
-      { name: "Home", url: "https://hotelpumerai.com/" },
-      { name: "Dining & Restaurants", url: "https://hotelpumerai.com/dining" },
-    ],
+    noindex: false,
   },
   "/banquet": {
-    title: "Banquet Halls & Events in Honnavar | Hotel Pumerai",
+    title: "Banquet Halls in Honnavar for Weddings | Hotel Pumerai",
     description:
-      "Host weddings, celebrations and corporate conferences at Hotel Pumerai. Featuring Sidhvin Banquet Hall (200 guests) and Milan Hall (50 guests) along NH-66 in Honnavar.",
-    canonical: "https://hotelpumerai.com/banquet",
+      "Two air-conditioned banquet halls in Honnavar for weddings, conferences and family functions. Sidhvin seats 200 guests, Milan 50.",
+    canonical: "https://www.hotelpumerai.com/banquet",
     breadcrumbs: [
-      { name: "Home", url: "https://hotelpumerai.com/" },
-      { name: "Banquet Halls", url: "https://hotelpumerai.com/banquet" },
+      { name: "Home", url: "https://www.hotelpumerai.com/" },
+      { name: "Banquet Halls", url: "https://www.hotelpumerai.com/banquet" },
     ],
+    noindex: false,
   },
-  "/faq": {
-    title: "Hotel Pumerai FAQ | Frequently Asked Questions",
+  "/dining": {
+    title: "Restaurants in Honnavar: Matsya & Madhura | Hotel Pumerai",
     description:
-      "Find answers to frequently asked questions about Hotel Pumerai, rooms, dining, location, booking and your stay in Honnavar.",
-    canonical: "https://hotelpumerai.com/faq",
+      "Matsya serves coastal seafood, tandoor and continental dishes. Madhura is a pure vegetarian South Indian restaurant. Open daily in Honnavar.",
+    canonical: "https://www.hotelpumerai.com/dining",
     breadcrumbs: [
-      { name: "Home", url: "https://hotelpumerai.com/" },
-      { name: "Frequently Asked Questions", url: "https://hotelpumerai.com/faq" },
+      { name: "Home", url: "https://www.hotelpumerai.com/" },
+      { name: "Dining & Restaurants", url: "https://www.hotelpumerai.com/dining" },
     ],
+    noindex: false,
   },
   "/gallery": {
-    title: "Hotel Pumerai Gallery | Rooms, Dining & Honnavar",
+    title: "Photo Gallery | Hotel Pumerai, Honnavar",
     description:
-      "Browse photos of Hotel Pumerai in Honnavar, Karnataka. Explore our guestrooms, glass-edge rooftop swimming pool, restaurants, and scenic surroundings across coastal Uttara Kannada.",
-    canonical: "https://hotelpumerai.com/gallery",
+      "Photos of the rooms, rooftop pool, restaurants and banquet halls at Hotel Pumerai, Honnavar.",
+    canonical: "https://www.hotelpumerai.com/gallery",
     breadcrumbs: [
-      { name: "Home", url: "https://hotelpumerai.com/" },
-      { name: "Visual Gallery", url: "https://hotelpumerai.com/gallery" },
+      { name: "Home", url: "https://www.hotelpumerai.com/" },
+      { name: "Photo Gallery", url: "https://www.hotelpumerai.com/gallery" },
     ],
+    noindex: false,
   },
   "/location": {
-    title: "Hotel Pumerai Location | NH-66, Honnavar, Karnataka",
+    title: "Location & Nearby Places | Hotel Pumerai Honnavar",
     description:
-      "Hotel Pumerai is located on NH-66 near Ramateertha Cross in Honnavar, Uttara Kannada. Close to Kasarkod Eco Beach, Sharavathi backwaters, Murudeshwar, Bhatkal & Gokarna.",
-    canonical: "https://hotelpumerai.com/location",
+      "On NH-66 near Ramateertha Cross, 2.8 km from Sharavathi backwaters and 5 km from Kasarkod Beach. Distances to Murudeshwar, Gokarna and Udupi.",
+    canonical: "https://www.hotelpumerai.com/location",
     breadcrumbs: [
-      { name: "Home", url: "https://hotelpumerai.com/" },
-      { name: "Location & Directions", url: "https://hotelpumerai.com/location" },
+      { name: "Home", url: "https://www.hotelpumerai.com/" },
+      { name: "Location & Around Honnavar", url: "https://www.hotelpumerai.com/location" },
     ],
+    noindex: false,
   },
   "/contact": {
-    title: "Contact Hotel Pumerai | Honnavar, Karnataka",
+    title: "Contact & Reservations | Hotel Pumerai Honnavar",
     description:
-      "Contact Hotel Pumerai in Honnavar, Karnataka for room reservations and travel enquiries. Call +91 98454 23223, message on WhatsApp, or visit our 24/7 front desk on NH-66.",
-    canonical: "https://hotelpumerai.com/contact",
+      "Call +91 98454 23223 or message on WhatsApp to reserve rooms, banquet halls or a table at Hotel Pumerai, Honnavar.",
+    canonical: "https://www.hotelpumerai.com/contact",
     breadcrumbs: [
-      { name: "Home", url: "https://hotelpumerai.com/" },
-      { name: "Contact", url: "https://hotelpumerai.com/contact" },
+      { name: "Home", url: "https://www.hotelpumerai.com/" },
+      { name: "Contact & Reservations", url: "https://www.hotelpumerai.com/contact" },
     ],
+    noindex: false,
+  },
+  "/faq": {
+    title: "FAQ: Check-in, Parking, Pool & Banquet | Hotel Pumerai",
+    description:
+      "Answers about check-in, parking, rooftop pool, EV charging, restaurants and banquet halls at Hotel Pumerai, Honnavar.",
+    canonical: "https://www.hotelpumerai.com/faq",
+    breadcrumbs: [
+      { name: "Home", url: "https://www.hotelpumerai.com/" },
+      { name: "FAQ", url: "https://www.hotelpumerai.com/faq" },
+    ],
+    noindex: false,
+  },
+  "/privacy": {
+    title: "Privacy Policy | Hotel Pumerai Honnavar",
+    description:
+      "Privacy policy and guest data handling practices at Hotel Pumerai, Honnavar, Karnataka.",
+    canonical: "https://www.hotelpumerai.com/privacy",
+    breadcrumbs: [
+      { name: "Home", url: "https://www.hotelpumerai.com/" },
+      { name: "Privacy Policy", url: "https://www.hotelpumerai.com/privacy" },
+    ],
+    noindex: true,
+  },
+  "/cancellation": {
+    title: "Cancellation Policy | Hotel Pumerai Honnavar",
+    description:
+      "Booking cancellation and modification terms for room reservations at Hotel Pumerai, Honnavar.",
+    canonical: "https://www.hotelpumerai.com/cancellation",
+    breadcrumbs: [
+      { name: "Home", url: "https://www.hotelpumerai.com/" },
+      { name: "Cancellation Policy", url: "https://www.hotelpumerai.com/cancellation" },
+    ],
+    noindex: true,
+  },
+  "/404": {
+    title: "Page Not Found | Hotel Pumerai Honnavar",
+    description: "The page you are looking for does not exist on Hotel Pumerai.",
+    canonical: "https://www.hotelpumerai.com/404",
+    breadcrumbs: [
+      { name: "Home", url: "https://www.hotelpumerai.com/" },
+      { name: "Page Not Found", url: "https://www.hotelpumerai.com/404" },
+    ],
+    noindex: true,
   },
 };
 
 export function getPageMeta(pathname = "/") {
-  const normalized = pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
+  const normalized = pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
   return routesMeta[normalized] || routesMeta["/"];
 }
 
 export function generateStructuredData(pathname = "/") {
   const meta = getPageMeta(pathname);
+  const normalized = pathname.length > 1 && pathname.endsWith("/") ? pathname.slice(0, -1) : pathname;
+
+  const postalAddress = {
+    "@type": "PostalAddress",
+    streetAddress: siteConfig.address.streetAddress,
+    addressLocality: siteConfig.address.addressLocality,
+    addressRegion: siteConfig.address.addressRegion,
+    postalCode: siteConfig.address.postalCode,
+    addressCountry: siteConfig.address.addressCountry,
+  };
+
+  const geoCoordinates = {
+    "@type": "GeoCoordinates",
+    latitude: siteConfig.geo.latitude,
+    longitude: siteConfig.geo.longitude,
+  };
+
+  const baseHotelSchema = {
+    "@context": "https://schema.org",
+    "@type": "Hotel",
+    "@id": "https://www.hotelpumerai.com/#hotel",
+    name: siteConfig.name,
+    alternateName: siteConfig.alternateNames,
+    url: siteConfig.siteUrl,
+    logo: siteConfig.logo,
+    image: [
+      siteConfig.ogImage,
+      "https://www.hotelpumerai.com/dining/_DSC0222_result.webp",
+      "https://www.hotelpumerai.com/banquet/sidhvin-hall-main.webp",
+    ],
+    telephone: siteConfig.phone,
+    email: siteConfig.email,
+    address: postalAddress,
+    geo: geoCoordinates,
+    hasMap: siteConfig.hasMap,
+    starRating: {
+      "@type": "Rating",
+      ratingValue: siteConfig.starRating,
+    },
+    numberOfRooms: siteConfig.numberOfRooms,
+    // TODO: Add checkinTime and checkoutTime here once confirmed by client
+    amenityFeature: [
+      { "@type": "LocationFeatureSpecification", name: "Rooftop Swimming Pool", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Children's Splash Area", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Free High-Speed Wi-Fi 100+ Mbps", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Covered Parking", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Electric Vehicle (EV) Charging Station", value: true },
+      { "@type": "LocationFeatureSpecification", name: "24-Hour Front Desk", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Elevators", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Power Backup", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Air Conditioning", value: true },
+      { "@type": "LocationFeatureSpecification", name: "On-Site Restaurants (Matsya & Madhura)", value: true },
+      { "@type": "LocationFeatureSpecification", name: "On-Site Banquet Halls (Sidhvin & Milan)", value: true },
+    ],
+  };
 
   const organizationSchema = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    "@id": "https://hotelpumerai.com/#organization",
+    "@id": "https://www.hotelpumerai.com/#organization",
     name: siteConfig.name,
     alternateName: siteConfig.alternateNames,
     url: siteConfig.siteUrl,
     logo: siteConfig.logo,
     telephone: siteConfig.phone,
     email: siteConfig.email,
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: siteConfig.address.streetAddress,
-      addressLocality: siteConfig.address.addressLocality,
-      addressRegion: siteConfig.address.addressRegion,
-      postalCode: siteConfig.address.postalCode,
-      addressCountry: siteConfig.address.addressCountry,
-    },
+    address: postalAddress,
     contactPoint: {
       "@type": "ContactPoint",
       telephone: siteConfig.phone,
@@ -143,64 +243,18 @@ export function generateStructuredData(pathname = "/") {
     },
   };
 
-  const hotelSchema = {
+  const websiteSchema = {
     "@context": "https://schema.org",
-    "@type": "Hotel",
-    "@id": "https://hotelpumerai.com/#hotel",
+    "@type": "WebSite",
+    "@id": "https://www.hotelpumerai.com/#website",
     name: siteConfig.name,
-    alternateName: siteConfig.alternateNames,
-    description:
-      "A premium 3-star hotel situated on NH-66 near Ramateertha Cross in Honnavar, Uttara Kannada, Karnataka. Offering 40 air-conditioned rooms, a rooftop swimming pool, coastal multi-cuisine and pure vegetarian dining.",
     url: siteConfig.siteUrl,
-    telephone: siteConfig.phone,
-    email: siteConfig.email,
-    image: [
-      `${siteConfig.siteUrl}/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_21%20AM_result.webp`,
-      `${siteConfig.siteUrl}/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_42%20AM_result.webp`,
-    ],
-    address: {
-      "@type": "PostalAddress",
-      streetAddress: siteConfig.address.streetAddress,
-      addressLocality: siteConfig.address.addressLocality,
-      addressRegion: siteConfig.address.addressRegion,
-      postalCode: siteConfig.address.postalCode,
-      addressCountry: siteConfig.address.addressCountry,
-    },
-    geo: {
-      "@type": "GeoCoordinates",
-      latitude: siteConfig.geo.latitude,
-      longitude: siteConfig.geo.longitude,
-    },
-    hasMap: "https://maps.app.goo.gl/rCfTnw9t8Dp58mga7",
-    checkinTime: siteConfig.checkinTime,
-    checkoutTime: siteConfig.checkoutTime,
-    numberOfRooms: 40,
-    priceRange: siteConfig.priceRange,
-    petsAllowed: false,
-    smokingAllowed: false,
-    starRating: {
-      "@type": "Rating",
-      ratingValue: siteConfig.starRating,
-    },
-    amenityFeature: [
-      { "@type": "LocationFeatureSpecification", name: "Free High-Speed Wi-Fi · 100+ Mbps", value: true },
-      { "@type": "LocationFeatureSpecification", name: "Rooftop & Children's Swimming Pool", value: true },
-      { "@type": "LocationFeatureSpecification", name: "Complimentary Daily Hot Breakfast", value: true },
-      { "@type": "LocationFeatureSpecification", name: "24-Hour Front Desk", value: true },
-      { "@type": "LocationFeatureSpecification", name: "Free Secure Private Parking", value: true },
-      { "@type": "LocationFeatureSpecification", name: "Electric Vehicle (EV) Charging Station", value: true },
-      { "@type": "LocationFeatureSpecification", name: "On-Site Matsya Multi-Cuisine Restaurant", value: true },
-      { "@type": "LocationFeatureSpecification", name: "On-Site Madhura Pure Veg Restaurant", value: true },
-      { "@type": "LocationFeatureSpecification", name: "Smoke-Free Guestrooms", value: true },
-      { "@type": "LocationFeatureSpecification", name: "Air Conditioning", value: true },
-      { "@type": "LocationFeatureSpecification", name: "Quiet Acoustic Planning", value: true },
-    ],
   };
 
   const breadcrumbsSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
-    itemListElement: meta.breadcrumbs.map((b, index) => ({
+    itemListElement: (meta.breadcrumbs || []).map((b, index) => ({
       "@type": "ListItem",
       position: index + 1,
       name: b.name,
@@ -208,14 +262,144 @@ export function generateStructuredData(pathname = "/") {
     })),
   };
 
-  const schemas = [organizationSchema, hotelSchema, breadcrumbsSchema];
+  // 1. Home page schema
+  if (normalized === "/") {
+    return [organizationSchema, websiteSchema, baseHotelSchema];
+  }
 
-  // Include FAQPage on Home, Location, and FAQ routes
-  if (pathname === "/" || pathname === "/location" || pathname === "/faq") {
-    schemas.push({
+  // 2. Rooms page schema: HotelRoom linked to Hotel via containsPlace
+  if (normalized === "/rooms") {
+    const hotelWithRooms = {
+      ...baseHotelSchema,
+      "@id": "https://www.hotelpumerai.com/#hotel",
+      url: "https://www.hotelpumerai.com/rooms",
+      containsPlace: rooms.map((room) => ({
+        "@type": "HotelRoom",
+        name: room.name,
+        description: room.shortDescription,
+        occupancy: {
+          "@type": "QuantitativeValue",
+          value: room.occupancy.includes("4") ? 4 : room.occupancy.includes("3") ? 3 : 2,
+        },
+        bed: {
+          "@type": "BedDetails",
+          typeOfBed: room.bedType,
+        },
+        floorSize: {
+          "@type": "QuantitativeValue",
+          value: parseInt(room.size, 10) || 350,
+          unitCode: "FTK",
+        },
+      })),
+    };
+    return [breadcrumbsSchema, hotelWithRooms];
+  }
+
+  // 3. Banquet page schema: Sidhvin and Milan as EventVenue linked to Hotel
+  if (normalized === "/banquet") {
+    const hotelWithHalls = {
+      ...baseHotelSchema,
+      "@id": "https://www.hotelpumerai.com/#hotel",
+      url: "https://www.hotelpumerai.com/banquet",
+      containsPlace: [
+        {
+          "@type": "EventVenue",
+          name: "Sidhvin Banquet Hall",
+          description:
+            "A grand air-conditioned banquet hall with a raised stage for weddings, receptions and conferences in Honnavar.",
+          maximumAttendeeCapacity: 200,
+          amenityFeature: [
+            { "@type": "LocationFeatureSpecification", name: "Ceremonial Stage and Podium", value: true },
+            { "@type": "LocationFeatureSpecification", name: "Air Conditioning", value: true },
+            { "@type": "LocationFeatureSpecification", name: "High-Speed Wi-Fi & Power Backup", value: true },
+          ],
+        },
+        {
+          "@type": "EventVenue",
+          name: "Milan Hall",
+          description:
+            "An intimate air-conditioned venue for private dinners, family functions, and business meetings in Honnavar.",
+          maximumAttendeeCapacity: 50,
+          amenityFeature: [
+            { "@type": "LocationFeatureSpecification", name: "Round Banquet Tables", value: true },
+            { "@type": "LocationFeatureSpecification", name: "Presentation Dais", value: true },
+            { "@type": "LocationFeatureSpecification", name: "Air Conditioning", value: true },
+          ],
+        },
+      ],
+    };
+    return [breadcrumbsSchema, hotelWithHalls];
+  }
+
+  // 4. Dining page schema: Two Restaurant entities
+  if (normalized === "/dining") {
+    const matsyaSchema = {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "@id": "https://www.hotelpumerai.com/dining#matsya",
+      name: "Matsya Multi-Cuisine Restaurant",
+      parentOrganization: { "@id": "https://www.hotelpumerai.com/#hotel" },
+      servesCuisine: ["Coastal Karavali Seafood", "North Indian", "Continental", "Tandoori"],
+      openingHours: "Mo-Su 07:00-22:30",
+      telephone: siteConfig.phone,
+      address: postalAddress,
+    };
+
+    const madhuraSchema = {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "@id": "https://www.hotelpumerai.com/dining#madhura",
+      name: "Madhura Pure Veg Restaurant",
+      parentOrganization: { "@id": "https://www.hotelpumerai.com/#hotel" },
+      servesCuisine: ["Pure Vegetarian", "South Indian", "Coastal Satvik"],
+      openingHours: "Mo-Su 06:30-22:00",
+      telephone: siteConfig.phone,
+      address: postalAddress,
+    };
+
+    return [breadcrumbsSchema, matsyaSchema, madhuraSchema];
+  }
+
+  // 5. Location page schema: Hotel geo plus nearby places from site's values
+  if (normalized === "/location") {
+    const nearbyPlaces = destinations.map((d) => ({
+      "@type": "Place",
+      name: d.name,
+      description: `${d.name} (${d.distance})`,
+      geo: {
+        "@type": "GeoCoordinates",
+        latitude: d.lat,
+        longitude: d.lng,
+      },
+    }));
+
+    const hotelLocationSchema = {
+      ...baseHotelSchema,
+      "@id": "https://www.hotelpumerai.com/#hotel",
+      url: "https://www.hotelpumerai.com/location",
+      specialOpeningHoursSpecification: [],
+      amenityFeature: [
+        ...baseHotelSchema.amenityFeature,
+        ...nearbyPlaces.map((p) => ({
+          "@type": "LocationFeatureSpecification",
+          name: `Near ${p.name}`,
+          value: true,
+        })),
+      ],
+    };
+
+    return [breadcrumbsSchema, hotelLocationSchema];
+  }
+
+  // 6. FAQ page schema: FAQPage built from verified questions only
+  if (normalized === "/faq") {
+    // TODO: Add check-in/check-out (Q8) and cancellation policy (Q11) to FAQPage JSON-LD schema once final wording is confirmed by client
+    const verifiedFaqs = faqList.filter((item) => !item.unverifiedForSchema);
+
+    const faqSchema = {
       "@context": "https://schema.org",
       "@type": "FAQPage",
-      mainEntity: faqList.map((item) => ({
+      mainEntity: verifiedFaqs.map((item) => ({
         "@type": "Question",
         name: item.q,
         acceptedAnswer: {
@@ -223,63 +407,11 @@ export function generateStructuredData(pathname = "/") {
           text: item.a,
         },
       })),
-    });
+    };
+
+    return [breadcrumbsSchema, faqSchema];
   }
 
-  // Include Restaurant schemas on Dining and Home
-  if (pathname === "/dining" || pathname === "/") {
-    schemas.push(
-      {
-        "@context": "https://schema.org",
-        "@type": "Restaurant",
-        "@id": "https://hotelpumerai.com/dining#matsya",
-        name: "Matsya Multi-Cuisine Restaurant",
-        parentOrganization: { "@id": "https://hotelpumerai.com/#hotel" },
-        servesCuisine: ["Coastal Karavali Seafood", "North Indian", "Continental", "Tandoori"],
-        openingHours: "Mo-Su 07:00-22:30",
-        priceRange: "₹₹",
-        telephone: siteConfig.phone,
-        address: hotelSchema.address,
-      },
-      {
-        "@context": "https://schema.org",
-        "@type": "Restaurant",
-        "@id": "https://hotelpumerai.com/dining#madhura",
-        name: "Madhura Pure Veg Restaurant",
-        parentOrganization: { "@id": "https://hotelpumerai.com/#hotel" },
-        servesCuisine: ["Pure Vegetarian", "South Indian", "Coastal Satvik"],
-        openingHours: "Mo-Su 06:30-22:00",
-        priceRange: "₹",
-        telephone: siteConfig.phone,
-        address: hotelSchema.address,
-      }
-    );
-  }
-
-  // Include Room offerings on Rooms route
-  if (pathname === "/rooms") {
-    schemas.push({
-      "@context": "https://schema.org",
-      "@type": "OfferCatalog",
-      name: "Hotel Pumerai Room Collection",
-      itemListElement: rooms.map((room) => ({
-        "@type": "Offer",
-        itemOffered: {
-          "@type": "HotelRoom",
-          name: room.name,
-          description: room.shortDescription,
-          occupancy: room.occupancy,
-          bed: {
-            "@type": "BedDetails",
-            typeOfBed: room.bedType,
-          },
-        },
-        price: room.startingPrice,
-        priceCurrency: "INR",
-        availability: "https://schema.org/InStock",
-      })),
-    });
-  }
-
-  return schemas;
+  // 7. Contact, Gallery, Privacy, Cancellation, 404 pages
+  return [breadcrumbsSchema];
 }

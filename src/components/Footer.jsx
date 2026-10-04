@@ -36,7 +36,7 @@ function YoutubeIcon({ className = "" }) {
   return (
     <svg className={className} width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
       <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z" />
-      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" fill="currentColor" />
+      <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02" />
     </svg>
   );
 }
@@ -49,14 +49,15 @@ function WhatsAppIcon({ className = "" }) {
   );
 }
 
-export default function Footer({ onNavigate }) {
+export default function Footer({ onNavigate, currentPath = "/" }) {
   const officialGoogleMapsLink = "https://maps.app.goo.gl/rCfTnw9t8Dp58mga7";
+  const isFaqPage = currentPath === "/faq";
 
   const handleNavClick = (e, item) => {
     e.preventDefault();
     if (onNavigate) {
       onNavigate(item);
-    } else {
+    } else if (typeof window !== "undefined") {
       window.location.href = item.section ? `/#${item.section}` : item.route;
     }
   };
@@ -67,24 +68,26 @@ export default function Footer({ onNavigate }) {
 
         <div className="footer-brass-divider" />
 
-        {/* Main 3-Column Grid — offer/signup | centered contact+social | concierge/WhatsApp */}
-        <div className="footer-main-grid">
+        {/* Main Grid: On /faq, hide Stay Updated and Need Help columns per SEO/AEO spec */}
+        <div className={`footer-main-grid ${isFaqPage ? "footer-main-grid-faq" : ""}`}>
 
           {/* Col 1: Offers / Stay Updated */}
-          <section className="footer-col footer-col-center">
-            <h4 className="footer-col-heading">Stay Updated</h4>
-            <p className="footer-col-copy">
-              Get seasonal offers on WhatsApp.
-            </p>
-            <a
-              href={whatsappHref("Hi Hotel Pumerai, please add me to your updates and seasonal offers list.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button-primary footer-inline-btn"
-            >
-              Join on WhatsApp
-            </a>
-          </section>
+          {!isFaqPage && (
+            <section className="footer-col footer-col-center">
+              <h4 className="footer-col-heading">Stay Updated</h4>
+              <p className="footer-col-copy">
+                Get seasonal offers on WhatsApp.
+              </p>
+              <a
+                href={whatsappHref("Hi Hotel Pumerai, please add me to your updates and seasonal offers list.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button-primary footer-inline-btn"
+              >
+                Join on WhatsApp
+              </a>
+            </section>
+          )}
 
           {/* Col 2: Contact, Address & Social */}
           <section className="footer-col footer-col-center">
@@ -99,7 +102,7 @@ export default function Footer({ onNavigate }) {
               >
                 Hotel Pumerai, NH-66, near Ramateertha Cross,
                 <br />
-                Honnavar 581334, Uttara Kannada, Karnataka
+                Honnavar, Uttara Kannada, Karnataka 581334, India
               </a>
 
               <span className="footer-contact-item-inline">
@@ -112,7 +115,6 @@ export default function Footer({ onNavigate }) {
                 Email: <a href="mailto:reservation@hotelpumerai.com" className="contact-link">reservation@hotelpumerai.com</a>
               </span>
             </address>
-
 
             <p className="footer-col-title footer-follow-label">Follow Us</p>
             <div className="footer-social-icons">
@@ -129,23 +131,24 @@ export default function Footer({ onNavigate }) {
           </section>
 
           {/* Col 3: Direct Concierge Assistance */}
-          <section className="footer-col footer-col-center">
-            <h4 className="footer-col-heading">Need help?</h4>
-            <p className="footer-col-copy">
-              Ask us about rooms, dining or things to do in Honnavar.
-            </p>
-            <a
-              href={whatsappHref("Hi Hotel Pumerai, I would like to inquire about room availability and concierge assistance.")}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button-primary footer-inline-btn"
-            >
-              <WhatsAppIcon />
-              <span>Chat on WhatsApp</span>
-            </a>
-          </section>
+          {!isFaqPage && (
+            <section className="footer-col footer-col-center">
+              <h4 className="footer-col-heading">Need help?</h4>
+              <p className="footer-col-copy">
+                Ask us about rooms, dining or things to do in Honnavar.
+              </p>
+              <a
+                href={whatsappHref("Hi Hotel Pumerai, I would like to inquire about room availability and concierge assistance.")}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button-primary footer-inline-btn"
+              >
+                <WhatsAppIcon />
+                <span>Chat on WhatsApp</span>
+              </a>
+            </section>
+          )}
         </div>
-
 
         {/* Bottom Bar: Copyright | Nav Links | Legal */}
         <div className="footer-bottom-bar footer-bottom-bar-3col">
@@ -167,8 +170,8 @@ export default function Footer({ onNavigate }) {
           </nav>
 
           <div className="footer-legal-links">
-            <a href="/location" onClick={(e) => handleNavClick(e, { route: "/location" })}>Privacy Policy</a>
-            <a href="/faq" onClick={(e) => handleNavClick(e, { route: "/faq" })}>Cancellation &amp; FAQ</a>
+            <a href="/privacy" onClick={(e) => handleNavClick(e, { route: "/privacy" })}>Privacy Policy</a>
+            <a href="/cancellation" onClick={(e) => handleNavClick(e, { route: "/cancellation" })}>Cancellation Policy</a>
             <a href="/contact" onClick={(e) => handleNavClick(e, { route: "/contact" })}>Contact</a>
           </div>
         </div>

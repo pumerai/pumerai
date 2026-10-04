@@ -9,7 +9,7 @@ export function useSectionReveals() {
   const prefersReducedMotion = usePrefersReducedMotion();
 
   useLayoutEffect(() => {
-    if (prefersReducedMotion) {
+    if (typeof window === "undefined" || prefersReducedMotion) {
       return undefined;
     }
 
