@@ -11,10 +11,10 @@ export const venuesData = [
     alt: "Matsya Multicuisine Restaurant dining room at Hotel Pumerai Honnavar",
     description: "Coastal seafood, tandoor and continental.",
     signatureDishes: [
-      { name: "Honnavar Karavali Fish Curry" },
-      { name: "Prawns Ghee Roast" },
-      { name: "Butter Garlic Mud Crab" },
-      { name: "Murgh Malai Kebab" },
+      { name: "Honnavar Karavali Fish Curry", note: "Traditional coastal coconut broth with steamed rice" },
+      { name: "Prawns Ghee Roast", note: "Tossed in Kundapur spices and clarified butter" },
+      { name: "Butter Garlic Mud Crab", note: "Fresh coastal catch in aromatic garlic butter" },
+      { name: "Murgh Malai Kebab", note: "Clay oven roasted chicken in cream cheese marinade" },
     ],
     menuCategories: [
       {
@@ -55,10 +55,10 @@ export const venuesData = [
     alt: "Madhura Pure Vegetarian Restaurant at Hotel Pumerai Honnavar",
     description: "Pure vegetarian South Indian.",
     signatureDishes: [
-      { name: "Crispy Benne Masala Dosa" },
-      { name: "Mangalorean Neer Dosa" },
-      { name: "Special Karavali Veg Thali" },
-      { name: "Degree Filter Kaapi" },
+      { name: "Crispy Benne Masala Dosa", note: "Golden butter dosa with spiced potato filling" },
+      { name: "Mangalorean Neer Dosa", note: "Silky coastal rice crepes with veg kurma and coconut chutney" },
+      { name: "Special Karavali Veg Thali", note: "Unlimited rice, rasam, sambar, seasonal vegetables and sweet" },
+      { name: "Degree Filter Kaapi", note: "Freshly brewed South Indian coffee in classic brass davarah" },
     ],
     menuCategories: [
       {

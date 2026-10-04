@@ -5,7 +5,16 @@ import { useState, useEffect } from "react";
  * /public/rooms/[slug]/[photo].jpg, with seamless fallback to property frames
  * if custom photos have not been added yet.
  */
-export default function RoomImage({ src, fallback, alt, className = "", loading = "lazy" }) {
+export default function RoomImage({
+  src,
+  fallback,
+  alt,
+  className = "",
+  loading = "lazy",
+  width = 1280,
+  height = 853,
+  ...props
+}) {
   const [imgSrc, setImgSrc] = useState(src || fallback);
   const [hasFailed, setHasFailed] = useState(false);
 
@@ -25,9 +34,12 @@ export default function RoomImage({ src, fallback, alt, className = "", loading 
     <img
       src={imgSrc}
       alt={alt}
+      width={width}
+      height={height}
       loading={loading}
       className={className}
       onError={handleError}
+      {...props}
     />
   );
 }

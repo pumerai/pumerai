@@ -43,6 +43,8 @@ export default function Dining({ sectionId = "dining", headingId = "dining-headi
                   <img
                     src={venue.image}
                     alt={venue.alt}
+                    width="1280"
+                    height="853"
                     loading="lazy"
                     className={`venue-image reveal-drop reveal-delay-${idx % 4}`}
                   />
@@ -52,13 +54,13 @@ export default function Dining({ sectionId = "dining", headingId = "dining-headi
                     <circle cx="12" cy="12" r="10" />
                     <polyline points="12 6 12 12 16 14" />
                   </svg>
-                  <span>{venue.hours}</span>
+                  <span>{venue.hours} &middot; {venue.mealTimes}</span>
                 </div>
               </div>
 
               <div className="venue-details-body">
                 <div className="venue-header-row">
-                  <h3 className="venue-title">{venue.name}</h3>
+                  <h2 className="venue-title">{venue.name}</h2>
                 </div>
 
                 {venue.cuisines && (
@@ -80,6 +82,7 @@ export default function Dining({ sectionId = "dining", headingId = "dining-headi
                       <div className="dish-item" key={dish.name}>
                         <div className="dish-name-row">
                           <strong className="dish-title">{dish.name}</strong>
+                          {dish.note && <span className="dish-note-text"> &ndash; {dish.note}</span>}
                         </div>
                       </div>
                     ))}

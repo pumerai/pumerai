@@ -63,6 +63,8 @@ export default function Rooms() {
                       src={currentPhotoSrc}
                       fallback={currentFallbackSrc}
                       alt={`${room.name} at Hotel Pumerai Honnavar`}
+                      width={1280}
+                      height={853}
                       loading="lazy"
                       className="room-main-image"
                     />
@@ -85,7 +87,9 @@ export default function Rooms() {
                         <RoomImage
                           src={photo}
                           fallback={(room.fallbackGallery && room.fallbackGallery[idx]) || room.fallbackImage}
-                          alt=""
+                          alt={`${room.name} interior photo ${idx + 1} at Hotel Pumerai Honnavar`}
+                          width={160}
+                          height={107}
                           loading="lazy"
                         />
                       </button>
@@ -97,7 +101,7 @@ export default function Rooms() {
                 <div className="room-card-content">
                   <div className="room-header-meta">
                     <span className="room-tagline">{room.tagline}</span>
-                    <h3 className="room-name">{room.name}</h3>
+                    <h2 className="room-name">{room.name}</h2>
                   </div>
 
                   {/* Key Specifications Pill Row */}

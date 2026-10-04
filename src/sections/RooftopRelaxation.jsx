@@ -33,6 +33,8 @@ export default function RooftopRelaxation({ onNavigate }) {
             <img
               src="/gallery/rooftop-pool-vista.webp"
               alt="Glass-edge rooftop swimming pool overlooking palm canopies and the Karavali coast at Hotel Pumerai Honnavar"
+              width="1280"
+              height="853"
               loading="lazy"
               className="rooftop-hero-img"
             />

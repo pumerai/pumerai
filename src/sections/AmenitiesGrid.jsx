@@ -75,6 +75,8 @@ export default function AmenitiesGrid() {
               <img
                 src="/gallery/lobby-library-reception.webp"
                 alt="24-hour reception desk and handcrafted library foyer at Hotel Pumerai"
+                width="1280"
+                height="853"
                 loading="lazy"
                 className="hospitality-img-zoom"
               />
@@ -89,6 +91,8 @@ export default function AmenitiesGrid() {
                 <img
                   src="/gallery/sunlit-grand-lobby.webp"
                   alt="Sunlit double-height grand lobby and guest lounge at Hotel Pumerai"
+                  width="1280"
+                  height="853"
                   loading="lazy"
                   className="hospitality-img-zoom"
                 />
@@ -99,6 +103,8 @@ export default function AmenitiesGrid() {
                 <img
                   src="/rooms/premium-room/premium-room-main.webp"
                   alt="Spotless linens and contemporary room comfort at Hotel Pumerai"
+                  width="1280"
+                  height="853"
                   loading="lazy"
                   className="hospitality-img-zoom"
                 />

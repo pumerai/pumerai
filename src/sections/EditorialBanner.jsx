@@ -32,6 +32,8 @@ export default function EditorialBanner({
               <img
                 src={imageSrc}
                 alt={imageAlt}
+                width="1280"
+                height="853"
                 loading="lazy"
                 className="editorial-banner-img"
               />

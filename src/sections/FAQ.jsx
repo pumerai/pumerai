@@ -74,7 +74,7 @@ export default function FAQ({ isStandalonePage = false }) {
         {/* Further Assistance Banner */}
         <div className="faq-help-box" data-reveal>
           <div className="help-text">
-            <span className="help-title">Have a question?</span>
+            <h2 className="help-title">Have a question?</h2>
             <span className="help-sub">Our 24-hour Honnavar front desk is here to assist you anytime.</span>
           </div>
           <div className="help-actions">

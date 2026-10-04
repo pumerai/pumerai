@@ -28,7 +28,7 @@ export default function Location({ isStandalonePage = false }) {
         <div className="policies-summary-card" data-reveal>
           <div className="policies-header">
             <span className="policies-tag">POLICIES</span>
-            <h3 className="policies-title">Hotel Policies</h3>
+            <h2 className="policies-title">Hotel Policies</h2>
           </div>
           <div className="policies-two-col-grid">
             {hotelPolicies.map((p) => (

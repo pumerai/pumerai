@@ -96,52 +96,59 @@ export default function AroundHonnavar() {
         </div>
 
         {/* Detail panel — fixed height so layout never jumps */}
-        <div
-          id={`ah-panel-${activeDest.id}`}
-          role="tabpanel"
-          aria-labelledby={`ah-tab-${activeDest.id}`}
-          className={`ah-detail-panel${isAnimating && !prefersReducedMotion ? " is-fading" : ""}`}
-        >
-          {/* Destination photo — 3:2. Hidden when image is null (e.g. Goa) */}
-          {activeDest.image && (
-            <div className="ah-dest-photo-frame">
-              <img
-                key={activeDest.id}
-                src={activeDest.image}
-                alt={activeDest.alt}
-                width={activeDest.imageW || 800}
-                height={activeDest.imageH || 533}
-                loading="lazy"
-                decoding="async"
-                className="ah-dest-photo"
-                style={{ objectPosition: activeDest.objectPosition || "center center" }}
-              />
-            </div>
-          )}
-
-          {/* Metadata */}
-          <div className="ah-dest-meta">
-            <h3 className="ah-dest-name">{activeDest.name}</h3>
-
-            <p className="ah-dest-distance">
-              {activeDest.distanceKm} km from Pumerai
-              <span className="ah-dist-sep" aria-hidden="true"> · </span>
-              {activeDest.driveTime}
-            </p>
-
-            <p className="ah-dest-desc">{activeDest.description}</p>
-
-            <a
-              href={activeDest.mapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="button-primary ah-map-btn"
-              aria-label={`View ${activeDest.name} location on map`}
+        {destinations.map((dest, idx) => {
+          const isActive = idx === activeIdx;
+          return (
+            <div
+              key={dest.id}
+              id={`ah-panel-${dest.id}`}
+              role="tabpanel"
+              aria-labelledby={`ah-tab-${dest.id}`}
+              hidden={!isActive}
+              className={`ah-detail-panel${isActive && isAnimating && !prefersReducedMotion ? " is-fading" : ""}`}
             >
-              <span>View location on map <span className="arrow-icon" aria-hidden="true">&rarr;</span></span>
-            </a>
-          </div>
-        </div>
+              {/* Destination photo — 3:2. Hidden when image is null (e.g. Goa) */}
+              {dest.image && (
+                <div className="ah-dest-photo-frame">
+                  <img
+                    key={dest.id}
+                    src={dest.image}
+                    alt={dest.alt}
+                    width={dest.imageW || 800}
+                    height={dest.imageH || 533}
+                    loading="lazy"
+                    decoding="async"
+                    className="ah-dest-photo"
+                    style={{ objectPosition: dest.objectPosition || "center center" }}
+                  />
+                </div>
+              )}
+
+              {/* Metadata */}
+              <div className="ah-dest-meta">
+                <h3 className="ah-dest-name">{dest.name}</h3>
+
+                <p className="ah-dest-distance">
+                  {dest.distanceKm} km from Pumerai
+                  <span className="ah-dist-sep" aria-hidden="true"> · </span>
+                  {dest.driveTime}
+                </p>
+
+                <p className="ah-dest-desc">{dest.description}</p>
+
+                <a
+                  href={dest.mapsUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="button-primary ah-map-btn"
+                  aria-label={`View ${dest.name} location on map`}
+                >
+                  <span>View location on map <span className="arrow-icon" aria-hidden="true">&rarr;</span></span>
+                </a>
+              </div>
+            </div>
+          );
+        })}
       </div>
     </div>
   );

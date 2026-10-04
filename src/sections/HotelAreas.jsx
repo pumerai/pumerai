@@ -120,6 +120,8 @@ export default function HotelAreas() {
                 key={activeArea.id}
                 src={activeArea.image}
                 alt={activeArea.alt}
+                width="1280"
+                height="853"
                 loading="lazy"
                 className={`area-stage-image reveal-drop reveal-delay-0 ${isCrossfading ? "is-crossfading" : ""}`}
               />

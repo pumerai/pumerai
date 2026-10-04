@@ -27,6 +27,8 @@ export default function About() {
               <img
                 src="/gallery/hotel-highway-facade.webp"
                 alt="Hotel Pumerai architectural entrance on NH-66, Honnavar, Karnataka"
+                width="1280"
+                height="853"
                 loading="lazy"
                 className="about-primary-img reveal-drop reveal-delay-0"
               />
@@ -37,6 +39,8 @@ export default function About() {
               <img
                 src="/gallery/rooftop-pool-vista.webp"
                 alt="Rooftop glass-edge pool at Hotel Pumerai overlooking coastal canopies"
+                width="1280"
+                height="853"
                 loading="lazy"
                 className="about-secondary-img reveal-drop reveal-delay-1"
               />

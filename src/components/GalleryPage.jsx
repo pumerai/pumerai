@@ -11,6 +11,7 @@ export default function GalleryPage() {
         description="Explore Hotel Pumerai, from our rooms and pool to dining and coastal surroundings."
         id="gallery-page-heading"
       />
+      <h2 className="sr-only">Hotel Pumerai photo gallery</h2>
       <GallerySection isStandalonePage={true} />
     </main>
   );

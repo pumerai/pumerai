@@ -113,6 +113,8 @@ export default function PickASide({ onNavigate }) {
                   <img
                     src={item.image}
                     alt={item.alt}
+                    width="800"
+                    height="533"
                     loading="lazy"
                     className={`pas-image reveal-drop reveal-delay-${index % 4}`}
                     style={item.objectPosition ? { objectPosition: item.objectPosition } : undefined}

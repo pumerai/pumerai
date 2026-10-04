@@ -150,6 +150,8 @@ export default function RoomsPage() {
                         src={currentPhotoSrc}
                         fallback={currentFallbackSrc}
                         alt={`${room.name} at Hotel Pumerai Honnavar`}
+                        width={1280}
+                        height={853}
                         className={`room-main-image reveal-drop reveal-delay-${roomIdx % 4}`}
                         loading="lazy"
                       />
@@ -171,7 +173,9 @@ export default function RoomsPage() {
                           <RoomImage
                             src={photo}
                             fallback={room.fallbackGallery[idx] || room.fallbackImage}
-                            alt=""
+                            alt={`${room.name} interior photo ${idx + 1} at Hotel Pumerai Honnavar`}
+                            width={160}
+                            height={107}
                             loading="lazy"
                           />
                         </button>

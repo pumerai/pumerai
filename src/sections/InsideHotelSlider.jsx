@@ -150,6 +150,8 @@ export default function InsideHotelSlider({ onNavigate }) {
                     <img
                       src={slide.image}
                       alt={slide.alt}
+                      width="1280"
+                      height="853"
                       loading={idx === 0 ? "eager" : "lazy"}
                       decoding="async"
                       className={`ihs-slide-img ${idx === 0 ? "reveal-drop reveal-delay-0" : ""}`}

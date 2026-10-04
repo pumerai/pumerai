@@ -78,6 +78,8 @@ function Experience() {
             <img
               src="/gallery/rooftop-pool-facade.webp"
               alt="Hotel Pumerai signature glass-edge swimming pool"
+              width="1280"
+              height="853"
               loading="lazy"
             />
           </figure>

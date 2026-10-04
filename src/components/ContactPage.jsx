@@ -33,7 +33,7 @@ export default function ContactPage() {
             {/* Left Column: Contact Channels & NAP */}
             <div className="contact-info-col">
               <div className="contact-card-box">
-                <h3 className="card-box-title">Get in Touch</h3>
+                <h2 className="card-box-title">Get in Touch</h2>
                 <div className="brass-rule-small" />
 
                 <div className="contact-methods-stack">
@@ -113,7 +113,7 @@ export default function ContactPage() {
             {/* Right Column: Contact & Booking Inquiry Form */}
             <div className="contact-form-col">
               <div className="form-wrapper-box">
-                <h3 className="form-box-title">Send an Enquiry</h3>
+                <h2 className="form-box-title">Send an Enquiry</h2>
                 <p className="form-box-desc">
                   Share your dates and we will reply shortly.
                 </p>

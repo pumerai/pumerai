@@ -26,27 +26,27 @@ export default function PrivacyPage() {
               and communications for stays at our property on NH-66 in Honnavar, Karnataka.
             </p>
 
-            <h3 className="legal-subheading">1. Information We Collect</h3>
+            <h2 className="legal-subheading">1. Information We Collect</h2>
             <p className="legal-paragraph">
               When making a reservation, dining enquiry, or event booking at Hotel Pumerai, we collect standard
               contact details including your name, telephone number, email address, government identification
               as required by Indian hotel regulations, and payment or billing details necessary to secure your reservation.
             </p>
 
-            <h3 className="legal-subheading">2. Use of Information</h3>
+            <h2 className="legal-subheading">2. Use of Information</h2>
             <p className="legal-paragraph">
               Guest details are used exclusively to process reservations, deliver hospitality services,
               coordinate concierge requests, send booking confirmations, and comply with statutory legal requirements.
               We do not sell, rent, or trade guest personal details to third parties.
             </p>
 
-            <h3 className="legal-subheading">3. Security and Storage</h3>
+            <h2 className="legal-subheading">3. Security and Storage</h2>
             <p className="legal-paragraph">
               We implement industry-standard physical, electronic, and procedural safeguards to protect personal
               information collected through our direct channels and on-site front desk operations.
             </p>
 
-            <h3 className="legal-subheading">4. Contact Front Desk</h3>
+            <h2 className="legal-subheading">4. Contact Front Desk</h2>
             <p className="legal-paragraph">
               For any questions regarding personal data or privacy practices, please contact our 24-hour front desk
               in Honnavar by phone at <a href="tel:+919845423223" className="contact-link">+91 98454 23223</a> or email at{" "}

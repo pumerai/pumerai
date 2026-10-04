@@ -15,9 +15,11 @@ const banquetHalls = [
       { src: "/banquet/sidhvin-hall-auditorium.webp", alt: "Full auditorium view of Sidhvin Banquet Hall Honnavar" },
     ],
     features: [
-      "Stage and podium",
-      "Wi-Fi and power backup",
-      "Covered parking",
+      "Air-conditioned hall (capacity: up to 200 guests)",
+      "Raised ceremonial stage and presentation podium",
+      "Audio-visual setup and high-speed Wi-Fi",
+      "100% generator power backup and elevator access",
+      "Covered parking with EV charging bays",
     ],
   },
   {
@@ -34,9 +36,11 @@ const banquetHalls = [
       { src: "/banquet/milan-hall-tables.webp", alt: "Elegantly arranged banquet dining tables at Milan Hall Honnavar" },
     ],
     features: [
-      "Round banquet tables",
-      "Presentation dais",
-      "Wi-Fi",
+      "Air-conditioned hall (capacity: up to 50 guests)",
+      "Round banquet tables and flexible seating",
+      "Speaker presentation dais and audio-visual support",
+      "High-speed Wi-Fi and 100% power backup",
+      "Elevator access and dedicated parking",
     ],
   },
 ];
@@ -74,6 +78,8 @@ export default function Banquet() {
                 <img
                   src={activePhoto.sidhvin}
                   alt="Sidhvin Banquet Hall at Hotel Pumerai Honnavar"
+                  width="1140"
+                  height="1070"
                   className="banquet-main-image reveal-drop reveal-delay-0"
                   loading="lazy"
                 />
@@ -92,7 +98,7 @@ export default function Banquet() {
                     onClick={() => handleThumbnailClick("sidhvin", item.src)}
                     aria-label={`View photo ${idx + 1} of Sidhvin Banquet Hall`}
                   >
-                    <img src={item.src} alt={item.alt} loading="lazy" />
+                    <img src={item.src} alt={item.alt} width="970" height="520" loading="lazy" />
                   </button>
                 ))}
               </div>
@@ -104,15 +110,15 @@ export default function Banquet() {
                 <span className="accent-pip" />
                 <span>Premier Grand Venue</span>
               </div>
-              <h3 id="sidhvin-title" className="banquet-hall-name">
+              <h2 id="sidhvin-title" className="banquet-hall-name">
                 {banquetHalls[0].name}
-              </h3>
+              </h2>
               <p className="banquet-hall-tagline">{banquetHalls[0].tagline}</p>
               <div className="brass-rule-small" />
               <p className="banquet-hall-desc">{banquetHalls[0].description}</p>
 
               <div className="banquet-features-block">
-                <h4 className="features-title">FACILITIES</h4>
+                <h3 className="features-title">FACILITIES</h3>
                 <ul className="banquet-features-list">
                   {banquetHalls[0].features.map((feat, i) => (
                     <li key={i} className="banquet-feature-item">
@@ -155,6 +161,8 @@ export default function Banquet() {
                 <img
                   src={activePhoto.milan}
                   alt="Milan Hall at Hotel Pumerai Honnavar"
+                  width="1140"
+                  height="1060"
                   className="banquet-main-image reveal-drop reveal-delay-1"
                   loading="lazy"
                 />
@@ -173,7 +181,7 @@ export default function Banquet() {
                     onClick={() => handleThumbnailClick("milan", item.src)}
                     aria-label={`View photo ${idx + 1} of Milan Hall`}
                   >
-                    <img src={item.src} alt={item.alt} loading="lazy" />
+                    <img src={item.src} alt={item.alt} width="970" height="520" loading="lazy" />
                   </button>
                 ))}
               </div>
@@ -185,15 +193,15 @@ export default function Banquet() {
                 <span className="accent-pip" />
                 <span>Intimate Event Space</span>
               </div>
-              <h3 id="milan-title" className="banquet-hall-name">
+              <h2 id="milan-title" className="banquet-hall-name">
                 {banquetHalls[1].name}
-              </h3>
+              </h2>
               <p className="banquet-hall-tagline">{banquetHalls[1].tagline}</p>
               <div className="brass-rule-small" />
               <p className="banquet-hall-desc">{banquetHalls[1].description}</p>
 
               <div className="banquet-features-block">
-                <h4 className="features-title">FACILITIES</h4>
+                <h3 className="features-title">FACILITIES</h3>
                 <ul className="banquet-features-list">
                   {banquetHalls[1].features.map((feat, i) => (
                     <li key={i} className="banquet-feature-item">

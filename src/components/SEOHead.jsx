@@ -14,10 +14,7 @@ function setOrCreateMeta(nameOrProp, attrValue, content) {
 
 function setOrCreateLink(rel, href, extraAttrs = {}) {
   if (typeof document === "undefined") return;
-  let selector = `link[rel="${rel}"]`;
-  if (extraAttrs.hreflang) {
-    selector += `[hreflang="${extraAttrs.hreflang}"]`;
-  }
+  const selector = `link[rel="${rel}"]`;
   let element = document.querySelector(selector);
   if (!element) {
     element = document.createElement("link");
@@ -45,10 +42,7 @@ export default function SEOHead({ path = "/" }) {
     // 3. Canonical URL
     setOrCreateLink("canonical", meta.canonical);
 
-    // 4. Hreflang
-    setOrCreateLink("alternate", meta.canonical, { hreflang: "en-IN" });
-
-    // 5. Robots indexing
+    // 4. Robots indexing
     if (meta.noindex) {
       setOrCreateMeta("name", "robots", "noindex, follow");
     } else {

@@ -85,13 +85,7 @@ async function run() {
       `<link rel="canonical" href="${meta.canonical}" />`
     );
 
-    // 5. Hreflang Link
-    html = html.replace(
-      /<link\s+rel="alternate"\s+hreflang="en-IN"\s+href=".*?"\s*\/?>/i,
-      `<link rel="alternate" hreflang="en-IN" href="${meta.canonical}" />`
-    );
-
-    // 6. Open Graph Meta Tags
+    // 5. Open Graph Meta Tags
     html = html.replace(
       /<meta\s+property="og:title"\s+content=".*?"\s*\/?>/i,
       `<meta property="og:title" content="${escapeAttr(meta.title)}" />`
