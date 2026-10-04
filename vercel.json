@@ -2,9 +2,21 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist",
   "framework": "vite",
+  "cleanUrls": false,
+  "headers": [
+    {
+      "source": "/google183e2376ba3269a0.html",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "text/html; charset=utf-8"
+        }
+      ]
+    }
+  ],
   "rewrites": [
     {
-      "source": "/(.*)",
+      "source": "/((?!google183e2376ba3269a0\\.html).*)",
       "destination": "/index.html"
     }
   ]
