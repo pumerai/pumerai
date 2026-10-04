@@ -176,9 +176,9 @@ export default function DirectBookingPopup({ currentPath = "/", onNavigate }) {
     // Move focus into the popup (Call button has primary focus)
     const focusTimer = setTimeout(() => {
       if (callBtnRef.current) {
-        callBtnRef.current.focus();
+        callBtnRef.current.focus({ preventScroll: true });
       } else if (closeBtnRef.current) {
-        closeBtnRef.current.focus();
+        closeBtnRef.current.focus({ preventScroll: true });
       }
     }, 50);
 
@@ -202,12 +202,12 @@ export default function DirectBookingPopup({ currentPath = "/", onNavigate }) {
         if (e.shiftKey) {
           if (document.activeElement === first) {
             e.preventDefault();
-            last.focus();
+            last.focus({ preventScroll: true });
           }
         } else {
           if (document.activeElement === last) {
             e.preventDefault();
-            first.focus();
+            first.focus({ preventScroll: true });
           }
         }
       }
@@ -224,7 +224,7 @@ export default function DirectBookingPopup({ currentPath = "/", onNavigate }) {
         previouslyFocusedElRef.current &&
         typeof previouslyFocusedElRef.current.focus === "function"
       ) {
-        previouslyFocusedElRef.current.focus();
+        previouslyFocusedElRef.current.focus({ preventScroll: true });
       }
     };
   }, [isOpen]);

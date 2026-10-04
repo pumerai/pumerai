@@ -24,6 +24,17 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
 
+    <script>
+      try {
+        if ("scrollRestoration" in history) {
+          history.scrollRestoration = "manual";
+        }
+        if (!window.location.hash) {
+          window.scrollTo(0, 0);
+        }
+      } catch (e) {}
+    </script>
+
     <!-- Performance: Preload hero image and connect to fonts with font-display: swap -->
     <link rel="preload" as="image" href="/images/hero-mobile.webp" fetchpriority="high" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />

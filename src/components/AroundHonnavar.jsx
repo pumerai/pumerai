@@ -31,12 +31,23 @@ export default function AroundHonnavar() {
     setTimeout(() => setIsAnimating(false), 200);
   };
 
-  // Scroll active tab into view when changed via map dot
+  const isFirstMountRef = useRef(true);
+
+  // Scroll active tab horizontally inside its container when changed via map dot (never shift window)
   useEffect(() => {
-    if (!tabsScrollRef.current) return;
-    const activeTab = tabsScrollRef.current.querySelector('[aria-selected="true"]');
+    if (isFirstMountRef.current) {
+      isFirstMountRef.current = false;
+      return;
+    }
+    const container = tabsScrollRef.current;
+    if (!container) return;
+    const activeTab = container.querySelector('[aria-selected="true"]');
     if (activeTab) {
-      activeTab.scrollIntoView({ behavior: "smooth", inline: "nearest", block: "nearest" });
+      const tabLeft = activeTab.offsetLeft;
+      const tabWidth = activeTab.offsetWidth;
+      const containerWidth = container.clientWidth;
+      const targetScroll = tabLeft - containerWidth / 2 + tabWidth / 2;
+      container.scrollTo({ left: Math.max(0, targetScroll), behavior: "smooth" });
     }
   }, [activeIdx]);
 

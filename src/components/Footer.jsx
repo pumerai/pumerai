@@ -90,7 +90,7 @@ export default function Footer({ onNavigate, currentPath = "/" }) {
           )}
 
           {/* Col 2: Contact, Address & Social */}
-          <section className="footer-col footer-col-center">
+          <section className="footer-col footer-col-center" id="contact">
             <p className="footer-col-title">HOTEL PUMERAI HONNAVAR</p>
 
             <address className="footer-contact-block footer-contact-centered">

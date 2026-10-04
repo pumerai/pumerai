@@ -103,12 +103,66 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: var(--header-height-mobile);
   background-color: var(--bg-sand);
   color: var(--text-teak);
   font-size: 16px;
   -webkit-text-size-adjust: 100%;
   overflow-x: hidden;
   width: 100%;
+}
+
+/* Ensure all section IDs account for sticky header offset when navigated to via anchors */
+section[id],
+footer[id],
+[id="home"],
+[id="about"],
+[id="rooms"],
+[id="amenities"],
+[id="pick-a-side"],
+[id="inside-hotel"],
+[id="areas"],
+[id="around-honnavar"],
+[id="reviews"],
+[id="footer"],
+[id="contact"],
+[id="dining"],
+[id="banquet"],
+[id="gallery"],
+[id="location"],
+[id="faq"],
+[id="privacy"],
+[id="cancellation"] {
+  scroll-margin-top: var(--header-height-mobile);
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: var(--header-height-desktop);
+  }
+
+  section[id],
+  footer[id],
+  [id="home"],
+  [id="about"],
+  [id="rooms"],
+  [id="amenities"],
+  [id="pick-a-side"],
+  [id="inside-hotel"],
+  [id="areas"],
+  [id="around-honnavar"],
+  [id="reviews"],
+  [id="footer"],
+  [id="contact"],
+  [id="dining"],
+  [id="banquet"],
+  [id="gallery"],
+  [id="location"],
+  [id="faq"],
+  [id="privacy"],
+  [id="cancellation"] {
+    scroll-margin-top: var(--header-height-desktop);
+  }
 }
 
 body {
