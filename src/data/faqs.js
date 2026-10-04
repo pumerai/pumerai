@@ -67,6 +67,14 @@ export const faqList = [
     a: "Hotel Pumerai in Honnavar offers 40 well-appointed rooms and suites, including Club Rooms with balconies, Deluxe Rooms, Premium Rooms, and Family Suites.",
   },
   {
+    q: "Is Hotel Pumerai suitable for families?",
+    a: "Yes, Hotel Pumerai in Honnavar is family-friendly, offering multi-bed Family Suites, an adjoining children's splash pool, secure covered parking, and pure vegetarian dining at Madhura restaurant.",
+  },
+  {
+    q: "How do I reach Hotel Pumerai on NH-66?",
+    a: "Hotel Pumerai is situated directly on NH-66 near Ramateertha Cross in Honnavar. It is easily reachable by car along the 4-lane highway, 3.5 km from Honnavar Railway Station, and 5 km from Kasarkod Eco Beach.",
+  },
+  {
     q: "Is there Wi-Fi?",
     a: "Yes, Hotel Pumerai in Honnavar provides complimentary high-speed Wi-Fi (100+ Mbps) throughout all guestrooms and public areas.",
   },

@@ -3,7 +3,7 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.hotelpumerai.com/</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
@@ -19,13 +19,23 @@
   </url>
   <url>
     <loc>https://www.hotelpumerai.com/rooms</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.hotelpumerai.com/rooms/club-room-with-balcony/club-room-with-balcony-main.webp</image:loc>
+      <image:title>Club Room with Balcony at Hotel Pumerai Honnavar</image:title>
+      <image:caption>400 sq ft luxury room with private balcony overlooking the rooftop pool</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.hotelpumerai.com/rooms/family-suite-room/family-suite-room-main.webp</image:loc>
+      <image:title>Family Suite Room at Hotel Pumerai Honnavar</image:title>
+      <image:caption>Spacious multi-bed family suite accommodation in Honnavar</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.hotelpumerai.com/banquet</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -41,7 +51,7 @@
   </url>
   <url>
     <loc>https://www.hotelpumerai.com/dining</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
     <image:image>
@@ -57,33 +67,45 @@
   </url>
   <url>
     <loc>https://www.hotelpumerai.com/gallery</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <image:image>
+      <image:loc>https://www.hotelpumerai.com/gallery/rooftop-pool-facade.webp</image:loc>
+      <image:title>Rooftop Swimming Pool at Hotel Pumerai Honnavar</image:title>
+      <image:caption>Glass-edge rooftop swimming pool overlooking coastal coconut palms</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.hotelpumerai.com/gallery/sunlit-grand-lobby.webp</image:loc>
+      <image:title>Sunlit Grand Reception Lobby at Hotel Pumerai</image:title>
+      <image:caption>Double-height boutique reception lobby with teak accents</image:caption>
+    </image:image>
   </url>
   <url>
     <loc>https://www.hotelpumerai.com/location</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
     <image:image>
       <image:loc>https://www.hotelpumerai.com/images/around/kasarkod-beach.webp</image:loc>
       <image:title>Kasarkod Eco Beach near Hotel Pumerai Honnavar</image:title>
+      <image:caption>Blue Flag certified beach 5 km from Hotel Pumerai</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://www.hotelpumerai.com/images/around/murudeshwar-shiva-statue.webp</image:loc>
-      <image:title>Murudeshwar Shiva Statue near Honnavar</image:title>
+      <image:loc>https://www.hotelpumerai.com/images/around/sharavathi-river.webp</image:loc>
+      <image:title>Sharavathi River Backwaters near Hotel Pumerai Honnavar</image:title>
+      <image:caption>Boating and backwaters 2.8 km from Hotel Pumerai</image:caption>
     </image:image>
   </url>
   <url>
     <loc>https://www.hotelpumerai.com/contact</loc>
-    <lastmod>2026-10-03</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.hotelpumerai.com/faq</loc>
-    <lastmod>2026-10-04</lastmod>
+    <lastmod>2026-10-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

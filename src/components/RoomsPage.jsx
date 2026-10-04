@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { rooms, STAYFLEXI_BOOKING_URL } from "../data/rooms.js";
 import RoomImage from "./RoomImage.jsx";
 import PageHeader from "./PageHeader.jsx";
+import Breadcrumbs from "./Breadcrumbs.jsx";
+import { routesMeta } from "../utils/seo.js";
 
 function formatLocalDate(date) {
   const year = date.getFullYear();
@@ -30,7 +32,8 @@ function getOffsetDateString(baseDateStr, offsetDays = 1) {
   return formatLocalDate(d);
 }
 
-export default function RoomsPage() {
+export default function RoomsPage({ onNavigate }) {
+  const breadcrumbs = routesMeta["/rooms"].breadcrumbs;
   const [activePhotoIndex, setActivePhotoIndex] = useState({});
   const [expandedDetails, setExpandedDetails] = useState({});
   const [bookingRoom, setBookingRoom] = useState(null);
@@ -116,13 +119,15 @@ export default function RoomsPage() {
   };
 
   return (
-    <main className="page-shell rooms-page-shell">
+    <main className="page-shell rooms-page-shell" id="main-content">
+      <Breadcrumbs items={breadcrumbs} onNavigate={onNavigate} />
+
       {/* Standardized Compact Internal Page Header */}
       <PageHeader
         eyebrow="ACCOMMODATION"
-        title="Rooms &"
-        italicTitle="Suites"
-        description="Contemporary rooms and suites in Honnavar."
+        title="Rooms & Suites |"
+        italicTitle="Hotel Pumerai Honnavar"
+        description="40 contemporary air-conditioned rooms and suites with high-speed Wi-Fi, rooftop pool access, and EV charging on NH-66."
         id="rooms-page-heading"
       />
 
@@ -259,6 +264,56 @@ export default function RoomsPage() {
                 </article>
               );
             })}
+          </div>
+
+          {/* Contextual Hub for Local Stay & Connectivity */}
+          <div className="rooms-contextual-footer" data-reveal>
+            <div className="rooms-context-card">
+              <span className="editorial-tag">STAY &amp; CONNECTIVITY</span>
+              <h2 className="rooms-context-title">Your Coastal Base in Honnavar on NH-66</h2>
+              <div className="brass-rule-small" />
+              <p className="rooms-context-text">
+                Every stay at Hotel Pumerai includes complimentary high-speed Wi-Fi (100+ Mbps), 24-hour reception, covered parking, and access to our glass-edge rooftop swimming pool. Located directly on NH-66 near Ramateertha Cross, our hotel is situated 5 km from Kasarkod Eco Beach and 2.8 km from Sharavathi River backwaters.
+              </p>
+              <div className="rooms-context-actions">
+                <a
+                  href="/location"
+                  className="button-secondary"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate({ route: "/location" });
+                    }
+                  }}
+                >
+                  LOCATION &amp; DIRECTIONS &rarr;
+                </a>
+                <a
+                  href="/dining"
+                  className="button-secondary"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate({ route: "/dining" });
+                    }
+                  }}
+                >
+                  DINING (MATSYA &amp; MADHURA) &rarr;
+                </a>
+                <a
+                  href="/contact"
+                  className="button-primary"
+                  onClick={(e) => {
+                    if (onNavigate) {
+                      e.preventDefault();
+                      onNavigate({ route: "/contact" });
+                    }
+                  }}
+                >
+                  CONTACT RESERVATIONS
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>

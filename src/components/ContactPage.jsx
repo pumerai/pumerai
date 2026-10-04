@@ -1,7 +1,10 @@
 import { useState } from "react";
 import PageHeader from "./PageHeader.jsx";
+import Breadcrumbs from "./Breadcrumbs.jsx";
+import { routesMeta } from "../utils/seo.js";
 
-export default function ContactPage() {
+export default function ContactPage({ onNavigate }) {
+  const breadcrumbs = routesMeta["/contact"].breadcrumbs;
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -19,11 +22,14 @@ export default function ContactPage() {
   )}`;
 
   return (
-    <main className="page-shell contact-page-shell">
+    <main className="page-shell contact-page-shell" id="main-content">
+      <Breadcrumbs items={breadcrumbs} onNavigate={onNavigate} />
+
       <PageHeader
-        eyebrow="CONTACT"
-        title="Contact"
-        description="Reservations and enquiries."
+        eyebrow="CONTACT &amp; RESERVATIONS"
+        title="Contact &amp; Reservations |"
+        italicTitle="Hotel Pumerai Honnavar"
+        description="Connect with our 24-hour front desk on NH-66 for direct room bookings, banquet hall reservations, and local travel assistance."
         id="contact-page-heading"
       />
 

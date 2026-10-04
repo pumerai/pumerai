@@ -166,17 +166,17 @@ function App({ initialPath = "/" }) {
 
   const page =
     path === "/rooms" ? (
-      <RoomsPage />
+      <RoomsPage onNavigate={navigate} />
     ) : path === "/dining" ? (
       <DiningPage onNavigate={navigate} />
     ) : path === "/banquet" ? (
       <BanquetPage onNavigate={navigate} />
     ) : path === "/gallery" ? (
-      <GalleryPage />
+      <GalleryPage onNavigate={navigate} />
     ) : path === "/location" ? (
-      <LocationPage />
+      <LocationPage onNavigate={navigate} />
     ) : path === "/contact" ? (
-      <ContactPage />
+      <ContactPage onNavigate={navigate} />
     ) : path === "/faq" ? (
       <FAQPage onNavigate={navigate} />
     ) : path === "/privacy" ? (
