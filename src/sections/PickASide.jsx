@@ -23,7 +23,7 @@ const sideMoments = [
     badge: "Rooftop Deck, 6:30 AM – 7:00 PM",
     description:
       "Glass-edge rooftop pool and shallow children's splash area overlooking coastal canopies.",
-    image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_46%20AM_result.webp",
+    image: "/gallery/rooftop-pool-vista.webp",
     alt: "Glass-edge rooftop pool overlooking coconut groves at Hotel Pumerai Honnavar",
     cta: "Rooftop Amenities",
     ctaLink: "#amenities",
@@ -50,7 +50,7 @@ const sideMoments = [
     badge: "NH-66 Honnavar, 40 Rooms",
     description:
       "Air-conditioned rooms, two on-site restaurants, and secure parking with EV charging.",
-    image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_21%20AM_result.webp",
+    image: "/gallery/hotel-highway-facade.webp",
     alt: "Contemporary exterior facade of Hotel Pumerai on NH-66 Honnavar",
     cta: "View Guest Rooms",
     ctaLink: "/rooms",

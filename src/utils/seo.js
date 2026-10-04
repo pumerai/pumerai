@@ -16,7 +16,7 @@ export const siteConfig = {
   email: "reservation@hotelpumerai.com",
   bookingUrl: "https://bookingengine.stayflexi.com/?hotel_id=41986",
   logo: "https://www.hotelpumerai.com/pumerai-logo-full.webp",
-  ogImage: "https://www.hotelpumerai.com/pumerai-og-home.webp",
+  ogImage: "https://www.hotelpumerai.com/pumerai-og-home.jpg",
   address: {
     streetAddress: "Hotel Pumerai, NH-66, near Ramateertha Cross",
     addressLocality: "Honnavar",

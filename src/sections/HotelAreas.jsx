@@ -8,7 +8,7 @@ const hotelAreas = [
     tagline: "Sunlit Grand Lounge & Teak Accents",
     description:
       "Double-height arrival lounge with natural daylight, curved seating and handcrafted teak portals.",
-    image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_24%20AM_result.webp",
+    image: "/gallery/sunlit-grand-lobby.webp",
     alt: "Double-height sunlit grand lobby with curved sofas and warm wood finishes at Hotel Pumerai Honnavar",
     highlight: "Double-Height Ceiling, Artisanal Teak Lounge",
   },
@@ -19,7 +19,7 @@ const hotelAreas = [
     tagline: "Landscaped Entrance & Covered Drive",
     description:
       "Covered drop-off with landscaped approach and dedicated parking along NH-66.",
-    image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_27%20AM_result.webp",
+    image: "/gallery/lotus-emblem-feature-wall.webp",
     alt: "Landscaped arrival portico and covered driveway at Hotel Pumerai Honnavar",
     highlight: "Covered Portico, Landscaped Forecourt, NH-66 Frontage",
   },
@@ -30,7 +30,7 @@ const hotelAreas = [
     tagline: "24-Hour Desk & Reading Foyer",
     description:
       "Round-the-clock reception desk for check-in, local boat tours and travel guidance.",
-    image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_28%20AM_result.webp",
+    image: "/gallery/lobby-library-reception.webp",
     alt: "Artisanal wooden library reception desk with brass Ganesha and seating at Hotel Pumerai",
     highlight: "24/7 Desk, Travel Assistance, Reading Library",
   },
@@ -41,7 +41,7 @@ const hotelAreas = [
     tagline: "Contemporary Silhouette along NH-66",
     description:
       "Highway entrance on NH-66 with private parking and dedicated EV charging stations.",
-    image: "/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_21%20AM_result.webp",
+    image: "/gallery/hotel-highway-facade.webp",
     alt: "Prominent architectural facade and landscaped frontage of Hotel Pumerai along NH-66 Honnavar",
     highlight: "NH-66 Landmark, EV Charging, Covered Parking",
   },

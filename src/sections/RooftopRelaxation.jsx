@@ -31,7 +31,7 @@ export default function RooftopRelaxation({ onNavigate }) {
         <div className="rooftop-stage-wrap" data-reveal>
           <div className="rooftop-image-frame">
             <img
-              src="/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_46%20AM_result.webp"
+              src="/gallery/rooftop-pool-vista.webp"
               alt="Glass-edge rooftop swimming pool overlooking palm canopies and the Karavali coast at Hotel Pumerai Honnavar"
               loading="lazy"
               className="rooftop-hero-img"

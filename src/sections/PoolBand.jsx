@@ -31,7 +31,7 @@ export default function PoolBand() {
 
       {/* The image */}
       <img
-        src="/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_46%20AM_result.webp"
+        src="/gallery/rooftop-pool-vista.webp"
         alt="Rooftop pool at Hotel Pumerai overlooking coastal palm groves"
         loading="lazy"
         decoding="async"

@@ -73,7 +73,7 @@ export default function AmenitiesGrid() {
             {/* Primary Dominant Image */}
             <div className="hospitality-primary-frame">
               <img
-                src="/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_28%20AM_result.webp"
+                src="/gallery/lobby-library-reception.webp"
                 alt="24-hour reception desk and handcrafted library foyer at Hotel Pumerai"
                 loading="lazy"
                 className="hospitality-img-zoom"
@@ -87,7 +87,7 @@ export default function AmenitiesGrid() {
             <div className="hospitality-supporting-row">
               <div className="hospitality-sub-frame">
                 <img
-                  src="/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_24%20AM_result.webp"
+                  src="/gallery/sunlit-grand-lobby.webp"
                   alt="Sunlit double-height grand lobby and guest lounge at Hotel Pumerai"
                   loading="lazy"
                   className="hospitality-img-zoom"
@@ -97,7 +97,7 @@ export default function AmenitiesGrid() {
 
               <div className="hospitality-sub-frame">
                 <img
-                  src="/rooms/premium-room/ChatGPT%20Image%20Sep%2025,%202026,%2002_03_35%20AM_result.webp"
+                  src="/rooms/premium-room/premium-room-main.webp"
                   alt="Spotless linens and contemporary room comfort at Hotel Pumerai"
                   loading="lazy"
                   className="hospitality-img-zoom"

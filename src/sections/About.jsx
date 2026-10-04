@@ -25,7 +25,7 @@ export default function About() {
             {/* Large primary image */}
             <div className="about-primary-frame">
               <img
-                src="/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_23_21%20AM_result.webp"
+                src="/gallery/hotel-highway-facade.webp"
                 alt="Hotel Pumerai architectural entrance on NH-66, Honnavar, Karnataka"
                 loading="lazy"
                 className="about-primary-img reveal-drop reveal-delay-0"
@@ -35,7 +35,7 @@ export default function About() {
             {/* Overlapping secondary image — bottom-right corner */}
             <div className="about-secondary-frame">
               <img
-                src="/gallery/ChatGPT%20Image%20Sep%2026,%202026,%2012_22_46%20AM_result.webp"
+                src="/gallery/rooftop-pool-vista.webp"
                 alt="Rooftop glass-edge pool at Hotel Pumerai overlooking coastal canopies"
                 loading="lazy"
                 className="about-secondary-img reveal-drop reveal-delay-1"
