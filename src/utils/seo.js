@@ -46,7 +46,7 @@ export const routesMeta = {
   "/": {
     title: "Hotel Pumerai | Best Hotel in Honnavar, Karnataka",
     description:
-      "Stay at Hotel Pumerai in Honnavar on NH-66: 40 contemporary rooms, rooftop pool, Matsya and Madhura restaurants, banquet halls and EV charging. Book direct.",
+      "Hotel in Honnavar on NH-66 with 40 rooms, rooftop pool, Matsya and Madhura restaurants, and banquet halls. Stay at Hotel Pumerai.",
     canonical: "https://www.hotelpumerai.com/",
     breadcrumbs: [{ name: "Home", url: "https://www.hotelpumerai.com/" }],
     noindex: false,
@@ -54,7 +54,7 @@ export const routesMeta = {
   "/rooms": {
     title: "Hotel Rooms in Honnavar | Suites & Stays at Hotel Pumerai",
     description:
-      "Explore 40 comfortable hotel rooms and suites in Honnavar at Hotel Pumerai. Balcony club rooms, deluxe and family suites with AC, free Wi-Fi and parking.",
+      "Book Honnavar hotel rooms at Hotel Pumerai. Choose from balcony club rooms, deluxe and family suites for a comfortable stay on NH-66.",
     canonical: "https://www.hotelpumerai.com/rooms",
     breadcrumbs: [
       { name: "Home", url: "https://www.hotelpumerai.com/" },
@@ -65,7 +65,7 @@ export const routesMeta = {
   "/banquet": {
     title: "Banquet Halls in Honnavar for Events | Hotel Pumerai",
     description:
-      "Book Sidhvin (200 guests) and Milan (50 guests) banquet halls at Hotel Pumerai in Honnavar for weddings, conferences and family celebrations on NH-66.",
+      "Host your Honnavar banquet at Hotel Pumerai. Features Sidhvin Hall for 200 guests and Milan Hall for 50 guests for weddings and events.",
     canonical: "https://www.hotelpumerai.com/banquet",
     breadcrumbs: [
       { name: "Home", url: "https://www.hotelpumerai.com/" },
@@ -76,7 +76,7 @@ export const routesMeta = {
   "/dining": {
     title: "Restaurants in Honnavar: Matsya & Madhura | Hotel Pumerai",
     description:
-      "Dine at Hotel Pumerai in Honnavar. Matsya serves coastal seafood and multi-cuisine dishes; Madhura serves pure veg South Indian meals. Open daily on NH-66.",
+      "Experience Honnavar dining at Hotel Pumerai. Enjoy coastal seafood at Matsya and pure vegetarian South Indian meals at Madhura on NH-66.",
     canonical: "https://www.hotelpumerai.com/dining",
     breadcrumbs: [
       { name: "Home", url: "https://www.hotelpumerai.com/" },
@@ -87,7 +87,7 @@ export const routesMeta = {
   "/gallery": {
     title: "Photo Gallery | Hotel Pumerai Honnavar Rooms & Pool",
     description:
-      "Browse photos of Hotel Pumerai in Honnavar: 40 guest rooms, rooftop swimming pool deck, Matsya and Madhura dining, banquet halls and architectural lobby.",
+      "View Hotel Pumerai Honnavar photo gallery. Explore property visuals of guest rooms, dining spaces, rooftop pool, and banquet facilities.",
     canonical: "https://www.hotelpumerai.com/gallery",
     breadcrumbs: [
       { name: "Home", url: "https://www.hotelpumerai.com/" },
@@ -98,7 +98,7 @@ export const routesMeta = {
   "/location": {
     title: "Hotel Pumerai Location | Hotel near NH 66 Honnavar",
     description:
-      "Hotel Pumerai is located on NH-66 near Ramateertha Cross in Honnavar, 5 km from Kasarkod Eco Beach and 2.8 km from Sharavathi backwaters. View driving guide.",
+      "Hotel in Honnavar on NH-66 near Ramateertha Cross, 5 km from Kasarkod Beach and 2.8 km from Sharavathi backwaters. Find driving routes.",
     canonical: "https://www.hotelpumerai.com/location",
     breadcrumbs: [
       { name: "Home", url: "https://www.hotelpumerai.com/" },
@@ -109,7 +109,7 @@ export const routesMeta = {
   "/contact": {
     title: "Contact & Direct Booking | Hotel Pumerai Honnavar",
     description:
-      "Contact Hotel Pumerai on NH-66 Honnavar. Call +91 98454 23223 or chat on WhatsApp for room reservations, banquet enquiries and front desk assistance.",
+      "Contact Hotel Pumerai in Honnavar for room reservations, banquet bookings, and front desk assistance. Call +91 98454 23223 or WhatsApp.",
     canonical: "https://www.hotelpumerai.com/contact",
     breadcrumbs: [
       { name: "Home", url: "https://www.hotelpumerai.com/" },
@@ -120,7 +120,7 @@ export const routesMeta = {
   "/faq": {
     title: "FAQ: Rooms, Pool, Dining & Directions | Hotel Pumerai",
     description:
-      "Find answers to common questions about Hotel Pumerai in Honnavar: check-in, rooftop swimming pool, parking, EV charging, restaurants and local attractions.",
+      "Find answers to common hotel questions about Hotel Pumerai in Honnavar, covering rooms, rooftop pool, parking, EV charging, and dining.",
     canonical: "https://www.hotelpumerai.com/faq",
     breadcrumbs: [
       { name: "Home", url: "https://www.hotelpumerai.com/" },

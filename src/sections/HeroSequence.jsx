@@ -209,6 +209,8 @@ export default function HeroSequence({ onNavigate }) {
         <img
           src={heroFramePath(1)}
           alt="Hotel Pumerai boutique 3-star property on NH-66 Honnavar Karnataka"
+          width="1920"
+          height="1080"
           className="hero-static-img"
         />
         <div className="hero-overlay" aria-hidden="true" />
@@ -232,6 +234,8 @@ export default function HeroSequence({ onNavigate }) {
         <img
           src="/images/hero-mobile.webp"
           alt="Hotel Pumerai exterior and surrounding landscape on NH-66, Honnavar, Karnataka"
+          width="1024"
+          height="576"
           className="hero-mobile-img"
           loading="eager"
           decoding="async"
