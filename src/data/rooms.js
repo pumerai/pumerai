@@ -39,6 +39,7 @@ export const rooms = [
     bedType: "1 King Bed",
     startingPrice: 3799,
     highlights: [
+      "Centralised AC",
       "Private balcony with pool view",
       "50-inch Smart TV",
       "Walk-in rain shower",
@@ -73,6 +74,7 @@ export const rooms = [
     bedType: "1 King Bed",
     startingPrice: 3299,
     highlights: [
+      "Centralised AC",
       "Courtyard garden view",
       "Work desk and chair",
       "43-inch Smart TV",
@@ -107,9 +109,9 @@ export const rooms = [
     bedType: "1 King Bed",
     startingPrice: 2799,
     highlights: [
+      "Centralised AC",
       "Panoramic windows",
       "King size bed",
-      "Split air conditioning",
     ],
   },
   {
@@ -141,6 +143,7 @@ export const rooms = [
     bedType: "1 King Bed + 1 Queen Sofa Bed",
     startingPrice: 5499,
     highlights: [
+      "Centralised AC",
       "Independent bedroom and living lounge",
       "Two 43-inch Smart TVs",
       "Sleeps up to 4 guests",
@@ -175,6 +178,7 @@ export const rooms = [
     bedType: "1 King Bed",
     startingPrice: 2999,
     highlights: [
+      "Centralised AC",
       "Courtyard garden view",
       "43-inch Smart TV",
       "Walk-in rain shower",
@@ -209,6 +213,7 @@ export const rooms = [
     bedType: "2 Twin Beds",
     startingPrice: 2999,
     highlights: [
+      "Centralised AC",
       "Two twin beds",
       "Work desk and charging points",
       "Walk-in rain shower",
@@ -243,6 +248,7 @@ export const rooms = [
     bedType: "1 California King Bed",
     startingPrice: 4899,
     highlights: [
+      "Centralised AC",
       "Deep soaking bathtub and rain shower",
       "Separate seating lounge",
       "Artisan espresso machine",

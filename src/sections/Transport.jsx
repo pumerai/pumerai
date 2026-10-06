@@ -3,40 +3,12 @@ import { transportConfig } from "../data/transport.js";
 export default function Transport() {
   const { airports, railway, busStand } = transportConfig;
 
-  // Row 3 is hidden until name, distance and time are filled in config
-  const showBusStand = Boolean(busStand.name && busStand.distance && busStand.time);
-
   // Photo is displayed only if image width >= 300px and no watermark
-  const hasValidPhoto = Boolean(
+  const hasValidRailwayPhoto = Boolean(
     railway.image && railway.imageWidth && railway.imageWidth >= 300
   );
 
-  const items = [
-    {
-      id: airports.id,
-      label: airports.label,
-      name: airports.name,
-      distanceLine: airports.distanceLine,
-      description: airports.description,
-    },
-    {
-      id: railway.id,
-      label: railway.label,
-      name: railway.name,
-      distanceLine: railway.distanceLine,
-      description: railway.description,
-    },
-  ];
-
-  if (showBusStand) {
-    items.push({
-      id: busStand.id,
-      label: busStand.label,
-      name: busStand.name,
-      distanceLine: busStand.distanceLine || `${busStand.distance} · ${busStand.time}`,
-      description: busStand.description,
-    });
-  }
+  const hasBusStandDistanceAndTime = Boolean(busStand.distance && busStand.time);
 
   return (
     <section
@@ -63,41 +35,67 @@ export default function Transport() {
           </div>
         </header>
 
-        {/* Transport Showcase — mirrors Spaces layout */}
-        <div
-          className={`transport-showcase ${hasValidPhoto ? "has-photo-stage" : "is-text-only"}`}
-          data-reveal
-        >
-          {/* Left Column: Transport Rows */}
-          <div className="transport-list">
-            {items.map((item) => (
-              <article key={item.id} className="transport-card">
-                <span className="transport-kicker">{item.label}</span>
-                <h3 className="transport-name">{item.name}</h3>
-                <p className="transport-distance">{item.distanceLine}</p>
-                {item.description && (
-                  <p className="transport-desc">{item.description}</p>
-                )}
-              </article>
-            ))}
-          </div>
+        {/* Transport Showcase — 3 Equal Cards in one row */}
+        <div className="transport-grid-3col" data-reveal>
+          {/* Card 1: Airports */}
+          <article className="transport-card">
+            <span className="transport-kicker">{airports.label}</span>
+            <h3 className="transport-name">{airports.name}</h3>
+            <p className="transport-distance">{airports.distanceLine}</p>
+            {airports.description && (
+              <p className="transport-desc">{airports.description}</p>
+            )}
+          </article>
 
-          {/* Right Column: Photo panel (only if >= 300px photo available) */}
-          {hasValidPhoto && (
-            <div className="transport-photo-stage">
-              <div className="transport-photo-frame">
+          {/* Card 2: Railway Station */}
+          <article className="transport-card">
+            {hasValidRailwayPhoto && (
+              <div className="transport-card-photo-box">
                 <img
                   src={railway.image}
-                  alt={railway.alt}
+                  alt="Honnavar Railway Station"
                   width={railway.imageWidth}
                   height={railway.imageHeight}
                   loading="lazy"
-                  className="transport-photo"
+                  className="transport-card-photo"
                 />
               </div>
-              <p className="transport-photo-caption">{railway.caption}</p>
-            </div>
-          )}
+            )}
+            <span className="transport-kicker">{railway.label}</span>
+            <h3 className="transport-name">{railway.name}</h3>
+            <p className="transport-distance">{railway.distanceLine}</p>
+            {railway.description && (
+              <p className="transport-desc">{railway.description}</p>
+            )}
+          </article>
+
+          {/* Card 3: Bus Stand */}
+          <article className="transport-card">
+            <span className="transport-kicker">{busStand.label}</span>
+            <h3 className="transport-name">{busStand.name}</h3>
+            {hasBusStandDistanceAndTime ? (
+              <p className="transport-distance">
+                {busStand.distanceLine || `${busStand.distance} · ${busStand.time}`}
+              </p>
+            ) : (
+              <p className="transport-distance-action">
+                <a
+                  href={
+                    busStand.directionsUrl ||
+                    "https://www.google.com/maps/dir/?api=1&origin=Hotel+Pumerai+Honnavar&destination=Honnavar+KSRTC+Bus+Stand"
+                  }
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transport-directions-link"
+                >
+                  Get directions &rarr;
+                </a>
+              </p>
+            )}
+            {busStand.description && (
+              <p className="transport-desc">{busStand.description}</p>
+            )}
+          </article>
         </div>
       </div>
     </section>

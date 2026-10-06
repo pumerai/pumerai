@@ -26,10 +26,12 @@ export const transportConfig = {
   busStand: {
     id: "bus-stand",
     label: "BUS STAND",
-    name: null, // TODO
+    name: "Honnavar KSRTC Bus Stand",
     distance: null, // TODO
     time: null, // TODO
     distanceLine: null,
+    directionsUrl:
+      "https://www.google.com/maps/dir/?api=1&origin=Hotel+Pumerai+Honnavar&destination=Honnavar+KSRTC+Bus+Stand",
     description: null,
   },
 };

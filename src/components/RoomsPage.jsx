@@ -231,7 +231,7 @@ export default function RoomsPage({ onNavigate }) {
                     <div className="room-features-box">
                       <span className="features-title">FACILITIES</span>
                       <ul className="room-features-list">
-                        {(isExpanded ? room.highlights : room.highlights.slice(0, 3)).map((item) => (
+                        {room.highlights.map((item) => (
                           <li key={item} className="feature-item">
                             <span>{item}</span>
                           </li>

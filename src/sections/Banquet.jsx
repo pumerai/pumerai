@@ -1,5 +1,5 @@
-import { useState } from "react";
-import WhatsAppEnquiry from "./WhatsAppEnquiry.jsx";
+import { useState, useRef } from "react";
+import BanquetEnquiryPopup from "../components/BanquetEnquiryPopup.jsx";
 
 const banquetHalls = [
   {
@@ -52,8 +52,20 @@ export default function Banquet() {
     milan: banquetHalls[1].mainImage,
   });
 
+  const [enquiryHall, setEnquiryHall] = useState(null);
+  const triggerButtonRef = useRef(null);
+
   const handleThumbnailClick = (hallId, src) => {
     setActivePhoto((prev) => ({ ...prev, [hallId]: src }));
+  };
+
+  const handleOpenEnquiry = (hall, e) => {
+    triggerButtonRef.current = e?.currentTarget || null;
+    setEnquiryHall(hall);
+  };
+
+  const handleCloseEnquiry = () => {
+    setEnquiryHall(null);
   };
 
   return (
@@ -130,15 +142,19 @@ export default function Banquet() {
               </div>
 
               <div className="banquet-action-row">
-                <a
-                  href="https://wa.me/919845423223?text=Hi%20Hotel%20Pumerai%2C%20I%20would%20like%20to%20enquire%20about%20booking%20Sidhvin%20Banquet%20Hall%20(200%20guests)."
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={(e) =>
+                    handleOpenEnquiry(
+                      { id: "sidhvin", name: "Sidhvin Banquet Hall", maxCapacity: 200 },
+                      e
+                    )
+                  }
                   className="button-primary banquet-cta-btn"
                   aria-label="Enquire about Sidhvin Banquet Hall on WhatsApp"
                 >
                   ENQUIRE ON WHATSAPP
-                </a>
+                </button>
                 <a
                   href="tel:+919845423223"
                   className="button-secondary banquet-phone-btn"
@@ -213,15 +229,19 @@ export default function Banquet() {
               </div>
 
               <div className="banquet-action-row">
-                <a
-                  href="https://wa.me/919845423223?text=Hi%20Hotel%20Pumerai%2C%20I%20would%20like%20to%20enquire%20about%20booking%20Milan%20Hall%20(50%20guests)."
-                  target="_blank"
-                  rel="noopener noreferrer"
+                <button
+                  type="button"
+                  onClick={(e) =>
+                    handleOpenEnquiry(
+                      { id: "milan", name: "Milan Hall", maxCapacity: 50 },
+                      e
+                    )
+                  }
                   className="button-primary banquet-cta-btn"
                   aria-label="Enquire about Milan Hall on WhatsApp"
                 >
                   ENQUIRE ON WHATSAPP
-                </a>
+                </button>
                 <a
                   href="tel:+919845423223"
                   className="button-secondary banquet-phone-btn"
@@ -235,8 +255,13 @@ export default function Banquet() {
         </div>
       </section>
 
-      {/* Event WhatsApp Enquiry Box */}
-      <WhatsAppEnquiry variant="banquet" />
+      {/* Banquet Enquiry Modal Popup */}
+      <BanquetEnquiryPopup
+        isOpen={Boolean(enquiryHall)}
+        hall={enquiryHall}
+        onClose={handleCloseEnquiry}
+        triggerButtonRef={triggerButtonRef}
+      />
     </div>
   );
 }
