@@ -1,49 +1,4 @@
-
 export const venuesData = [
-  {
-    id: "matsya",
-    name: "Matsya Multicuisine Restaurant",
-    subtitle: "Coastal seafood, tandoor and continental.",
-    cuisines: ["Coastal", "Indian", "Tandoor", "Continental"],
-    hours: "7:00 AM – 10:30 PM",
-    mealTimes: "Breakfast, Lunch and Dinner",
-    image: "/dining/_DSC0222_result.webp",
-    alt: "Matsya Multicuisine Restaurant dining room at Hotel Pumerai Honnavar",
-    description: "Coastal seafood, tandoor and continental.",
-    signatureDishes: [
-      { name: "Honnavar Karavali Fish Curry", note: "Traditional coastal coconut broth with steamed rice" },
-      { name: "Prawns Ghee Roast", note: "Tossed in Kundapur spices and clarified butter" },
-      { name: "Butter Garlic Mud Crab", note: "Fresh coastal catch in aromatic garlic butter" },
-      { name: "Murgh Malai Kebab", note: "Clay oven roasted chicken in cream cheese marinade" },
-    ],
-    menuCategories: [
-      {
-        title: "Coastal Specialties",
-        items: [
-          { name: "Surmai / Pomfret Rava Fry", price: "₹380", note: "Semolina-crusted golden pan fry" },
-          { name: "Honnavar Prawns Curry & Steamed Rice", price: "₹420", note: "Traditional coastal coconut broth" },
-          { name: "Crab Sukka", price: "₹450", note: "Dry-roasted crab in grated coconut & spices" },
-          { name: "Squid Butter Pepper", price: "₹360", note: "Fresh rings tossed with crushed black pepper" },
-        ],
-      },
-      {
-        title: "Tandoori & Grills",
-        items: [
-          { name: "Murgh Tikka Angara", price: "₹340", note: "Clay oven roasted spiced chicken" },
-          { name: "Paneer Malai Tikka", price: "₹310", note: "Cream cheese marinated cottage cheese" },
-          { name: "Tandoori Pomfret", price: "₹460", note: "Whole fish marinated in ajwain & mustard oil" },
-        ],
-      },
-      {
-        title: "Main Course & Biryanis",
-        items: [
-          { name: "Matsya Special Sea Food Biryani", price: "₹390", note: "Aromatic basmati layered with fish & prawns" },
-          { name: "Butter Chicken Masala", price: "₹360", note: "Rich velvety tomato-cashew makhani gravy" },
-          { name: "Dal Tadka & Steamed Jeera Rice", price: "₹240", note: "Yellow lentils tempered with cumin & garlic" },
-        ],
-      },
-    ],
-  },
   {
     id: "madhura",
     name: "Madhura Veg Restaurant",
@@ -85,6 +40,50 @@ export const venuesData = [
           { name: "Traditional Filter Kaapi", price: "₹45", note: "Brewed in classic brass davarah" },
           { name: "Fresh Tender Coconut Payasam", price: "₹90", note: "Sweet cardamom-spiced dessert" },
           { name: "Salted / Sweet Coastal Buttermilk", price: "₹50", note: "Tempered with ginger, curry leaves & mustard" },
+        ],
+      },
+    ],
+  },
+  {
+    id: "matsya",
+    name: "Matsya Multicuisine Restaurant",
+    subtitle: "Coastal seafood, tandoor and continental.",
+    cuisines: ["Coastal", "Indian", "Tandoor", "Continental"],
+    hours: "7:00 AM – 10:30 PM",
+    mealTimes: "Breakfast, Lunch and Dinner",
+    image: "/dining/_DSC0222_result.webp",
+    alt: "Matsya Multicuisine Restaurant dining room at Hotel Pumerai Honnavar",
+    description: "Coastal seafood, tandoor and continental.",
+    signatureDishes: [
+      { name: "Honnavar Karavali Fish Curry", note: "Traditional coastal coconut broth with steamed rice" },
+      { name: "Prawns Ghee Roast", note: "Tossed in Kundapur spices and clarified butter" },
+      { name: "Butter Garlic Mud Crab", note: "Fresh coastal catch in aromatic garlic butter" },
+      { name: "Murgh Malai Kebab", note: "Clay oven roasted chicken in cream cheese marinade" },
+    ],
+    menuCategories: [
+      {
+        title: "Coastal Specialties",
+        items: [
+          { name: "Surmai / Pomfret Rava Fry", price: "₹380", note: "Semolina-crusted golden pan fry" },
+          { name: "Honnavar Prawns Curry & Steamed Rice", price: "₹420", note: "Traditional coastal coconut broth" },
+          { name: "Crab Sukka", price: "₹450", note: "Dry-roasted crab in grated coconut & spices" },
+          { name: "Squid Butter Pepper", price: "₹360", note: "Fresh rings tossed with crushed black pepper" },
+        ],
+      },
+      {
+        title: "Tandoori & Grills",
+        items: [
+          { name: "Murgh Tikka Angara", price: "₹340", note: "Clay oven roasted spiced chicken" },
+          { name: "Paneer Malai Tikka", price: "₹310", note: "Cream cheese marinated cottage cheese" },
+          { name: "Tandoori Pomfret", price: "₹460", note: "Whole fish marinated in ajwain & mustard oil" },
+        ],
+      },
+      {
+        title: "Main Course & Biryanis",
+        items: [
+          { name: "Matsya Special Sea Food Biryani", price: "₹390", note: "Aromatic basmati layered with fish & prawns" },
+          { name: "Butter Chicken Masala", price: "₹360", note: "Rich velvety tomato-cashew makhani gravy" },
+          { name: "Dal Tadka & Steamed Jeera Rice", price: "₹240", note: "Yellow lentils tempered with cumin & garlic" },
         ],
       },
     ],

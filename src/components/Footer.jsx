@@ -1,8 +1,8 @@
 const navLinks = [
   { label: "Rooms", route: "/rooms" },
   { label: "Banquet Hall", route: "/banquet" },
-  { label: "Veg Restaurant Menu", route: "/dining", section: "madhura" },
-  { label: "Non-Veg Restaurant Menu", route: "/dining", section: "matsya" },
+  { label: "Veg Restaurant Menu", route: "/dining", search: "?menu=veg" },
+  { label: "Non-Veg Restaurant Menu", route: "/dining", search: "?menu=nonveg" },
   { label: "Gallery", route: "/gallery" },
   { label: "Location", route: "/location" },
   { label: "FAQ", route: "/faq" },
@@ -56,6 +56,15 @@ export default function Footer({ onNavigate, currentPath = "/" }) {
 
   const handleNavClick = (e, item) => {
     e.preventDefault();
+    if (item.search && typeof window !== "undefined") {
+      window.history.pushState({}, "", `${item.route}${item.search}`);
+      if (onNavigate) {
+        onNavigate({ route: item.route });
+      }
+      const menuType = item.search.includes("nonveg") ? "nonveg" : "veg";
+      window.dispatchEvent(new CustomEvent("pumerai:open-menu", { detail: { menu: menuType } }));
+      return;
+    }
     if (onNavigate) {
       onNavigate(item);
     } else if (typeof window !== "undefined") {
@@ -155,7 +164,11 @@ export default function Footer({ onNavigate, currentPath = "/" }) {
 
           <nav className="footer-bottom-nav" aria-label="Footer site navigation">
             {navLinks.map((item) => {
-              const fullHref = item.section ? `${item.route}#${item.section}` : item.route;
+              const fullHref = item.search
+                ? `${item.route}${item.search}`
+                : item.section
+                ? `${item.route}#${item.section}`
+                : item.route;
               return (
                 <a
                   key={item.label}

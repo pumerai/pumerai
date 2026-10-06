@@ -1,4 +1,5 @@
 import { useState } from "react";
+import WhatsAppEnquiry from "./WhatsAppEnquiry.jsx";
 
 const banquetHalls = [
   {
@@ -234,31 +235,8 @@ export default function Banquet() {
         </div>
       </section>
 
-      {/* Event Enquiry Card */}
-      <section className="section banquet-enquiry-banner" aria-label="Event Planning Assistance">
-        <div className="section-container">
-          <div className="banquet-enquiry-box" data-reveal>
-            <div className="enquiry-box-content">
-              <span className="editorial-tag-light">EVENT PLANNING</span>
-              <h3 className="enquiry-box-heading">Planning an event?</h3>
-              <p className="enquiry-box-subtext">
-                Our banquet team will help with seating and audio-visual setup.
-              </p>
-            </div>
-            <div className="enquiry-box-actions">
-              <a
-                href="https://wa.me/919845423223?text=Hi%20Hotel%20Pumerai%20Events%20Team%2C%20I%20would%20like%20to%20plan%20an%20event%20at%20your%20banquet%20halls."
-                target="_blank"
-                rel="noopener noreferrer"
-                className="button-primary enquiry-primary-btn"
-              >
-                CHAT ON WHATSAPP
-              </a>
-              <span className="enquiry-phone-note">Or call +91 98454 23223</span>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Event WhatsApp Enquiry Box */}
+      <WhatsAppEnquiry variant="banquet" />
     </div>
   );
 }

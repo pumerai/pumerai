@@ -224,6 +224,7 @@ export function generateStructuredData(pathname = "/") {
       { "@type": "LocationFeatureSpecification", name: "Elevators", value: true },
       { "@type": "LocationFeatureSpecification", name: "Power Backup", value: true },
       { "@type": "LocationFeatureSpecification", name: "Air Conditioning", value: true },
+      { "@type": "LocationFeatureSpecification", name: "Centralised air conditioning", value: true },
       { "@type": "LocationFeatureSpecification", name: "On-Site Restaurants (Matsya & Madhura)", value: true },
       { "@type": "LocationFeatureSpecification", name: "On-Site Banquet Halls (Sidhvin & Milan)", value: true },
     ],
@@ -297,6 +298,9 @@ export function generateStructuredData(pathname = "/") {
           value: parseInt(room.size, 10) || 350,
           unitCode: "FTK",
         },
+        amenityFeature: [
+          { "@type": "LocationFeatureSpecification", name: "Centralised air conditioning", value: true },
+        ],
       })),
     };
     return [breadcrumbsSchema, hotelWithRooms];

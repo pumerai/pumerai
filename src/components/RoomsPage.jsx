@@ -32,6 +32,16 @@ function getOffsetDateString(baseDateStr, offsetDays = 1) {
   return formatLocalDate(d);
 }
 
+const ROOMS_PAGE_ORDER = [
+  "premium-twin-room",
+  "premium-room",
+  "club-room",
+  "club-room-with-balcony",
+  "suite-room",
+  "family-suite-room",
+  "deluxe-room",
+];
+
 export default function RoomsPage({ onNavigate }) {
   const breadcrumbs = routesMeta["/rooms"].breadcrumbs;
   const [activePhotoIndex, setActivePhotoIndex] = useState({});
@@ -40,6 +50,10 @@ export default function RoomsPage({ onNavigate }) {
   const [popupCheckIn, setPopupCheckIn] = useState(() => getTodayDateString());
   const [popupCheckOut, setPopupCheckOut] = useState(() => getOffsetDateString(getTodayDateString(), 1));
   const [popupGuests, setPopupGuests] = useState("2 Adults");
+
+  const roomsList = ROOMS_PAGE_ORDER.map((slug) =>
+    rooms.find((r) => r.slug === slug)
+  ).filter(Boolean);
 
   // Scroll to anchor if URL contains hash (e.g. /rooms#family-suite-room)
   useEffect(() => {
@@ -127,7 +141,7 @@ export default function RoomsPage({ onNavigate }) {
         eyebrow="ACCOMMODATION"
         title="Rooms & Suites |"
         italicTitle="Hotel Pumerai Honnavar"
-        description="40 contemporary air-conditioned rooms and suites with high-speed Wi-Fi, rooftop pool access, and EV charging on NH-66."
+        description="40 contemporary rooms and suites with centralised AC in every room, high-speed Wi-Fi, rooftop pool access, and EV charging on NH-66."
         id="rooms-page-heading"
       />
 
@@ -135,7 +149,7 @@ export default function RoomsPage({ onNavigate }) {
       <section className="section rooms-full-listing-section">
         <div className="section-container">
           <div className="rooms-grid">
-            {rooms.map((room, roomIdx) => {
+            {roomsList.map((room, roomIdx) => {
               const photoIdx = activePhotoIndex[room.slug] || 0;
               const isExpanded = !!expandedDetails[room.slug];
               const currentPhotoSrc = room.galleryPhotos[photoIdx];
