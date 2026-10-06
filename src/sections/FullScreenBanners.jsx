@@ -59,7 +59,7 @@ export default function FullScreenBanners() {
               The Rooftop <span className="title-italic">Pool</span>
             </>
           }
-          line="Glass-edge pool open 6:30 AM to 7:00 PM, with a children's splash area."
+          line="Relax beside our glass-edge rooftop pool, with a dedicated splash area for little ones."
         />
       </section>
     </div>
