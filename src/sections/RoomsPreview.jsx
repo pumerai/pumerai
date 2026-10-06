@@ -2,6 +2,19 @@ import { useState, useEffect, useRef } from "react";
 import { rooms } from "../data/rooms.js";
 import RoomImage from "../components/RoomImage.jsx";
 
+// Home-only ordering list: Premium Room, Club Room, Family Suite Room, Club Room with Balcony, Suite Room, Premium Twin Room, Deluxe Room
+const HOME_ROOMS_ORDER = [
+  "premium-room",
+  "club-room",
+  "family-suite-room",
+  "club-room-with-balcony",
+  "suite-room",
+  "premium-twin-room",
+  "deluxe-room",
+];
+
+const homeRooms = HOME_ROOMS_ORDER.map((slug) => rooms.find((r) => r.slug === slug)).filter(Boolean);
+
 export default function RoomsPreview({ onNavigate }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(3);
@@ -25,7 +38,7 @@ export default function RoomsPreview({ onNavigate }) {
     return () => window.removeEventListener("resize", updateVisibleCount);
   }, []);
 
-  const maxIndex = Math.max(0, rooms.length - visibleCount);
+  const maxIndex = Math.max(0, homeRooms.length - visibleCount);
 
   // Keep index in valid bounds on resize
   useEffect(() => {
@@ -145,7 +158,7 @@ export default function RoomsPreview({ onNavigate }) {
               gap: `${gapPx}px`,
             }}
           >
-            {rooms.map((room, idx) => (
+            {homeRooms.map((room, idx) => (
               <a
                 key={room.slug}
                 href={`/rooms#${room.slug}`}

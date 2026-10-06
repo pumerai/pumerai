@@ -10,40 +10,36 @@ const hotelAreas = [
       "Double-height arrival lounge with natural daylight, curved seating and handcrafted teak portals.",
     image: "/gallery/sunlit-grand-lobby.webp",
     alt: "Double-height sunlit grand lobby with curved sofas and warm wood finishes at Hotel Pumerai Honnavar",
-    highlight: "Double-Height Ceiling, Artisanal Teak Lounge",
   },
   {
-    id: "terrace",
+    id: "pool",
     number: "02",
-    name: "Arrival Portico",
-    tagline: "Landscaped Entrance & Covered Drive",
+    name: "Pool Area",
+    tagline: "Glass-Edge Pool & Splash Area",
     description:
-      "Covered drop-off with landscaped approach and dedicated parking along NH-66.",
-    image: "/gallery/lotus-emblem-feature-wall.webp",
-    alt: "Landscaped arrival portico and covered driveway at Hotel Pumerai Honnavar",
-    highlight: "Covered Portico, Landscaped Forecourt, NH-66 Frontage",
+      "Glass-edge rooftop pool open 6:30 AM to 7:00 PM, with a children's splash area.",
+    image: "/gallery/rooftop-pool-facade.webp",
+    alt: "Glass-edge rooftop swimming pool deck and children splash zone at Hotel Pumerai",
   },
   {
-    id: "reception",
+    id: "restaurants",
     number: "03",
-    name: "Reception",
-    tagline: "24-Hour Desk & Reading Foyer",
+    name: "Restaurants",
+    tagline: "Matsya & Madhura",
     description:
-      "Round-the-clock reception desk for check-in, local boat tours and travel guidance.",
-    image: "/gallery/lobby-library-reception.webp",
-    alt: "Artisanal wooden library reception desk with brass Ganesha and seating at Hotel Pumerai",
-    highlight: "24/7 Desk, Travel Assistance, Reading Library",
+      "Matsya for coastal seafood and Madhura for pure vegetarian South Indian.",
+    image: "/dining/_DSC0222_result.webp",
+    alt: "Matsya multicuisine dining hall at Hotel Pumerai Honnavar",
   },
   {
-    id: "facade",
+    id: "banquet",
     number: "04",
-    name: "Facade",
-    tagline: "Contemporary Silhouette along NH-66",
+    name: "Banquet",
+    tagline: "Sidhvin & Milan Halls",
     description:
-      "Highway entrance on NH-66 with private parking and dedicated EV charging stations.",
-    image: "/gallery/hotel-highway-facade.webp",
-    alt: "Prominent architectural facade and landscaped frontage of Hotel Pumerai along NH-66 Honnavar",
-    highlight: "NH-66 Landmark, EV Charging, Covered Parking",
+      "Two air-conditioned halls for up to 200 and 50 guests.",
+    image: "/banquet/sidhvin-hall-main.webp",
+    alt: "Sidhvin banquet hall with ceremonial stage and chandelier lighting at Hotel Pumerai",
   },
 ];
 
@@ -76,7 +72,7 @@ export default function HotelAreas() {
             </h2>
           </div>
           <p className="header-summary">
-            Lobby, pool, reception and facade.
+            Lobby, pool, restaurants and banquet halls.
           </p>
         </header>
 
@@ -120,8 +116,6 @@ export default function HotelAreas() {
                 key={activeArea.id}
                 src={activeArea.image}
                 alt={activeArea.alt}
-                width="1280"
-                height="853"
                 loading="lazy"
                 className={`area-stage-image reveal-drop reveal-delay-0 ${isCrossfading ? "is-crossfading" : ""}`}
               />

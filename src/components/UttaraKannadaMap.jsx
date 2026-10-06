@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 /**
  * UttaraKannadaMap — Geographically accurate SVG map of the Karnataka & Goa coast.
  *
@@ -20,14 +22,14 @@
 
 // Pre-computed dot positions (project(lat, lng) with constants above)
 const DOTS = {
-  sharavathi:  { x: 286.5, y: 304.9, side: "left",  label: "Sharavathi River" },
-  kasarkod:    { x: 285.5, y: 304.0, side: "left",  label: "Kasarkod Beach" },
-  murudeshwar: { x: 294.7, y: 342.3, side: "left",  label: "Murudeshwar"    },
-  gokarna:     { x: 254.3, y: 251.8, side: "left",  label: "Gokarna"        },
-  sirsi:       { x: 382.7, y: 237.3, side: "right", label: "Sirsi"          },
-  goa:         { x: 132.7, y:  61.9, side: "right", label: "Goa"            },
-  udupi:       { x: 359.1, y: 492.8, side: "right", label: "Udupi"          },
-  mangalore:   { x: 387.3, y: 578.1, side: "left",  label: "Mangalore"      },
+  sharavathi: { x: 286.5, y: 304.9, side: "left", label: "Sharavathi River" },
+  kasarkod: { x: 285.5, y: 304.0, side: "left", label: "Kasarkod Beach" },
+  murudeshwar: { x: 294.7, y: 342.3, side: "left", label: "Murudeshwar" },
+  gokarna: { x: 254.3, y: 251.8, side: "left", label: "Gokarna" },
+  sirsi: { x: 382.7, y: 237.3, side: "right", label: "Sirsi" },
+  goa: { x: 132.7, y: 61.9, side: "right", label: "Goa" },
+  udupi: { x: 359.1, y: 492.8, side: "right", label: "Udupi" },
+  mangalore: { x: 387.3, y: 578.1, side: "left", label: "Mangalore" },
 };
 
 // Hotel Pumerai (anchor): project(14.2750, 74.4525)
@@ -35,7 +37,7 @@ const HOTEL = { x: 287.4, y: 306.3 };
 
 // Offsets for dots close to Hotel Pumerai to prevent label collisions
 const OFFSETS = {
-  kasarkod:   { dx: -24, dy: -16 },
+  kasarkod: { dx: -24, dy: -16 },
   sharavathi: { dx: -24, dy: 14 },
 };
 
@@ -52,10 +54,11 @@ function labelPos(dot, destId) {
 
 export default function UttaraKannadaMap({
   destinations = [],
-  activeDestIndex = 0,
+  activeDestIndex = null,
   onSelectDestination,
 }) {
-  const activeDest = destinations[activeDestIndex] || destinations[0];
+  const [hoveredIdx, setHoveredIdx] = useState(null);
+  const [focusedIdx, setFocusedIdx] = useState(null);
 
   return (
     <div className="regional-map-container" aria-label="Interactive map of Uttara Kannada destinations">
@@ -64,9 +67,10 @@ export default function UttaraKannadaMap({
           viewBox="0 0 520 640"
           className="uttara-kannada-map-svg"
           xmlns="http://www.w3.org/2000/svg"
-          aria-hidden="true"
-          focusable="false"
           preserveAspectRatio="xMidYMid meet"
+          onClick={() => onSelectDestination?.(null)}
+          role="img"
+          aria-label="Map of destinations around Honnavar"
         >
           <defs>
             {/* Subtle ripple pattern for the sea */}
@@ -130,6 +134,7 @@ export default function UttaraKannadaMap({
             const dot = DOTS[dest.id];
             if (!dot) return null;
             const isActive = idx === activeDestIndex;
+            const isLabelVisible = isActive || hoveredIdx === idx || focusedIdx === idx;
             const offset = OFFSETS[dest.id];
             const leaderNeeded = !!offset;
             const displayX = offset ? dot.x + offset.dx : dot.x;
@@ -140,15 +145,24 @@ export default function UttaraKannadaMap({
               <g
                 key={dest.id}
                 className={`map-marker-group${isActive ? " is-active" : ""}`}
-                onClick={() => onSelectDestination?.(idx)}
-                onMouseEnter={() => onSelectDestination?.(idx)}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSelectDestination?.(isActive ? null : idx);
+                }}
+                onMouseEnter={() => setHoveredIdx(idx)}
+                onMouseLeave={() => setHoveredIdx(null)}
+                onFocus={() => setFocusedIdx(idx)}
+                onBlur={() => setFocusedIdx(null)}
                 role="button"
                 tabIndex={0}
-                aria-label={`${dest.name}, ${dest.distanceKm} km from Hotel Pumerai`}
+                aria-label={`${dest.name}, ${dest.distanceKm} km`}
+                aria-expanded={isActive}
+                aria-controls="ah-detail-region"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
-                    onSelectDestination?.(idx);
+                    e.stopPropagation();
+                    onSelectDestination?.(isActive ? null : idx);
                   }
                 }}
               >
@@ -156,7 +170,7 @@ export default function UttaraKannadaMap({
                 <circle cx={dot.x} cy={dot.y} r="22" fill="transparent" cursor="pointer" />
 
                 {/* Leader line for offset dots (offset label anchor -> actual dot) */}
-                {leaderNeeded && (
+                {leaderNeeded && isLabelVisible && (
                   <line
                     x1={displayX}
                     y1={displayY}
@@ -193,19 +207,22 @@ export default function UttaraKannadaMap({
                   className="map-pin-dot"
                 />
 
-                {/* Label at (possibly offset) display position */}
-                <text
-                  x={lx}
-                  y={ly}
-                  textAnchor={anchor}
-                  fill={isActive ? "#D4B978" : "#8A8178"}
-                  fontSize="11"
-                  fontWeight={isActive ? "700" : "500"}
-                  letterSpacing="0.03em"
-                  className="map-marker-label"
-                >
-                  {dot.label}
-                </text>
+                {/* Label at (possibly offset) display position - visible on hover, focus or active */}
+                {isLabelVisible && (
+                  <text
+                    x={lx}
+                    y={ly}
+                    textAnchor={anchor}
+                    fill={isActive ? "#D4B978" : "#E5DFD5"}
+                    fontSize="11"
+                    fontWeight={isActive ? "700" : "500"}
+                    letterSpacing="0.03em"
+                    className="map-marker-label"
+                    pointerEvents="none"
+                  >
+                    {dot.label}
+                  </text>
+                )}
               </g>
             );
           })}
@@ -213,7 +230,7 @@ export default function UttaraKannadaMap({
           {/* 5. Hotel Pumerai Marker — non-interactive, always visible */}
           <g className="map-base-marker" transform={`translate(${HOTEL.x},${HOTEL.y})`}>
             <circle cx="0" cy="0" r="13" fill="rgba(180,154,106,0.14)" />
-            <circle cx="0" cy="0" r="8"  fill="none" stroke="#B49A6A" strokeWidth="1.0" />
+            <circle cx="0" cy="0" r="8" fill="none" stroke="#B49A6A" strokeWidth="1.0" />
             <circle cx="0" cy="0" r="4.5" fill="#B49A6A" />
             <circle cx="0" cy="0" r="1.8" fill="#F2EEE5" />
             {/* One-line label to the right (inland side) */}

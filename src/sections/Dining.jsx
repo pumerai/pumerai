@@ -37,7 +37,7 @@ export default function Dining({ sectionId = "dining", headingId = "dining-headi
         {/* Venues Grid */}
         <div className="dining-venues-grid">
           {restaurantVenues.map((venue, idx) => (
-            <article className="venue-card" key={venue.id} data-reveal>
+            <article className="venue-card" id={venue.id} key={venue.id} data-reveal>
               <div className="venue-media-container">
                 <figure className="venue-figure">
                   <img

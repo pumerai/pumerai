@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState } from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
 import BookingBar from "./components/BookingBar.jsx";
@@ -17,11 +17,12 @@ import SEOHead from "./components/SEOHead.jsx";
 import HeroSequence from "./sections/HeroSequence.jsx";
 import About from "./sections/About.jsx";
 import RoomsPreview from "./sections/RoomsPreview.jsx";
-import PoolBand from "./sections/PoolBand.jsx";
 import PickASide from "./sections/PickASide.jsx";
-import InsideHotelSlider from "./sections/InsideHotelSlider.jsx";
+import WhatsAppEnquiry from "./sections/WhatsAppEnquiry.jsx";
 import HotelAreas from "./sections/HotelAreas.jsx";
+import FullScreenBanners from "./sections/FullScreenBanners.jsx";
 import InAndAround from "./sections/InAndAround.jsx";
+import Transport from "./sections/Transport.jsx";
 import TrustReviews from "./sections/TrustReviews.jsx";
 import WebsiteLoader from "./components/WebsiteLoader.jsx";
 import DirectBookingPopup from "./components/DirectBookingPopup.jsx";
@@ -56,11 +57,12 @@ function HomePage({ onNavigate }) {
       <BookingBar isHomeSection={true} />
       <About />
       <RoomsPreview onNavigate={onNavigate} />
-      <PoolBand />
       <PickASide onNavigate={onNavigate} />
-      <InsideHotelSlider onNavigate={onNavigate} />
+      <WhatsAppEnquiry />
       <HotelAreas />
+      <FullScreenBanners />
       <InAndAround />
+      <Transport />
       <TrustReviews />
     </main>
   );
@@ -75,82 +77,47 @@ function App({ initialPath = "/" }) {
   useSectionReveals();
   useImageDropReveal(path);
 
-  const isPopStateRef = useRef(false);
-
   useEffect(() => {
     initAnalytics();
 
-    if (typeof window !== "undefined" && "scrollRestoration" in window.history) {
-      window.history.scrollRestoration = "manual";
-    }
-
     const onPopState = () => {
-      isPopStateRef.current = true;
       setPath(normalizePath(window.location.pathname));
       setPendingSection(null);
     };
 
-    const onHashChange = () => {
-      const h = window.location.hash ? window.location.hash.slice(1) : null;
-      if (h) {
-        const target = document.getElementById(h);
-        if (target) {
-          target.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }
-    };
-
     window.addEventListener("popstate", onPopState);
-    window.addEventListener("hashchange", onHashChange);
-    return () => {
-      window.removeEventListener("popstate", onPopState);
-      window.removeEventListener("hashchange", onHashChange);
-    };
+    return () => window.removeEventListener("popstate", onPopState);
   }, []);
 
   useEffect(() => {
     if (typeof window === "undefined") return;
 
-    // Back/forward navigation: allow browser to retain its position
-    if (isPopStateRef.current) {
-      isPopStateRef.current = false;
+    if (path === "/") {
+      const sectionId = pendingSection || "home";
+      window.requestAnimationFrame(() => {
+        const target = document.getElementById(sectionId);
+        if (target) {
+          target.scrollIntoView({
+            behavior: pendingSection ? "smooth" : "auto",
+            block: "start",
+          });
+        }
+      });
       return;
     }
 
-    const hash = window.location.hash ? window.location.hash.slice(1) : null;
-    const targetSection = pendingSection || hash;
-
-    if (targetSection) {
-      let attempts = 0;
-      const isInitialHash = !pendingSection && !!hash;
-      const tryScroll = () => {
-        const target = document.getElementById(targetSection);
+    if (pendingSection) {
+      window.requestAnimationFrame(() => {
+        const target = document.getElementById(pendingSection);
         if (target) {
-          target.scrollIntoView({
-            behavior: isInitialHash ? "auto" : "smooth",
-            block: "start",
-          });
-          if (isInitialHash) {
-            setTimeout(() => {
-              const currentTop = target.getBoundingClientRect().top;
-              if (Math.abs(currentTop) > 120) {
-                target.scrollIntoView({ behavior: "auto", block: "start" });
-              }
-            }, 650);
-          }
-        } else if (attempts < 6) {
-          attempts += 1;
-          setTimeout(tryScroll, 100);
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
         } else {
           window.scrollTo({ top: 0, behavior: "auto" });
         }
-      };
-
-      window.requestAnimationFrame(tryScroll);
+      });
       return;
     }
 
-    // Fresh visit or route change without hash or pendingSection: always start at top
     window.scrollTo({ top: 0, behavior: "auto" });
   }, [path, pendingSection]);
 
@@ -166,17 +133,17 @@ function App({ initialPath = "/" }) {
 
   const page =
     path === "/rooms" ? (
-      <RoomsPage onNavigate={navigate} />
+      <RoomsPage />
     ) : path === "/dining" ? (
       <DiningPage onNavigate={navigate} />
     ) : path === "/banquet" ? (
       <BanquetPage onNavigate={navigate} />
     ) : path === "/gallery" ? (
-      <GalleryPage onNavigate={navigate} />
+      <GalleryPage />
     ) : path === "/location" ? (
-      <LocationPage onNavigate={navigate} />
+      <LocationPage />
     ) : path === "/contact" ? (
-      <ContactPage onNavigate={navigate} />
+      <ContactPage />
     ) : path === "/faq" ? (
       <FAQPage onNavigate={navigate} />
     ) : path === "/privacy" ? (

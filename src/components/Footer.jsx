@@ -1,7 +1,8 @@
 const navLinks = [
   { label: "Rooms", route: "/rooms" },
-  { label: "Banquet Halls", route: "/banquet" },
-  { label: "Dining", route: "/dining" },
+  { label: "Banquet Hall", route: "/banquet" },
+  { label: "Veg Restaurant Menu", route: "/dining", section: "madhura" },
+  { label: "Non-Veg Restaurant Menu", route: "/dining", section: "matsya" },
   { label: "Gallery", route: "/gallery" },
   { label: "Location", route: "/location" },
   { label: "FAQ", route: "/faq" },
@@ -71,26 +72,22 @@ export default function Footer({ onNavigate, currentPath = "/" }) {
         {/* Main Grid: On /faq, hide Stay Updated and Need Help columns per SEO/AEO spec */}
         <div className={`footer-main-grid ${isFaqPage ? "footer-main-grid-faq" : ""}`}>
 
-          {/* Col 1: Offers / Stay Updated */}
+          {/* Col 1: Book Now Text Link */}
           {!isFaqPage && (
             <section className="footer-col footer-col-center">
-              <h4 className="footer-col-heading">Stay Updated</h4>
-              <p className="footer-col-copy">
-                Get seasonal offers on WhatsApp.
-              </p>
               <a
-                href={whatsappHref("Hi Hotel Pumerai, please add me to your updates and seasonal offers list.")}
+                href="https://bookingengine.stayflexi.com/?hotel_id=41986"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="button-primary footer-inline-btn"
+                className="footer-book-now-link"
               >
-                Join on WhatsApp
+                Book Now
               </a>
             </section>
           )}
 
           {/* Col 2: Contact, Address & Social */}
-          <section className="footer-col footer-col-center" id="contact">
+          <section className="footer-col footer-col-center">
             <p className="footer-col-title">HOTEL PUMERAI HONNAVAR</p>
 
             <address className="footer-contact-block footer-contact-centered">
@@ -157,16 +154,19 @@ export default function Footer({ onNavigate, currentPath = "/" }) {
           </p>
 
           <nav className="footer-bottom-nav" aria-label="Footer site navigation">
-            {navLinks.map((item) => (
-              <a
-                key={item.route}
-                href={item.route}
-                className="footer-nav-link"
-                onClick={(e) => handleNavClick(e, item)}
-              >
-                {item.label}
-              </a>
-            ))}
+            {navLinks.map((item) => {
+              const fullHref = item.section ? `${item.route}#${item.section}` : item.route;
+              return (
+                <a
+                  key={item.label}
+                  href={fullHref}
+                  className="footer-nav-link"
+                  onClick={(e) => handleNavClick(e, item)}
+                >
+                  {item.label}
+                </a>
+              );
+            })}
           </nav>
 
           <div className="footer-legal-links">
