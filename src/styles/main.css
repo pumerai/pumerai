@@ -9148,14 +9148,13 @@ input[type="date"].booking-input {
   border-radius: 8px;
   overflow: hidden;
   border: 1px solid var(--color-border);
-  background-color: var(--color-surface);
+  background-color: #171715;
   box-shadow: 0 14px 36px -10px rgba(17, 17, 15, 0.55);
 }
 
 .uttara-kannada-map-svg {
   width: 100%;
-  height: auto;
-  aspect-ratio: 520 / 640;
+  height: 100%;
   display: block;
   user-select: none;
 }
@@ -9184,11 +9183,12 @@ input[type="date"].booking-input {
 .map-marker-label {
   font-family: var(--font-sans);
   transition: fill 250ms ease;
-  pointer-events: none;
+  pointer-events: auto;
+  cursor: pointer;
 }
 
 .map-marker-group:hover .map-marker-label {
-  fill: var(--color-text);
+  fill: #FAF6EE;
 }
 
 /* Active Marker Pulsing Ring Animation */
@@ -10304,120 +10304,70 @@ input[type="date"].booking-input {
   padding-block: clamp(64px, 8vw, 112px);
 }
 
-/* Two-column layout: map left (40%), panel right (60%) */
+/* Two-column layout: map left, panel right, equal height */
 .around-honnavar-layout {
   display: grid;
-  grid-template-columns: 40% 1fr;
-  gap: clamp(32px, 4vw, 56px);
+  grid-template-columns: minmax(320px, 42%) 1fr;
+  gap: clamp(24px, 3.5vw, 48px);
   align-items: stretch;
-  min-height: 540px;
-  margin-top: clamp(32px, 4vw, 48px);
+  min-height: 480px;
+  margin-top: clamp(28px, 3.5vw, 44px);
 }
 
 /* ---- MAP COLUMN ---- */
 .ah-map-column {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 
 .ah-map-column .regional-map-container,
 .ah-map-column .regional-map-frame {
-  flex: 1;
+  width: 100%;
   height: 100%;
+  flex: 1;
+}
+
+.ah-map-column .regional-map-frame {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background-color: #171715;
+  box-shadow: 0 14px 36px -10px rgba(17, 17, 15, 0.55);
 }
 
 .ah-map-column .uttara-kannada-map-svg {
   width: 100%;
   height: 100%;
-  max-height: 560px;
+  display: block;
 }
 
 /* ---- PANEL COLUMN ---- */
 .ah-panel-column {
   display: flex;
   flex-direction: column;
-  overflow: hidden;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
 }
 
-/* TAB STRIP — horizontal scroll, hidden scrollbar, soft fade edges */
-.ah-tabs-strip {
-  display: flex;
-  gap: 0;
-  overflow-x: auto;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-  /* Soft fade at both horizontal edges */
-  -webkit-mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    black 24px,
-    black calc(100% - 24px),
-    transparent 100%
-  );
-  mask-image: linear-gradient(
-    to right,
-    transparent 0,
-    black 24px,
-    black calc(100% - 24px),
-    transparent 100%
-  );
-  border-bottom: 1px solid var(--color-border);
-  flex-shrink: 0;
-  padding-inline: 8px;
-}
-
-.ah-tabs-strip::-webkit-scrollbar {
-  display: none;
-}
-
-/* Individual tab button */
-.ah-tab-btn {
-  flex-shrink: 0;
-  padding: 10px 14px;
-  font-family: var(--font-sans);
-  font-size: var(--fs-12);
-  font-weight: 600;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-text-muted);
-  background: transparent;
-  border: none;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  transition: color 160ms ease, border-color 160ms ease;
-  white-space: nowrap;
-  min-height: 44px;
-  display: inline-flex;
-  align-items: center;
-  outline-offset: 2px;
-  /* Offset border-bottom inside without affecting layout */
-  margin-bottom: -1px;
-}
-
-.ah-tab-btn:hover {
-  color: var(--color-text-secondary);
-}
-
-.ah-tab-btn.is-active {
-  color: var(--color-accent);
-  border-bottom-color: var(--color-accent);
-}
-
-.ah-tab-btn:focus-visible {
-  outline: 2px solid var(--color-accent);
-  outline-offset: -2px;
-  border-radius: 2px;
-}
-
-/* DETAIL PANEL — flexbox row so photo sits beside metadata */
+/* DETAIL PANEL — photo beside metadata, vertically centred */
 .ah-detail-panel {
-  flex: 1;
   display: flex;
   flex-direction: row;
-  gap: clamp(16px, 2.5vw, 28px);
-  align-items: flex-start;
-  padding-block: clamp(20px, 3vw, 32px);
-  min-height: 200px;
+  align-items: center;
+  gap: clamp(20px, 2.5vw, 32px);
+  padding: clamp(24px, 3vw, 40px);
+  background-color: var(--color-card, #25231F);
+  border: 1px solid var(--color-border, #3A3731);
+  border-radius: 8px;
+  box-shadow: 0 14px 36px -10px rgba(17, 17, 15, 0.55);
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
 }
 
 /* Crossfade on panel content switch */
@@ -10436,14 +10386,14 @@ input[type="date"].booking-input {
   }
 }
 
-/* Destination photo — 3:2, approx 180×120 */
+/* Destination photo — 3:2 */
 .ah-dest-photo-frame {
   flex-shrink: 0;
-  width: clamp(140px, 18vw, 200px);
+  width: clamp(160px, 20vw, 240px);
   aspect-ratio: 3 / 2;
   overflow: hidden;
-  border-radius: 1px;
-  background-color: var(--color-card);
+  border-radius: 4px;
+  background-color: var(--color-surface, #1C1B18);
 }
 
 .ah-dest-photo {
@@ -10466,14 +10416,14 @@ input[type="date"].booking-input {
   min-width: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
 }
 
 .ah-dest-name {
   font-family: var(--font-serif);
-  font-size: clamp(1.35rem, 2.6vw, 1.85rem);
+  font-size: clamp(1.4rem, 2.6vw, 1.95rem);
   font-weight: 400;
-  line-height: 1.1;
+  line-height: 1.15;
   color: var(--color-text);
   letter-spacing: -0.01em;
   margin: 0;
@@ -10491,7 +10441,7 @@ input[type="date"].booking-input {
 
 .ah-dist-sep {
   color: var(--color-border);
-  padding-inline: 2px;
+  padding-inline: 4px;
 }
 
 .ah-dest-desc {
@@ -10503,7 +10453,7 @@ input[type="date"].booking-input {
 
 .ah-map-btn {
   align-self: flex-start;
-  margin-top: auto;
+  margin-top: 4px;
 }
 
 /* ==========================================================================
@@ -10512,34 +10462,41 @@ input[type="date"].booking-input {
 @media (max-width: 768px) {
   .around-honnavar-layout {
     grid-template-columns: 1fr;
-    gap: 0;
+    gap: 20px;
     min-height: auto;
     margin-top: 24px;
+    align-items: start;
   }
 
   .ah-map-column {
+    width: 100%;
+    height: 320px;
     max-height: 320px;
-    overflow: hidden;
+    min-height: 0;
+  }
+
+  .ah-map-column .regional-map-container,
+  .ah-map-column .regional-map-frame {
+    width: 100%;
+    height: 320px;
+    max-height: 320px;
   }
 
   .ah-map-column .uttara-kannada-map-svg {
     max-height: 320px;
   }
 
-  .ah-tabs-strip {
-    padding-inline: 4px;
-  }
-
-  .ah-tab-btn {
-    padding: 10px 12px;
-    font-size: 0.68rem;
+  .ah-panel-column {
+    justify-content: flex-start;
+    height: auto;
   }
 
   .ah-detail-panel {
     flex-direction: column;
-    min-height: auto;
-    gap: 14px;
-    padding-block: 16px 24px;
+    align-items: stretch;
+    height: auto;
+    padding: 20px;
+    gap: 16px;
   }
 
   .ah-dest-photo-frame {
@@ -10557,14 +10514,14 @@ input[type="date"].booking-input {
 /* ==========================================================================
    TABLET (768–1023px)
    ========================================================================== */
-@media (min-width: 768px) and (max-width: 1023px) {
+@media (min-width: 769px) and (max-width: 1023px) {
   .around-honnavar-layout {
     grid-template-columns: 38% 1fr;
-    min-height: 480px;
+    min-height: 460px;
   }
 
   .ah-dest-photo-frame {
-    width: clamp(120px, 16vw, 160px);
+    width: clamp(140px, 16vw, 180px);
   }
 }
 
@@ -10573,7 +10530,7 @@ input[type="date"].booking-input {
    ========================================================================== */
 @media (min-width: 1440px) {
   .around-honnavar-layout {
-    min-height: 600px;
+    min-height: 520px;
   }
 }
 
@@ -10613,36 +10570,7 @@ input[type="date"].booking-input {
   stroke-width: 2.5;
 }
 
-/* ==========================================================================
-   AROUND HONNAVAR — MAP COLUMN STRETCH FIX
-   Equal height columns, map capped at 420px to match panel height
-   ========================================================================== */
 
-.around-honnavar-layout {
-  align-items: stretch;
-}
-
-.ah-map-column {
-  max-height: 420px;
-}
-
-.ah-map-column .regional-map-container,
-.ah-map-column .regional-map-frame {
-  height: 100%;
-  max-height: 420px;
-}
-
-.ah-map-column .uttara-kannada-map-svg {
-  max-height: 420px;
-}
-
-.ah-panel-column {
-  justify-content: flex-start;
-}
-
-.ah-detail-panel {
-  flex: 0 0 auto;
-}
 
 /* ==========================================================================
    WHATSAPP ENQUIRY BOX
@@ -11112,75 +11040,8 @@ input[type="date"].booking-input {
   outline-offset: 4px;
 }
 
-/* ==========================================================================
-   AROUND HONNAVAR — MAP LAYOUT GEOMETRY OVERRIDES
-   Aspect ratio 4:5, max-height 420px, no overflow, stack < 900px
-   ========================================================================== */
 
-/* Desktop two-column: use explicit columns so the map gets ~38% and has 4:5 shape */
-.around-honnavar-layout {
-  grid-template-columns: minmax(0, 2fr) minmax(0, 3fr);
-  gap: clamp(24px, 3vw, 48px);
-  align-items: stretch;
-  min-height: 0;
-  overflow: hidden;
-}
 
-.ah-map-column {
-  max-height: 420px;
-  overflow: hidden;
-}
-
-/* Make the map SVG respect the 4:5 aspect ratio of its container */
-.ah-map-column .regional-map-container,
-.ah-map-column .regional-map-frame {
-  width: 100%;
-  height: 100%;
-  max-height: 420px;
-}
-
-.ah-map-column .uttara-kannada-map-svg {
-  width: 100%;
-  height: 100%;
-  max-height: 420px;
-  /* The viewBox is 520:640 = ~4:5; fit inside the column */
-  display: block;
-}
-
-/* Panel column: no overflow, no horizontal scroll */
-.ah-panel-column {
-  overflow: hidden;
-  min-width: 0;
-}
-
-/* Tabs: no horizontal page scroll */
-.ah-tabs-strip {
-  width: 100%;
-  overflow-x: auto;
-}
-
-/* Stack map above panel at < 900px (between tablet and desktop) */
-@media (max-width: 900px) {
-  .around-honnavar-layout {
-    grid-template-columns: 1fr;
-    min-height: auto;
-  }
-
-  .ah-map-column {
-    width: 100%;
-    max-height: 300px;
-  }
-
-  .ah-map-column .regional-map-container,
-  .ah-map-column .regional-map-frame,
-  .ah-map-column .uttara-kannada-map-svg {
-    max-height: 300px;
-  }
-
-  .ah-panel-column {
-    overflow: visible;
-  }
-}
 
 /* Credits line — shown only on Location page */
 .photo-credits-line {

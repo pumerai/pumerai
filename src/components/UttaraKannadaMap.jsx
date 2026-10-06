@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 
 /**
  * UttaraKannadaMap — Geographically accurate SVG map of the Karnataka & Goa coast.
  *
- * PROJECTION (equirectangular, fitting all destinations with 12% padding):
+ * PROJECTION (equirectangular, fitting all destinations):
  *   xscale = 247.601 px/deg,  lng_origin = 73.2918°E
  *   yscale = 199.679 px/deg,  lat_origin = 15.8091°N
  *   x(lng) = (lng − 73.2918) × 247.601
@@ -14,10 +14,8 @@ import { useState } from "react";
  *   Goa (Panaji) 3.28 | Sirsi 54.62 (inland ✓)
  *
  * Coastline: Natural Earth simplified points, projected with the same formula.
- * Land polygon extends to the right edge of the SVG canvas.
- *
- * Map contains: coastline, hotel marker, destination dots, Arabian Sea label.
- * No compass, no route lines, no decorative pills.
+ * Map drawing fills card edge to edge (sea on left, top, bottom; land on right).
+ * Contains: coastline, hotel marker, destination dots, Arabian Sea label.
  */
 
 // Pre-computed dot positions (project(lat, lng) with constants above)
@@ -59,16 +57,37 @@ export default function UttaraKannadaMap({
 }) {
   const [hoveredIdx, setHoveredIdx] = useState(null);
   const [focusedIdx, setFocusedIdx] = useState(null);
+  const [viewBoxWidth, setViewBoxWidth] = useState(520);
+  const frameRef = useRef(null);
+  const markerRefs = useRef([]);
+
+  useEffect(() => {
+    const frame = frameRef.current;
+    if (!frame) return;
+
+    const updateDims = () => {
+      const { clientWidth, clientHeight } = frame;
+      if (clientWidth > 0 && clientHeight > 0) {
+        const aspect = clientWidth / clientHeight;
+        const calculated = Math.max(480, Math.round(640 * aspect));
+        setViewBoxWidth(calculated);
+      }
+    };
+
+    updateDims();
+    const ro = new ResizeObserver(updateDims);
+    ro.observe(frame);
+    return () => ro.disconnect();
+  }, []);
 
   return (
     <div className="regional-map-container" aria-label="Interactive map of Uttara Kannada destinations">
-      <div className="regional-map-frame">
+      <div className="regional-map-frame" ref={frameRef}>
         <svg
-          viewBox="0 0 520 640"
+          viewBox={`0 0 ${viewBoxWidth} 640`}
           className="uttara-kannada-map-svg"
           xmlns="http://www.w3.org/2000/svg"
-          preserveAspectRatio="xMidYMid meet"
-          onClick={() => onSelectDestination?.(null)}
+          preserveAspectRatio="none"
           role="img"
           aria-label="Map of destinations around Honnavar"
         >
@@ -79,9 +98,9 @@ export default function UttaraKannadaMap({
             </pattern>
           </defs>
 
-          {/* 1. Sea background (full canvas, then land overlaid) */}
-          <rect width="520" height="640" fill="#171715" />
-          <rect width="520" height="640" fill="url(#seaRipple)" opacity="0.6" />
+          {/* 1. Sea background (fills canvas edge to edge: left, top, bottom) */}
+          <rect x="0" y="0" width={viewBoxWidth + 1000} height="640" fill="#171715" />
+          <rect x="0" y="0" width={viewBoxWidth + 1000} height="640" fill="url(#seaRipple)" opacity="0.6" />
 
           {/* 2. Arabian Sea label — vertical, in the sea area (left of coast) */}
           <text
@@ -97,11 +116,11 @@ export default function UttaraKannadaMap({
             ARABIAN SEA
           </text>
 
-          {/* 3. Coastal landmass — Karnataka & Goa (land to the east/right of coast) */}
-          {/*    Path: coast polyline, then close to right edge + top-right corner     */}
+          {/* 3. Coastal landmass fill — extends all the way to right edge */}
           <path
             d={[
-              "M 115.9,53.7",
+              "M 115.9,0",
+              "L 115.9,53.7",
               "L 158.5,101.5",
               "L 180.0,147.0",
               "L 201.1,191.7",
@@ -118,12 +137,37 @@ export default function UttaraKannadaMap({
               "L 371.4,530.6",
               "L 387.3,578.1",
               "L 387.3,640",
-              "L 520,640",
-              "L 520,0",
-              "L 115.9,0",
+              "L 2500,640",
+              "L 2500,0",
               "Z",
             ].join(" ")}
             fill="#22201C"
+            stroke="none"
+          />
+
+          {/* 3b. Coastline stroke — strokes only the coast, never the right border */}
+          <path
+            d={[
+              "M 115.9,0",
+              "L 115.9,53.7",
+              "L 158.5,101.5",
+              "L 180.0,147.0",
+              "L 201.1,191.7",
+              "L 209.0,209.1",
+              "L 254.3,251.8",
+              "L 262.3,284.6",
+              "L 285.5,303.9",
+              "L 281.1,306.3",
+              "L 276.4,331.7",
+              "L 294.7,342.3",
+              "L 339.5,394.0",
+              "L 347.9,435.9",
+              "L 359.1,492.8",
+              "L 371.4,530.6",
+              "L 387.3,578.1",
+              "L 387.3,640",
+            ].join(" ")}
+            fill="none"
             stroke="#3A3731"
             strokeWidth="1.2"
             strokeLinejoin="round"
@@ -134,20 +178,31 @@ export default function UttaraKannadaMap({
             const dot = DOTS[dest.id];
             if (!dot) return null;
             const isActive = idx === activeDestIndex;
-            const isLabelVisible = isActive || hoveredIdx === idx || focusedIdx === idx;
+            const isHovered = hoveredIdx === idx;
+            const isFocused = focusedIdx === idx;
             const offset = OFFSETS[dest.id];
             const leaderNeeded = !!offset;
             const displayX = offset ? dot.x + offset.dx : dot.x;
             const displayY = offset ? dot.y + offset.dy : dot.y;
             const { lx, ly, anchor } = labelPos(dot, dest.id);
 
+            // Separate hit area center for nearby dots (Kasarkod & Sharavathi)
+            let hitX = dot.x;
+            let hitY = dot.y;
+            if (dest.id === "kasarkod") {
+              hitY = dot.y - 10;
+            } else if (dest.id === "sharavathi") {
+              hitY = dot.y + 10;
+            }
+
             return (
               <g
                 key={dest.id}
+                ref={(el) => (markerRefs.current[idx] = el)}
                 className={`map-marker-group${isActive ? " is-active" : ""}`}
                 onClick={(e) => {
                   e.stopPropagation();
-                  onSelectDestination?.(isActive ? null : idx);
+                  onSelectDestination?.(idx);
                 }}
                 onMouseEnter={() => setHoveredIdx(idx)}
                 onMouseLeave={() => setHoveredIdx(null)}
@@ -156,21 +211,32 @@ export default function UttaraKannadaMap({
                 role="button"
                 tabIndex={0}
                 aria-label={`${dest.name}, ${dest.distanceKm} km`}
-                aria-expanded={isActive}
-                aria-controls="ah-detail-region"
+                aria-pressed={isActive}
                 onKeyDown={(e) => {
                   if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
                     e.stopPropagation();
-                    onSelectDestination?.(isActive ? null : idx);
+                    onSelectDestination?.(idx);
+                  } else if (e.key === "ArrowRight" || e.key === "ArrowDown") {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const nextIdx = (idx + 1) % destinations.length;
+                    onSelectDestination?.(nextIdx);
+                    markerRefs.current[nextIdx]?.focus({ preventScroll: true });
+                  } else if (e.key === "ArrowLeft" || e.key === "ArrowUp") {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const prevIdx = (idx - 1 + destinations.length) % destinations.length;
+                    onSelectDestination?.(prevIdx);
+                    markerRefs.current[prevIdx]?.focus({ preventScroll: true });
                   }
                 }}
               >
-                {/* 44px touch hit area (on the actual dot position) */}
-                <circle cx={dot.x} cy={dot.y} r="22" fill="transparent" cursor="pointer" />
+                {/* Hit area: 44px diameter (>= 32px desktop, >= 44px mobile) */}
+                <circle cx={hitX} cy={hitY} r="22" fill="transparent" cursor="pointer" />
 
-                {/* Leader line for offset dots (offset label anchor -> actual dot) */}
-                {leaderNeeded && isLabelVisible && (
+                {/* Leader line for offset dots (connects offset display anchor to actual dot) */}
+                {leaderNeeded && (
                   <line
                     x1={displayX}
                     y1={displayY}
@@ -196,33 +262,44 @@ export default function UttaraKannadaMap({
                   />
                 )}
 
-                {/* Dot */}
+                {/* Visible gold focus ring */}
+                {isFocused && !isActive && (
+                  <circle
+                    cx={dot.x}
+                    cy={dot.y}
+                    r="8"
+                    fill="none"
+                    stroke="#B49A6A"
+                    strokeWidth="1.6"
+                    opacity="0.9"
+                  />
+                )}
+
+                {/* Dot: 8px visible diameter (r=4), active 10px (r=5) */}
                 <circle
                   cx={dot.x}
                   cy={dot.y}
-                  r={isActive ? 5.5 : 3.8}
-                  fill={isActive ? "#B49A6A" : "#6B6560"}
+                  r={isActive ? 5 : (isHovered ? 4.5 : 4)}
+                  fill={isActive ? "#B49A6A" : (isHovered ? "#B49A6A" : "#7A746D")}
                   stroke="#171715"
-                  strokeWidth="1.6"
+                  strokeWidth={isActive ? "1.8" : "1.5"}
                   className="map-pin-dot"
                 />
 
-                {/* Label at (possibly offset) display position - visible on hover, focus or active */}
-                {isLabelVisible && (
-                  <text
-                    x={lx}
-                    y={ly}
-                    textAnchor={anchor}
-                    fill={isActive ? "#D4B978" : "#E5DFD5"}
-                    fontSize="11"
-                    fontWeight={isActive ? "700" : "500"}
-                    letterSpacing="0.03em"
-                    className="map-marker-label"
-                    pointerEvents="none"
-                  >
-                    {dot.label}
-                  </text>
-                )}
+                {/* Name label shown at all times (min 11px; active gold, otherwise muted ivory) */}
+                <text
+                  x={lx}
+                  y={ly}
+                  textAnchor={anchor}
+                  fill={isActive ? "#D4B978" : (isHovered ? "#FAF6EE" : "#D8CFBC")}
+                  fontSize="11"
+                  fontWeight={isActive ? "700" : "500"}
+                  letterSpacing="0.03em"
+                  className="map-marker-label"
+                  cursor="pointer"
+                >
+                  {dot.label}
+                </text>
               </g>
             );
           })}
@@ -242,12 +319,6 @@ export default function UttaraKannadaMap({
             </g>
           </g>
         </svg>
-
-        {/* Footer caption */}
-        <div className="map-footer-ingress">
-          <span className="ingress-dot" />
-          <span className="ingress-caption">Honnavar, NH-66 — coastal Karnataka</span>
-        </div>
       </div>
     </div>
   );
