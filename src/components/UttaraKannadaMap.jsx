@@ -248,17 +248,17 @@ export default function UttaraKannadaMap({
                   />
                 )}
 
-                {/* Active pulse ring */}
+                {/* Active static gold ring — stationary */}
                 {isActive && (
                   <circle
                     cx={dot.x}
                     cy={dot.y}
-                    r="9"
+                    r="8.5"
                     fill="none"
                     stroke="#B49A6A"
-                    strokeWidth="1.4"
+                    strokeWidth="1.2"
                     className="map-active-pulse"
-                    opacity="0.8"
+                    opacity="0.85"
                   />
                 )}
 
@@ -275,11 +275,11 @@ export default function UttaraKannadaMap({
                   />
                 )}
 
-                {/* Dot: 8px visible diameter (r=4), active 10px (r=5) */}
+                {/* Dot: 8px visible diameter (r=4), active 10px (r=5) — stationary */}
                 <circle
                   cx={dot.x}
                   cy={dot.y}
-                  r={isActive ? 5 : (isHovered ? 4.5 : 4)}
+                  r={isActive ? 5 : 4}
                   fill={isActive ? "#B49A6A" : (isHovered ? "#B49A6A" : "#7A746D")}
                   stroke="#171715"
                   strokeWidth={isActive ? "1.8" : "1.5"}
